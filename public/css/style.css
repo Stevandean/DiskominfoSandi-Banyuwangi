@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,500;1,500&display=swap');
+
+.container {
+  text-align: center;
+  margin: auto;
+  margin-top: 250px;
+  /* position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);*/
+  width: 100%;
+  height: 60vh;
+}
+
+.container .text1 {
+  text-transform: uppercase;
+  display: block; 
+}
+
+.container .text2 {
+  text-transform: uppercase;
+  display: block; 
+}
+
+.text1 {
+  color: #02a9f7;
+  overflow: hidden;
+  font-size: 65px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  background: rgb(250 250 249);
+  position: relative;
+  /*   shorthand animation property: name | duration | iteration count */
+  /*   animation: text 4s 1; */
+  animation-name: text;
+  animation-duration: 4s;
+  animation-iteration-count: no;
+}
+
+.text2 {
+  font-size: 25px;
+  overflow: hidden;
+  color: #f6ca29;
+}
+
+@keyframes text {
+  0% {
+    color: #d4f0fc;
+    margin-bottom: -40px;
+  }
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+  85% {
+    letter-spacing: 8px;
+    margin-bottom: -40px;
+  }
+  100% {
+  }
+}
+
+
+/* HARAM UNTUK DI UBAH!! */
+@media only screen and (max-width: 600px) {
+  .text1 {
+    font-size: 50px;
+  }
+  @keyframes text {
+    0% {
+      color: #d4f0fc;
+      margin-bottom: -40px;
+    }
+    30% {
+      letter-spacing: 10px;
+      margin-bottom: -30px;
+    }
+    85% {
+      letter-spacing: 5px;
+      margin-bottom: -30px;
+    }
+    100% {
+    }
+  }
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.container-berita {
+  font-family: 'Ubuntu', sans-serif;
+}
