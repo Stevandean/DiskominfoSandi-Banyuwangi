@@ -13,14 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get ('/', function () {
+    return view ('home');
 });
 
-Route::get('/about', function () {
-    return view('about');
+Route::get ('/about', function () {
+    return view ('about');
 });
 
-Route::get('/ppid', function(){
-    return view('ppid');
+Route::get ('/ppid', function (){
+    return view ('PPID.ppid');
+});
+
+Route::get ('/sk-ppid', function () {
+    return view ('PPID.sk-ppid');
+});
+
+Route::get('/latar-belakang-ppid', function () {
+    return view ('PPID.latar-belakang-ppid');
 });
