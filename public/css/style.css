@@ -71,14 +71,24 @@
   height: 400px;
 }
 
+.img-sop {
+  background-size: cover;
+  width: 700px;
+  height: 400px;
+}
+
 
 /* HARAM UNTUK DI UBAH!! */
 @media only screen and (max-width: 600px) {
   .text1 {
-    font-size: 34px;
+    font-size: 31px;
     letter-spacing: 4px;
   }
   .img-ppid {
+    width: 350px;
+    height: 220px;
+  }
+  .img-sop {
     width: 350px;
     height: 220px;
   }
@@ -131,4 +141,21 @@
   font-weight: 800;
   font-size: 28px;
   line-height: 33px;
+}
+
+.waviy {
+  position: relative;
+}
+.waviy span {
+  position: relative;
+  display: inline-block;
+  font-size: 80px;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: calc(.2s * var(--i))
+}
+@keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg) 
+  }
 }
