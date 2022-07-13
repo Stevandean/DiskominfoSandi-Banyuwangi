@@ -1,4 +1,4 @@
-<nav class="p-5 bg-white shadow md:flex  md:justify-between">
+<nav class="p-5 bg-white shadow md:flex  md:justify-between z-10">
     <div class="flex justify-between items-center">
       <img class="h-12 inline mr-5"
         src="https://www.asliindonesia.net/wp-content/uploads/2015/04/hasil2BTKD2BCPNS2BKabupaten2BBanyuwangi2B2014.png">
@@ -31,8 +31,8 @@
             active:text-red-800
             transition duration-500 ease-in-out
             flex
+            cursor-pointer
             items-center"
-            href="#"
             id="dropdownMenuButton2"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -86,6 +86,7 @@
               whitespace-nowrap
               bg-transparent
               text-gray-700
+              hover:text-blue-600
               hover:bg-gray-100"
             href="#"
             >Diskominfo & Sandi
@@ -104,8 +105,9 @@
               whitespace-nowrap
               bg-transparent
               text-gray-700
+              hover:text-blue-600
               hover:bg-gray-100"
-              href="#"
+              href="/visi-misi"
             >Visi Misi
           </a>
         </li>
@@ -122,8 +124,9 @@
               whitespace-nowrap
               bg-transparent
               text-gray-700
+              hover:text-blue-600
               hover:bg-gray-100"
-              href="#"
+              href="/tupoksi"
             >Tupoksi
           </a>
         </li>
@@ -140,8 +143,9 @@
               whitespace-nowrap
               bg-transparent
               text-gray-700
+              hover:text-blue-600
               hover:bg-gray-100"
-              href="#"
+              href="/galeri"
             >Galery
           </a>
         </li>
@@ -158,8 +162,9 @@
               whitespace-nowrap
               bg-transparent
               text-gray-700
+              hover:text-blue-600
               hover:bg-gray-100"
-              href="#"
+              href="/struktur-organisasi"
             >Struktur Organisasi
           </a> 
         </li>
@@ -183,8 +188,8 @@
             active:text-red-800
             transition duration-500 ease-in-out
             flex
+            cursor-pointer
             items-center"
-            href="#"
             id="dropdownMenuButton2"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -238,8 +243,9 @@
                 whitespace-nowrap
                 bg-transparent
                 text-gray-700
+                hover:text-blue-600
                 hover:bg-gray-100"
-              href="#"
+              href="/info"
               >Info
             </a>
           </li>
@@ -256,21 +262,22 @@
                 whitespace-nowrap
                 bg-transparent
                 text-gray-700
+                hover:text-blue-600
                 hover:bg-gray-100"
-              href="#"
+              href="/document"
               >Doc
             </a>
           </li>
         </ul>
       </div>      
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:text-blue-600 duration-500">Berita</a>
+        <a href="/berita" class="text-xl hover:text-blue-600 duration-500">Berita</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="#" class="text-xl hover:text-blue-600 duration-500">Layanan</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:text-blue-600 duration-500">Kontak</a>
+        <a href="/kontak" class="text-xl hover:text-blue-600 duration-500">Kontak</a>
       </li>
       <!-- <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">
         Get started

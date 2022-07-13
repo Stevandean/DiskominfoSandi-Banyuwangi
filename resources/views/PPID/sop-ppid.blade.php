@@ -12,7 +12,7 @@
 </head>
 <body>
     @include('partials.navbar')
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 overflow-hidden">
         <div class="lg:col-span-4 md:col-span-6">
             @include ('partials.side-bar-ppid')
         </div>

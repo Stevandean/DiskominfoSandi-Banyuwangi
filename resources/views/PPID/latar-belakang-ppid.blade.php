@@ -24,14 +24,8 @@
                 <div class=" max-w-4xl rounded-lg overflow-hidden shadow-lg">
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">Latar Belakang</div>
-                        <p class="text-gray-700 text-base pb-5">
-                            Reformasi yang bergulir pada tahun 1998 yang ditandai dengan 3(tiga) tuntutan yaitu; demokratisasi, tranparasi dan supremasi hukum & HAM, telah membawa perubahan mendasar dalam kehidupan bermasyarakat, berbangsa dan benegara. Konsekuensi dari tuntutan reformasi tersebut salah satu diantaranya adalah ditetapkannya UU N0.14 tahun 2008 tentang Keterbukaan Informasi Publik yang bertujuan untuk mewujudkan tata kelola pemerintahan yang baik dan bertanggungjawab (good governance) melalui penerapan prinsip-prinsip akuntabilitas, transparansi dan supremasi hukum serta melibatkan partisipasi masyarakat dalam setiap proses kebijakan publik.
-                        </p>
-                        <p class="text-gray-700 text-base pb-5">
-                            Dalam proses keterlibatan masyarakat perlu diakomodasikan dengan cara mempermudah jaminan akses informasi publik berdasarkan pedoman pengelolaan informasi dan dokumentasi. Dalam kaitan ini, pengelolaan informasi dan dokumentasi publik diharapkan tidak sampai mengganggu prinsip kehati-hatian dalam menjaga kelangsungan kehidupan berbangsa dan bernegara untuk kepentingan yang lebih luas.
-                        </p>
                         <p class="text-gray-700 text-base">
-                            Penerapan prinsip-prinsip good governance ini pada dasarnya sangat tergantung pada persiapan masing-masing Kementerian Komunikasi dan Informatika dalam mengelola informasi dan dokumentasi bagi masyarakat. Untuk itu, sebagai upaya menyamakan persepsi dalam menciptakan dan menjamin kelancaraan dalam pelayanan informasi publik, maka disusun Pedoman Pengelolaan Informasi dan Dokumentasi di lingkungan Kementerian Komunikasi dan Informatika.
+                            Reformasi yang bergulir pada tahun 1998 yang ditandai dengan 3(tiga) tuntutan yaitu; demokratisasi, tranparasi dan supremasi hukum & HAM, telah membawa perubahan mendasar dalam kehidupan bermasyarakat, berbangsa dan benegara. Konsekuensi dari tuntutan reformasi tersebut salah satu diantaranya adalah ditetapkannya UU N0.14 tahun 2008 tentang Keterbukaan Informasi Publik yang bertujuan untuk mewujudkan tata kelola pemerintahan yang baik dan bertanggungjawab (good governance) melalui penerapan prinsip-prinsip akuntabilitas, transparansi dan supremasi hukum serta melibatkan partisipasi masyarakat dalam setiap proses kebijakan publik.
                         </p>
                     </div>
                 </div>

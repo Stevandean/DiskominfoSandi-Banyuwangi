@@ -1,0 +1,111 @@
+body {
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	min-height: 100vh;
+	background: linear-gradient(45deg, #fbda61, #ff5acd);
+}
+
+.card {
+	position: relative;
+	width: 350px;
+	height: 190px;
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 35px 80px rgba(0, 0, 0, 0, 15);
+	transition: 0.5s;
+}
+
+.card:hover {
+	height: 450px;
+}
+
+.imgBx {
+	position: absolute;
+	width: 130px;
+	height: 130px;
+	left: 50%;
+	top: -50px;
+	transform: translateX(-50%);
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 15px 50px rgba(0, 0, 0, 0, 35);
+	overflow: hidden;
+	transition: 0.5s;
+}
+
+.imgBx img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.card:hover .imgBx {
+	width: 200px;
+	height: 200px;
+
+}
+
+.card .content {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	overflow: hidden;
+}
+
+.card .content .text {
+	padding: 40px;
+	text-align: center;
+	width: 100%;
+	transition: 0.5s;
+	transform: translateY(100px);
+}
+
+.card:hover .content .text {
+	transform: translateY(0px);
+} 
+
+.card .content .text h3 {
+	font-size: 1.5em;
+	font-weight: 600;
+	color: #555;
+	line-height: 1.2em;
+}
+
+.card .content .text h3 span {
+	font-size: 0.90em;
+	color: red;
+	font-weight: 500;
+}
+
+.card .content .text span {
+	font-size: 0.85em;
+	/* padding-top: 20px; */
+	font-weight: 600;
+	color: blue;
+	line-height: 1.2em;
+}
+
+
+.card .content .text .btn {
+	display: flex;
+	justify-content: center
+}
+
+.card .content .text .btn button {
+	padding: 10px 30px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	font-size: 1em;
+	font-weight: 500;
+	background: #ff5f95;
+	color: #fff;
+	cursor: pointer;
+}

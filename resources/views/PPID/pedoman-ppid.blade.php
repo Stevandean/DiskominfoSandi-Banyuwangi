@@ -43,8 +43,8 @@
             <div class="pt-7">
                 <div class=" max-w-4xl rounded-lg overflow-hidden shadow-lg">
                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Menimbang : </div>
-                        <p class="text-gray-700 text-base pt-3">
+                        <div class="font-bold text-xl">Menimbang : </div>
+                        <p class="text-gray-700 text-base pt-5">
                             A. Bahwa dalam rangka mewujudkan penyelenggaraan Pemerintahan yang baik, terbuka, dan akuntabel diperlukan keterbukaan informasi publik sebagai sarana dalam mengoptimalkan partisipasi dan pengawasan publik dalam proses Penyelenggaraan Pemerintahan dan pembangunan, sehingga perlu adanya sistem pelayanan informasi dan dokumentasi.
                         </p>
                         <p class="text-gray-700 text-base pt-5">
@@ -245,19 +245,19 @@
                         <p class="text-gray-700 text-base pt-3">
                             4. Informasi yang tidak dapat diberikan oleh Pemerintah Daerah, sebagaimana dimaksud pada ayat (1) adalah :
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             A. Informasi yang dapat membahayakan negara.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             B. Informasi yang dapat berkaitan dengan kepentingan perlindungan usaha dari persaingan usaha tidak sehat.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             C. Informasi yang berkaitan dengan hak - hak pribadi .
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             D. Informasi yang berkaitan dengan rahasia jabatan atau
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 mb-5">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 mb-5">
                             E. Informasi yang belum dikuasai atau didokumentasikan.
                         </p>
 
@@ -310,22 +310,22 @@
                         <!-- PASAL 8 -->
                         <div class="font-bold text-xl mb-2">Pasal 8 : </div>
                         <div class="font-bold text-xl">PPID Bertugas : </div>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             A. Mengkoordinasikan dan mengkonsolidasikan pengumpulan bahan informasi dan dokumentasi dari PPID Pembantu.
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             B. Menyimpan, mendokumentasikan, menyediakan dan memberi pelayanan informasi kepada publik.
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             C. Melakukan verifikasi bahan informasi publik.
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             D. Melakukan uji konsekuensi atas informasi yang dikecualikan.
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             E. Melakukan pemutakhiran informasi dan dokumentasi dan
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10 mb-5">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10 mb-5">
                             F. Menyediakan informasi dan dokumentasi untuk diakses oleh masyarakat.
                         </p>
 
@@ -334,19 +334,19 @@
                         <div class="font-bold text-xl">
                             Dalam Rangka melaksanakan tugas sebagaimana dimaksud dalam  Pasal 8, PPID berwenang : 
                         </div>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             A. Menolak memberikan informasi yang dikecualikan sesuai ketentuan Peraturan Perundang-undangan.
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             B. Meminta dan memperoleh informasi dari unit kerja/ komponen/ satuan kerja yang menjadi cakupan kerjanya.
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             C. Mengkoordinasikan pemberian pelayanan informasi dengan PPID Pembantu dan/ atau Pejabat Fungsional yang menjadi cakupan kerjanya.
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             D. Menentukan atau menetapkan suatu informasi dapat/ tidaknya diakses publik.
                         </p>
-                        <p class="text-gray-700 text-base pt-3 mb-5 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10 mb-5">
                             E. Menugaskan PPID Pembantu dan/atau Pejabat Fungsional untuk membuat, mengumpulkan, serta memelihara informasi dan dokumentasi untuk kebutuhan organisasi.
                         </p>
 
@@ -355,10 +355,10 @@
                         <p class="text-gray-700 text-base pt-3">
                             1. PPID Pembantu sebagaimana tersebut pada Pasal 7 ayat (2) mempunyai kriteria sebagai berikut :
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             A. Merupakan pejabat struktural yang melaksanakan tugas pokok dan fungsi PPID pada SKPD.
                         </p>
-                        <p class="text-gray-700 text-base pt-3 ml-10">
+                        <p class="text-gray-700 text-base pt-3 ml-5 md:ml-10">
                             B. PPID Pembantu dijabat oleh Sekretaris atau Kepala Tata Usaha pada SKPD.
                         </p>
                         <p class="text-gray-700 text-base pt-3">
@@ -396,22 +396,22 @@
                         <!-- PASAL 12 -->
                         <div class="font-bold text-xl mb-2">Pasal 12 : </div>
                         <div class="font-bold text-xl">Pemohon informasi dan dokumentasi meliputi : </div>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             A. Perseorangan.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             B. Kelompok Masyarakat.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             C. Lembaga Swadaya masyarakat.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             D. Organisasi masyarakat.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             E. Partai Politik atau
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 mb-5">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 mb-5">
                             F. Badan Publik lainnya.
                         </p>
 
@@ -420,16 +420,16 @@
                         <div class="font-bold text-xl">
                             Pemohon informasi dan dokumentasi kepada pemerintahan daerah harus memenuhi persyaratan : 
                         </div>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             A. Mencantumkan identitas yang jelas.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             B. Mencantumkan alamat dan nomor telepon.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             C. Menyampaikan secara jelas jenis informasi dan dokumentasi yang dibutuhkan dan
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             D. Mencantumkan maksud dan tujuan permohonan informasi dan dokumentasi .
                         </p>
                     </div>
@@ -468,16 +468,16 @@
                         <div class="font-bold text-xl">
                             Informasi public sebagaimana dimaksud dalam Pasal 14 , diklasifikasikan menjadi 4 (empat) kelompok :
                         </div>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             A. Informasi yang wajib disediakan dan diumumkan secara berkala.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             B. Informasi yang wajib diumumkan secara serta merta.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             C. Informasi yang wajib tersedia setiap saat.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 mb-5 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 mb-5 pt-3">
                             D. Informasi yang dikecualikan.
                         </p>
                     </div>
@@ -503,73 +503,73 @@
                         <p class="text-gray-700 text-base pt-7 ">
                             1. Informasi yang wajib disediakan dan diumumkan secara berkala, sekurang-kurangnya terdiri atas :
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
-                            A. Informasi tentang profil badn publik yang meliputi :
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
+                            A. Informasi tentang profil badan publik yang meliputi :
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             1. Informasi tentang kedudukan atau domisili beserta alamat lengkap, ruang lingkup kegiatan, maksud dan tujuan, tugas dan fungsi Badan publik beserta unit-unit kerja di bawahnya.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             2. Struktur organisasi, gambaran umum.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-5">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-5">
                             B. Ringkasan informasi tentang program dan/atau kegiatanyang sedang dijalankan dalam badan publik,terdiri atas
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             1. Nama program dan kegiatan.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             2. Penanggungjawab, pelaksana program dan kegiatan.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             3. Target dan/atau capaian program dan kegiatan.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             4. Jadwal pelaksanaan program dan kegiatan.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             5. Anggaran program dan kegiatan yang meliputi sumber dan jumlah.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             6. Agenda penting terkait pelaksanaan tugas badan publik
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-5">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-5">
                             C. Ringkasan informasi tentang kinerja dalam lingkup badan publik.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             D. Ringkasan laporan keuangan.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             E. Ringkasan laporan akses Informasi Publik,terdiri atas :
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             1. Jumlah permohonan Informasi Publik yang diterima.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             2. Waktu yang diperlukan dalam memenuhi setiap permohonan Informasi Publik.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             3. Jumlah permohonan Informasi Publik yang dikabulkan baik sebagian atau seluruhnya dan permohonan Informasi Publik yang ditolak.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             4. Alasan penolakan permohonan Informasi Publik.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-5 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-5 ">
                             F. Informasi tentang peraturan, keputusan dan/ataukebijakanyang mengikat dan/atau berdampak bagi publik yang dikeluarkan oleh badan publik,terdiri atas :
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             1. Daftar rancangan Peraturan Perundang-undangan Daerah, yang sedang dalam proses pembuatan.
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             2. Daftar Peraturan Perundang-undangan, yang telah diundangkan.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-5 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-5 ">
                             G. Informasi tentang hak dan tata cara memperoleh Informasi Publik serta tata cara,pengajuan keberatan serta proses penyelesaian sengketa Informasi Publik berikut pihak-pihak yang bertanggung jawab yang dapat dihubungi.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             H. Informasi tentang tata cara pelayanan pengaduan.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             I. Informasi tentang pengumuman pengadaan barang dan/atau jasa sesuai dengan peraturan perundang-undangan terkait.
                         </p>
                         <p class="text-gray-700 text-base pt-3 mb-5">
@@ -597,22 +597,22 @@
                         <p class="text-gray-700 text-base pt-3 ">
                             1. Setiap Badan Publik wajib mengumumkan secara serta merta, yaitu suatu informasi yang dapat mengancam hajat hidup orang banyak dan ketertiban umum antara lain :
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             A. Informasi tentang bencana alam seperti kekeringan, kebakaran hutan karena factor alam, hama penyakit tanaman, epidemik, wabah dan kejadian luarbiasa.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             B. Informasi tentang keadaan bencana non alam seperti kegagalan industri atau teknologi, dampak industri, dan pencemaran lingkungan.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             C. Bencana sosial seperti kerusuhan sosial, konflik sosial antar kelompok atau antar komunitas masyarakat dan teror.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             D. Informasi tentang jenis, persebaran dan daerah yang menjadi sumber penyakit yang berpotensi menular.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             E. Informasi tentang racun pada bahan makanan yang dikonsumsi oleh masyarakat atau
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 mb-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 mb-3">
                             F. Informasi tentang rencana gangguan terhadap putilitas publik.
                         </p>
 
@@ -628,25 +628,25 @@
                         <p class="text-gray-700 text-base pt-3 ">
                             2. Standar pengumuman informasi sebagaimana dimaksud pada ayat (1),sekurang-kurangnya meliputi:
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             A. Potensi bahaya dan/atau besaran dampak yang dapat ditimbulkan;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             B. Pihak-pihak yang berpotensi terkena dampak baik masyarakat umum maupun pegawai badan publik yang menerima izin atau perjanjian kerja dari badan publik tersebut;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             C. Prosedur dan tempat evakuasi apabila keadaan darurat terjadi;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             D. Tata cara pengumuman informasi apabila keadaan darurat terjadi;.
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             E. Cara menghindari bahaya dan/atau dampak yang ditimbulkan;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             F. Cara menghindari bahaya dan/atau dampak yang ditimbulkan;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 mb-5 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 mb-5 pt-3">
                             G. Upaya-upaya yang dilakukan oleh badan publik dan / atau pihak-pihak yang berwenang dalam menanggulangi bahaya dan/atau dampak yang ditimbulkan.
                         </p>
                     </div>
@@ -674,76 +674,76 @@
                         <p class="text-gray-700 text-base pt-3 ">
                             2. Informasi sebagaimana dimaksud pada ayat (1), terdiri dari :
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-2">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-2">
                             A. Daftar Informasi Publik, yang memuat :
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-2">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-2">
                             1. Nomor
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             2. Ringkasan isi informasi;
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             3. Pejabat atau unit/satuan kerja yang menguasai informasi;
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             4. Penanggungjawab pembuatan atau penerbitan informasi;
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             5. Waktu dan tempat pembuatan informasi;
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             6. Bentuk informasi yang tersedia;
                         </p>
-                        <p class="text-gray-700 text-base ml-20 pt-3">
+                        <p class="text-gray-700 text-base ml-10 md:ml-20 pt-3">
                             7. Jangka waktu penyimpanan atau retensiarsip;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             B. Informasi tentang peraturan, keputusan dan/atau kebijakan badan publik;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             C. Seluruh informasi lengkap yang wajib disediakan dan diumumkan secara berkala sebagaimana dimaksud dalam Pasal 16;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             D. Informasi tentang organisasi, administrasi, kepegawaian, dan keuangan;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3">
                             E. Surat-surat perjanjian dengan pihak ketiga berikut dokumen pendukungnya;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             F. Surat menyurat pimpinan atau pejabat Badan publik dalam rangka pelaksanaan tugas pokok dan fungsinya;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             G. Syarat-syarat perizinan,izin yang diterbitkan dan/atau dikeluarkan berikut dokumen pendukungnya, dan laporan tentang ketaatan pelaksanaan izin yang diberikan;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             H. Data perbendaharaan atau inventaris;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             I. Rencana strategis dan rencana kerja Badan publik
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             J. Agenda kerja pimpinan badan publik
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             K. Informasi mengenai kegiatan pelayanan Informasi Publik yang dilaksanakan, sarana dan prasarana layanan Informasi Publik yang dimiliki beserta kondisinya, sumber daya manusia yang menangani layanan Informasi Publik beserta kualifikasinya, anggaran layanan Informasi Publik serta laporan penggunaannya;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             L. Jumlah, jenis, dan gambaran umum pelanggaran yang ditemukan dalam pengawasan internal serta laporan penindakannya;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             M. Jumlah, jenis, dan gambaran umum pelanggaran yang dilaporkan oleh masyarakat serta laporan penindakannya;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             N. Daftar serta hasil-hasil penelitian yang dilakukan;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             O. Informasi Publik lain yang telah dinyatakan terbuka bagi masyarakat berdasarkan mekanisme keberatan dan/penyelesaian sengketa sebagaimana dimaksud dalam pasal 11 Undang-Undang Nomor 14 Tahun 2008 tentang keterbukaan Informasi Publik;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 ">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 ">
                             P. Informasi tentang standar pengumuman informasi bagi badan publik yang memberikan ijin dan/atau melakukan perjanjian kerja dengan pihak lain yang kegiatannya berpotensi mengancam hajat hidup orang banyak dan ketertiban umum;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-3 mb-5">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-3 mb-5">
                             Q. Informasi dan kebijakan yang disampaikan Pejabat publik dalam pertemuan yang terbuka untuk umum.
                         </p>
                     </div>
@@ -802,25 +802,25 @@
                         <p class="text-gray-700 text-base pt-3 ">
                             1. Pengklasifikasian Informasi sebagaimana dimaksud dalam Pasal 21, ditetapkan dalam bentuk surat penetapan klasifikasi;
                         </p>
-                        <p class="text-gray-700 text-base pt-3 mb-5">
+                        <p class="text-gray-700 text-base pt-3 ">
                             2. Surat penetapan klasifikasi sebagaimana dimaksud pada ayat (1), paling sedikit memuat:
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-2">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-2">
                             A. Jenis klasifikasi informasi yang dikecualikan;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-2">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-2">
                             B. Identitas pejabat PPID yang menetapkan;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-2">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-2">
                             C. SKPD, termasuk unit kerja pejabat yang menetapkan;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-2">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-2">
                             D. Jangka waktu pengecualian;
                         </p>
-                        <p class="text-gray-700 text-base ml-10 pt-2">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 pt-2">
                             E. DAlasan pengecualian; dan
                         </p>
-                        <p class="text-gray-700 text-base ml-10 mb-5 pt-2">
+                        <p class="text-gray-700 text-base ml-5 md:ml-10 mb-5 pt-2">
                             F. Tempat dan tanggal penetapan.
                         </p>
 

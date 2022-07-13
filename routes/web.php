@@ -21,6 +21,38 @@ Route::get ('/about', function () {
     return view ('about');
 });
 
+Route::get('/galeri', function () {
+    return view ('galeri');
+});
+
+Route::get('/info', function () {
+    return view ('info');
+});
+
+Route::get('/berita', function () {
+    return view ('berita');    
+});
+
+Route::get('/document', function () {
+    return view ('document');
+});
+
+Route::get('/kontak', function () {
+    return view ('kontak');
+});
+
+Route::get('/tupoksi', function () {
+    return view ('tupoksi');
+});
+
+Route::get('/visi-misi', function () {
+    return view ('visi-misi');
+});
+
+Route::get('/struktur-organisasi', function () {
+    return view ('struktur-organisasi');
+});
+
 Route::get ('/ppid', function (){
     return view ('PPID.ppid');
 });
@@ -29,8 +61,8 @@ Route::get('/latar-belakang-ppid', function () {
     return view ('PPID.latar-belakang-ppid');
 });
 
-Route::get('/pedoman-ppid', function () {
-    return view ('PPID.pedoman-ppid');
+Route::get('/pedoman-ppid-revisi', function () {
+    return view ('PPID.pedoman-ppid-revisi');
 });
 
 Route::get('/dasar-hukum-ppid', function () {
