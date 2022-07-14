@@ -274,7 +274,7 @@
         <a href="/berita" class="text-xl hover:text-blue-600 duration-500">Berita</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:text-blue-600 duration-500">Layanan</a>
+        <a href="/layanan" class="text-xl hover:text-blue-600 duration-500">Layanan</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="/kontak" class="text-xl hover:text-blue-600 duration-500">Kontak</a>

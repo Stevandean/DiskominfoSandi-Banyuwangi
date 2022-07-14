@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/tes.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/galery.css">
   <title>Image</title>
 </head>
 <body class="">
@@ -18,7 +18,7 @@
 			<div class="container-galeri">
 				<div class="card">
 					<div class="content">
-						<div class="imgBx">
+						<div class="imgGalery">
 							<img src="images/img1.jpg">
 						</div>
 						<div class="contentBx">
@@ -33,7 +33,7 @@
 				</div>
 				<div class="card">
 					<div class="content">
-						<div class="imgBx">
+						<div class="imgGalery">
 							<img src="images/img1.jpg">
 						</div>
 						<div class="contentBx">
@@ -48,7 +48,7 @@
 				</div>
 				<div class="card">
 					<div class="content">
-						<div class="imgBx">
+						<div class="imgGalery">
 							<img class="img-galeri" src="images/img1.jpg">
 						</div>
 						<div class="contentBx">

@@ -53,6 +53,10 @@ Route::get('/struktur-organisasi', function () {
     return view ('struktur-organisasi');
 });
 
+Route::get('/layanan', function () {
+    return view ('layanan');
+});
+
 Route::get ('/ppid', function (){
     return view ('PPID.ppid');
 });
