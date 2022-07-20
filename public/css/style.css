@@ -107,6 +107,11 @@
   height: 400px;
 }
 
+.maps {
+  width: 600px;
+  height: 450px;
+}
+
 /* HARAM UNTUK DI UBAH!! */
 @media only screen and (max-width: 600px) {
   .text1 {
@@ -120,6 +125,11 @@
   .img-sop {
     width: 350px;
     height: 220px;
+  }
+
+  .maps {
+    width: 330px;
+    height: 230px;
   }
 
   .section::before {
