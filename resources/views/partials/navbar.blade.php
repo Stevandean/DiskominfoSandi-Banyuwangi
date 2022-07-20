@@ -1,4 +1,4 @@
-<nav class="p-5 bg-white shadow md:flex  md:justify-between z-10">
+<nav class="p-5 bg-white shadow md:flex  md:justify-between z-50">
     <div class="flex justify-between items-center">
       <img class="h-12 inline mr-5"
         src="https://www.asliindonesia.net/wp-content/uploads/2015/04/hasil2BTKD2BCPNS2BKabupaten2BBanyuwangi2B2014.png">
@@ -107,7 +107,7 @@
               text-gray-700
               hover:text-blue-600
               hover:bg-gray-100"
-              href="/visi-misi"
+              href="/profil/visi-misi"
             >Visi Misi
           </a>
         </li>
@@ -126,7 +126,7 @@
               text-gray-700
               hover:text-blue-600
               hover:bg-gray-100"
-              href="/tupoksi"
+              href="/profil/tupoksi"
             >Tupoksi
           </a>
         </li>
@@ -145,7 +145,7 @@
               text-gray-700
               hover:text-blue-600
               hover:bg-gray-100"
-              href="/galeri"
+              href="/profil/galeri"
             >Galery
           </a>
         </li>
@@ -164,7 +164,7 @@
               text-gray-700
               hover:text-blue-600
               hover:bg-gray-100"
-              href="/struktur-organisasi"
+              href="/profil/struktur-organisasi"
             >Struktur Organisasi
           </a> 
         </li>
@@ -284,9 +284,11 @@
       </button> -->
     </ul>
   </nav>
-  <script>
+
+  {{-- dipindah di main layout --}}
+  {{-- <script>
     function Menu(e){
       let list = document.querySelector('ul');
       e.name === 'menu' ? (e.name = "close",list.classList.add('top-[80px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[80px]'),list.classList.remove('opacity-100'))
     }
-  </script>
+  </script> --}}
