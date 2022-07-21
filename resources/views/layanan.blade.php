@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/galery.css">
-  <title>Image</title>
-</head>
-<body class="">
-	<div class="z-40 ">
-		@include ('partials.navbar')
-	</div>
+@extends('layouts.main')
+
+@push('additional-css')
+	<link rel="stylesheet" href="css/galery.css">
+	
+@endpush
+
+@section('container')
 	<section class="section-galeri">
 		<div class="body-galeri">
 			<div class="container-galeri">
@@ -66,5 +58,5 @@
 		</div>
 	</section>
 	<div class="circle"></div>
-</body>
-</html>
+	
+@endsection

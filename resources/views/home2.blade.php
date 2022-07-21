@@ -17,11 +17,11 @@
 
   @section('container')
     <!-- HOME Text -->
-    <section class="section relative">
+    <section class="section">
       <div style='width:0;height:0'>&nbsp;</div>{{-- ini hanya tes, jika gagal akan dihapus --}}
       {{-- tesnya berhasil, fungsi diatas digunakna supaya element parent tidak ikut terbawa saat melakukan margin oleh child --}}
-      <div class="container relative">
-        <span class="text1 "> DiskominfoSandi</span>
+      <div class="container">
+        <span class="text1"> DiskominfoSandi</span>
         <span class="text2">
           Banyuwangi
         </span>

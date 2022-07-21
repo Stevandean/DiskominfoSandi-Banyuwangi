@@ -1,7 +1,7 @@
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="css/style.css">
-<footer class="text-center bg-gray-900 text-white">
+{{-- <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/style.css"> --}}
+<footer class="text-center bg-gray-900 text-white mt-4">
   <div class="container-footer px-6 pt-6">
     <div class="flex justify-center mb-6">
       <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">

@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <title>Tupoksi</title>
-</head>
-<body>
-    @include('partials.navbar')
+@extends('layouts.main')
+
+@section('container')
     <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
         <div class="lg:col-span-4 md:col-span-6">
             @include ('partials.side-bar-tupoksi')
@@ -1098,5 +1087,5 @@
                 </div>
             </div>
     </div>
-</body>
-</html>
+@endsection
+    

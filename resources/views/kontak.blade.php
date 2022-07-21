@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <title>Kontak</title>
-</head>
-<body>
-    @include('partials.navbar')
+@extends('layouts.main')
+
+@section('container')
     <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
         <div class="lg:col-span-6 md:col-span-6">
             <h1 class="text-3xl font-bold text-center py-10 underline underline-offset-8 decoration-2 decoration-sky-500">
@@ -32,5 +21,4 @@
             <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d987.1967443376473!2d114.35559952919267!3d-8.224165299630098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd15ab50b1c7791%3A0xb3c98689e07581b1!2sDinas%20Komunikasi%20Informatika%20dan%20Persandian!5e0!3m2!1sid!2sid!4v1657774478202!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
-</body>
-</html>
+@endsection
