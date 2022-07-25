@@ -27,6 +27,7 @@
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{{ $dat->title }}</div>
                         </div>
+                        <a href="#" class="inline-block mx-6 mb-4 font text-sm font-extralight   rounded-full text-sky-700">Lihat selengkapnya...</a>
                     </div>
                 @endforeach
                 

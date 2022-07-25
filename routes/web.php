@@ -95,11 +95,7 @@ Route::get('/info', [InformationController::class, 'index']);
 
 Route::get('/berita', [NewsController::class, 'index']);
 
-// Route::get('/document', function () {
-//     return view ('document', [
-//         'title' => 'Dokumen'
-//     ]);
-// });
+Route::get('/berita/desc', [NewsController::class, 'show']);
 
 
 Route::get('/document', [DocumentController::class, 'index']);

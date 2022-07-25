@@ -14,7 +14,7 @@
 {{-- dibuat pecabangan uspaya halaman home dapat digunakan --}}
 <body @if(isset($title) && $title == 'home') class="bg-stone-50 transition-all ease-in duration-500" @endif> 
 
-  {{-- class wapper untuk menjadkan navbar menjaduh --}}
+  {{-- class wapper untuk menjadikan footer mejadi kebawah --}}
   <div class="min-h-screen">
     @include('partials.navbar')
   
