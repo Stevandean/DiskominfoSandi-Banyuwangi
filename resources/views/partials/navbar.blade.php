@@ -6,7 +6,7 @@
         Dinas Komunikasi Informatika dan Persandian Kabupaten Banyuwangi
       </span>
 
-      <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+      <span class="text-3xl cursor-pointer mx-2 md:hidden block z-[60]">
         <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
       </span>
     </div>

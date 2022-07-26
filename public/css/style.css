@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,500;1,500&display=swap');
 
-.container {
+.con {
   text-align: center;
   margin: auto;
   margin-top: 250px;
@@ -16,12 +16,12 @@
   height: 60vh;
 }
 
-.container .text1 {
+.con .text1 {
   text-transform: uppercase;
   display: block; 
 }
 
-.container .text2 {
+.con .text2 {
   text-transform: uppercase;
   display: block; 
 }
@@ -177,11 +177,11 @@
   display: block;
 }
 
-.container-berita {
+.con-berita {
   font-family: 'Ubuntu', sans-serif;
 }
 
-.container-ppid {
+.con-ppid {
   box-sizing: border-box;
   position: absolute;
   width: 347px;
