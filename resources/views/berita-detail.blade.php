@@ -2,7 +2,11 @@
 
 @section('container')
     <!-- Page Berita -->
-    <div class="min-h-screen transition-all ease-in duration-500">
+    <div class="min-h-screen relative overflow-hidden transition-all ease-in duration-500">
+        <!-- gambar untuk latar belakang -->
+        <img src="/images/gajah-oling.svg" alt="gambar gajah" srcset=""
+            class="absolute bottom-[18%] right-[5%] md:bottom-[21%] lg:bottom-0 md:-right-[20%] -z-10 opacity-50 w-full md:w-3/5"
+        >
         <div class="container mx-auto px-12 md:px-32 lg:px-52  xl:px-80 py-10">
 
             <div class="header mb-3">

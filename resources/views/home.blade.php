@@ -28,7 +28,7 @@
       </div>
     </section>
     <!-- Page Berita -->
-    <div class="con-berita bg-white columns-auto">
+    <div class="con-berita bg-white columns-auto px-6">
       <h1 class="
         py-5
         text-black-600
@@ -38,26 +38,41 @@
         Berita Terkini
       </h1>
 
-      <div class=" grid-cols-2 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-8 items-start">
-        
-        <!-- CARD 1 -->
-        @foreach ($news as $new)
-          <div class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
-            <img class="w-full" src="https://www.banyuwangikab.go.id/media/berita/original/hypzsa_rfy_img-20220623-wa0015.jpg" >
-            <div class="px-6 py-4">
-              <div class="font-bold text-xl mb-2">{{ $new->title }}</div>
-              <p class="text-gray-700 text-base">
-                {{ Str::limit(strip_tags($new->body), 300, "...") }}
-              </p>
-            </div>
-            <div class="px-6 pt-4 pb-2">
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $new->category->name }}</span>
+      {{-- flex untuk berita dan twitter --}}
+      <div class="flex md:flex-row flex-col md:gap-2 justify-center pb-5">
+
+        <div class="lg:basis-1/3 p-8 md:p-0">
+          <div class="h-full w-full max-w-md mx-auto lg:w-full overflow-y-scroll ">
+            <div class="max-h-[200vh]">
+              <a class="twitter-timeline max-h-screen" href="https://twitter.com/kominfosandibwi?ref_src=twsrc%5Etfw">Tweets by kominfosandibwi</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
           </div>
-        @endforeach
-        <!-- END CARD -->
+        </div>
+        
+        <div class="content-start p-5 grid grid-cols-1 lg:grid-cols-2 gap-4 gap-y-8 items-start">
+          <!-- CARD 1 -->
+          @foreach ($news as $new)
+            <div class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
+              {{-- <img class="w-full" src="https://www.banyuwangikab.go.id/media/berita/original/hypzsa_rfy_img-20220623-wa0015.jpg" > --}}
+              <img class="w-full" src="/images/img1.jpg" >
+              <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">{{ $new->title }}</div>
+                <p class="text-gray-700 text-base">
+                  {{ Str::limit(strip_tags($new->body), 300, "...") }}
+                </p>
+              </div>
+              <div class="px-6 pt-4 pb-2">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $new->category->name }}</span>
+              </div>
+            </div>
+          @endforeach
+          <!-- END CARD -->
+  
+        </div>
 
+        
       </div>
+
     </div>
 
     <!-- ** AWAL PELAYANAN ** -->

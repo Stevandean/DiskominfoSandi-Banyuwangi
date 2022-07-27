@@ -8,6 +8,28 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    *::-webkit-scrollbar-track{
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      background-color: #F5F5F5;
+    }
+
+    *::-webkit-scrollbar{
+      width: 6px;
+      background-color: #F5F5F5;
+    }
+    *::-webkit-scrollbar:hover{
+      /* width: 6px; */
+      background-color: #F5F5F5;
+    }
+
+    *::-webkit-scrollbar-thumb{
+      background-color: #686868;
+    }
+    *::-webkit-scrollbar-thumb:hover{
+      background-color: #000000;
+    }
+  </style>
   @stack('additional-css')
 </head>
 

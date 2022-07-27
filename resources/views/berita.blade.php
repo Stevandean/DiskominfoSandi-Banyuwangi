@@ -2,7 +2,11 @@
 
 @section('container')
     <!-- Page Berita -->
-    <div class="min-h-screen transition-all ease-in duration-500">
+    <div class="min-h-screen transition-all ease-in duration-500 ">
+        <!-- gambar untuk latar belakang -->
+        <img src="/images/gajah-oling.svg" alt="gambar gajah" srcset=""
+            class="absolute right-0 -top-2 md:-top-20 lg:-top-[200px] -z-10 opacity-50 w-3/5"
+        >
         <div class="container-berita container mx-auto columns-auto">
             <h1 class="py-8 text-black-600 text-3xl text-center">
                 Berita Terkini
@@ -48,8 +52,8 @@
 
                 @foreach ($news as $item)
                     <!-- CARD -->
-                    <div class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
-                        <img class="w-full" src="https://www.banyuwangikab.go.id/media/berita/original/hypzsa_rfy_img-20220623-wa0015.jpg" >
+                    <div class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto bg-white">
+                        <img class="w-full" src="/images/img1.jpg" >
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{{ $item->title }}</div>
                         </div>
