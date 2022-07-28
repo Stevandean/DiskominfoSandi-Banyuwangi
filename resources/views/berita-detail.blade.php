@@ -1,3 +1,4 @@
+{{-- @dd($news) --}}
 @extends('layouts.main')
 
 @section('container')
@@ -10,8 +11,15 @@
         <div class="container mx-auto px-12 md:px-32 lg:px-52  xl:px-80 py-10">
 
             <div class="header mb-3">
-                <h1 class="text-4xl font-semibold mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae?</h1>
-                <p class="font-light mb-2" >by <span class="font-medium">Zidan Putra Rahman</span></p> <div class="vr"></div>
+                <h1 class="text-4xl font-semibold mb-3">{{ $news->title }}</h1>
+                @php
+                    //membuat object tanggal
+                    $date = date_create($news->date)
+                @endphp
+                <p class="font-light mb-2" >
+                    at <span class="font-medium">{{  date_format($date, "j - F - o")  }}</span>
+                     <a href="/berita?category={{ $news->category }}" class="bg-sky-200 hover:bg-sky-300 rounded-full px-2 py-0.5 border border-sky-600">#{{ $news->category}}</a>
+                </p>
                 <a href="#!" type="button" class="rounded-full border-2 bg-blue-800 text-white leading-normal uppercase hover:bg-blue-700  focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 ">
                     <svg aria-hidden="true" class="w-2 h-full mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path
@@ -46,11 +54,7 @@
             <img class="max-w-full max-h-[420px] mx-auto mb-4" src="/images/img1.jpg" alt="" srcset="">
             {{-- <div class="w-full h-72 bg-center" style="background-image: url(/images/img1.jpg)"></div> --}}
             <div class="max-w-3xl mx-auto mb-5"> <!--wrapper untuk text body -->
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea error dolores consectetur? Eos reprehenderit quod ab nam officia quae voluptate consectetur exercitationem consequuntur nesciunt? Aliquam eligendi quos soluta dignissimos ipsum, fuga harum est? Id, est dignissimos aspernatur odio at architecto aperiam deserunt blanditiis voluptate vel incidunt? Quae, maxime ipsum laborum id unde cum, enim, neque ex aperiam eaque aut exercitationem!</p>
-                <br>
-                <p>Nam officiis temporibus cum possimus deleniti in voluptatibus dolorum aperiam rem cumque repellat quos sunt quia minus officia soluta necessitatibus, nesciunt culpa fuga error odit magni consequatur voluptates recusandae. Accusamus, alias architecto! Veritatis animi consectetur explicabo. Exercitationem voluptatum amet tempore reiciendis sint odit illo, provident eum consequuntur est nulla adipisci commodi, obcaecati libero, possimus facere laborum sed officia nihil laudantium!</p>
-                <br>
-                <p>Aut recusandae dolore libero labore reiciendis temporibus necessitatibus fugit corrupti, nihil officiis alias aliquam exercitationem quas unde molestiae molestias saepe reprehenderit fugiat quo optio tempore atque beatae tenetur? Repudiandae dolorum totam optio sunt ipsum ab nulla ad natus maiores quidem amet, est, illo qui et. Quas expedita sunt quisquam velit molestiae, nostrum assumenda ut fugit est non harum ducimus libero?</p>
+                 {!! $news->body !!}
             </div>
 
             <hr class="my-2">

@@ -67,7 +67,6 @@
             text-left
             rounded-lg
             shadow-lg
-            mt-1
             hidden
             m-0
             bg-clip-padding
@@ -168,6 +167,7 @@
             >Struktur Organisasi
           </a> 
         </li>
+        </ul>
       </div>
       <li class="mx-4 my-6 md:my-0">
         <a href="/ppid" class="text-xl hover:text-blue-600 duration-500">PPID</a>
@@ -224,8 +224,6 @@
             text-left
             rounded-lg
             shadow-lg
-            mt-1
-            hidden
             m-0
             bg-clip-padding
             border-none"

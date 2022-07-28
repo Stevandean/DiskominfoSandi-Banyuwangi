@@ -95,7 +95,7 @@ Route::get('/info', [InformationController::class, 'index']);
 
 Route::get('/berita', [NewsController::class, 'index']);
 
-Route::get('/berita/desc', [NewsController::class, 'show']);
+Route::get('/berita/{news:slug}', [NewsController::class, 'show']);
 
 
 Route::get('/document', [DocumentController::class, 'index']);

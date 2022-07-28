@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('information', function (Blueprint $table) {
-            //untuk model ini tidak menggunkana slug
-            //namun akan menggunkana id seperti pada website kominfo
+        Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug');
-            $table->string('image')->nullable();
-            $table->text('body');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('link');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('information');
+        Schema::dropIfExists('links');
     }
 };

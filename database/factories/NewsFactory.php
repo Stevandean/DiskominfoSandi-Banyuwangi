@@ -18,7 +18,7 @@ class NewsFactory extends Factory
     {
         return [
             'user_id' => mt_rand(1,5),
-            'category_id' => mt_rand(1,3),
+            'category' => Array('goverment', 'technology', 'berita')[mt_rand(0,2)],
             'title' => $this->faker->sentence(mt_rand(3,8)),
             'slug' => $this->faker->slug(),
             'body' => collect($this->faker->paragraphs(mt_rand(1,3)))

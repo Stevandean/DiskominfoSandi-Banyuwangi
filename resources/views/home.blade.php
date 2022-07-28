@@ -62,7 +62,7 @@
                 </p>
               </div>
               <div class="px-6 pt-4 pb-2">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $new->category->name }}</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $new->category }}</span>
               </div>
             </div>
           @endforeach
@@ -156,48 +156,41 @@
       <h1 class="py-5 text-black-600 text-3xl text-center col-start-2">
         Link terkait
       </h1>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div class="grid items-start md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
-        <a href="#" class="relative mx-auto block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <a href="#" class="group relative mx-auto block px-4 py-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-50 ">
           <div class="flex">
-            <p class="font-semibold text-gray-700 dark:text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none" viewBox="0 0 16 16">
+            <p class="font-light group-hover:underline text-gray-700 transition-all ease-out duration-150">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 mx-2 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
             </svg>
           </div>
         </a>
-        <a href="#" class="relative mx-auto block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <a href="#" class="group relative mx-auto block px-4 py-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-50 ">
           <div class="flex">
-            <p class="font-semibold text-gray-700 dark:text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none" viewBox="0 0 16 16">
+            <p class="font-light group-hover:underline text-gray-700 transition-all ease-out duration-150">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 mx-2 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
             </svg>
           </div>
         </a>
-        <a href="#" class="relative mx-auto block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <a href="#" class="group relative mx-auto block px-4 py-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-50 ">
           <div class="flex">
-            <p class="font-semibold text-gray-700 dark:text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none" viewBox="0 0 16 16">
+            <p class="font-light group-hover:underline text-gray-700 transition-all ease-out duration-150">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 mx-2 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
             </svg>
           </div>
         </a>
-        <a href="#" class="relative mx-auto block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <a href="#" class="group relative mx-auto block px-4 py-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-50 ">
           <div class="flex">
-            <p class="font-semibold text-gray-700 dark:text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none" viewBox="0 0 16 16">
+            <p class="font-light group-hover:underline text-gray-700 transition-all ease-out duration-150">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 mx-2 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
             </svg>
           </div>
         </a>
-        <a href="#" class="relative mx-auto block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-          <div class="flex">
-            <p class="font-semibold text-gray-700 dark:text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-            </svg>
-          </div>
-        </a>
+        
 
       </div>
     </div>

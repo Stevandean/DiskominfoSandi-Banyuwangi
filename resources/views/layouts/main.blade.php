@@ -11,24 +11,25 @@
   <style>
     *::-webkit-scrollbar-track{
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      background-color: #F5F5F5;
+      background-color: transparent;
+      border-radius: 10px;
+      border: 3px solid white;
     }
 
     *::-webkit-scrollbar{
       width: 6px;
-      background-color: #F5F5F5;
     }
-    *::-webkit-scrollbar:hover{
-      /* width: 6px; */
-      background-color: #F5F5F5;
-    }
-
     *::-webkit-scrollbar-thumb{
+      width: 4px;
       background-color: #686868;
+      border-radius: 10px;
+      transition: all 150ms;
     }
     *::-webkit-scrollbar-thumb:hover{
-      background-color: #000000;
+      background-color: #444343;
+      border-radius: 0PX;
     }
+
   </style>
   @stack('additional-css')
 </head>

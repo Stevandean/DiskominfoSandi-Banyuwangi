@@ -21,16 +21,17 @@ class NewsController extends Controller
 
     public function index(){
         return view('berita',[
-            'news' => News::latest()->get(),
+            'news' => News::latest()->filter(request(['search', 'category']))->paginate(6)
+            ->withQueryString(),
             'title' => 'Berita'
         ]);
     }
 
     //untuk info berita lengkpa
-    public function show(){
+    public function show(News $news){
         return view('berita-detail',[
-            'news' => News::latest()->get(),
-            'title' => "ini adalah judul berita"
+            'news' => $news,
+            'title' => $news->title
         ]);
     }
 }
