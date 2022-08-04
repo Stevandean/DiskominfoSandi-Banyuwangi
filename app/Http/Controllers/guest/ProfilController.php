@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\guest;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 
@@ -9,25 +10,25 @@ use Illuminate\Http\Request;
 class ProfilController extends Controller
 {
     public function galeri(){
-        return view ('profil.galeri',[
+        return view ('guest.pages.profil.galeri',[
             'title' => 'Galeri'
         ]);
     }
 
     public function tupoksi(){
-        return view ('profil.tupoksi', [
+        return view ('guest.pages.profil.tupoksi', [
             'title' => 'Tupoksi'
         ]);
     }
 
     public function strukturOrganisasi(){
-        return view('profil.struktur-organisasi', [
+        return view('guest.pages.profil.struktur-organisasi', [
             'title' => 'Struktur Organisasi'
         ]);
     }
 
     public function visiMisi(){
-        return view('profil.visi-misi', [
+        return view('guest.pages.profil.visi-misi', [
             'title' => "Visi dan Misi"
         ]);
     }

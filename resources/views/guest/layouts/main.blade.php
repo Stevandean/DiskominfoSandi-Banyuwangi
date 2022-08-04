@@ -39,12 +39,12 @@
 
   {{-- class wapper untuk menjadikan footer mejadi kebawah --}}
   <div class="min-h-screen">
-    @include('partials.navbar')
+    @include('guest.partials.navbar')
   
     {{-- konten utama --}}
     @yield('container')
   </div>
-  @include('partials.footer')
+  @include('guest.partials.footer')
 
 
 

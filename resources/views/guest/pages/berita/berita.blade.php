@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('guest.layouts.main')
 
 @section('container')
     <!-- Page Berita -->

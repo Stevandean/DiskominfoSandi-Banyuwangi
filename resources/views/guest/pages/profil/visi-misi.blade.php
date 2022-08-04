@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('guest.layouts.main')
 @section('container')
     
     <div class="text-center underline underline-offset-8 decoration-2 decoration-[#f6ca29] text-5xl font-bold pt-10 pb-5 ">

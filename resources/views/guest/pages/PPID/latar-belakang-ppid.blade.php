@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('guest.layouts.main')
 
 @section('container')
     <div class="grid grid-cols-1 md:grid-cols-12 gap-4">

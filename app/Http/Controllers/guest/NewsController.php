@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\guest;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\News;
@@ -10,7 +11,7 @@ class NewsController extends Controller
 {
     //untuk mengirimkan berita sekilas
     public function glances(){
-        return view('home', [
+        return view('guest.pages.home', [
             'news' => News::latest()->limit(6)->get(),
             'title' => 'home'
         ]);
@@ -20,7 +21,7 @@ class NewsController extends Controller
     }
 
     public function index(){
-        return view('berita',[
+        return view('guest.pages.berita',[
             'news' => News::latest()->filter(request(['search', 'category']))->paginate(6)
             ->withQueryString(),
             'title' => 'Berita'
@@ -29,7 +30,7 @@ class NewsController extends Controller
 
     //untuk info berita lengkpa
     public function show(News $news){
-        return view('berita-detail',[
+        return view('guest.pages.berita-detail',[
             'news' => $news,
             'title' => $news->title
         ]);

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('guest.layouts.main')
 
 @push('additional-css')
 	<link rel="stylesheet" href="css/galery.css">
