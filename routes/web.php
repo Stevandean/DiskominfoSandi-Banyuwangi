@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\DocumentController;
-use App\Http\Controllers\InformationController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\PPIDController;
+use App\Http\Controllers\guest\HomeController;
+use App\Http\Controllers\guest\NewsController;
+use App\Http\Controllers\guest\PPIDController;
+use App\Http\Controllers\guest\ProfilController;
+use App\Http\Controllers\guest\DocumentandOtherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,52 +18,9 @@ use App\Http\Controllers\PPIDController;
 |
 */
 
-// Route::get ('/', function () {
-//     return view ('home');
-// });
-
-/*
-Route::get ('/about', function () {
-    return view ('about');
-});
-
-Route::get('/galeri', function () {
-    return view ('galeri');
-});
-
-
-
-Route::get ('/ppid', function (){
-    return view ('PPID.ppid');
-});
-
-Route::get('/latar-belakang-ppid', function () {
-    return view ('PPID.latar-belakang-ppid');
-});
-
-Route::get('/pedoman-ppid-revisi', function () {
-    return view ('PPID.pedoman-ppid-revisi');
-});
-
-Route::get('/dasar-hukum-ppid', function () {
-    return view ('PPID.dasar-hukum-ppid');
-});
-
-Route::get ('/sk-ppid', function () {
-    return view ('PPID.sk-ppid');
-});
-
-Route::get('/dip-ppid', function () {
-    return view ('PPID.dip-ppid');
-});
-
-Route::get('/sop-ppid', function () {
-    return view ('PPID.sop-ppid');
-});
-*/
 
 // -- home --
-Route::get('/', [NewsController::class, 'glances']);
+Route::get('/', [HomeController::class, 'home']);
 
 
 // -- profil --
@@ -91,29 +48,34 @@ Route::prefix('ppid')->group(function(){
 // -- yang lain --
 // ** NOTE **
 //untuk yg ini masih optional, karena nantinya akan dibuat sebagai halaman dinamis
-Route::get('/info', [InformationController::class, 'index']);
-
 Route::get('/berita', [NewsController::class, 'index']);
-
-Route::get('/berita/desc', [NewsController::class, 'show']);
-
-
-Route::get('/document', [DocumentController::class, 'index']);
-
-Route::get('/kontak', function () {
-    return view ('kontak', [
-        'title' => 'Kontak'
-    ]);
-});
-
-Route::get('/layanan', function () {
-    return view ('layanan',[
-        'title' => 'Layanan'
-    ]);
-});
+Route::get('/berita/{news:slug}', [NewsController::class, 'show']);
+Route::get('/document', [DocumentandOterController::class, 'index']);
+Route::get('/kontak', [DocumentandOterController::class, 'kontak']);
+Route::get('/layanan', [DocumentandOtherController::class, 'layanan']);
 
 Route::get('/1', function () {
     return view ('home3',[
         'title' => 'Layanan'
     ]);
+});
+
+Route::get('/modal-dokumen', function () {
+    return view ('modals.modal-dokumen');
+});
+
+Route::get('/modal-berita', function () {
+    return view ('modals.modal-berita');
+});
+
+Route::get('/modal-galeri', function () {
+    return view ('modals.modal-galeri');
+});
+
+Route::get('/modal-layanan', function () {
+    return view ('modals.modal-layanan');
+});
+
+Route::get('/modal-link', function () {
+    return view ('modals.modal-link');
 });
