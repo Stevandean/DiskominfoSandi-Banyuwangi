@@ -3,7 +3,7 @@
 @section('container')
     <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
         <div class="lg:col-span-4 md:col-span-6">
-            @include ('partials.side-bar-tupoksi')
+            @include ('guest.partials.side-bar-tupoksi')
         </div>
         <div class="lg:col-span-8 md:col-span-6 px-4 md:pr-10">
             <div class="text-center underline underline-offset-8 decoration-2 decoration-[#f6ca29] text-3xl font-bold pt-10 " id="tupoksi">
