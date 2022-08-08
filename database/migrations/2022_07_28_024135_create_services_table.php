@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->enum('category', ['goverment', 'technology', 'berita']);
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('image')->nullable();
-            $table->text('body');
-            $table->timestamp('publish_at')->nullable();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('link');
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('services');
     }
 };

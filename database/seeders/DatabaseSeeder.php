@@ -4,12 +4,13 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Category;
 use App\Models\User;
 use App\Models\News;
 use App\Models\Gallery;
 use App\Models\Document;
-use App\Models\Information;
+use App\Models\Link;
+use App\Models\Service;
+
 
 
 class DatabaseSeeder extends Seeder
@@ -28,19 +29,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        //---------- untuk mmebuat 3 category ------------
-        Category::create([
-            "name" => "umum",
-            "slug" => "umum"
-        ]);
-        Category::create([
-            "name" => "informatika",
-            "slug" => "informatika"
-        ]);
-        Category::create([
-            "name" => "persandian",
-            "slug" => "persandian"
-        ]);
+        
 
         //------------ untuk membuat 5 User --------------
         User::factory(5)->create();
@@ -54,8 +43,11 @@ class DatabaseSeeder extends Seeder
         //------------- membuat 5 gallery ------------
         Gallery::factory(5)->create();
 
-        //-------------- membuat 5 informasi ----------
-        Information::factory(5)->create();
+        //------------- membuat 5 service ------------
+        Service::factory(5)->create();
+        
+        //------------- membuat 5 Link ------------
+        Link::factory(5)->create();
 
         
     }
