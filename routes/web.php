@@ -58,3 +58,22 @@ Route::prefix('admin')->group(function(){
 });
 
 
+Route::get('/modal-dokumen', function () {
+    return view ('modals.modal-dokumen');
+});
+
+Route::get('/modal-berita', function () {
+    return view ('modals.modal-berita');
+});
+
+Route::get('/modal-galeri', function () {
+    return view ('modals.modal-galeri');
+});
+
+Route::get('/modal-layanan', function () {
+    return view ('modals.modal-layanan');
+});
+
+Route::get('/modal-link', function () {
+    return view ('modals.modal-link');
+});
