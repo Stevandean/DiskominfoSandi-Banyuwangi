@@ -18,9 +18,8 @@
                 @endphp
                 <p class="font-light mb-2" >
                     at <span class="font-medium">{{  date_format($date, "j - F - o")  }}</span>
-                     <a href="/berita?category={{ $news->category }}" class="bg-sky-200 hover:bg-sky-300 rounded-full px-2 py-0.5 border border-sky-600">#{{ $news->category}}</a>
                 </p>
-                <a href="#!" type="button" class="rounded-full border-2 bg-blue-800 text-white leading-normal uppercase hover:bg-blue-700  focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 ">
+                <a href="https://www.facebook.com/Diskominfo-Banyuwangi-106801383996172" type="button" class="rounded-full border-2 bg-blue-800 text-white leading-normal uppercase hover:bg-blue-700  focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 ">
                     <svg aria-hidden="true" class="w-2 h-full mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path
                       fill="currentColor"
@@ -28,7 +27,7 @@
                     ></path>
                     </svg>
                 </a>
-                <a href="#!" type="button" class="rounded-full border-2 bg-sky-400 text-white leading-normal uppercase hover:bg-sky-500  focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 ">
+                <a href="https://twitter.com/kominfosandibwi" type="button" class="rounded-full border-2 bg-sky-400 text-white leading-normal uppercase hover:bg-sky-500  focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 ">
                     <svg aria-hidden="true" class="w-3 h-full mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path
                             fill="currentColor"
@@ -36,7 +35,7 @@
                         ></path>
                         </svg>
                 </a>
-                <a href="#!" type="button" class="rounded-full border-2 bg-pink-600 text-white leading-normal uppercase hover:bg-pink-700  focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 ">
+                <a href="https://www.instagram.com/kominfobanyuwangi/" type="button" class="rounded-full border-2 bg-pink-600 text-white leading-normal uppercase hover:bg-pink-700  focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 ">
                     <svg 
                     class="w-3 h-full mx-auto"
                     xmlns="http://www.w3.org/2000/svg"
@@ -51,45 +50,46 @@
             </div>
               
             <!-- ukuran gambar  --> 
-            <img class="max-w-full max-h-[420px] mx-auto mb-4" src="/images/img1.jpg" alt="" srcset="">
+            <img class="max-w-full max-h-[420px] mx-auto mb-4 rounded-lg" src="/images/img1.jpg" alt="" srcset="">
             {{-- <div class="w-full h-72 bg-center" style="background-image: url(/images/img1.jpg)"></div> --}}
             <div class="max-w-3xl mx-auto mb-5"> <!--wrapper untuk text body -->
                  {!! $news->body !!}
             </div>
 
-            <hr class="my-2">
+            <hr class="my-5">
 
             <h1 class="text-2xl font-semibold mb-3">Berita lainya</h1>
             <div class="flex flex-wrap gap-2"><!-- wrapper untuk card berita lainya -->
             
-                <a href="#" class=" flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:bg-gray-100 ">
+                <a href="#" class=" flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:scale-105 hover:bg-gray-100 ">
                     {{-- <img class="object-cover h-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/images/img1.jpg" alt=""> --}}
                     <div class="h-32 lg:basis-1/3 md:h-full shrink w-full bg-[url('/images/img1.jpg')] rounded-t-lg md:rounded-l-lg bg-center bg-cover"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">Noteworthy technology acquisitions 2021</h5>
+                        <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
                     </div>
                 </a>
-                <a href="#" class=" flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:bg-gray-100 ">
+                <a href="#" class=" flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:scale-105 hover:bg-gray-100 ">
                     {{-- <img class="object-cover h-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/images/img1.jpg" alt=""> --}}
                     <div class="h-32 lg:basis-1/3 md:h-full shrink w-full bg-[url('/images/img1.jpg')] rounded-t-lg md:rounded-l-lg bg-center bg-cover"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">Noteworthy technology acquisitions 2021</h5>
+                        <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
                     </div>
                 </a>
-                <a href="#" class=" flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:bg-gray-100 ">
+                <a href="#" class=" flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:scale-105 hover:bg-gray-100 ">
                     {{-- <img class="object-cover h-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/images/img1.jpg" alt=""> --}}
                     <div class="h-32 lg:basis-1/3 md:h-full shrink w-full bg-[url('/images/img1.jpg')] rounded-t-lg md:rounded-l-lg bg-center bg-cover"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">Noteworthy technology acquisitions 2021</h5>
+                        <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
                     </div>
                 </a>
+                
             </div>
-            <div class="wrapper mt-5">
-                <a href="#" class="mx-auto inline-block p-3 bg-gray-200">
-                    lihat selengkapnya >>
+            <div class="wrapper mt-5 font-bold">
+                <a href="/berita" class="mx-auto inline-block p-3  ">
+                    < Kembali Ke Beranda Berita
                 </a>
             </div>
         </div>
