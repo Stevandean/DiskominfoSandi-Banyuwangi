@@ -13,7 +13,7 @@
       </span>
     </div>
     <hr>
-    <form class="p-5" action="" method="post">
+    <form class="p-5" action="/admin/dokumen" method="post">
       <div class="mb-6"><!--password-->
         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Judul</label>
         <input type="password" id="password" class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-within:outline-blue-500 focus:border-blue-500 block w-full p-2.5 " required><!--border-red-600-->

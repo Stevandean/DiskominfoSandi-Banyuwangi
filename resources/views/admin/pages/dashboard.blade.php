@@ -29,10 +29,10 @@
         </div>
         <hr>
         <div class="overflow-x-auto relative">
-          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <table class="w-full text-sm text-left text-gray-500 ">
               <tbody>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr class="bg-white border-b ">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -44,8 +44,8 @@
                         </svg>
                       </td>
                   </tr>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr class="bg-white border-b ">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -57,8 +57,8 @@
                         </svg>
                       </td>
                   </tr>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr class="bg-white border-b ">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -70,8 +70,8 @@
                         </svg>
                       </td>
                   </tr>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr class="bg-white border-b ">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -104,10 +104,10 @@
         </div>
         <hr>
         <div class="overflow-x-auto relative">
-          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <table class="w-full text-sm text-left text-gray-500 ">
               <tbody>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr class="bg-white border-b ">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -122,8 +122,8 @@
                         </svg>
                       </td>
                   </tr>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr class="bg-white border-b ">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -138,8 +138,8 @@
                         </svg>
                       </td>
                   </tr>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr class="bg-white border-b ">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -154,8 +154,8 @@
                         </svg>
                       </td>
                   </tr>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr class="bg-white border-b ">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -204,13 +204,13 @@
         </div>
         <hr>
         <div class="overflow-x-auto relative">
-          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <table class="w-full text-sm text-left text-gray-500 ">
               <tbody>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <tr class="bg-white border-b ">
                       <td class="hidden lg:block py-4 px-6">
                         <img src="../img/zidan.png" class="w-16 mx-auto" alt="" srcset="">
                       </td>
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -225,11 +225,11 @@
                         </svg>
                       </td>
                   </tr>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <tr class="bg-white border-b ">
                       <td class="hidden lg:block py-4 px-6">
                         <img src="../img/cliff.jpg" class="w-16 mx-auto" alt="" srcset="">
                       </td>
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -244,11 +244,11 @@
                         </svg>
                       </td>
                   </tr>
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <tr class="bg-white border-b ">
                       <td class="hidden lg:block py-4 px-6">
                         <img src="../img/cliff.jpg" class="w-16 mx-auto" alt="" srcset="">
                       </td>
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                           Apple MacBook Pro 17"
                       </th>
                       <td class="py-4 px-6">
@@ -285,10 +285,10 @@
       </div>
       <hr>
       <div class="overflow-x-auto relative">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500 ">
             <tbody>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                         Apple MacBook Pro 17"
                     </th>
                     <td class="py-4 px-6">
@@ -300,8 +300,8 @@
                       </svg>
                     </td>
                 </tr>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                         Apple MacBook Pro 17"
                     </th>
                     <td class="py-4 px-6">
@@ -313,8 +313,8 @@
                       </svg>
                     </td>
                 </tr>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                         Apple MacBook Pro 17"
                     </th>
                     <td class="py-4 px-6">
@@ -326,8 +326,8 @@
                       </svg>
                     </td>
                 </tr>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr class="bg-white border-b ">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                         Apple MacBook Pro 17"
                     </th>
                     <td class="py-4 px-6">
@@ -357,10 +357,10 @@
       </div>
       <hr>
       <div class="overflow-x-auto relative">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500 ">
           <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <tr class="bg-white border-b ">
+                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                       Apple MacBook Pro 17"
                   </th>
                   <td class="py-4 px-6">
@@ -372,8 +372,8 @@
                     </svg>
                   </td>
               </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <tr class="bg-white border-b ">
+                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                       Apple MacBook Pro 17"
                   </th>
                   <td class="py-4 px-6">
@@ -385,8 +385,8 @@
                     </svg>
                   </td>
               </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <tr class="bg-white border-b ">
+                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                       Apple MacBook Pro 17"
                   </th>
                   <td class="py-4 px-6">
@@ -398,8 +398,8 @@
                     </svg>
                   </td>
               </tr>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <tr class="bg-white border-b ">
+                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                       Apple MacBook Pro 17"
                   </th>
                   <td class="py-4 px-6">

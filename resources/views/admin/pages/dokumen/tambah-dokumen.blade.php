@@ -1,21 +1,22 @@
 @extends('admin.layouts.main')
 
-@section('conatiner')
+@section('container')
   <div class="md:shadow-md bg-white rounded-lg p-3 pt-4">
     <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
-      <span class="font-bold text-xl text-blue-kominfo inline-flex items-center">
+      <a href="/admin/dokumen" class="font-bold text-xl text-blue-kominfo inline-flex items-center">
         <svg 
           xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
         Tambah dokumen
-      </span>
+      </a>
     </div>
     <hr>
-    <form class="p-5" action="" method="post">
-      <div class="mb-6"><!--password-->
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nama Dokumen</label>
-        <input type="password" id="password" class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-within:outline-blue-500 focus:border-blue-500 block w-full p-2.5 " required><!--border-red-600-->
+    <form id="form-upload" class="p-5" action="/admin/dokumen" method="post" enctype="multipart/form-data"> 
+      @csrf
+      <div class="mb-6"><!-- nama dokumen -->
+        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nama Dokumen</label>
+        <input name="name" type="text" id="nama" class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-within:outline-blue-500 focus:border-blue-500 block w-full p-2.5 " required><!--border-red-600-->
         <!-- pesar error -->
         <p id="filled_error_help" class=" hidden mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
         <!-- akhir pesar error -->
@@ -32,7 +33,7 @@
               </div>
               <p class="file-info hidden mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">hayoo</span></p>
             </div>
-            <input id="dropzone-file" type="file" class="hidden" />
+            <input name="source" id="dropzone-file" type="file" class="hidden" />
           </label>
         </div>
         <!-- pesar error -->
@@ -58,17 +59,21 @@
 
 @push('add-script')
     <script>
-      // --------- untuk drop file ---------
       let inpFile = document.querySelector('#dropzone-file');
       let dropArea = document.querySelector('#drop-area');
       let actionDesc = dropArea.querySelector('#action-desc');
       let fileInfo = dropArea.querySelector('.file-info span');
       let errUpload = document.querySelector('#err-upload');
-
+      let form = document.querySelectorAll('form#form-upload')[0];
+      let fileVal; //untuk menyimpan varibel file
+      
       let extPattern = /\.([0-9a-z]+)(?=[?#])|(\.)(?:[\w]+)$/gmi //regex untuk mengesktak ekstensi
-
-      inpFile.addEventListener('change', function(){
-        console.log(this.files);
+      
+      // --------- untuk drop file ---------
+      inpFile.addEventListener('change', function(e){
+        // console.log(this.files);
+        cekFile(this.files);
+        // console.log(this.value)
       })
       dropArea.addEventListener('dragover', (event) => {
         event.stopPropagation();
@@ -79,11 +84,17 @@
       });
       dropArea.addEventListener('dragleave', function(){
         this.classList.remove('bg-gray-100', 'border-sky-400')
-      })
+      });
+
       dropArea.addEventListener('drop', (event) => {
         event.stopPropagation();
         event.preventDefault();
-        const fileList = event.dataTransfer.files;
+        let file = event.dataTransfer.files
+        cekFile(file);
+      });
+
+      function cekFile(file){
+        const fileList = file;
         console.log(fileList);
         dropArea.classList.remove('bg-gray-100', 'border-sky-400')
         
@@ -91,6 +102,9 @@
         if((fileList[0].name).match(extPattern) == '.pdf'){
           //tambah nama
           fileInfo.innerHTML = fileList[0].name;
+
+          //simpan nilai filelist kedalam varibel untuk dikirim menggunakan AJAX
+          fileVal = fileList[0];
           
           //ubah tampilan
           dropArea.classList.remove('border-red-500')
@@ -102,10 +116,35 @@
         inpFile.value = null;
         //tampilkan pesan gagal
         errUpload.innerHTML = "file bukan pdf, mohon masukan file yg sesuai"
+        errUpload.classList.toggle('hidden')
         dropArea.classList.add('border-red-500')
         
         console.log(inpFile.value)
-      });
+      }
+
+      // ----------- UPLOAD ------------
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        upload()
+      })
+
+      function upload(){
+        let data =  new FormData(form);
+        data.set('source', fileVal);
+        data.set('_token', '{{csrf_token()}}');
+
+        fetch('/admin/dokumen', {
+          method: 'POST',
+          body: data
+        })
+        .then(res => res.json())
+        .then(result => {
+          if(result.success){
+            window.location = '/admin/dokumen'
+          }
+        })
+      }
+      
     </script>
 @endpush
 

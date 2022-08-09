@@ -5,8 +5,8 @@
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <li>
-                <div class="hidden sm:inline-block h-full py-4 px-5 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">Previous</div>
-                <div class="sm:hidden inline-block h-full py-4 px-5 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">&laquo;</div>
+                <div class="hidden sm:inline-block h-full py-4 px-5 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 cursor-default">Previous</div>
+                <div class="sm:hidden inline-block h-full py-4 px-5 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 cursor-default">&laquo;</div>
             </li>
         @else
             <li>
@@ -50,8 +50,8 @@
             </li>
         @else
             <li>
-                <span class="h-full hidden sm:inline-block py-4 px-5 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">Next</spam>
-                <span class="h-full sm:hidden inline-block py-4 px-5 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">&raquo;</span>
+                <span class="h-full hidden sm:inline-block py-4 px-5 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 cursor-default">Next</spam>
+                <span class="h-full sm:hidden inline-block py-4 px-5 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 cursor-default">&raquo;</span>
             </li>
         @endif
     </ul>

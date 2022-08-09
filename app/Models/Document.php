@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
+    protected $guarded = ['id'];
     use HasFactory;
 }

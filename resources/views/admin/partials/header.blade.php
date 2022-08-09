@@ -4,7 +4,7 @@
         <!-- &#x1F5D9; -->
         <button class="text-slate-600 text-2xl w-10 h-10 hidden lg:block" onclick="toogleSidebar()">&#9776;</button>
         <button class="text-slate-600 text-2xl w-10 h-10 lg:hidden" onclick="toggleSidebar2()">&#9776;</button>
-        <h1 class="text-lg md:text-2xl font-semibold">Tambah Link Terkait</h1>
+        <h1 class="text-lg md:text-2xl font-semibold">{{ $title }}</h1>
       </div>
 
       <!-- ## DROP DOWN ## -->
