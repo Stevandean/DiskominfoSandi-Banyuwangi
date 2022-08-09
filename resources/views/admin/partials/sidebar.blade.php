@@ -3,8 +3,8 @@
       <h1 class="admin-title text-center font-sans font-semibold text-xl py-6 mb-6 text-slate-200 border-b border-gray-500">ADMIN</h1>
       <h1 class="admin-title text-center font-sans font-semibold text-xl py-6 mb-6 text-slate-200 border-b border-gray-500 hidden">A</h1>
       <ul class="mx-auto">
-        <li >
-          <a href="#" class=" flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright justify-center">
+        <li class="{{ Request::is('admin/dashboard*')? "is-active" : '' }}" >
+          <a href="/admin/dashboard" class=" flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright justify-center">
             <svg 
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition-all duration-75 group-hover:text-gray-900"
               xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
@@ -16,8 +16,8 @@
               <span class="side-list flex-1 ml-3 ">Dashboard</span>
           </a>
        </li>
-       <li >
-          <a href="#" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
+       <li class="{{ Request::is('admin/dokumen*')? "is-active" : '' }}">
+          <a href="/admin/dokumen" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
             <svg 
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition-all duration-75 group-hover:text-gray-900"
               xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
@@ -30,8 +30,8 @@
             <span class="side-list flex-1 ml-3 whitespace-nowrap">Dokumen</span>
           </a>
        </li>
-       <li >
-          <a href="#" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
+       <li class="{{ Request::is('admin/galeri*')? "is-active" : '' }}">
+          <a href="/admin/galeri" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
             <svg
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition-all duration-75 group-hover:text-gray-900"
               xmlns="http://www.w3.org/2000/svg"  viewBox="-2 -2 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -42,8 +42,8 @@
             <span class="side-list flex-1 ml-3 whitespace-nowrap">Galeri</span>
           </a>
        </li>
-       <li >
-          <a href="#" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
+       <li class="{{ Request::is('admin/berita*')? "is-active" : '' }}">
+          <a href="/admin/berita" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
             <svg 
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition-all duration-75 group-hover:text-gray-900"
               xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="-2 -2 20 20">
@@ -53,8 +53,8 @@
             <span class="side-list flex-1 ml-3 whitespace-nowrap">Berita</span>
           </a>
        </li>
-       <li >
-          <a href="#" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
+       <li class="{{ Request::is('admin/layanan*')? "is-active" : '' }}">
+          <a href="/admin/layanan" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
             <svg 
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition-all duration-75 group-hover:text-gray-900"
               xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -63,8 +63,8 @@
             <span class="side-list flex-1 ml-3 whitespace-nowrap">Layanan</span>
           </a>
        </li>
-       <li class="is-active">
-          <a href="#" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
+       <li class="{{ Request::is('admin/link-terkait*')? "is-active" : '' }}">
+          <a href="/admin/link-terkait" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
             <svg 
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition-all duration-75 group-hover:text-gray-900"
               xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-2 -2 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

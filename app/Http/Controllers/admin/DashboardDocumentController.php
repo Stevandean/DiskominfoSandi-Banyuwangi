@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Document;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardDocumentController extends Controller
 {
@@ -17,8 +19,8 @@ class DashboardDocumentController extends Controller
     {
         return view('admin.pages.dokumen.dokumen', [
             'documents' => Document::latest()->paginate(7),
-            'title' => 'semua dokumen',
-            'page-name' => 'document'
+            'title' => 'Semua dokumen',
+            'pageAction' => 'Document'
         ]);
     }
 
@@ -29,7 +31,10 @@ class DashboardDocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.dokumen.tambah-dokumen',[
+            'title' => 'Tambah Dokumen',
+            'pageAction' => 'Tambah Dokumen'
+        ]);
     }
 
     /**
@@ -40,7 +45,26 @@ class DashboardDocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // ddd($request);
+        // return $request->file();
+        
+        //melakukan validasi
+        $validated = $request->validate([
+            'name' => 'required|max:225',
+            'source' => 'file'
+        ]);
+
+        //jika ada dokumen yang diupload
+        //jika gambar ada, maka simpan pada folder berikut
+        if($request->file('source')){
+            $validated['source'] = $request->file('source')->storeAs('document-src', str_replace(' ', '-',$request->name).".pdf"); //simpan nama file ke array validated, jadi bukan file yg disimpan
+        }
+
+        Document::create($validated);
+        $request->session()->flash('success', 'data berhasil ditambah'); //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        return response()->json([$validated, 'success' => true]); //respon menggunakan json
+
+
     }
 
     /**
@@ -49,9 +73,9 @@ class DashboardDocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Document $dokuman)
     {
-        //
+        return response()->json([$dokuman]);
     }
 
     /**
@@ -83,8 +107,15 @@ class DashboardDocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Document $dokuman) //disebabkan karena saya kurang konsisten dalam menamai route, sehingga menyebabkan laravel secara otomatis mengibah dependency menjadi bentuk kata tunggal jika dalam bahasa route saya diubah
     {
-        //
+        var_dump($dokuman->id);
+        if($dokuman->source){
+            Storage::delete($dokuman->source);
+        }
+
+        Document::destroy($dokuman->id);
+
+        return redirect('/admin/dokumen')->with('success', 'data telah berhasil dihapus');
     }
 }

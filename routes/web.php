@@ -9,6 +9,10 @@ use App\Http\Controllers\guest\ProfilController;
 use App\Http\Controllers\guest\DocumentandOtherController;
 
 use App\Http\Controllers\admin\DashboardDocumentController;
+use App\Http\Controllers\admin\DashboardGalleryController;
+use App\Http\Controllers\admin\DashboardLinkController;
+use App\Http\Controllers\admin\DashboardNewsController;
+use App\Http\Controllers\admin\DashboardServiceController;
 
 
 //------------------ ## GUEST ## ----------------------

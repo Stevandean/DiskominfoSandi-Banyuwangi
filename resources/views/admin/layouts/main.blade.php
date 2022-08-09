@@ -73,7 +73,7 @@
         background-color: white
       }
     </style>
-        <title>coba side bar dengan tailwind</title>
+        <title>{{ $title }}</title>
   </head>
   <body>
     <div class="page flex ">
@@ -98,6 +98,10 @@
         </div>
       </div>
       <!--akhir konten utama-->
+
+      <!-- modal -->
+      @include('admin.partials.modal-delete')
+      <!-- akhir modal -->
 
     </div>
 
