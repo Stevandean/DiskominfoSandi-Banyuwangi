@@ -64,6 +64,9 @@
         color: rgb(253 224 71);
         font: rgb(253 224 71);
       }
+      .is-active > a{
+        background: linear-gradient(90deg, rgba(253,223,71,0.39) 0%, rgba(0,0,0,0) 100%);
+      }
 
       /*-------- for table ------  */
       table tbody tr:nth-child(even){
@@ -99,13 +102,14 @@
       </div>
       <!--akhir konten utama-->
 
-      <!-- modal -->
-      @include('admin.partials.modal-delete')
+      <!-- modal delete -->
+      <x-admin.modal-delete />
       <!-- akhir modal -->
 
     </div>
 
     @stack('add-script')
+    @stack('upload-script')
     <script>
 
       // --------- untuk tombol sidebar 1 [ketika lebar layar > 1024] -----------

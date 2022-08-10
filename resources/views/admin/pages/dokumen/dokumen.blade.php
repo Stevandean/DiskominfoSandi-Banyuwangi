@@ -1,8 +1,8 @@
 @extends('admin.layouts.main')
 
 @section('container')
-  <div class="flex justify-between flex-wrap xl:flex-nowrap gap-2 mb-7"> <!-- tool bar-->
-    <form class="xl:basis-1/2 w-full"> <!-- pencarian -->
+  <div class="flex justify-between flex-wrap xl:flex-nowrap mx-2 sm:mx-0 gap-2 mb-7"> <!-- tool bar-->
+    {{-- <form class="xl:basis-1/2 w-full"> <!-- pencarian -->
       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
       <div class="relative">
           <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -11,19 +11,33 @@
           <input type="search" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 focus:bg-white bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus-within:outline-0" placeholder="Search Mockups, Logos..." required>
           <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
       </div>
-    </form>
+    </form> --}}
+    <x-admin.search-input inputValue="{{ request('search') }}"/>
     <div class="mx-auto xl:mx-0"> <!-- untuk pagination -->
       {{ $documents->links('vendor.pagination.admin-pagination') }}
     </div>
   </div><!--akhir toolbar-->
 
-  @include('admin.partials.alert')
+  {{-- @include('admin.partials.alert') --}}
+  @if (session()->has('success'))
+  <x-admin.alert type="success" msg="{{ session('success') }}"/>
+  @endif
+  @if (session()->has('error'))
+  <x-admin.alert type="error" msg="{{ session('error') }}"/>
+  @endif
+  @if (session()->has('default'))
+  <x-admin.alert type="default" msg="{{ session('default') }}"/>
+  @endif
 
   <!--data-->
   <div class="shadow-md bg-white rounded-lg p-3 pt-4">
     <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
-      <span class="font-bold text-xl text-blue-kominfo">{{ $pageAction }} 
-        <span class="text-blue-900 bg-blue-300 text-lg font-normal px-7 rounded-2xl">{{ count($documents) }} item</span>
+      @if (request('search'))
+      <span class="font-bold text-xl text-blue-kominfo">Hasil dari : {{ request('search') }}
+      @else
+      <span class="font-bold text-xl text-blue-kominfo">{{ $pageAction }}
+      @endif
+        <span class="text-blue-900 bg-blue-300 text-lg font-normal px-7 rounded-2xl">{{ $documentCount }} item</span>
       </span>
       <a href="/admin/dokumen/create" class="text-sm bg-blue-700 hover:bg-blue-800 text-white focus:ring-4 focus:ring-blue-300 py-2 px-8 rounded-md w-full sm:w-auto">
         <div class="flex items-center justify-center h-full table-fixed">
@@ -132,7 +146,7 @@
                   {{ date_format($date, "j - F - o") }}
                 </td>
                 <td class="py-4 px-6">
-                  <span class="bg-sky-200 hover:bg-sky-300 rounded-full px-8 py-0.5 border border-sky-600 text-blue-900 hover:cursor-pointer">Download</span>
+                  <a href="dokumen/download/{{ $document->source }}" class="bg-sky-200 hover:bg-sky-300 rounded-full px-8 py-0.5 border border-sky-600 text-blue-900 hover:cursor-pointer">Download</a>
                 </td>
                 <td class="py-4 px-6">
                   <div class="inline-flex">
@@ -145,7 +159,7 @@
                       </button>  
               
                     <!-- ini untuk icon edit -->
-                    <button class="btn-s inline-block rounded-full bg-amber-200 hover:bg-amber-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-amber-300 transition-all">
+                    <a href="/admin/dokumen/{{ $document->id }}/edit" class="btn-s inline-block rounded-full bg-amber-200 hover:bg-amber-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-amber-300 transition-all">
                       <svg
                         class="fill-amber-700"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" height="20px">
@@ -154,7 +168,7 @@
                         <path  d="M 14.347656 5.6875 L 15.761719 4.273438 L 19.226562 7.738281 L 17.8125 9.152344 Z M 14.347656 5.6875 "/>
                         </g>
                       </svg>
-                    </button> 
+                    </a> 
                     
                     <!-- ini untuk icon views -->
                     <button class="btn-detail btn-s inline-block rounded-full bg-green-200 hover:bg-green-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-green-300 transition-all" data-id="{{ $document->id }}">
@@ -175,7 +189,8 @@
     </div>
   </div>
 
-  @include('admin.partials.modal-detail.modal-dokumen')
+  {{-- @include('admin.partials.modal-detail.modal-dokumen') --}}
+  <x-admin.modal-detail modelPath="dokumen" />
 @endsection
 
 

@@ -1,12 +1,12 @@
 
 
 <!-- detail modal -->
-<div id="modal-detail" tabindex="-1" class="bg-[rgba(100,116,139,0.3)] overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex transition-all opacity-0 hidden" aria-modal="true" role="dialog">
-    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+<div id="modal-detail" tabindex="-1" class="bg-[rgba(100,116,139,0.3)] overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full inset-0 h-modal h-full justify-center items-center flex transition-all opacity-0 hidden" aria-modal="true" role="dialog">
+    <div class="relative p-4 w-full max-w-2xl h-auto">
         <!-- Modal content -->
         <div class="modal-detail-content relative bg-white rounded-lg shadow">
             <!-- Modal header -->
-            <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-100 mx-5">
+            <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
                 <h3 class="text-xl font-semibold text-gray-900">
                     Dokumen Terbaru
                 </h3>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <!-- Modal footer -->
-            <div class="flex items-center p-6 mx-5 space-x-2 rounded-b border-t border-gray-100">
+            <div class="flex items-center p-6 mx-5 space-x-2 rounded-b border-t border-gray-200">
                 <button data-modal-toggle="defaultModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center ">Save</button>
                 <button data-modal-toggle="defaultModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 close-modal-detail">Close</button>
             </div>
@@ -82,34 +82,39 @@
     modalDetail.addEventListener('click',(e)=> e.target == modalDetail? toggleModal() : false);
 
     // ----------- membuka modal ---------------
-    function updateDetailModal(data){
+    function updateDetailModal(data, model){
         if(data != undefined){
-            modalBodySTR = `
-            <div class="flex">
-                <p class="text-base leading-relaxed font-semibold">
-                    Nama :
-                </p>
-                <p class="text-base leading-relaxed mx-2">
-                    ${data.name}
-                </p>
-            </div>
-            <div class="flex">
-                <p class="text-base leading-relaxed font-semibold">
-                    Tanggal Dibuat :
-                </p>
-                <p class="text-base leading-relaxed mx-2">
-                    ${data.create_date.split(' ')[0]}
-                </p>
-            </div>
-            <div class="flex flex-wrap">
-                <p class="text-base  leading-relaxed font-semibold">
-                    Source :
-                </p>
-                <p class="text-base leading-relaxed mx-2 break-all">
-                    ${data.source}
-                </p>
-            </div>
-            `;
+            console.log(model)
+            switch(model){
+                case 'dokumen':
+                modalBodySTR = `
+                    <div class="flex">
+                        <p class="text-base leading-relaxed font-semibold">
+                            Nama :
+                        </p>
+                        <p class="text-base leading-relaxed mx-2">
+                            ${data.name}
+                        </p>
+                    </div>
+                    <div class="flex">
+                        <p class="text-base leading-relaxed font-semibold">
+                            Tanggal Dibuat :
+                        </p>
+                        <p class="text-base leading-relaxed mx-2">
+                            ${data.create_date.split(' ')[0]}
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <p class="text-base  leading-relaxed font-semibold">
+                            Source :
+                        </p>
+                        <p class="text-base leading-relaxed mx-2 break-all">
+                            ${data.source}
+                        </p>
+                    </div>
+                    `;
+                break;
+            }
     
             modalHeaderSTR = `
             <h3 class="text-xl font-semibold text-gray-900">
@@ -120,20 +125,34 @@
             </h3>
             `;
         }else{
-            modalBodySTR = 'ada masalah dengan dengan data'
+            modalBodySTR = `
+            <div class="bg-red-100 max-w-full mx-auto rounded-md p-4">
+                <p class="font-bold text-red-800">Terjadi Kesalaahan</p>
+                <p class="text-red-800">mungkin disebabkan hal-hal berikut :</p>
+                <hr class="bg-red-600 my-2">
+                <ul class="list-disc list-inside text-red-600">
+                    <li>Jaringan Internet</li>
+                    <li>Proxy atau VPN</li>
+                    <li>Server yang bermasalah</li>
+                    <li>Data tidak ada / valid</li>
+                </ul>
+            </div>
+            `;
+            modalHeaderSTR = `
+            <h3 class="text-xl font-semibold text-gray-900">
+                Data bermasalah
+            </h3>
+            `;
         }
-
         
         modalHeader.innerHTML = modalHeaderSTR;
         modalBody.innerHTML = modalBodySTR;
     }
 
     function getData (id){
-        return fetch(`/admin/dokumen/${id}`)
+        return fetch(`/admin/{{ $modelPath }}/${id}`)
             .then(res => res.json())
-            .then(res2 => {
-                return res2;
-            })
+            .then(res => res)
             .catch(err => err)
     }
 
@@ -141,8 +160,7 @@
         btn.addEventListener('click', async function(e){
             try{
                 modalData = await getData(this.getAttribute('data-id'));
-                updateDetailModal(modalData[0]);
-                // modalDetail.classList.remove('hidden');
+                updateDetailModal(modalData[0],"{{ $modelPath }}");
                 toggleModal();
             }catch(err){
                 console.error(err);

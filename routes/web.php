@@ -54,6 +54,7 @@ Route::redirect('/admin', '/admin/login');
 
 Route::prefix('admin')->group(function(){
     Route::get('dashboard', fn()=> view('admin.pages.dashboard'));
+    Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
     Route::resource('dokumen', DashboardDocumentController::class);
     Route::resource('galeri', DashboardGalleryController::class);
     Route::resource('link-terkait', DashboardLinkController::class);

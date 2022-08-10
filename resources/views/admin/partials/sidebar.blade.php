@@ -3,7 +3,7 @@
       <h1 class="admin-title text-center font-sans font-semibold text-xl py-6 mb-6 text-slate-200 border-b border-gray-500">ADMIN</h1>
       <h1 class="admin-title text-center font-sans font-semibold text-xl py-6 mb-6 text-slate-200 border-b border-gray-500 hidden">A</h1>
       <ul class="mx-auto">
-        <li class="{{ Request::is('admin/dashboard*')? "is-active" : '' }}" >
+        <li class="{{ Request::is('admin/dashboard*')? "is-active" : '' }} " >
           <a href="/admin/dashboard" class=" flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright justify-center">
             <svg 
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition-all duration-75 group-hover:text-gray-900"

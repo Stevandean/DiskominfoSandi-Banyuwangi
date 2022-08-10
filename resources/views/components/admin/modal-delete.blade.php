@@ -35,8 +35,15 @@
 
         //-------- untuk hide dan show --------------
         let toggleModalDelete = () => {
-            deleteModal.classList.toggle('-z-20')
-            modalContent.classList.toggle('translate-y-[-120%]')
+            if(deleteModal.classList.contains('-z-20')){
+                deleteModal.classList.toggle('-z-20')
+                modalContent.classList.toggle('translate-y-[-120%]')
+            }else{
+                modalContent.classList.toggle('translate-y-[-120%]')
+                setTimeout(() => {
+                    deleteModal.classList.toggle('-z-20')
+                }, 350);
+            }
         }
         closeModal.forEach(el => el.addEventListener('click', (e) => toggleModalDelete()));
         deleteModal.addEventListener('click', (e) => e.target == e.currentTarget ? toggleModalDelete() : false)
