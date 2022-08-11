@@ -3,7 +3,7 @@
 @section('container')
 
   <h1 class="text-2xl p-5 bg-white rounded-lg border-8 border-yellow-200">
-    Hallo, selamat datang kembali admin 🙂🙂🙂
+    Hallo, selamat datang kembali admin {{ auth() -> user() -> name }} 🙂🙂🙂
   </h1>
 
   <h2 class="mt-5">

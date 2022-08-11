@@ -5,14 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\guest\HomeController;
 use App\Http\Controllers\guest\NewsController;
 use App\Http\Controllers\guest\PPIDController;
-use App\Http\Controllers\guest\ProfilController;
-use App\Http\Controllers\guest\DocumentandOtherController;
+use App\Http\Controllers\admin\LoginController;
 
-use App\Http\Controllers\admin\DashboardDocumentController;
-use App\Http\Controllers\admin\DashboardGalleryController;
+use App\Http\Controllers\guest\ProfilController;
 use App\Http\Controllers\admin\DashboardLinkController;
 use App\Http\Controllers\admin\DashboardNewsController;
+use App\Http\Controllers\admin\DashboardGalleryController;
 use App\Http\Controllers\admin\DashboardServiceController;
+use App\Http\Controllers\guest\DocumentandOtherController;
+use App\Http\Controllers\admin\DashboardDocumentController;
 
 
 //------------------ ## GUEST ## ----------------------
@@ -50,11 +51,17 @@ Route::get('/layanan', [DocumentandOtherController::class, 'layanan']);
 
 //------------------ ## ADMIN ## ----------------------
 Route::redirect('/admin', '/admin/login');
+    Route::get('/admin/login',[LoginController::class, 'halamanLogin']) -> name('login');
+    Route::post('/admin/login',[LoginController::class, 'authenticate']);
+    Route::post('/admin/logout',[LoginController::class, 'logout']);
 //lupa membuat login😔
 
 Route::prefix('admin')->group(function(){
-    Route::get('dashboard', fn()=> view('admin.pages.dashboard'));
+
     Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
+    Route::get('dashboard', fn()=> view('admin.pages.dashboard',[
+        'title' => 'dashboard'
+    ])) -> middleware('auth') -> name('home');
     Route::resource('dokumen', DashboardDocumentController::class);
     Route::resource('galeri', DashboardGalleryController::class);
     Route::resource('link-terkait', DashboardLinkController::class);

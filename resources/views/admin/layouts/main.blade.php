@@ -137,7 +137,7 @@
       // --------------- Dfropdown 3 -------------------
       let dropdownItem = document.querySelector('#dropdown-header');
       let btnDropdown = document.querySelector('#btn-dropdown');
-      ['click', 'blur'].forEach(evt => {
+      ['click'].forEach(evt => {
         btnDropdown.addEventListener(evt, e => {
           if(evt == 'blur') {
             dropdownItem.classList.add('hidden');
