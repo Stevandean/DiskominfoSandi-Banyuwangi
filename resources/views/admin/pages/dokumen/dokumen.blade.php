@@ -2,23 +2,13 @@
 
 @section('container')
   <div class="flex justify-between flex-wrap xl:flex-nowrap mx-2 sm:mx-0 gap-2 mb-7"> <!-- tool bar-->
-    {{-- <form class="xl:basis-1/2 w-full"> <!-- pencarian -->
-      <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
-      <div class="relative">
-          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-              <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-          </div>
-          <input type="search" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 focus:bg-white bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus-within:outline-0" placeholder="Search Mockups, Logos..." required>
-          <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
-      </div>
-    </form> --}}
-    <x-admin.search-input inputValue="{{ request('search') }}"/>
+    <x-admin.search-input inputValue="{{ request('search') }}" />
     <div class="mx-auto xl:mx-0"> <!-- untuk pagination -->
       {{ $documents->links('vendor.pagination.admin-pagination') }}
     </div>
   </div><!--akhir toolbar-->
 
-  {{-- @include('admin.partials.alert') --}}
+  {{-- alert --}}
   @if (session()->has('success'))
   <x-admin.alert type="success" msg="{{ session('success') }}"/>
   @endif
@@ -189,8 +179,43 @@
     </div>
   </div>
 
-  {{-- @include('admin.partials.modal-detail.modal-dokumen') --}}
-  <x-admin.modal-detail modelPath="dokumen" />
+  <x-admin.modal-detail modelPath="dokumen" >
+    <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
+      <h3 class="text-xl font-semibold text-gray-900">
+          Dokumen Terbaru
+      </h3>
+      <h3 class="text-lg text-center font-semibold">
+          19 - July - 2022
+      </h3>
+  </div>
+  <!-- Modal body -->
+  <div class="p-6 space-y-3">
+      <div class="flex">
+          <p class="text-base leading-relaxed font-semibold">
+              Nama :
+          </p>
+          <p class="text-base leading-relaxed mx-2">
+              <fill_name></fill_name>
+          </p>
+      </div>
+      <div class="flex">
+          <p class="text-base leading-relaxed font-semibold">
+              Tanggal Dibuat :
+          </p>
+          <p class="text-base leading-relaxed mx-2">
+            <fill_created_at></fill_created_at>
+          </p>
+      </div>
+      <div class="flex flex-wrap">
+          <p class="text-base  leading-relaxed font-semibold">
+              Source :
+          </p>
+          <p class="text-base leading-relaxed mx-2 break-all">
+            <fill_source></fill_source>
+          </p>
+      </div>
+  </div>
+  </x-admin.modal-detail>
 @endsection
 
 

@@ -5,42 +5,8 @@
     <div class="relative p-4 w-full max-w-2xl h-auto">
         <!-- Modal content -->
         <div class="modal-detail-content relative bg-white rounded-lg shadow">
-            <!-- Modal header -->
-            <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
-                <h3 class="text-xl font-semibold text-gray-900">
-                    Dokumen Terbaru
-                </h3>
-                <h3 class="text-lg text-center font-semibold">
-                    19 - July - 2022
-                </h3>
-            </div>
-            <!-- Modal body -->
-            <div class="p-6 space-y-3">
-                <div class="flex">
-                    <p class="text-base leading-relaxed font-semibold">
-                        Nama :
-                    </p>
-                    <p class="text-base leading-relaxed mx-2">
-                        Berkas_pebuatan_operator
-                    </p>
-                </div>
-                <div class="flex">
-                    <p class="text-base leading-relaxed font-semibold">
-                        Tanggal Dibuat :
-                    </p>
-                    <p class="text-base leading-relaxed mx-2">
-                        19 - July - 2022
-                    </p>
-                </div>
-                <div class="flex flex-wrap">
-                    <p class="text-base  leading-relaxed font-semibold">
-                        Source :
-                    </p>
-                    <p class="text-base leading-relaxed mx-2 break-all">
-                        https://www.figma.com/file/X37dX16QiXeIzUgD9mSpMi/diskominfo-layouts?node-id=116%3A61
-                    </p>
-                </div>
-            </div>
+            <!-- Modal header dan body -->
+            {{ $slot }}
             <!-- Modal footer -->
             <div class="flex items-center p-6 mx-5 space-x-2 rounded-b border-t border-gray-200">
                 <button data-modal-toggle="defaultModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center ">Save</button>
@@ -59,8 +25,8 @@
     let modalBody = modalDetail.querySelectorAll('.modal-detail-content > div')[1];
     let modalData;
 
-    let modalBodySTR =``;
-    let modalHeaderSTR = ``;
+    let modalBodySTR = modalBody.innerHTML;
+    let modalHeaderSTR = modalHeader.innerHTML;
 
     //------------ function untuk toggle modal -----------
     function toggleModal(){
@@ -82,50 +48,30 @@
     modalDetail.addEventListener('click',(e)=> e.target == modalDetail? toggleModal() : false);
 
     // ----------- membuka modal ---------------
+    //disini tempat tag template di proses untuk diubah menjadi data
+    //untuk ketentuanya yaitu
+    //<fill_{nama data}></fill_{nama data}>
     function updateDetailModal(data, model){
+        let modalBodyTempSTR = modalBodySTR
+        let modalHeaderTempSTR = modalHeaderSTR
         if(data != undefined){
             console.log(model)
-            switch(model){
-                case 'dokumen':
-                modalBodySTR = `
-                    <div class="flex">
-                        <p class="text-base leading-relaxed font-semibold">
-                            Nama :
-                        </p>
-                        <p class="text-base leading-relaxed mx-2">
-                            ${data.name}
-                        </p>
-                    </div>
-                    <div class="flex">
-                        <p class="text-base leading-relaxed font-semibold">
-                            Tanggal Dibuat :
-                        </p>
-                        <p class="text-base leading-relaxed mx-2">
-                            ${data.create_date.split(' ')[0]}
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <p class="text-base  leading-relaxed font-semibold">
-                            Source :
-                        </p>
-                        <p class="text-base leading-relaxed mx-2 break-all">
-                            ${data.source}
-                        </p>
-                    </div>
-                    `;
-                break;
+            for(let key in data){
+                console.log(key, data[key])
+                // console.log(modalBodySTR)
+                // console.log(modalBodySTR.match(/<name>(.*?)<\/name>/g))
+                // console.log(modalBodySTR.match(new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')))
+                if(key == 'created_at'){
+                    modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key].split('T')[0]) || '';
+                    continue;
+                }
+                modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key]) || '';
+                // console.log(modalBodySTR)
+                // modalBody = modalBodySTR.replace(new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`),data[key]) 
             }
-    
-            modalHeaderSTR = `
-            <h3 class="text-xl font-semibold text-gray-900">
-                ${data.name}
-            </h3>
-            <h3 class="text-lg text-center font-semibold">
-                ${data.create_date.split(' ')[0]}
-            </h3>
-            `;
+            // console.log(modalBodySTR.match(new RegExp(`<p>(.*?)<\/p>`)))
         }else{
-            modalBodySTR = `
+            modalBodyTempSTR = `
             <div class="bg-red-100 max-w-full mx-auto rounded-md p-4">
                 <p class="font-bold text-red-800">Terjadi Kesalaahan</p>
                 <p class="text-red-800">mungkin disebabkan hal-hal berikut :</p>
@@ -138,15 +84,16 @@
                 </ul>
             </div>
             `;
-            modalHeaderSTR = `
+            modalHeaderTempSTR = `
             <h3 class="text-xl font-semibold text-gray-900">
                 Data bermasalah
             </h3>
             `;
         }
         
-        modalHeader.innerHTML = modalHeaderSTR;
-        modalBody.innerHTML = modalBodySTR;
+        // console.log(modalBodySTR);
+        modalHeader.innerHTML = modalHeaderTempSTR;
+        modalBody.innerHTML = modalBodyTempSTR;
     }
 
     function getData (id){
@@ -160,6 +107,7 @@
         btn.addEventListener('click', async function(e){
             try{
                 modalData = await getData(this.getAttribute('data-id'));
+                console.log(modalData);
                 updateDetailModal(modalData[0],"{{ $modelPath }}");
                 toggleModal();
             }catch(err){

@@ -105,7 +105,6 @@ class DashboardDocumentController extends Controller
      */
     public function update(Request $request, Document $dokuman)
     {
-
         // return response()->json(['hallo']);
         //melakukan validasi
         $validated = $request->validate([

@@ -18,7 +18,8 @@
         <x-admin.input inputName="Nama" formName="name" />
       </div>
       <div class="mb-6"><!--upload file-->
-        <x-admin.input-upload type="pdf" inputName="Dokumen PDF" formName="source" />
+        <x-admin.input-upload type="pdf" inputName="Dokumen PDF" formName="source" :isReadOnly=false :isError=false >
+        </x-admin.input-upload>
       </div>
       <div class="mb-6">
         <x-admin.form-button isAjax={{ true }}>

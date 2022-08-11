@@ -19,7 +19,7 @@ class InputUpload extends Component
      *
      * @return void
      */
-    public function __construct($inputName , $formName, $type, $isReadOnly, $inputValue = '', $isError = false, $errMsg = '')
+    public function __construct($inputName , $formName, $type, $isReadOnly = false, $inputValue = '', $isError = false, $errMsg = '')
     {
         $this->formName = $formName;
         $this->inputName = $inputName;
@@ -29,7 +29,7 @@ class InputUpload extends Component
         $this->isReadOnly = $isReadOnly;
         $this->type = $type;
 
-        // ddd([$inputName , $formName, $type, $isReadOnly]);
+        
     }
 
     public function typeExtention($type){
