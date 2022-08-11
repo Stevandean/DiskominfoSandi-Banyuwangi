@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardGalleryController extends Controller
 {
@@ -14,7 +16,14 @@ class DashboardGalleryController extends Controller
      */
     public function index()
     {
-        
+        $galleries = Gallery::latest()->filter(request(['search','type']))->paginate(7)->withQueryString();
+        $galleryCount = Gallery::latest()->filter(request(['search','type']))->count();
+        return view('admin.pages.galeri.galeri', [
+            'galleries' => $galleries,
+            'galleryCount' => $galleryCount,
+            'title' => 'Semua galeri',
+            'pageAction' => 'Gallery'
+        ]);
     }
 
     /**
@@ -24,7 +33,10 @@ class DashboardGalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.galeri.tambah-galeri',[
+            'title' => 'Tambah galeri',
+            'pageAction' => 'Tambah galeri'
+        ]);
     }
 
     /**
@@ -44,9 +56,9 @@ class DashboardGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Gallery $galeri)
     {
-        //
+        return response()->json([$galeri]);
     }
 
     /**
@@ -78,8 +90,14 @@ class DashboardGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Gallery $galeri)
     {
-        //
+        if($galeri->source){
+            Storage::delete('gallery-src/'.$galeri->source);
+        }
+
+        Gallery::destroy($galeri->id);
+
+        return redirect('/admin/galeri')->with('success', 'data telah berhasil dihapus');
     }
 }

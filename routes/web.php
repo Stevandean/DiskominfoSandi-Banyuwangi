@@ -57,6 +57,8 @@ Route::redirect('/admin', '/admin/login');
 //lupa membuat login😔
 
 Route::prefix('admin')->group(function(){
+
+    Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
     Route::get('dashboard', fn()=> view('admin.pages.dashboard',[
         'title' => 'dashboard'
     ])) -> middleware('auth') -> name('home');

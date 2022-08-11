@@ -36,26 +36,16 @@
         </select>
         <p class="mt-1 text-sm text-gray-500 ">pilih antara gambar dan video, bila video hrus menggunakan upload tersendiri</p>
       </div>
+      <div class="mb-6">
+        <x-admin.input inputName="Source" formName="source" />
+      </div>
       <div id="wrp" class="mb-6"><!--upload file / sumber-->
-        <div class="mb-6"><!--upload file-->
-          <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">File</p>
-          <div class="flex justify-center items-center w-full">
-            <label id="drop-area" for="dropzone-file" class=" relative flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer after:absolute  after:inset-0 after:opacity-40">
-              <div class="relative flex flex-col justify-center items-center pt-5 pb-6">
-                <div id="action-desc">
-                  <svg aria-hidden="true" class=" mx-auto mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400 text-center">only PDF (.pdf)</p>
-                </div>
-                <p class="file-info hidden mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">hayoo</span></p>
-              </div>
-              <input id="dropzone-file" type="file" class="hidden" />
-            </label>
-          </div>
-          <!-- pesar error -->
-          <p id="err-upload" class="hidden mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
-          <!-- akhir pesar error -->
-        </div> 
+        {{-- <x-admin.input-upload type="image" inputName="file gambar" formName="source" >
+        hanya menerima file gambar
+        </x-admin.input-upload> --}}
+        <x-admin.input-upload type="image" inputName="File Gambar" formName="source" :isReadOnly=false :isError=false >
+          hanya file gambar, untuk video bisa dimasukan kedalam input text
+        </x-admin.input-upload>
       </div>
       <div class="mb-6">
         <p class="block mb-2 text-sm font-medium text-gray-900 ">Body</p>
@@ -79,89 +69,9 @@
 
 @push('add-script')
     <script>
-      // --------- untuk drop file ---------
-      let extPattern = /\.([0-9a-z]+)(?=[?#])|(\.)(?:[\w]+)$/gmi //regex untuk mengesktak ekstensi
-      let wrapper = document.querySelector('#wrp');
-      let inpFile 
-      let dropArea 
-      let actionDesc
-      let fileInfo 
-      let errUpload
-
-      function uploadEffect(){
-        inpFile = wrapper.querySelector('#dropzone-file');
-        dropArea = wrapper.querySelector('#drop-area');
-        actionDesc = dropArea.querySelector('#action-desc');
-        fileInfo = dropArea.querySelector('.file-info span');
-        errUpload = wrapper.querySelector('#err-upload');
-
-        inpFile.addEventListener('change', function(){
-          console.log(this.files);
-        })
-        dropArea.addEventListener('dragover', (event) => {
-          event.stopPropagation();
-          event.preventDefault();
-          // Style the drag-and-drop as a "copy file" operation.
-          event.dataTransfer.dropEffect = 'copy';
-          dropArea.classList.add('bg-gray-100', 'border-sky-400')
-        });
-        dropArea.addEventListener('dragleave', function(){
-          this.classList.remove('bg-gray-100', 'border-sky-400')
-        })
-        dropArea.addEventListener('drop', (event) => {
-          event.stopPropagation();
-          event.preventDefault();
-          const fileList = event.dataTransfer.files;
-          console.log(fileList);
-          dropArea.classList.remove('bg-gray-100', 'border-sky-400')
-          console.log(fileList)
-          
-          //cek file
-          if(fileList[0].type.split('/')[0] == 'image'){
-            //tambah nama
-            fileInfo.innerHTML = fileList[0].name;
-            
-            //ubah tampilan
-            dropArea.classList.remove('border-red-500')
-            fileInfo.parentElement.classList.remove('hidden')
-            actionDesc.classList.add('hidden');
-            return;
-          }
-          //jika gagal maka hapus file
-          inpFile.value = null;
-          //tampilkan pesan gagal
-          errUpload.innerHTML = "file bukan pdf, mohon masukan file yg sesuai"
-          errUpload.classList.remove()
-          dropArea.classList.add('border-red-500')
-          
-        });
-      }
-      uploadEffect();
 
       //-------- untuk perubahan tipe galeri ------
       let selector = document.querySelector('#type');
-      let uploadElement = 
-      `
-      <div class="mb-6"><!--upload file-->
-        <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Dokumen</p>
-        <div class="flex justify-center items-center w-full">
-          <label id="drop-area" for="dropzone-file" class=" relative flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer after:absolute  after:inset-0 after:opacity-40">
-            <div class="relative flex flex-col justify-center items-center pt-5 pb-6">
-              <div id="action-desc">
-                <svg aria-hidden="true" class=" mx-auto mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 text-center">only PDF (.pdf)</p>
-              </div>
-              <p class="file-info hidden mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">hayoo</span></p>
-            </div>
-            <input id="dropzone-file" type="file" class="hidden" />
-          </label>
-        </div>
-        <!-- pesar error -->
-        <p id="err-upload" class="hidden mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
-        <!-- akhir pesar error -->
-      </div> 
-      `;
 
       let sourceElement = 
       `
@@ -174,13 +84,11 @@
 
       selector.addEventListener('change', function(e){
         if(this.value == "gambar"){
-          wrapper.innerHTML = uploadElement
-          //untuk reresh nilai
-          wrapper = document.querySelector('#wrp');
-          uploadEffect();
+          source.setHidden(false)
           return;
         }else if(this.value == 'video'){
-          wrapper.innerHTML = sourceElement;
+          // wrapper.innerHTML = sourceElement;
+          source.setHidden(true)
           return
         }
       })

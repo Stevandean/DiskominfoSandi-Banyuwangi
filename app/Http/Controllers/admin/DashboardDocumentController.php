@@ -17,8 +17,11 @@ class DashboardDocumentController extends Controller
      */
     public function index()
     {
+        $documents = Document::latest()->filter(request(['search']))->paginate(7)->withQueryString();
+        $documentCount = Document::latest()->filter(request(['search']))->count();
         return view('admin.pages.dokumen.dokumen', [
-            'documents' => Document::latest()->paginate(7),
+            'documents' => $documents,
+            'documentCount' => $documentCount,
             'title' => 'Semua dokumen',
             'pageAction' => 'Document'
         ]);
@@ -84,9 +87,13 @@ class DashboardDocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Document $dokuman)
     {
-        //
+        return view('admin.pages.dokumen.edit-dokumen',[
+            'document' => $dokuman,
+            'title' => 'Edit Dokumen',
+            'pageAction' => 'Edit Dokumen'
+        ]);
     }
 
     /**
@@ -96,9 +103,18 @@ class DashboardDocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Document $dokuman)
     {
-        //
+        // return response()->json(['hallo']);
+        //melakukan validasi
+        $validated = $request->validate([
+            'name' => 'required|max:225',
+        ]);
+
+        Document::where('id', $dokuman->id)
+                    ->update($validated);
+        $request->session()->flash('success', 'data berhasil diubah'); //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        return response()->json([$validated, 'success' => true]); //respon menggunakan json
     }
 
     /**
@@ -117,5 +133,9 @@ class DashboardDocumentController extends Controller
         Document::destroy($dokuman->id);
 
         return redirect('/admin/dokumen')->with('success', 'data telah berhasil dihapus');
+    }
+
+    public function download($fileName){
+        return Storage::download('document-src/'.$fileName);
     }
 }

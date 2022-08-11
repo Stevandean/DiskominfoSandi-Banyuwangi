@@ -15,9 +15,6 @@ class NewsController extends Controller
             'news' => News::latest()->limit(6)->get(),
             'title' => 'home'
         ]);
-
-        // return News::latest()->limit(6)->get();
-
     }
 
     public function index(){
