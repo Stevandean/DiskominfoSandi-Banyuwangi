@@ -181,40 +181,40 @@
 
   <x-admin.modal-detail modelPath="dokumen" >
     <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
-      <h3 class="text-xl font-semibold text-gray-900">
-          Dokumen Terbaru
-      </h3>
-      <h3 class="text-lg text-center font-semibold">
-          19 - July - 2022
-      </h3>
-  </div>
-  <!-- Modal body -->
-  <div class="p-6 space-y-3">
-      <div class="flex">
-          <p class="text-base leading-relaxed font-semibold">
-              Nama :
-          </p>
-          <p class="text-base leading-relaxed mx-2">
-              <fill_name></fill_name>
-          </p>
-      </div>
-      <div class="flex">
-          <p class="text-base leading-relaxed font-semibold">
-              Tanggal Dibuat :
-          </p>
-          <p class="text-base leading-relaxed mx-2">
-            <fill_created_at></fill_created_at>
-          </p>
-      </div>
-      <div class="flex flex-wrap">
-          <p class="text-base  leading-relaxed font-semibold">
-              Source :
-          </p>
-          <p class="text-base leading-relaxed mx-2 break-all">
-            <fill_source></fill_source>
-          </p>
-      </div>
-  </div>
+        <h3 class="text-xl font-semibold text-gray-900">
+            Dokumen Terbaru
+        </h3>
+        <h3 class="text-lg text-center font-semibold">
+            19 - July - 2022
+        </h3>
+    </div>
+    <!-- Modal body -->
+    <div class="p-6 space-y-3">
+        <div class="flex">
+            <p class="text-base leading-relaxed font-semibold">
+                Nama :
+            </p>
+            <p class="text-base leading-relaxed mx-2">
+                <fill_name></fill_name>
+            </p>
+        </div>
+        <div class="flex">
+            <p class="text-base leading-relaxed font-semibold">
+                Tanggal Dibuat :
+            </p>
+            <p class="text-base leading-relaxed mx-2">
+              <fill_created_at></fill_created_at>
+            </p>
+        </div>
+        <div class="flex flex-wrap">
+            <p class="text-base  leading-relaxed font-semibold">
+                Source :
+            </p>
+            <p class="text-base leading-relaxed mx-2 break-all">
+              <fill_source></fill_source>
+            </p>
+        </div>
+    </div>
   </x-admin.modal-detail>
 @endsection
 

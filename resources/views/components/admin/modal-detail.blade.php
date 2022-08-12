@@ -54,13 +54,11 @@
     function updateDetailModal(data, model){
         let modalBodyTempSTR = modalBodySTR
         let modalHeaderTempSTR = modalHeaderSTR
+        let dat;
         if(data != undefined){
             console.log(model)
             for(let key in data){
                 console.log(key, data[key])
-                // console.log(modalBodySTR)
-                // console.log(modalBodySTR.match(/<name>(.*?)<\/name>/g))
-                // console.log(modalBodySTR.match(new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')))
                 if(key == 'created_at'){
                     modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key].split('T')[0]) || '';
                     continue;
@@ -69,7 +67,6 @@
                 // console.log(modalBodySTR)
                 // modalBody = modalBodySTR.replace(new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`),data[key]) 
             }
-            // console.log(modalBodySTR.match(new RegExp(`<p>(.*?)<\/p>`)))
         }else{
             modalBodyTempSTR = `
             <div class="bg-red-100 max-w-full mx-auto rounded-md p-4">

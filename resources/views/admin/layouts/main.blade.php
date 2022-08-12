@@ -108,8 +108,9 @@
 
     </div>
 
-    @stack('add-script')
-    @stack('upload-script')
+    @stack('add-script'){{-- for additional script and defining classs --}}
+    @stack('var-script'){{-- for declare variable ins an instance of a class from above --}}
+    @stack('upload-script'){{-- the logic how the form will be uploaded --}}
     <script>
 
       // --------- untuk tombol sidebar 1 [ketika lebar layar > 1024] -----------

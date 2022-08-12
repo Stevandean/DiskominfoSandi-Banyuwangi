@@ -200,7 +200,58 @@
     </div>
   </div>
 
-  <x-admin.modal-detail modelPath="galeri" />
+  <x-admin.modal-detail modelPath="galeri" >
+      <!-- Modal header -->
+    <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-600 mx-5">
+        <h3 class="text-xl font-semibold text-gray-900">
+            <fill_title></fill_title>
+        </h3>
+        <h3 class="text-lg text-center font-semibold">
+            <fill_created_at></fill_created_at>
+        </h3>
+    </div>
+    <!-- Modal body -->
+    <div class="p-6 space-y-3">
+        <div class="flex">
+            <p class="text-base leading-relaxed font-semibold">
+                Judul :
+            </p>
+            <p class="text-base leading-relaxed mx-2">
+                <fill_title></fill_title>
+            </p>
+        </div>
+        <div class="flex">
+            <p class="text-base leading-relaxed font-semibold">
+                File :
+            </p>
+            <p class="text-base leading-relaxed mx-2">
+                <fill_source></fill_source>
+            </p>
+        </div>
+        <div class="flex flex-wrap">
+            <p class="text-base leading-relaxed font-semibold">
+                Preview :
+            </p>
+            <img src="/images/prev.png">
+        </div>
+        <div class="flex">
+            <p class="text-base leading-relaxed font-semibold">
+                Type :
+            </p>
+            <p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">
+                <fill_type></fill_type>
+            </p>
+        </div>
+        <div class="flex flex-wrap">
+            <p class="text-base  leading-relaxed font-semibold">
+                Body :
+            </p>
+            <p class="text-base leading-relaxed mx-2 break-all">
+                <fill_body></fill_body>
+            </p>
+        </div>
+    </div>
+  </x-admin.modal-detail>
     
 @endsection
 

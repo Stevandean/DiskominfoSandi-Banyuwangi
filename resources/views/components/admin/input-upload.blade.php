@@ -25,32 +25,40 @@
     
 </div>
 
-@push('add-script')
+@pushOnce('add-script')
 <script>
   class InputUpload{
     
-    inpFile
+    formName //nama formnya
+    inputType = 'file'
+    input //file inputnya
     dropArea 
     actionDesc 
     fileInfo 
     errUpload 
     formInput;
-    fileVal; //untuk menyimpan varibel file
-    isReadOnly = {{ $isReadOnly? 'true' : 'false' }};
+    fileVal; //untuk menyimpan varibel file [file sesungguhnya]
+    isReadOnly
+    type;
     extPattern = /\.([0-9a-z]+)(?=[?#])|(\.)(?:[\w]+)$/gmi //regex untuk mengesktak ekstensi
     
+    constructor(isReadOnly, type){
+      this.isReadOnly = isReadOnly;
+      this.type = type;
+      this.main()
+    }
 
     readElement(){
-      this.inpFile = document.querySelector('#dropzone-file');
+      this.input = document.querySelector('#dropzone-file');
       this.dropArea = document.querySelector('#drop-area');
       this.actionDesc = this.dropArea.querySelector('#action-desc');
       this.fileInfo = this.dropArea.querySelector('.file-info span');
       this.errUpload = document.querySelector('#err-upload');
-      this.formInput = document.querySelectorAll('form #input-{{ $formName }}-upload')[0];
+      this.formInput = document.querySelectorAll(`form #input-${this.formName}-upload`)[0];
     }
 
     addEvent(){
-      this.inpFile.addEventListener('change', function(e){
+      this.input.addEventListener('change', function(e){
         // console.log(this.files);
         cekFile(this.files);
         // console.log(this.value)
@@ -69,7 +77,7 @@
         event.stopPropagation();
         event.preventDefault();
         let file = event.dataTransfer.files
-        this.cekFile(file);
+        this.cekFile(file, this.isReadOnly);
       });
     }
 
@@ -96,7 +104,7 @@
       //test 1
       console.log('Test 1 -->',fileList);
       
-      if(this.cekExtention(fileList[0].name, "{{ $type }}")){
+      if(this.cekExtention(fileList[0].name, this.type)){
         //test 2
         console.log('test 2 -->', fileList[0])
 
@@ -113,13 +121,13 @@
         return;
       }
       //jika gagal maka hapus file
-      this.inpFile.value = null;
+      this.input.value = null;
       //tampilkan pesan gagal
       this.errUpload.innerHTML = "file bukan pdf, mohon masukan file yg sesuai"
       this.errUpload.classList.toggle('hidden')
       this.dropArea.classList.add('border-red-500')
       
-      console.log(this.inpFile.value)
+      console.log(this.input.value)
     }
     setReadOnly(val){
       if(val){
@@ -148,8 +156,17 @@
     }
   }
 
-  // InputUpload.main();
-  const {{ $formName }} = new InputUpload();
-  {{ $formName }}.main();
 </script>
+@endPushOnce
+
+@push('var-script')
+    <script>
+      // InputUpload.main();
+      if(!{{ $formName }}){
+        const {{ $formName }} = new InputUpload({{ $formName }},{{ $isReadOnly? 'true' : 'false' }}, "{{ $type }}");
+      }else{
+         const {{ $formName ."file" }} = new InputUpload({{ $formName }},{{ $isReadOnly? 'true' : 'false' }}, "{{ $type }}");
+         console.log('test upload')
+      }
+    </script>
 @endpush
