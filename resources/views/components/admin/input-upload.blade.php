@@ -1,7 +1,7 @@
 <div id="input-{{ $formName }}-upload">
     <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $inputName }}</p>
     <div class="flex justify-center items-center w-full">
-        <label id="drop-area" for="dropzone-file" class=" relative flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 {{ $isError? "border-red-500" : "" }} border-dashed cursor-pointer after:absolute  after:inset-0 after:opacity-40">
+        <label id="drop-area" for="dropzone-file-{{ $formName }}" class=" relative flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 {{ $isError? "border-red-500" : "" }} border-dashed cursor-pointer after:absolute  after:inset-0 after:opacity-40">
         <div class="relative flex flex-col justify-center items-center pt-5 pb-6">
             <div id="action-desc">
             <svg aria-hidden="true" class=" mx-auto mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
@@ -15,7 +15,7 @@
             </div>
             <p class="file-info hidden mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">file info</span></p>
         </div>
-        <input name="{{ $formName }}" id="dropzone-file" type="file" class="hidden" />
+        <input name="{{ $formName }}" id="dropzone-file-{{ $formName }}" type="file" class="hidden" />
         </label>
     </div>
     
@@ -42,14 +42,15 @@
     type;
     extPattern = /\.([0-9a-z]+)(?=[?#])|(\.)(?:[\w]+)$/gmi //regex untuk mengesktak ekstensi
     
-    constructor(isReadOnly, type){
+    constructor(formName,isReadOnly, type){
+      this.formName = formName;
       this.isReadOnly = isReadOnly;
       this.type = type;
       this.main()
     }
 
     readElement(){
-      this.input = document.querySelector('#dropzone-file');
+      this.input = document.querySelector(`#dropzone-file-${this.formName}`);
       this.dropArea = document.querySelector('#drop-area');
       this.actionDesc = this.dropArea.querySelector('#action-desc');
       this.fileInfo = this.dropArea.querySelector('.file-info span');
@@ -141,10 +142,13 @@
 
     setHidden(val){
       console.log(this.formInput)
+      console.log(val)
       if(val){
         this.formInput.classList.add('hidden')
+        console.log('ini seharusnya menghapusnua')
+        return
       }
-      else this.formInput.classList.remove('hidden')
+      this.formInput.classList.remove('hidden')
     }
 
     main(){
@@ -161,12 +165,6 @@
 
 @push('var-script')
     <script>
-      // InputUpload.main();
-      if(!{{ $formName }}){
-        const {{ $formName }} = new InputUpload({{ $formName }},{{ $isReadOnly? 'true' : 'false' }}, "{{ $type }}");
-      }else{
-         const {{ $formName ."file" }} = new InputUpload({{ $formName }},{{ $isReadOnly? 'true' : 'false' }}, "{{ $type }}");
-         console.log('test upload')
-      }
+      const form_{{ $formName ."_file" }} = new InputUpload("{{ $formName }}",{{ $isReadOnly? 'true' : 'false' }}, "{{ $type }}");
     </script>
 @endpush

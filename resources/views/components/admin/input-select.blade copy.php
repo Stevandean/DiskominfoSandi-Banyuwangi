@@ -60,6 +60,15 @@
 
 @push('var-script')
     <script>
-        const form_{{ $formName."_select" }} = new SelectInput(JSON.parse('{!! $getAllAttribute() !!}'))
+        if(typeof form_{{ $formName }} == 'undefined'){
+            const form_{{ $formName."Select" }} = new SelectInput(JSON.parse('{!! $getAllAttribute() !!}'))
+            console.log(form_{{ $formName."Select" }})
+            console.log('tesssssssss 2')
+        }else{
+            const form_{{ $formName }} = new SelectInput(JSON.parse('{!! $getAllAttribute() !!}'))
+            console.log(form_{{ $formName }})
+            console.log('tesssssssss 1')
+        }
+        console.log(form_{{ $formName."Select" }})
     </script>
 @endpush

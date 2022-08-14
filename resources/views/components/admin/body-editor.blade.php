@@ -28,10 +28,7 @@
 
 @push('var-script')
     <script>
-        if({{ $formName }}){
-            const {{ $formName."Editor" }} = new BodyEditor((JSON.parse('{!! $getAllAttribute() !!}')));
-        }else{
-            const {{ $formName }} = new BodyEditor((JSON.parse('{!! $getAllAttribute() !!}')));
-        }
+    const form_{{ $formName."_editor" }} = new BodyEditor((JSON.parse('{!! $getAllAttribute() !!}')));
+
     </script>
 @endpush

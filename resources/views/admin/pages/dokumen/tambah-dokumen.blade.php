@@ -43,7 +43,7 @@
 
     function upload(){
       let data =  new FormData(form);
-      data.set('source', source.fileVal);
+      data.set('source', form_source_file.fileVal);
       data.set('_token', '{{csrf_token()}}');
 
       fetch('/admin/dokumen', {

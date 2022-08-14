@@ -20,7 +20,7 @@
       <div class="mb-6"><!--preview file-->
         <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Preview </p>
         <div class="pdf">
-          <iframe class="rounded-md w-full h-80" src="{{ asset('storage/'.$document->source) }}"></iframe>
+          <iframe class="rounded-md w-full h-80" src="{{ asset('storage/document-src/'.$document->source) }}"></iframe>
         </div>
       </div>
       <div class="mb-6">
