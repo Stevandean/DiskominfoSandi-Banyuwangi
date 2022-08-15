@@ -20,15 +20,21 @@
     </div>
     
     <!-- pesar error -->
-    <p id="err-upload" class="{{ $isError? "" : "hidden"}} mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{ $errMsg }}</span></p>
+    <!-- <p id="err-upload" class="{{-- $isError?"":"hidden" --}} mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{-- $errMsg --}}</span></p> -->
     <!-- akhir pesar error -->
     
+    <!-- error terbaru -->
+    <div class="err hidden">
+      <p  class="hidden mt-2 text-xs text-red-600 "><span class="font-medium">when error</span></p>
+    </div>
+
 </div>
 
 @pushOnce('add-script')
 <script>
   class InputUpload{
     
+    formError
     formName //nama formnya
     inputType = 'file'
     input //file inputnya
@@ -50,13 +56,28 @@
     }
 
     readElement(){
-      this.input = document.querySelector(`#dropzone-file-${this.formName}`);
-      this.dropArea = document.querySelector('#drop-area');
+      this.formInput = document.querySelectorAll(`form #input-${this.formName}-upload`)[0];
+      this.input = this.formInput.querySelector(`#dropzone-file-${this.formName}`);
+      this.dropArea = this.formInput.querySelector('#drop-area');
       this.actionDesc = this.dropArea.querySelector('#action-desc');
       this.fileInfo = this.dropArea.querySelector('.file-info span');
-      this.errUpload = document.querySelector('#err-upload');
-      this.formInput = document.querySelectorAll(`form #input-${this.formName}-upload`)[0];
+      this.errUpload = this.formInput.querySelector('#err-upload');
+      this.formError = this.formInput.querySelector(`.err`);
     }
+
+    error(con, msg=[]){
+      if(con){
+        this.formError.classList.remove('hidden');
+        this.dropArea.classList.add('border-red-300');
+        msg.forEach(msg => {
+            this.formError.innerHTML += `<p class=" mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">${msg}</span></p>`
+        })
+      }else{
+        this.formInput.querySelector('.err p').classList.add('hidden').innerHTML = '';
+        this.dropArea.classList.remove('border-red-300');
+      }
+    }
+
 
     addEvent(){
       this.input.addEventListener('change', function(e){

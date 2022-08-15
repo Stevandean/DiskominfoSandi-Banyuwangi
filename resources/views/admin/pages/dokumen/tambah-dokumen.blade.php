@@ -22,7 +22,7 @@
         </x-admin.input-upload>
       </div>
       <div class="mb-6">
-        <x-admin.form-button :isAjax=true>
+        <x-admin.form-button btnName="send" :isAjax=true>
           Tambah
         </x-admin.form-button>
       </div>

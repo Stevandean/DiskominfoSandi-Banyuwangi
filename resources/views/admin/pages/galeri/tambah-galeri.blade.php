@@ -3,7 +3,7 @@
 @section('container')
   <!--data-->
   <div class="md:shadow-md bg-white rounded-lg p-3 pt-4">
-    <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
+    <div class="lex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
       <a href="/admin/galeri" class="font-bold text-xl text-blue-kominfo inline-flex items-center">
         <svg 
           xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
@@ -16,16 +16,15 @@
     <form id="form-upload" class="p-5" action="/admin/galeri" method="post">
       @csrf
       <div class="mb-6">
+        <div class="inline-block w-3/5 text-sm font-medium text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+          <x-admin.tab-radio />
+        </div>
+      </div>
+      <div class="mb-6">
         <x-admin.input inputName="Judul" formName="title" />
       </div>
       <div class="mb-6"><!--password-->
         <x-admin.input inputName="Slug" formName="slug" />
-      </div>
-      <div class="mb-6">
-        <x-admin.input-select inputName="Tipe" formName="type" info="test" >
-          <option value="image" selected>Gambar</option>
-          <option value="video">Video</option>
-        </x-admin.input-select>
       </div>
       <div class="mb-6">
         <x-admin.input inputName="Source" formName="source" />
@@ -39,7 +38,7 @@
         <x-admin.body-editor inputName="Body" formName="body" />
       </div>
       <div class="mb-6">
-        <x-admin.form-button :isAjax=true>
+        <x-admin.form-button btnName="send" :isAjax=true>
           tambah
         </x-admin.form-button>
       </div>
@@ -49,7 +48,8 @@
 
 @push('upload-script')
     <script>
-
+      // ------- test untuk error -----------
+      
       let title
       let slug
       let type
@@ -58,12 +58,13 @@
       let form = document.querySelector('form#form-upload');
       let data = new FormData(form);
 
+
       //secara default gambar selected dan form text source hidden
       source = form_source_file.fileVal
       form_source_text.setHidden(true)
 
       //untuk membuat elemen source menjadi dinamis
-      form_type_select.input.addEventListener('change', (e)=> {
+      TabType.form.addEventListener('change', (e)=> { 
         console.log(e.target.value)
         if(e.target.value == 'image'){
           form_source_file.setHidden(false)
@@ -74,15 +75,42 @@
         }
       });
 
+      //untuk menangani bila gerdapat error yg dilempar
+      function handleError(err){
+        let keys = Object.keys(err.errors);
+        let values = Object.values(err.errors);
+        console.log(keys);
+        console.log(values);
+
+        keys.forEach(key => {
+          switch(key){
+            case 'title' :
+              form_title_text.error(true, err.errors[key]);
+              break;
+            case 'slug' :
+              form_slug_text.error(true, err.errors[key]);
+              break;
+            case 'source' :
+              TabType.value == 'image'
+              ? form_source_file.error(true, err.errors[key])
+              : TabType.value == 'video' ? form_source_text.error(true, err.errors[key])
+                : console.error('ada error dengan type saat melakukan validasi')
+              break;
+            default :
+              console.error('key tidak sesuai, harap masukan yg sesuai');
+          }
+        });
+      }
+
       //untuk mengisi form
       function fillForm(){
         title = form_title_text.input.value
         slug = form_slug_text.input.value
-        body = form_body_editor.input.value 
-        type = form_type_select.input.value
-        if(form_type_select.input.value == 'image'){
+        body = form_body_editor.input.value
+        type = TabType.value
+        if(TabType.value == 'image'){
           source = form_source_file.fileVal || ""
-        }else if(form_type_select.input.value == 'image'){
+        }else if(TabType.value == 'image'){
           source = form_source_text.input.value || ""
         }
 
@@ -107,13 +135,18 @@
           mode: 'same-origin',
           body: data
         })
-        .then(res => res.json())
+        .then(async res => {
+          return [res.status, await res.json()]
+        })
         .then(res => {
           console.log(res)
-          if(res.success){
+          if(res[1].success){
             window.location = '/admin/galeri'
+          }else if(res[0] == 422){
+            handleError(res[1]);
           }
         })
+        .finally(() => btn_send.setLoading(false))
         .catch(err => console.error(err));
       }
 
@@ -159,6 +192,11 @@
   maka perlu dikakukan untuk penangkapan error.
   stackoverflow:
   https://stackoverflow.com/questions/33137946/laravel-ajax-422-unprocessable-entity-even-when-token-is-matching 
+
+
+  ## dokumentasi no 5 ##
+  sekarang hasil yang ada dari backend laravel sudah berupa JSON, jadi saya akan menggunakan js sebagai 
+  handlernya.
   
   --}}
 

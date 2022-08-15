@@ -3,7 +3,9 @@
     <select name={{ $formName }} id="{{ $formName }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
         {{ $slot }}
     </select>
-    <p class="mt-1 text-sm text-gray-500 ">{{ $info }}</p>
+    <div class="err hidden">
+        <p  class="hidden mt-2 text-xs text-red-600 "><span class="font-medium">when error</span></p>
+    </div>
 </div>
 
 @pushOnce('add-script')
@@ -12,6 +14,7 @@
             isError
             errMsg
             formName
+            formError
             inputName
             isReadOnly
             formInput
@@ -36,6 +39,7 @@
             readDom(){
                 this.formInput = document.querySelector(`#${this.formName}`);
                 this.input = this.formInput.querySelector('select');
+                this.formError = this.formInput.querySelector('.err');
             }
 
             insertData(){
@@ -47,6 +51,19 @@
                 for(let dat of dt){
                     this.selectData.push([dat.getAttribute('value'), dat.innerHTML]);
                     //dimasukan dalam pasangan [value : string_text]
+                }
+            }
+
+            error(con, msg=[]){
+                if(con){
+                    this.formError.classList.remove('hidden');
+                    msg.forEach(msg => {
+                        this.formInput.innerHTML += `<p class=" mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">${msg}</span></p>`
+                    })
+                    this.input.classList.add('border-red-300')
+                }else{
+                    this.formInput.querySelector('p').classList.add('hidden').innerHTML = '';
+                    this.input.classList.remove('border-red-300')
                 }
             }
 

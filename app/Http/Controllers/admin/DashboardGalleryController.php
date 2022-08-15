@@ -62,7 +62,6 @@ class DashboardGalleryController extends Controller
                 'slug' => 'required',
                 'type' => 'required',
                 'body' => 'required',
-                'source' => 'url',
             ]);
         }elseif($request->type == 'video'){
             $validated = $request->validate([
@@ -70,36 +69,34 @@ class DashboardGalleryController extends Controller
                 'slug' => 'required',
                 'type' => 'required',
                 'body' => 'required',
-                'source' => 'image|file'
+                'source' => 'url'
             ]);
         }else{
-            return json_encode(['error' => 'ada error dengan typenya']);
-        }
-
-        if($validated->fails()){
-            return response()->json(['errors' => $validated->getMessageBag()->toArray()]);
+            return response(422)->json(['error' => 'ada error dengan typenya']);
         }
 
 
-        return json_encode(['success' => 'data berhasil divalidasi']);
+
+        // return json_encode(['success' => 'data berhasil divalidasi']);
         // if($request->hasFile('source')){
         //     return json_encode([$request->all(), $request->file('source')]);
         // }
         // return json_encode([$request->all()]);
 
-        // if($request->file('source')){
-        //     if($request->type == 'image'){
-        //         $request->file('source')->storeAs('gallery-src', str_replace(' ', '-',$request->name).".jpg"); //simpan nama file ke array validated, jadi bukan file yg disimpan
-        //         $validated['source'] = str_replace(' ', '-',$request->name).".jpg";
-        //     }else{
-        //         $validated['source'] = $request->source;
-        //     }
-        // }
+        if($request->file('source')){
+            if($request->type == 'image'){
+                // $request->file('source')->storeAs('gallery-src', str_replace(' ', '-',$request->name).".jpg"); //disimpan filenua dulu
+                // $validated['source'] = str_replace(' ', '-',$request->name).".jpg";
+                $validated['source'] = $request->file('source')->store('gallery-src');
+            }else{
+                return response(422)->json(["data tidak dapat diproses karena data tidak tersedia"]);
+            }
+        }
 
         // //memasuakn data ke database
-        // Gallery::create($validated);
-        // $request->session()->flash('success', 'data berhasil ditambah');
-        // return response()->json([$validated, 'success' => true]); //respon menggunakan json
+        Gallery::create($validated);
+        $request->session()->flash('success', 'data berhasil ditambah');
+        return response()->json([$validated, 'success' => true]); //respon menggunakan json
 
 
     }
@@ -155,3 +152,4 @@ class DashboardGalleryController extends Controller
         return redirect('/admin/galeri')->with('success', 'data telah berhasil dihapus');
     }
 }
+
