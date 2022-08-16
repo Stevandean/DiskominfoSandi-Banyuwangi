@@ -6,14 +6,15 @@
             <div id="action-desc">
             <svg aria-hidden="true" class=" mx-auto mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
             <div id="wr">
-              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-center"><span class="font-semibold">klik untuk upload</span> atau drag dan drop</p>
-              <p class="text-xs text-gray-500 dark:text-gray-400 text-center">{{ $slot }}</p>
+              <p class="mb-2 text-sm text-gray-500 text-center"><span class="font-semibold">klik untuk upload</span> atau drag dan drop</p>
+              <p class="text-xs text-gray-500 text-center">{{ $slot }}</p>
             </div>
             <div id="rd-only">
-              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">ini adalah input read only</span></p>
+              <p class="mb-2 text-sm text-gray-500 text-center"><span class="font-semibold">ini adalah input read only</span></p>
+              <p class="mb-2 text-sm text-gray-500 text-center"><span class="font-semibold">{{ $infoFileReadOnly }}</span></p>
             </div>
             </div>
-            <p class="file-info hidden mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">file info</span></p>
+            <p class="file-info hidden mb-2 text-sm text-gray-500"><span class="font-semibold">file info</span></p>
         </div>
         <input name="{{ $formName }}" id="dropzone-file-{{ $formName }}" type="file" class="hidden" />
         </label>

@@ -119,6 +119,7 @@ class DashboardGalleryController extends Controller
     public function edit(Gallery $galeri)
     {
         return view('admin.pages.galeri.edit-galeri',[
+            'gallery' => $galeri,
             'title' => 'Tambah galeri',
             'pageAction' => 'Tambah galeri'
         ]);

@@ -13,13 +13,14 @@ class InputUpload extends Component
     public $formName;
     public $isReadOnly;
     public $type;
+    public $infoFileReadOnly;
     // public
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($inputName , $formName, $type, $isReadOnly, $inputValue = '', $isError = false, $errMsg = '')
+    public function __construct($inputName , $formName, $type, $isReadOnly, $inputValue = '', $isError = false, $errMsg = '', $infoFileReadOnly = '')
     {
         $this->formName = $formName;
         $this->inputName = $inputName;
@@ -28,6 +29,7 @@ class InputUpload extends Component
         $this->errMsg = $errMsg;
         $this->isReadOnly = $isReadOnly;
         $this->type = $type;
+        $this->infoFileReadOnly = $infoFileReadOnly;
 
         // ddd([$inputName , $formName, $type, $isReadOnly]);
     }

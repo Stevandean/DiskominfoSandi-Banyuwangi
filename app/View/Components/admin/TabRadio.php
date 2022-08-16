@@ -6,14 +6,25 @@ use Illuminate\View\Component;
 
 class TabRadio extends Component
 {
+    public $active;
+    public $isReadOnly;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($isReadOnly = false, $active)
     {
-        //
+        $this->isReadOnly = $isReadOnly;
+        $this->active = $active;
+    }
+
+    public function getAllAttribute(){
+        $tes =  json_encode([
+            'isReadOnly' => $this->isReadOnly,
+            'active' => $this->active
+        ]);
+        return $tes;
     }
 
     /**

@@ -1,7 +1,6 @@
 @extends('admin.layouts.main')
 
 @section('container')
-  <!--data-->
   <div class="md:shadow-md bg-white rounded-lg p-3 pt-4">
     <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
       <span class="font-bold text-xl text-blue-kominfo inline-flex items-center">
@@ -13,7 +12,7 @@
       </span>
     </div>
     <hr>
-    <form class="p-5" action="/admin/dokumen" method="post">
+    <form class="p-5" action="" method="post">
       <div class="mb-6"><!--password-->
         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Judul</label>
         <input type="password" id="password" class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-within:outline-blue-500 focus:border-blue-500 block w-full p-2.5 " required><!--border-red-600-->
@@ -69,7 +68,7 @@
                 <line x1="7" y1="17" x2="17" y2="7"></line>
                 <polyline points="7 7 17 7 17 17"></polyline>
               </svg>
-            Tambah
+              Tambah
           </div>
         </button>
       </div>
@@ -184,8 +183,8 @@
           return
         }
       })
-    </script>
-    
+
+    </script>    
 @endpush
 
 
