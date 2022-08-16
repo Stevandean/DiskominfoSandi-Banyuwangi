@@ -60,8 +60,7 @@ class DashboardDocumentController extends Controller
         //jika ada dokumen yang diupload
         //jika gambar ada, maka simpan pada folder berikut
         if($request->file('source')){
-            $request->file('source')->storeAs('document-src', str_replace(' ', '-',$request->name).".pdf"); //simpan nama file ke array validated, jadi bukan file yg disimpan
-            $validated['source'] = str_replace(' ', '-',$request->name).".pdf";
+            $validated['source'] = $request->file('source')->storeAs('document-src', str_replace(' ', '-',$request->name).".pdf"); //simpan nama file ke array validated, jadi bukan file yg disimpan
         }
 
         Document::create($validated);

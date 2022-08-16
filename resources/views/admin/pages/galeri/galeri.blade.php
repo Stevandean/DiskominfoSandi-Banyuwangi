@@ -147,7 +147,7 @@
                 </td>
                 <td class="py-4 px-6">
                   @php
-                    $date = date_create($gallery->create_date)
+                    $date = date_create($gallery->created_at)
                   @endphp
                   {{ date_format($date, "j - F - o") }}
                 </td>
@@ -220,27 +220,26 @@
                 <fill_title></fill_title>
             </p>
         </div>
-        <div class="flex">
+        <div class="flex flex-wrap">
             <p class="text-base leading-relaxed font-semibold">
                 File :
             </p>
             <p class="text-base leading-relaxed mx-2">
-                <fill_source></fill_source>
+                <fill_source_text></fill_source_text>
+                {{-- <img src="/images/cliff.jpg" alt="" srcset=""> --}}
             </p>
         </div>
         <div class="flex flex-wrap">
             <p class="text-base leading-relaxed font-semibold">
                 Preview :
             </p>
-            <img src="/images/prev.png">
+            <fill_source></fill_source>
         </div>
         <div class="flex">
             <p class="text-base leading-relaxed font-semibold">
                 Type :
             </p>
-            <p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">
-                <fill_type></fill_type>
-            </p>
+            <fill_type></fill_type>
         </div>
         <div class="flex flex-wrap">
             <p class="text-base  leading-relaxed font-semibold">

@@ -2,9 +2,9 @@
 
 <!-- detail modal -->
 <div id="modal-detail" tabindex="-1" class="bg-[rgba(100,116,139,0.3)] overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full inset-0 h-modal h-full justify-center items-center flex transition-all opacity-0 hidden" aria-modal="true" role="dialog">
-    <div class="relative p-4 w-full max-w-2xl h-auto">
+    <div class="relative p-4 w-full max-w-2xl h-auto max-h-[75vh] overflow-y-auto">
         <!-- Modal content -->
-        <div class="modal-detail-content relative bg-white rounded-lg shadow">
+        <div class="modal-detail-content relative overflow-y-auto bg-white rounded-lg shadow">
             <!-- Modal header dan body -->
             {{ $slot }}
             <!-- Modal footer -->
@@ -59,11 +59,20 @@
             console.log(model)
             for(let key in data){
                 console.log(key, data[key])
+                if(key == 'source'){
+                    modalBodyTempSTR = sourceInsert(data, modalBodyTempSTR, model);
+                    // continue;
+                }
                 if(key == 'created_at'){
-                    modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key].split('T')[0]) || '';
+                    modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key].split('T')[0]) || ''; //regular expression untuk mendapatkan data dari elemn html
+                    modalHeaderTempSTR = modalHeaderTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key].split('T')[0]) || ''; //regular expression untuk mendapatkan data dari elemn html
                     continue;
                 }
+                if(key == 'type'){
+                    modalBodyTempSTR = typeInsert(data['type'], modalBodyTempSTR);
+                }
                 modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key]) || '';
+                modalHeaderTempSTR = modalHeaderTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key]) || '';
                 // console.log(modalBodySTR)
                 // modalBody = modalBodySTR.replace(new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`),data[key]) 
             }
@@ -91,6 +100,65 @@
         // console.log(modalBodySTR);
         modalHeader.innerHTML = modalHeaderTempSTR;
         modalBody.innerHTML = modalBodyTempSTR;
+    }
+
+    //khusun untuk data dengan tipe source maka harus ada pengecekan tertentu
+    function sourceInsert(data, modalBodyTempSTR, modelPath){
+        //bila ada colum type
+        let str = ``;
+        let resReg = '';
+        switch(modelPath){
+            case 'galeri':
+                if(Object.keys(data).find(e => e == 'type')){
+                    if(data.type == 'image'){
+                        str = `
+                        <img src='/storage/${data.source}' />
+                        `
+                        resReg =  modalBodyTempSTR.replace((new RegExp(`<fill_source>(.*?)<\/fill_source>`, 'g')),str) || '';
+                        return resReg.replace((new RegExp(`<fill_source_text>(.*?)<\/fill_source_text>`, 'g')),data.source) || resReg; //diproses kembali supaya hasil yg diharapkan berupa text dapat ditampilkan
+                    }else if(data.type == 'video'){
+                        resReg =  modalBodyTempSTR.replace((new RegExp(`<fill_source>(.*?)<\/fill_source>`, 'g')),data.source) || '';
+                        return resReg;
+                    }
+                    console.error('tidak ada tipe yang sesuai dengan source')
+                    return modalBodyTempSTR
+                }
+            break
+            case 'berita' :
+
+        }
+
+        console.error('kolom tipe tidak ada')
+        return modalBodyTempSTR;
+
+    }
+
+    function typeInsert(type, modalBodyTempSTR){
+        console.log('tipe adalah', type)
+        let str = ``;
+        switch(type){
+            case 'image':
+                str = `
+                <p class="text-base  leading-relaxed bg-[#facc15] rounded-full px-3 mx-2">
+                    Image
+                </p>
+                `
+                return modalBodyTempSTR.replace((new RegExp(`<fill_type>(.*?)<\/fill_type>`, 'g')),str) || '';
+                break
+            case 'video':
+                str = `
+                <p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">
+                    Video
+                </p>
+                `
+                return modalBodyTempSTR.replace((new RegExp(`<fill_type>(.*?)<\/fill_type>`, 'g')),str) || '';
+                break
+                break;
+
+            default:
+                console.error('ttipe tidak valid')
+                return modalBodyTempSTR;
+        }
     }
 
     function getData (id){

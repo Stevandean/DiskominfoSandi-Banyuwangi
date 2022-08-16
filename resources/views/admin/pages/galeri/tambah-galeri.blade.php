@@ -23,9 +23,6 @@
       <div class="mb-6">
         <x-admin.input inputName="Judul" formName="title" />
       </div>
-      <div class="mb-6"><!--password-->
-        <x-admin.input inputName="Slug" formName="slug" />
-      </div>
       <div class="mb-6">
         <x-admin.input inputName="Source" formName="source" />
       </div>
@@ -51,7 +48,6 @@
       // ------- test untuk error -----------
       
       let title
-      let slug
       let type
       let source
       let body
@@ -105,7 +101,6 @@
       //untuk mengisi form
       function fillForm(){
         title = form_title_text.input.value
-        slug = form_slug_text.input.value
         body = form_body_editor.input.value
         type = TabType.value
         if(TabType.value == 'image'){
@@ -116,7 +111,6 @@
 
         data.set('_token', '{{csrf_token()}}');
         data.set('title', title);
-        data.set('slug', slug);
         data.set('type', type);
         data.set('source', source);
         data.set('body', body);

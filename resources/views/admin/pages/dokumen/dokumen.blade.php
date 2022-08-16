@@ -182,10 +182,10 @@
   <x-admin.modal-detail modelPath="dokumen" >
     <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
         <h3 class="text-xl font-semibold text-gray-900">
-            Dokumen Terbaru
+            <fill_name></fill_name>
         </h3>
         <h3 class="text-lg text-center font-semibold">
-            19 - July - 2022
+            <fill_created_at></fill_created_at>
         </h3>
     </div>
     <!-- Modal body -->

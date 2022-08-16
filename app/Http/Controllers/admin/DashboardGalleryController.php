@@ -59,14 +59,12 @@ class DashboardGalleryController extends Controller
         if($request->type == 'image'){
             $validated = $request->validate([
                 'title' => 'min:2|required',
-                'slug' => 'required',
                 'type' => 'required',
                 'body' => 'required',
             ]);
         }elseif($request->type == 'video'){
             $validated = $request->validate([
                 'title' => 'min:2|required',
-                'slug' => 'required',
                 'type' => 'required',
                 'body' => 'required',
                 'source' => 'url'
@@ -118,9 +116,12 @@ class DashboardGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Gallery $galeri)
     {
-        //
+        return view('admin.pages.galeri.edit-galeri',[
+            'title' => 'Tambah galeri',
+            'pageAction' => 'Tambah galeri'
+        ]);
     }
 
     /**
