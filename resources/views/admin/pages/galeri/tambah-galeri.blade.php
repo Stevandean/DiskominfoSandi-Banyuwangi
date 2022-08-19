@@ -17,22 +17,22 @@
       @csrf
       <div class="mb-6">
         <div class="inline-block w-3/5 text-sm font-medium text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
-          <x-admin.tab-radio />
+          <x-admin.tab-radio  active="image" />
         </div>
       </div>
       <div class="mb-6">
-        <x-admin.input inputName="Judul" formName="title" />
+        <x-admin.input input-name="Judul" form-name="title" />
       </div>
       <div class="mb-6">
-        <x-admin.input inputName="Source" formName="source" />
+        <x-admin.input input-name="Source" form-name="source" />
       </div>
       <div id="wrp" class="mb-6">
-        <x-admin.input-upload type="image" inputName="File Gambar" formName="source" :isReadOnly=false :isError=false >
+        <x-admin.input-upload type="image" input-name="File Gambar" form-name="source" :is-filled=false :is-read-only=false :is-error=false >
           hanya file gambar, untuk video bisa dimasukan kedalam input text
         </x-admin.input-upload>
       </div>
       <div class="mb-6">
-        <x-admin.body-editor inputName="Body" formName="body" />
+        <x-admin.body-editor input-name="Body" form-name="body" />
       </div>
       <div class="mb-6">
         <x-admin.form-button btnName="send" :isAjax=true>

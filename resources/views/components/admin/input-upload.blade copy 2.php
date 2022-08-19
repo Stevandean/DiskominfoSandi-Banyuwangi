@@ -9,8 +9,8 @@
               <p class="mb-2 text-sm text-gray-500 text-center"><span class="font-semibold">klik untuk upload</span> atau drag dan drop</p>
               <p class="text-xs text-gray-500 text-center">{{ $slot }}</p>
             </div>
-            <div id="filled-only">
-              {{-- <p class="mb-2 text-sm text-gray-500 text-center"><span class="font-semibold">ini adalah input read only</span></p> --}}
+            <div id="rd-only">
+              <p class="mb-2 text-sm text-gray-500 text-center"><span class="font-semibold">ini adalah input read only</span></p>
               <p class="mb-2 text-sm text-gray-500 text-center"><span class="font-semibold">{{ $infoFileReadOnly }}</span></p>
             </div>
             </div>
@@ -45,13 +45,13 @@
     errUpload 
     formInput;
     fileVal; //untuk menyimpan varibel file [file sesungguhnya]
-    isFilled
+    isReadOnly
     type;
     extPattern = /\.([0-9a-z]+)(?=[?#])|(\.)(?:[\w]+)$/gmi //regex untuk mengesktak ekstensi
     
-    constructor(formName,isFilled, type){
+    constructor(formName,isReadOnly, type){
       this.formName = formName;
-      this.isFilled = isFilled;
+      this.isReadOnly = isReadOnly;
       this.type = type;
       this.main()
     }
@@ -100,7 +100,7 @@
         event.stopPropagation();
         event.preventDefault();
         let file = event.dataTransfer.files
-        this.cekFile(file, this.isFilled);
+        this.cekFile(file, this.isReadOnly);
       });
     }
 
@@ -119,8 +119,8 @@
       return false;
     }
 
-    cekFile(file, isFilled = this.isFilled){
-      // if(isFilled) return false; //jika hanya readonly maka akan meloncati functionya
+    cekFile(file, isReadOnly = this.isReadOnly){
+      if(isReadOnly) return false; //jika hanya readonly maka akan meloncati functionya
 
       const fileList = file;
       this.dropArea.classList.remove('bg-gray-100', 'border-sky-400')
@@ -146,19 +146,19 @@
       //jika gagal maka hapus file
       this.input.value = null;
       //tampilkan pesan gagal
-      this.errUpload.innerHTML = `file bukan ${this.type}, mohon masukan file yg sesuai`
+      this.errUpload.innerHTML = "file bukan pdf, mohon masukan file yg sesuai"
       this.errUpload.classList.toggle('hidden')
       this.dropArea.classList.add('border-red-500')
       
       console.log(this.input.value)
     }
-    setFilled(val){
+    setReadOnly(val){
       if(val){
         this.dropArea.querySelector('#wr').classList.add('hidden')
-        this.dropArea.querySelector('#filled-only').classList.remove('hidden')
+        this.dropArea.querySelector('#rd-only').classList.remove('hidden')
       }else{
         this.dropArea.querySelector('#wr').classList.remove('hidden')
-        this.dropArea.querySelector('#filled-only').classList.add('hidden')
+        this.dropArea.querySelector('#rd-only').classList.add('hidden')
       }
     }
 
@@ -176,9 +176,8 @@
     main(){
       console.log('test untuk menjalankan class')
       this.readElement();
-      this.setFilled(this.isFilled)
-      // if(!this.isFilled)
-      this.addEvent();
+      this.setReadOnly(this.isReadOnly)
+      if(!this.isReadOnly)this.addEvent();
       console.log(this.formInput)
     }
   }
@@ -188,6 +187,6 @@
 
 @push('var-script')
     <script>
-      const form_{{ $formName ."_file" }} = new InputUpload("{{ $formName }}",{{ $isFilled? 'true' : 'false' }}, "{{ $type }}");
+      const form_{{ $formName ."_file" }} = new InputUpload("{{ $formName }}",{{ $isReadOnly? 'true' : 'false' }}, "{{ $type }}");
     </script>
 @endpush

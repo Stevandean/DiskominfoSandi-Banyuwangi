@@ -52,15 +52,20 @@
       //keyword penyelesaian put di laavel :laravel response method not allowed when use PUT request from fetch()
       fetch('/admin/dokumen/{{ $document->id }}', {
         method: 'POST',
-        headers:{"X-CSRF-Token": "{{ csrf_token() }}"},
+        headers:{
+          "X-CSRF-Token": "{{ csrf_token() }}",
+          'Accept': 'application/json'
+        },
         mode: 'same-origin',
         body: data
       })
-      .then(res => res.json())
+      .then(async res =>[res.status, await res.json()])
       .then(result => {
         console.log(result)
-        if(result.success){
+        if(result[1].success){
           window.location = '/admin/dokumen'
+        }else if(res[0] == 422){
+          form_name_text.error(true, res[0].errors.name); 
         }
       })
       .catch(err => console.error(err))

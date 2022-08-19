@@ -13,7 +13,7 @@ class TabRadio extends Component
      *
      * @return void
      */
-    public function __construct($isReadOnly = false, $active)
+    public function __construct( $active, $isReadOnly = false)
     {
         $this->isReadOnly = $isReadOnly;
         $this->active = $active;

@@ -132,9 +132,36 @@ class DashboardGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Gallery $galeri)
     {
-        //
+        // return response()->json(['request' => $request->all()]);
+        if($request->type == 'image'){
+            $validated = $request->validate([
+                'title' => 'min:2|required',
+                'type' => 'required',
+            ]);
+
+            //mneghapus data lama dan mengubahnya dengan data baru, jika diberi data baru
+            if($request->hasFile('source')){
+                Storage::delete($request->oldSource);
+                $validated['source'] = $request->file('source')->store('gallery-src');
+            }
+        }elseif($request->type == 'video'){
+            $validated = $request->validate([
+                'title' => 'min:2|required',
+                'type' => 'required',
+                'source' => 'url'
+            ]);
+        }else{
+            return response(422)->json(['error' => 'ada error dengan typenya']);
+        }
+
+        
+
+        Gallery::where('id', $galeri->id)
+                    ->update($validated);
+        $request->session()->flash('success', 'data berhasil diubah'); //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        return response()->json([$validated, 'success' => true]); //respon menggunakan json
     }
 
     /**
@@ -148,9 +175,7 @@ class DashboardGalleryController extends Controller
         if($galeri->source){
             Storage::delete('gallery-src/'.$galeri->source);
         }
-
         Gallery::destroy($galeri->id);
-
         return redirect('/admin/galeri')->with('success', 'data telah berhasil dihapus');
     }
 }

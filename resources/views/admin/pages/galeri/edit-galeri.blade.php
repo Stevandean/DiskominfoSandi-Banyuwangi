@@ -9,30 +9,32 @@
           xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        Tambah Galeri yang baru
+        Edit {{ $gallery->title }}
       </a>
     </div>
     <hr>
     <form id="form-upload" class="p-5" action="/admin/galeri" method="post">
       @csrf
+
+      <input id="old-source" type="hidden" name="oldSource" value="{{ $gallery->source }}">
       <div class="mb-6">
         <div class="inline-block w-3/5 text-sm font-medium text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
           <x-admin.tab-radio active="image" :isReadOnly=true />
         </div>
       </div>
       <div class="mb-6">
-        <x-admin.input inputName="Judul" formName="title" />
+        <x-admin.input inputName="Judul" formName="title" inputValue="{{ $gallery->title }}" />
       </div>
       <div class="mb-6">
-        <x-admin.input inputName="Source" formName="source" />
+        <x-admin.input inputName="Source" formName="source" inputValue="{{ $gallery->source }}" />
       </div>
       <div id="wrp" class="mb-6">
-        <x-admin.input-upload infoFileReadOnly="{{ $gallery->source }}" type="image" inputName="File Gambar" formName="source" :isReadOnly=true :isError=false >
+        <x-admin.input-upload infoFileReadOnly="{{ $gallery->source }}" type="image" inputName="File Gambar" formName="source" :isFilled=true :isError=false >
           hanya file gambar, untuk video bisa dimasukan kedalam input text
         </x-admin.input-upload>
       </div>
       <div class="mb-6">
-        <x-admin.body-editor inputName="Body" formName="body" />
+        <x-admin.body-editor inputValue="{{ strip_tags($gallery->body) }}" inputName="Body" formName="body" />
       </div>
       <div class="mb-6">
         <x-admin.form-button btnName="send" :isAjax=true>
@@ -52,24 +54,23 @@
       let source
       let body
       let form = document.querySelector('form#form-upload');
-      let data = new FormData(form);
+      let oldSource = document.querySelector('#old-source').value;
+      let data = new FormData();
 
 
-      //secara default gambar selected dan form text source hidden
-      source = form_source_file.fileVal
-      form_source_text.setHidden(true)
+      //secara default source akan dibuat kosong
+      // jadi ketika ada data yang dimasukan, baru nilanya akan beisi dan dapat digunakan untuk menimpa data yg ada
+      //jadi seumpama user tidak menginputkan data, maka data akan tetap ada
 
-      //untuk membuat elemen source menjadi dinamis
-      TabType.form.addEventListener('change', (e)=> { 
-        console.log(e.target.value)
-        if(e.target.value == 'image'){
+      //untuk memnetukan form tergantung tipenya
+      if(TabType.value == 'image'){
           form_source_file.setHidden(false)
           form_source_text.setHidden(true)
         }else{
           form_source_file.setHidden(true)
           form_source_text.setHidden(false)
-        }
-      });
+      }
+
 
       //untuk menangani bila gerdapat error yg dilempar
       function handleError(err){
@@ -114,12 +115,14 @@
         data.set('type', type);
         data.set('source', source);
         data.set('body', body);
+        data.set('oldSource', oldSource);
+        data.set('_method', 'PUT');
       }
 
       //untukmelakukan upload
-      console.log('ini adalah console..og sebelum upload')
+      console.log('ini adalah console.log sebelum upload')
       function upload(){
-        fetch('/admin/galeri',{
+        fetch('/admin/galeri/{{ $gallery->id }}',{
           method: 'POST',
           headers:{
             // "X-CSRF-Token": "{{ csrf_token() }}",
