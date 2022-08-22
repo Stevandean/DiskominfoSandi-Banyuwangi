@@ -6,13 +6,14 @@ use App\Http\Controllers\guest\HomeController;
 use App\Http\Controllers\guest\NewsController;
 use App\Http\Controllers\guest\PPIDController;
 use App\Http\Controllers\guest\ProfilController;
-use App\Http\Controllers\guest\DocumentandOtherController;
 
-use App\Http\Controllers\admin\DashboardDocumentController;
-use App\Http\Controllers\admin\DashboardGalleryController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\DashboardLinkController;
 use App\Http\Controllers\admin\DashboardNewsController;
+use App\Http\Controllers\admin\DashboardGalleryController;
 use App\Http\Controllers\admin\DashboardServiceController;
+use App\Http\Controllers\guest\DocumentandOtherController;
+use App\Http\Controllers\admin\DashboardDocumentController;
 
 
 //------------------ ## GUEST ## ----------------------
@@ -53,7 +54,7 @@ Route::redirect('/admin', '/admin/login');
 //lupa membuat login😔
 
 Route::prefix('admin')->group(function(){
-    Route::get('dashboard', fn()=> view('admin.pages.dashboard'));
+    Route::get('dashboard', [DashboardController::class, 'index']);
     Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']); //route untuk download
     Route::resource('dokumen', DashboardDocumentController::class);
     Route::resource('galeri', DashboardGalleryController::class);
