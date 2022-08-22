@@ -19,26 +19,26 @@
       <input id="old-source" type="hidden" name="oldSource" value="{{ $gallery->source }}">
       <div class="mb-6">
         <div class="inline-block w-3/5 text-sm font-medium text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
-          <x-admin.tab-radio active="image" :isReadOnly=true />
+          <x-admin.tab-radio active="image" :is-read-only=true />
         </div>
       </div>
       <div class="mb-6">
-        <x-admin.input inputName="Judul" formName="title" inputValue="{{ $gallery->title }}" />
+        <x-admin.input input-name="Judul" form-name="title" input-value="{{ $gallery->title }}" />
       </div>
       <div class="mb-6">
-        <x-admin.input inputName="Source" formName="source" inputValue="{{ $gallery->source }}" />
+        <x-admin.input input-name="Source" form-name="source" input-value="{{ $gallery->source }}" />
       </div>
       <div id="wrp" class="mb-6">
-        <x-admin.input-upload infoFileReadOnly="{{ $gallery->source }}" type="image" inputName="File Gambar" formName="source" :isFilled=true :isError=false >
+        <x-admin.input-upload infoFileReadOnly="{{ $gallery->source }}" type="image" input-name="File Gambar" form-name="source" :is-filled=true :is-error=false >
           hanya file gambar, untuk video bisa dimasukan kedalam input text
         </x-admin.input-upload>
       </div>
       <div class="mb-6">
-        <x-admin.body-editor inputValue="{{ strip_tags($gallery->body) }}" inputName="Body" formName="body" />
+        <x-admin.body-editor input-value="{{ strip_tags($gallery->body) }}" input-name="Body" form-name="body" />
       </div>
       <div class="mb-6">
-        <x-admin.form-button btnName="send" :isAjax=true>
-          tambah
+        <x-admin.form-button btn-name="send" :is-ajax=true>
+          Ubah
         </x-admin.form-button>
       </div>
     </form>

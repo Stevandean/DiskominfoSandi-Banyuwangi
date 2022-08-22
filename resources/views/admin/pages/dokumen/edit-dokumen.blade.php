@@ -15,7 +15,7 @@
     <form id="form-upload" class="p-5" action="/admin/dokumen" method="post" enctype="multipart/form-data"> 
       @csrf
       <div class="mb-6"><!-- nama dokumen -->
-        <x-admin.input inputName="Nama" formName="name" inputValue="{{ $document->name }}"  />
+        <x-admin.input input-name="Nama" form-name="name" input-value="{{ $document->name }}"  />
       </div>
       <div class="mb-6"><!--preview file-->
         <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Preview </p>
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="mb-6">
-        <x-admin.form-button btnName="send" isAjax={{ true }}>
+        <x-admin.form-button btn-name="send" isAjax={{ true }}>
           Edit
         </x-admin.form-button>
       </div>

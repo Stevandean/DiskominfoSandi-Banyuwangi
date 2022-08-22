@@ -83,7 +83,7 @@
     addEvent(){
       this.input.addEventListener('change', function(e){
         // console.log(this.files);
-        cekFile(this.files);
+        this.cekFile(this.files);
         // console.log(this.value)
       })
       this.dropArea.addEventListener('dragover', (event) => {

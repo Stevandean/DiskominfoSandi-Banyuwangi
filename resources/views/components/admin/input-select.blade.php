@@ -46,7 +46,7 @@
                 //mendapat element select dari form [berupa html collection, jadi lebih sulit diolah]
                 // let dt = this.formInput.children[1].children //->menghasilkan htmlcollection namun tidak bisa menggunakna perulangan
                 let dt = this.input
-
+                
                 //jadi saya menggunakan for of
                 for(let dat of dt){
                     this.selectData.push([dat.getAttribute('value'), dat.innerHTML]);
@@ -68,7 +68,11 @@
             }
 
             test(){
+                console.log(this.formInput);
                 console.log(this.selectData);
+                console.log(this.input)
+                console.log(document.querySelector(`#${this.formName}`))
+                
             }
             
         }
@@ -80,3 +84,16 @@
         const form_{{ $formName."_select" }} = new SelectInput(JSON.parse('{!! $getAllAttribute() !!}'))
     </script>
 @endpush
+
+{{-- 
+## NOTE🗒️ ##
+
+disini terdapat sebuah kondisi yang mungkin sepertinya kurang ingin dihasilkan.
+ketika menggunakan query selector, yang dihasilkan bukanya "DOMElement" melainkan "HTML collection".
+saya sudah berusaha mencarinya beberapa hari tapi masih belum menemukan jawaban yang jelas.
+tapi untungnya hal ini tidak terlalu berpengaruh dengan jalannya program, sehingga masalah ini untuk
+kedepanya akan saya langkahi terlebih dahulu, mungkin saja ditengah jalan saya menyempurnakan program ini,
+saya mendapat pencerahan tentang masalah ini.
+
+    
+--}}

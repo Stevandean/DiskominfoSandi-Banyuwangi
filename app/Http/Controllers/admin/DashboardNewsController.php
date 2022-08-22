@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardNewsController extends Controller
 {
@@ -14,7 +16,12 @@ class DashboardNewsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.berita.berita',[
+            'title' => 'semua berita',
+            'news' => News::latest()->filter(request(['search','category']))->paginate(7)->withQueryString(),
+            'newsCount' =>News::latest()->filter(request(['search','category']))->count(),
+            'pageAction' => 'Berita'
+        ]);
     }
 
     /**
@@ -24,7 +31,10 @@ class DashboardNewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.berita.tambah-berita',[
+            'title' => 'tambah berita',
+            'pageAction' => 'menambahkan berita baru'
+        ]);
     }
 
     /**
@@ -35,7 +45,21 @@ class DashboardNewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json($request);
+
+        $validated = $request->validate([
+            'title' => 'required|max:100',
+            'slug' => 'required',
+            'body' => 'required'
+        ]);
+
+        //untuk mengakali user id
+        $validated['user_id'] = 1;
+
+        News::create($validated);
+        $request->session()->flash('success', 'data berhasil ditambah');
+        return response()->json([$validated, 'success' => true]);
+
     }
 
     /**
@@ -44,9 +68,9 @@ class DashboardNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(News $beritum)
     {
-        //
+        return response()->json([$beritum]);
     }
 
     /**
@@ -55,9 +79,13 @@ class DashboardNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(News $beritum)
     {
-        //
+        return view('admin.pages.berita.edit-berita',[
+            'title' => 'Edit Berita',
+            'pageAction' => 'Edit '.$beritum->title,
+            'news' => $beritum
+        ]);
     }
 
     /**
@@ -67,9 +95,25 @@ class DashboardNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, News $beritum)
     {
-        //
+        // return response()->json(['request' => $request->all()]);
+        $validated = $request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:news,slug,'.$beritum->id, //untuk melakukan ignore dengan data yang akan diubah
+            'image' => 'nullable|file',
+        ]);
+        
+        if($request->hasFile('image')){
+            $validated['image'] = $request->file('image')->store('news-src');
+            Storage::delete($request->oldImage);
+        }else{
+            $validated['image'] = $request->oldImage;
+        }
+
+        News::where('id', $beritum->id)->update($validated);
+        $request->session()->flash('success', 'data berhasil diubah'); //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        return response()->json([$validated, 'success' => true]); //respon menggunakan json
     }
 
     /**
@@ -78,8 +122,12 @@ class DashboardNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(News $beritum)
     {
-        //
+        if($beritum->image){
+            Storage::delete($beritum->image);
+        }
+        News::destroy($beritum->id);
+        return redirect('/admin/berita')->with('success', 'data telah berhasil dihapus');
     }
 }

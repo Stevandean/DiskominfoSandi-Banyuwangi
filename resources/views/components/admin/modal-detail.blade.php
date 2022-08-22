@@ -59,9 +59,13 @@
             console.log(model)
             for(let key in data){
                 console.log(key, data[key])
-                if(key == 'source'){
+                if(key == 'source' || key == 'image'){
                     modalBodyTempSTR = sourceInsert(data, modalBodyTempSTR, model);
-                    // continue;
+                    continue;
+                }
+                if(key == 'author'){
+                    console.log('insert untuk author')
+                    userInsert(data.author) //akan melakukan insert data dengan menggunakan manipulasi DOM
                 }
                 if(key == 'created_at'){
                     modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key].split('T')[0]) || ''; //regular expression untuk mendapatkan data dari elemn html
@@ -70,6 +74,9 @@
                 }
                 if(key == 'type'){
                     modalBodyTempSTR = typeInsert(data['type'], modalBodyTempSTR);
+                }
+                if(key == 'category'){
+                    modalBodyTempSTR = categoryInsert(data['category'], modalBodyTempSTR)
                 }
                 modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key]) || '';
                 modalHeaderTempSTR = modalHeaderTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key]) || '';
@@ -102,6 +109,16 @@
         modalBody.innerHTML = modalBodyTempSTR;
     }
 
+    function userInsert(user){
+        let table = document.querySelector('#table-user')
+        table.querySelector('#name-show').innerHTML = user.name
+        table.querySelector('#username-show').innerHTML = user.username
+        table.querySelector('#email-show').innerHTML = user.email
+        console.log(table)
+        console.log(table.parent)
+        // return table.parent.parent.outerHTML
+    }
+
     //khusun untuk data dengan tipe source maka harus ada pengecekan tertentu
     function sourceInsert(data, modalBodyTempSTR, modelPath){
         //bila ada colum type
@@ -125,7 +142,12 @@
                 }
             break
             case 'berita' :
-
+                str = `
+                    <img src='/storage/${data.image}' />
+                    `
+                    resReg =  modalBodyTempSTR.replace((new RegExp(`<fill_image>(.*?)<\/fill_image>`, 'g')),str) || '';
+                    return resReg.replace((new RegExp(`<fill_image_text>(.*?)<\/fill_image_text>`, 'g')),data.image) || resReg; //diproses kembali supaya hasil yg diharapkan berupa text dapat ditampilkan
+            break
         }
 
         console.error('kolom tipe tidak ada')
@@ -133,8 +155,9 @@
 
     }
 
+
+
     function typeInsert(type, modalBodyTempSTR){
-        console.log('tipe adalah', type)
         let str = ``;
         switch(type){
             case 'image':
@@ -153,8 +176,33 @@
                 `
                 return modalBodyTempSTR.replace((new RegExp(`<fill_type>(.*?)<\/fill_type>`, 'g')),str) || '';
                 break
-                break;
-
+            default:
+                console.error('ttipe tidak valid')
+                return modalBodyTempSTR;
+        }
+    }
+    function categoryInsert(category, modalBodyTempSTR){
+        console.log('tipe adalah', category)
+        let str = ``;
+        switch(category){
+            case 'berita':
+                str = `
+                <p class="text-base  leading-relaxed bg-[#facc15] rounded-full px-3 mx-2">Berita</p>
+                `
+                return modalBodyTempSTR.replace((new RegExp(`<fill_category>(.*?)<\/fill_category>`, 'g')),str) || '';
+                break
+            case 'goverment':
+                str = `
+                <p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">Goverment</p>
+                `
+                return modalBodyTempSTR.replace((new RegExp(`<fill_category>(.*?)<\/fill_category>`, 'g')),str) || '';
+                break
+            case 'technology':
+            str = `
+                <p class="text-base  leading-relaxed bg-[#0091ff] rounded-full px-3 mx-2">Technology</p>
+                `
+                return modalBodyTempSTR.replace((new RegExp(`<fill_category>(.*?)<\/fill_category>`, 'g')),str) || '';
+                break
             default:
                 console.error('ttipe tidak valid')
                 return modalBodyTempSTR;
@@ -173,6 +221,7 @@
             try{
                 modalData = await getData(this.getAttribute('data-id'));
                 console.log(modalData);
+                console.log(this.getAttribute('data-id'));
                 updateDetailModal(modalData[0],"{{ $modelPath }}");
                 toggleModal();
             }catch(err){

@@ -173,7 +173,7 @@ class DashboardGalleryController extends Controller
     public function destroy(Gallery $galeri)
     {
         if($galeri->source){
-            Storage::delete('gallery-src/'.$galeri->source);
+            Storage::delete($galeri->source);
         }
         Gallery::destroy($galeri->id);
         return redirect('/admin/galeri')->with('success', 'data telah berhasil dihapus');
