@@ -14,10 +14,12 @@
     <hr>
     <form id="form-upload" class="p-5" action="/admin/dokumen" method="post" enctype="multipart/form-data"> 
       @csrf
-      <div class="mb-6"><!-- nama dokumen -->
+      <div class="mb-6">
+        <!-- nama dokumen -->
         <x-admin.input inputName="Nama" formName="name" />
       </div>
-      <div class="mb-6"><!--upload file-->
+      <div class="mb-6">
+        <!--upload file-->
         <x-admin.input-upload type="pdf" inputName="Dokumen PDF" formName="source" :isReadOnly=false :isError=false >
         </x-admin.input-upload>
       </div>

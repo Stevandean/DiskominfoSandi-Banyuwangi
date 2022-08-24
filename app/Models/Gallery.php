@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gallery extends Model
 {
+    protected $guarded=['id'];
     use HasFactory;
 
     public function scopeFilter($query, array $filters){

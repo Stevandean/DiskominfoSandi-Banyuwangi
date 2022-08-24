@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Link;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardLinkController extends Controller
 {
@@ -14,7 +15,15 @@ class DashboardLinkController extends Controller
      */
     public function index()
     {
-        //
+        $linkTerkait = Link::latest() -> filter (request (['search', 'type'])) -> paginate(7) -> withQueryString();
+        $linkTerkaitCount = Link::latest() -> filter (request (['search', 'type'])) -> count();
+        
+        return view ('admin.pages.link-terkait.link-terkait', [
+            'linkTerkait' => $linkTerkait,
+            'linkTerkaitCount' => $linkTerkaitCount,
+            'title' => 'Link Terkait',
+            'pageAction' => 'Link Terkait',
+        ]);
     }
 
     /**
@@ -24,7 +33,10 @@ class DashboardLinkController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.link-terkait.tambah-link-terkait', [
+            'title' => 'Tambah Link Terkait',
+            'pageAction' => 'Tambah Link Terkait'
+        ]);
     }
 
     /**
@@ -35,7 +47,18 @@ class DashboardLinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Melakukan Validasi
+        $validated = $request -> validate ([
+            'name' => 'required',
+            'description' => 'required',
+            'link' => 'required',
+        ]);
+
+        Link::create ($validated);
+        $request -> session() -> flash ('success', 'Data berhasil ditambah');
+
+        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        return redirect ('/admin/link-terkait') ->with ('success', 'Data berhasil ditambah');
     }
 
     /**
@@ -44,9 +67,9 @@ class DashboardLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Link $linkTerkait)
     {
-        //
+        return response() -> json ([$linkTerkait]);
     }
 
     /**
@@ -55,9 +78,13 @@ class DashboardLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Link $linkTerkait)
     {
-        //
+        return view ('admin.pages.link-terkait.edit-link-terkait', [
+            'linkTerkait' => $linkTerkait,
+            'title' => 'Edit Link Terkait',
+            'pageAction' => 'Edit Link Terkait',
+        ]);
     }
 
     /**
@@ -67,9 +94,20 @@ class DashboardLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Link $linkTerkait)
     {
-        //
+        //melakukan validasi
+        $validated = $request -> validate([
+            'name' => 'required',
+            'description' => 'required',
+            'link' => 'required',
+        ]);
+
+        Link::where ('id', $linkTerkait -> id) 
+                        -> update ($validated);
+        $request -> session() -> flash ('success', 'Data berhasil diubah');
+        
+        return redirect ('/admin/link-terkait') -> with ('success', 'Data berasil diubah');
     }
 
     /**
@@ -78,8 +116,10 @@ class DashboardLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(link $linkTerkait)
     {
-        //
+        Link::destroy($linkTerkait -> id);
+
+        return redirect ('/admin/link-terkait') -> with ('success', 'Data berhasil dihapus');
     }
 }

@@ -47,7 +47,25 @@ class DashboardGalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //melakukan  validasi
+        $validated = $request -> validate([
+            'title' => 'required | max:225',
+            'type' => 'required',
+            'source' => 'required',
+            'body' => 'required',
+        ]);
+
+        //jika ada dokumen yang diupload
+        //jika gambar ada, maka simpan pada folder berikut
+        if($request->file('source')){
+            $validated['source'] = $request->file('source')->storeAs('galeri-src', str_replace(' ', '-',$request->name).".pdf");
+        //simpan nama file ke array validated, jadi bukan file yg disimpan
+        }
+
+        Gallery::create($validated);
+        $request->session()->flash('success', 'Data berhasil ditambah');
+        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        return redirect('/admin/galeri')->with('success', 'Data berhasil di tambah');
     }
 
     /**
@@ -67,9 +85,13 @@ class DashboardGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Gallery $galeri)
     {
-        //
+        return view ('admin.pages.galeri.edit-galeri', [
+            'galery' => $galeri,
+            'title' => 'Edit Galery',
+            'pageAction' => 'Edit Galery',
+        ]);
     }
 
     /**
@@ -79,9 +101,23 @@ class DashboardGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Gallery $galeri)
     {
-        //
+        //melakukan validasi
+        $validated = $request->validate([
+            'title' => 'required|max:225',
+            'type' => 'required',
+            'source' => 'required',
+            'body' => 'required',
+        ]);
+
+        Gallery::where('id', $galeri->id)
+                    ->update($validated);
+        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        $request->session()->flash('success', 'data berhasil diubah'); 
+
+        return redirect('/admin/galeri')->with('success', 'Data berhasil di ubah');
+
     }
 
     /**

@@ -1,13 +1,17 @@
 @extends('admin.layouts.main')
 
 @section('container')
-  <div class="flex justify-between flex-wrap xl:flex-nowrap mx-2 sm:mx-0 gap-2 mb-7"> <!-- tool bar-->
+  <div class="flex justify-between flex-wrap xl:flex-nowrap mx-2 sm:mx-0 gap-2 mb-7"> 
+    <!-- tool bar-->
     <x-admin.search-input inputValue="{{ request('search') }}" />
-    <div class="mx-auto xl:mx-0"> <!-- untuk pagination -->
+    <div class="mx-auto xl:mx-0"> 
+      <!-- untuk pagination -->
       {{ $documents->links('vendor.pagination.admin-pagination') }}
     </div>
-  </div><!--akhir toolbar-->
+  </div>
+  <!--akhir toolbar-->
 
+  <!-- Alert -->
   {{-- alert --}}
   @if (session()->has('success'))
   <x-admin.alert type="success" msg="{{ session('success') }}"/>
@@ -18,6 +22,7 @@
   @if (session()->has('default'))
   <x-admin.alert type="default" msg="{{ session('default') }}"/>
   @endif
+  <!-- Akhir Alert -->
 
   <!--data-->
   <div class="shadow-md bg-white rounded-lg p-3 pt-4">
@@ -43,8 +48,8 @@
     </div>
     <hr>
     <div class="overflow-x-auto relative">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <table class="w-full text-sm text-left text-gray-500">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50">
               <tr>
                   <th scope="col" class="py-3 px-6">
                       #

@@ -9,4 +9,21 @@ class Link extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function scopeFilter($query, array $filters){
+
+        $query->when($filters['search'] ?? false, function($query, $search) {
+            return $query->where(function($query) use ($search) {
+                 $query->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('body', 'like', '%' .$search. '%');
+            });
+        });
+
+        $query->when($filters['type'] ?? false, function($query, $type){ 
+            return $query->where(function($query) use ($type){
+                $query->where('type', 'like', $type);
+            });
+        });
+
+    }
 }
