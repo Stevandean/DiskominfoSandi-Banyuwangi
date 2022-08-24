@@ -171,47 +171,47 @@
   
   <x-admin.modal-detail modelPath="layanan" >
     <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
-        <h3 class="text-xl font-semibold text-gray-900">
-            <fill_name></fill_name>
-        </h3>
-        <h3 class="text-lg text-center font-semibold">
-            <fill_created_at></fill_created_at>
-        </h3>
+      <h3 class="text-xl font-semibold text-gray-900">
+         <span class="fill-detail" data-key="name"></span>
+      </h3>
+      <h3 class="text-lg text-center font-semibold">
+          <span class="fill-detail" data-key="created_at"></span>
+      </h3>
     </div>
     <!-- Modal body -->
     <div class="p-6 space-y-3">
-        <div class="flex">
-            <p class="text-base leading-relaxed font-semibold">
-                Nama :
-            </p>
-            <p class="text-base leading-relaxed mx-2">
-                <fill_name></fill_name>
-            </p>
-        </div>
-        <div class="flex">
-            <p class="text-base leading-relaxed font-semibold">
-                Tanggal Dibuat :
-            </p>
-            <p class="text-base leading-relaxed mx-2">
-              <fill_created_at></fill_created_at>
-            </p>
-        </div>
-        <div class="flex flex-wrap">
-            <p class="text-base  leading-relaxed font-semibold">
-                Deskripsi :
-            </p>
-            <p class="text-base leading-relaxed mx-2 break-all">
-              <fill_description></fill_description>
-            </p>
-        </div>
-        <div class="flex flex-wrap">
-            <p class="text-base  leading-relaxed font-semibold">
-                Link :
-            </p>
-            <p class="text-base leading-relaxed mx-2 break-all">
-              <fill_link></fill_link>
-            </p>
-        </div>
+      <div class="flex">
+          <p class="text-base leading-relaxed font-semibold">
+              Nama :
+          </p>
+          <p class="text-base leading-relaxed mx-2">
+             <span class="fill-detail" data-key="name"></span>
+          </p>
+      </div>
+      <div class="flex">
+          <p class="text-base leading-relaxed font-semibold">
+              Tanggal Dibuat :
+          </p>
+          <p class="text-base leading-relaxed mx-2">
+            <span class="fill-detail" data-key="created_at"></span>
+          </p>
+      </div>
+      <div class="flex flex-wrap">
+          <p class="text-base  leading-relaxed font-semibold">
+              Deskripsi :
+          </p>
+          <p class="text-base leading-relaxed mx-2 break-all">
+            <span class="fill-detail" data-key="description"></span>
+          </p>
+      </div>
+      <div class="flex flex-wrap">
+          <p class="text-base  leading-relaxed font-semibold">
+              Link :
+          </p>
+          <p class="text-base leading-relaxed mx-2 break-all">
+            <span class="fill-detail" data-key="link"></span>
+          </p>
+      </div>
     </div>
   </x-admin.modal-detail>
 @endsection

@@ -18,15 +18,20 @@
 
 @push('add-script')
 <script>
-    let openModal = document.querySelectorAll('.btn-detail');
-    let modalDetail = document.querySelector('#modal-detail');
-    let modalClose = document.querySelector('.close-modal-detail');
+    let openModal = document.querySelectorAll('.btn-detail'); //button untuk mentrigger kemunculan modal
+    let modalDetail = document.querySelector('#modal-detail'); //semmua modalnya
+    let modalContentDetail = modalDetail.querySelector('.modal-detail-content'); //wrapper untuk modal header dan body
+    let modalClose = document.querySelector('.close-modal-detail'); //tombol untuk menutup modal
     let modalHeader = modalDetail.querySelectorAll('.modal-detail-content > div')[0];
     let modalBody = modalDetail.querySelectorAll('.modal-detail-content > div')[1];
     let modalData;
+    let modalField =[]; //data yang diekstrak dari elemen modal detail
+    let userData = {}; //ini hanya digunakan untuk menapikan tabel user pada berita
 
-    let modalBodySTR = modalBody.innerHTML;
-    let modalHeaderSTR = modalHeader.innerHTML;
+    const para = document.createElement("p");
+    const node = document.createTextNode("This is new.");
+    para.appendChild(node);
+    console.log(para)
 
     //------------ function untuk toggle modal -----------
     function toggleModal(){
@@ -47,167 +52,117 @@
     modalClose.addEventListener('click', ()=> toggleModal());
     modalDetail.addEventListener('click',(e)=> e.target == modalDetail? toggleModal() : false);
 
-    // ----------- membuka modal ---------------
-    //disini tempat tag template di proses untuk diubah menjadi data
-    //untuk ketentuanya yaitu
-    //<fill_{nama data}></fill_{nama data}>
-    function updateDetailModal(data, model){
-        let modalBodyTempSTR = modalBodySTR
-        let modalHeaderTempSTR = modalHeaderSTR
-        let dat;
-        if(data != undefined){
-            console.log(model)
-            for(let key in data){
-                console.log(key, data[key])
-                if(key == 'source' || key == 'image'){
-                    modalBodyTempSTR = sourceInsert(data, modalBodyTempSTR, model);
-                    continue;
-                }
-                if(key == 'author'){
-                    console.log('insert untuk author')
-                    userInsert(data.author) //akan melakukan insert data dengan menggunakan manipulasi DOM
-                }
-                if(key == 'created_at'){
-                    modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key].split('T')[0]) || ''; //regular expression untuk mendapatkan data dari elemn html
-                    modalHeaderTempSTR = modalHeaderTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key].split('T')[0]) || ''; //regular expression untuk mendapatkan data dari elemn html
-                    continue;
-                }
-                if(key == 'type'){
-                    modalBodyTempSTR = typeInsert(data['type'], modalBodyTempSTR);
-                }
-                if(key == 'category'){
-                    modalBodyTempSTR = categoryInsert(data['category'], modalBodyTempSTR)
-                }
-                modalBodyTempSTR = modalBodyTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key]) || '';
-                modalHeaderTempSTR = modalHeaderTempSTR.replace((new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`, 'g')),data[key]) || '';
-                // console.log(modalBodySTR)
-                // modalBody = modalBodySTR.replace(new RegExp(`<fill_${key}>(.*?)<\/fill_${key}>`),data[key]) 
-            }
-        }else{
-            modalBodyTempSTR = `
-            <div class="bg-red-100 max-w-full mx-auto rounded-md p-4">
-                <p class="font-bold text-red-800">Terjadi Kesalaahan</p>
-                <p class="text-red-800">mungkin disebabkan hal-hal berikut :</p>
-                <hr class="bg-red-600 my-2">
-                <ul class="list-disc list-inside text-red-600">
-                    <li>Jaringan Internet</li>
-                    <li>Proxy atau VPN</li>
-                    <li>Server yang bermasalah</li>
-                    <li>Data tidak ada / valid</li>
-                </ul>
-            </div>
-            `;
-            modalHeaderTempSTR = `
-            <h3 class="text-xl font-semibold text-gray-900">
-                Data bermasalah
-            </h3>
-            `;
-        }
-        
-        // console.log(modalBodySTR);
-        modalHeader.innerHTML = modalHeaderTempSTR;
-        modalBody.innerHTML = modalBodyTempSTR;
+    //function untuk mentukan banyak field yg tersedia, lalu menyimpanya menjadi sebuah array
+    //digunakna untuk mempermudah filter
+    function defineField(){
+        let keysElement = modalContentDetail.querySelectorAll('.fill-detail');
+        // console.log(keysElement)
+        // console.log(modalContentDetail)
+        // console.log(modalDetail)
+        keysElement.forEach(el => {
+            modalField.push({name:el.getAttribute('data-key'), element: el});
+        })
+        console.log(modalField)
     }
+    defineField();
+    
 
-    function userInsert(user){
-        let table = document.querySelector('#table-user')
-        table.querySelector('#name-show').innerHTML = user.name
-        table.querySelector('#username-show').innerHTML = user.username
-        table.querySelector('#email-show').innerHTML = user.email
-        console.log(table)
-        console.log(table.parent)
-        // return table.parent.parent.outerHTML
-    }
+    // ----------- update  modal ---------------
+    function updateDetailModal(data,model){
+        // console.log(data)
+        // console.log(modalField)
+        // for(let key in data){
+        //     modalContentDetail.querySelector(`[data-key=${key}]`) 
+        //         ? modalContentDetail.querySelector(`[data-key=${key}]`).innerHTML = data[key]
+        //         : ''
+        // }
 
-    //khusun untuk data dengan tipe source maka harus ada pengecekan tertentu
-    function sourceInsert(data, modalBodyTempSTR, modelPath){
-        //bila ada colum type
-        let str = ``;
-        let resReg = '';
-        switch(modelPath){
+        switch(model){
+            case 'dokumen':
+                for(let key in data){
+                    console.log(key)
+                    modalField
+                        .filter(el => el.name == key)
+                        .forEach(el =>{
+                            console.log(el)
+                            el.element.innerHTML = data[key]
+                            if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
+                        })
+                }
+                break;
             case 'galeri':
-                if(Object.keys(data).find(e => e == 'type')){
-                    if(data.type == 'image'){
-                        str = `
-                        <img src='/storage/${data.source}' />
-                        `
-                        resReg =  modalBodyTempSTR.replace((new RegExp(`<fill_source>(.*?)<\/fill_source>`, 'g')),str) || '';
-                        return resReg.replace((new RegExp(`<fill_source_text>(.*?)<\/fill_source_text>`, 'g')),data.source) || resReg; //diproses kembali supaya hasil yg diharapkan berupa text dapat ditampilkan
-                    }else if(data.type == 'video'){
-                        resReg =  modalBodyTempSTR.replace((new RegExp(`<fill_source>(.*?)<\/fill_source>`, 'g')),data.source) || '';
-                        return resReg;
-                    }
-                    console.error('tidak ada tipe yang sesuai dengan source')
-                    return modalBodyTempSTR
+                for(let key in data){
+                    console.log(key)
+                    modalField
+                        .filter(el => el.name == key)
+                        .forEach(el =>{
+                            console.log(el)
+                            el.element.innerHTML = data[key]
+                            if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
+                            if(el.element.hasAttribute('data-preview') && key == 'source' && data.type != 'video') el.element.innerHTML = `<img src="/storage/${data[key]}" />`
+                            if(key == 'type'){
+                                data[key] == 'image' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#facc15] rounded-full px-3 mx-2">Image</p>` : 
+                                data[key] == 'video' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">Video</p>` :
+                                el.element.innerHTML = '<span class="text-red-500" >Ada yang error</span>'
+                            }
+                        })
                 }
-            break
-            case 'berita' :
-                str = `
-                    <img src='/storage/${data.image}' />
-                    `
-                    resReg =  modalBodyTempSTR.replace((new RegExp(`<fill_image>(.*?)<\/fill_image>`, 'g')),str) || '';
-                    return resReg.replace((new RegExp(`<fill_image_text>(.*?)<\/fill_image_text>`, 'g')),data.image) || resReg; //diproses kembali supaya hasil yg diharapkan berupa text dapat ditampilkan
-            break
-        }
-
-        console.error('kolom tipe tidak ada')
-        return modalBodyTempSTR;
-
-    }
-
-
-
-    function typeInsert(type, modalBodyTempSTR){
-        let str = ``;
-        switch(type){
-            case 'image':
-                str = `
-                <p class="text-base  leading-relaxed bg-[#facc15] rounded-full px-3 mx-2">
-                    Image
-                </p>
-                `
-                return modalBodyTempSTR.replace((new RegExp(`<fill_type>(.*?)<\/fill_type>`, 'g')),str) || '';
                 break
-            case 'video':
-                str = `
-                <p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">
-                    Video
-                </p>
-                `
-                return modalBodyTempSTR.replace((new RegExp(`<fill_type>(.*?)<\/fill_type>`, 'g')),str) || '';
-                break
-            default:
-                console.error('ttipe tidak valid')
-                return modalBodyTempSTR;
-        }
-    }
-    function categoryInsert(category, modalBodyTempSTR){
-        console.log('tipe adalah', category)
-        let str = ``;
-        switch(category){
             case 'berita':
-                str = `
-                <p class="text-base  leading-relaxed bg-[#facc15] rounded-full px-3 mx-2">Berita</p>
-                `
-                return modalBodyTempSTR.replace((new RegExp(`<fill_category>(.*?)<\/fill_category>`, 'g')),str) || '';
+
+                for(let key in data){
+                    console.log(key)
+                    modalField
+                        .filter(el => el.name == key)
+                        .forEach(el =>{
+                            console.log(el)
+                            if(key == 'author'){//karean pada field athor menggunakan return untuk menghentikan loop, maka sebaiknya author diletakan di paling bawah
+                                userData.name.innerHTML = data[key].name
+                                userData.username.innerHTML = data[key].username
+                                userData.email.innerHTML = data[key].email
+                                return;
+                            }
+                            el.element.innerHTML = data[key]
+                            if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
+                            if(el.element.hasAttribute('data-preview') && key == 'image') el.element.innerHTML = `<img src="/storage/${data[key]}" />`
+                            if(key == 'category'){
+                                data[key] == 'berita' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#facc15] rounded-full px-3 mx-2">Berita</p>` : 
+                                data[key] == 'goverment' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">Goverment</p>` :
+                                data[key] == 'technology' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#0091ff] rounded-full px-3 mx-2">Technology</p>` :
+                                el.element.innerHTML = '<span class="text-red-500" >Ada yang error</span>'
+                            }
+                            
+                        })
+                }
                 break
-            case 'goverment':
-                str = `
-                <p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">Goverment</p>
-                `
-                return modalBodyTempSTR.replace((new RegExp(`<fill_category>(.*?)<\/fill_category>`, 'g')),str) || '';
+
+            case 'link-terkait', 'layanan':
+            for(let key in data){
+                    console.log(key)
+                    modalField
+                        .filter(el => el.name == key)
+                        .forEach(el =>{
+                            el.element.innerHTML = data[key]
+                            if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0]
+                        })
+                }
                 break
-            case 'technology':
-            str = `
-                <p class="text-base  leading-relaxed bg-[#0091ff] rounded-full px-3 mx-2">Technology</p>
-                `
-                return modalBodyTempSTR.replace((new RegExp(`<fill_category>(.*?)<\/fill_category>`, 'g')),str) || '';
-                break
-            default:
-                console.error('ttipe tidak valid')
-                return modalBodyTempSTR;
         }
+
     }
+
+    //function untuk tabel user
+    function defineUserTable(){
+        if(typeof table != 'undefined'){
+            let table = modalDetail.querySelector('#table-user')
+            userData.name =  table.querySelector('#name-show')
+            userData.username = table.querySelector('#username-show')
+            userData.email = table.querySelector('#email-show')
+        }
+        console.log(userData)
+    }
+    defineUserTable();
+    
 
     function getData (id){
         return fetch(`/admin/{{ $modelPath }}/${id}`)
@@ -221,7 +176,7 @@
             try{
                 modalData = await getData(this.getAttribute('data-id'));
                 console.log(modalData);
-                console.log(this.getAttribute('data-id'));
+                // console.log(this.getAttribute('data-id'));
                 updateDetailModal(modalData[0],"{{ $modelPath }}");
                 toggleModal();
             }catch(err){

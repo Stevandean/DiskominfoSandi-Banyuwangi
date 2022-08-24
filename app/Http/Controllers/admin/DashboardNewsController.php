@@ -45,13 +45,18 @@ class DashboardNewsController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json($request);
+        // return response()->json($request);
 
         $validated = $request->validate([
             'title' => 'required|max:100',
             'slug' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'image' => 'file'
         ]);
+
+        if($request->hasFile('image')){
+            $validated['image'] = $request->file('image')->store('news-src');
+        }
 
         //untuk mengakali user id
         $validated['user_id'] = 1;
@@ -102,6 +107,7 @@ class DashboardNewsController extends Controller
             'title' => 'required',
             'slug' => 'required|unique:news,slug,'.$beritum->id, //untuk melakukan ignore dengan data yang akan diubah
             'image' => 'nullable|file',
+            'body' => 'nullable'
         ]);
         
         if($request->hasFile('image')){

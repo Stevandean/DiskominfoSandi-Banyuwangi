@@ -145,7 +145,8 @@
                     {{ $loop->iteration }}
                   </th>
                   <td class="py-4 px-6 ">
-                      <img class="w-24" src="../images/cliff.jpg" alt="">
+                      {{-- <img class="w-24" src="../images/cliff.jpg" alt=""> --}}
+                      <img class="w-24" src="{{ $news->image ? asset('/storage/'.$news->image) : '../images/cliff.jpg' }}" alt="">
                   </td>
                   <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                     {{  Str::limit($news->title, 30, "...")}}
@@ -216,10 +217,10 @@
   <x-admin.modal-detail modelPath="berita" >
     <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
         <h3 class="text-xl font-semibold text-gray-900">
-            <fill_title></fill_title>
+          <span class="fill-detail" data-key="title"></span>
         </h3>
         <h3 class="text-lg text-center font-semibold">
-            <fill_created_at></fill_created_at>
+          <span class="fill-detail" data-key="created_at"></span>
         </h3>
     </div>
     <!-- Modal body -->
@@ -229,7 +230,7 @@
                 Judul :
             </p>
             <p class="text-base leading-relaxed mx-2">
-                <fill_title></fill_title>
+              <span class="fill-detail" data-key="title"></span>
             </p>
         </div>
         <div class="flex">
@@ -237,21 +238,21 @@
                 Slug :
             </p>
             <p class="text-base leading-relaxed mx-2">
-                <fill_slug></fill_slug>
+              <span class="fill-detail" data-key="slug"></span>
             </p>
         </div>
         <div class="flex">
             <p class="text-base leading-relaxed font-semibold">
                 Kategori :
             </p>
-            <fill_category></fill_category>
+            <span class="fill-detail" data-key="category"></span>
         </div>
         <div class="flex">
             <p class="text-base leading-relaxed font-semibold">
                 Tanggal Dibuat :
             </p>
             <p class="text-base leading-relaxed mx-2">
-              <fill_created_at></fill_created_at>
+              <span class="fill-detail" data-key="created_at"></span>
             </p>
         </div>
         <div class="flex flex-wrap">
@@ -259,7 +260,7 @@
                 Gambar :
             </p>
             <p class="text-base leading-relaxed mx-2 break-all">
-              <fill_image></fill_image>
+              <span class="fill-detail" data-key="image" data-preview="true"></span>
             </p>
         </div>
         <div class="flex flex-wrap">
@@ -267,7 +268,7 @@
                 Gambar-source :
             </p>
             <p class="text-base leading-relaxed mx-2 break-all">
-              <fill_image_text></fill_image_text>
+              <span class="fill-detail" data-key="image"></span>
             </p>
         </div>
         <div class="flex flex-wrap">
@@ -275,12 +276,14 @@
                 Body :
             </p>
             <p class="text-base leading-relaxed mx-2 break-all">
-              <fill_body></fill_body>
+              <span class="fill-detail" data-key="body"></span>
             </p>
         </div>
+        <span class="fill-detail" data-key="author"></span>
     </div>
     <!-- table user -->
     <div class="p-6">
+      <span class="fill_detail" data-key="author"></span>
         <p class="text-base leading-relaxed mx-2 break-all">
           <div class="overflow-x-auto relative border border-gray-400 rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 ">

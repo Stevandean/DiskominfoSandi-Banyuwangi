@@ -140,7 +140,12 @@
                   {{ $loop->iteration }}
                 </th>
                 <td class="py-4 px-6 ">
-                    <img class="w-24" src="../img/cliff.jpg" alt="">
+                    {{-- <img class="w-24" src="../img/cliff.jpg" alt=""> --}}
+                    @if ($gallery->type == 'image')
+                    <div class="max-h-16 overflow-hidden">
+                      <img src="{{ Storage::exists($gallery->source )? asset('/storage/'.$gallery->source) : '../images/cliff.jpg' }}" class="max-w-[6rem] max-h-16" alt="ini seharusnya gambar" >
+                    </div>
+                    @endif
                 </td>
                 <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                     {{ $gallery->title }}
@@ -204,10 +209,10 @@
       <!-- Modal header -->
     <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-600 mx-5">
         <h3 class="text-xl font-semibold text-gray-900">
-            <fill_title></fill_title>
+          <span class="fill-detail" data-key="title"></span>
         </h3>
         <h3 class="text-lg text-center font-semibold">
-            <fill_created_at></fill_created_at>
+          <span class="fill-detail" data-key="created_at"></span>
         </h3>
     </div>
     <!-- Modal body -->
@@ -217,7 +222,7 @@
                 Judul :
             </p>
             <p class="text-base leading-relaxed mx-2">
-                <fill_title></fill_title>
+              <span class="fill-detail" data-key="title"></span>
             </p>
         </div>
         <div class="flex flex-wrap">
@@ -225,7 +230,7 @@
                 File :
             </p>
             <p class="text-base leading-relaxed mx-2">
-                <fill_source_text></fill_source_text>
+              <span class="fill-detail" data-key="source" ></span>
                 {{-- <img src="/images/cliff.jpg" alt="" srcset=""> --}}
             </p>
         </div>
@@ -233,20 +238,20 @@
             <p class="text-base leading-relaxed font-semibold">
                 Preview :
             </p>
-            <fill_source></fill_source>
+            <span class="fill-detail" data-key="source" data-preview="true"></span>
         </div>
         <div class="flex">
             <p class="text-base leading-relaxed font-semibold">
-                Type :
+                Type : 
             </p>
-            <fill_type></fill_type>
+            <span class="fill-detail" data-key="type" ></span>
         </div>
         <div class="flex flex-wrap">
             <p class="text-base  leading-relaxed font-semibold">
                 Body :
             </p>
             <p class="text-base leading-relaxed mx-2 break-all">
-                <fill_body></fill_body>
+              <span class="fill-detail" data-key="body" ></span>
             </p>
         </div>
     </div>

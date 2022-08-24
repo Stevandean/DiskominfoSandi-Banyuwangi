@@ -182,10 +182,10 @@
   <x-admin.modal-detail modelPath="dokumen" >
     <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
         <h3 class="text-xl font-semibold text-gray-900">
-            <fill_name></fill_name>
+            <span class="fill-detail" data-key="name"></span>
         </h3>
         <h3 class="text-lg text-center font-semibold">
-            <fill_created_at></fill_created_at>
+          <span class="fill-detail" data-key="created_at"></span>
         </h3>
     </div>
     <!-- Modal body -->
@@ -195,7 +195,7 @@
                 Nama :
             </p>
             <p class="text-base leading-relaxed mx-2">
-                <fill_name></fill_name>
+              <span class="fill-detail" data-key="name"></span>
             </p>
         </div>
         <div class="flex">
@@ -203,7 +203,7 @@
                 Tanggal Dibuat :
             </p>
             <p class="text-base leading-relaxed mx-2">
-              <fill_created_at></fill_created_at>
+              <span class="fill-detail" data-key="created_at"></span>
             </p>
         </div>
         <div class="flex flex-wrap">
@@ -211,7 +211,7 @@
                 Source :
             </p>
             <p class="text-base leading-relaxed mx-2 break-all">
-              <fill_source></fill_source>
+              <span class="fill-detail" data-key="source"></span>
             </p>
         </div>
     </div>
