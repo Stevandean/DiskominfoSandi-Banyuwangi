@@ -16,7 +16,7 @@
     </div>
 </div>
 
-@push('add-script')
+@push('add-script-history')
 <script>
     let openModal = document.querySelectorAll('.btn-detail'); //button untuk mentrigger kemunculan modal
     let modalDetail = document.querySelector('#modal-detail'); //semmua modalnya
@@ -184,5 +184,214 @@
             }
         });
     })
+</script>
+@endpush
+
+
+@push('add-script')
+<script>
+
+    class ModalDetail{
+        openModal
+        modalDetail
+        modalContentDetail
+        modalClose
+        modalHeader
+        modalBody 
+        modalData
+        modalField
+        userData
+        modelPath
+
+        constructor(modelPath){
+
+            //readDom and define later usable var
+            this.openModal = document.querySelectorAll('.btn-detail'); //button untuk mentrigger kemunculan modal
+            this.modalDetail = document.querySelector('#modal-detail'); //semmua modalnya
+            this.modalContentDetail = this.modalDetail.querySelector('.modal-detail-content'); //wrapper untuk modal header dan body
+            this.modalClose = document.querySelector('.close-modal-detail'); //tombol untuk menutup modal
+            this.modalHeader = this.modalDetail.querySelectorAll('.modal-detail-content > div')[0];
+            this.modalBody = this.modalDetail.querySelectorAll('.modal-detail-content > div')[1];
+            this.modalData;
+            this.modalField =[]; //data yang diekstrak dari elemen modal detail
+            this.userData = {}; //ini hanya digunakan untuk menapikan tabel user pada berita
+            this.modelPath = modelPath
+
+            this.defineField();
+            if(modelPath == "berita") this.defineUserTable();
+            this.visibilityEvent()
+            this.defineEventShow()
+
+            console.log(modelPath, this.modelPath)
+
+        }
+
+        //untuk visibility modal
+        visibilityEvent(){
+            this.modalClose.addEventListener('click', ()=> this.toggleModal());
+            this.modalDetail.addEventListener('click',(e)=> {e.target == this.modalDetail ? this.toggleModal() : false});
+        }
+
+
+        //------------ function untuk toggle modal -----------
+        toggleModal(){
+            let modalDetail = this.modalDetail
+            if(modalDetail.classList.contains('hidden')){
+                modalDetail.classList.remove('hidden');
+                setTimeout(() => {
+                    modalDetail.classList.remove('opacity-0');
+                }, 10);
+            }else{
+                modalDetail.classList.add('opacity-0');
+                setTimeout(() => {
+                    modalDetail.classList.add('hidden');
+                }, 350);
+            }
+        }
+
+        //function untuk mentukan banyak field yg tersedia, lalu menyimpanya menjadi sebuah array
+        //digunakna untuk mempermudah filter
+        defineField(){
+            let keysElement = this.modalContentDetail.querySelectorAll('.fill-detail');
+            keysElement.forEach(el => {
+                this.modalField.push({name:el.getAttribute('data-key'), element: el});
+            })
+
+            console.log(keysElement)
+            console.log(this.modalField)
+            console.log(this.modelPath)
+        }
+        
+
+        // ----------- update  modal ---------------
+        updateDetailModal(data,model){
+
+            let modalField = this.modalField
+            let userData
+            if(model == 'berita') {
+                userData = this.userData
+                console.log(userData)
+            }
+
+            switch(model){
+                case 'dokumen':
+                    for(let key in data){
+                        console.log(key)
+                        modalField
+                            .filter(el => el.name == key)
+                            .forEach(el =>{
+                                console.log(el)
+                                el.element.innerHTML = data[key]
+                                if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
+                            })
+                    }
+                    break;
+                case 'galeri':
+                    for(let key in data){
+                        console.log(key)
+                        modalField
+                            .filter(el => el.name == key)
+                            .forEach(el =>{
+                                console.log(el)
+                                el.element.innerHTML = data[key]
+                                if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
+                                if(el.element.hasAttribute('data-preview') && key == 'source' && data.type != 'video') el.element.innerHTML = `<img src="/storage/${data[key]}" />`
+                                if(key == 'type'){
+                                    data[key] == 'image' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#facc15] rounded-full px-3 mx-2">Image</p>` : 
+                                    data[key] == 'video' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">Video</p>` :
+                                    el.element.innerHTML = '<span class="text-red-500" >Ada yang error</span>'
+                                }
+                            })
+                    }
+                    break
+                case 'berita':
+                    for(let key in data){
+                        console.log(key)
+                        modalField
+                            .filter(el => el.name == key)
+                            .forEach(el =>{
+                                console.log(el)
+                                if(key == 'author'){//karean pada field athor menggunakan return untuk menghentikan loop, maka sebaiknya author diletakan di paling bawah
+                                    userData.name.innerHTML = data[key].name
+                                    userData.username.innerHTML = data[key].username
+                                    userData.email.innerHTML = data[key].email
+                                    return;
+                                }
+                                el.element.innerHTML = data[key]
+                                if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
+                                if(el.element.hasAttribute('data-preview') && key == 'image') el.element.innerHTML = `<img src="/storage/${data[key]}" />`
+                                if(key == 'category'){
+                                    data[key] == 'berita' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#facc15] rounded-full px-3 mx-2">Berita</p>` : 
+                                    data[key] == 'goverment' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">Goverment</p>` :
+                                    data[key] == 'technology' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#0091ff] rounded-full px-3 mx-2">Technology</p>` :
+                                    el.element.innerHTML = '<span class="text-red-500" >Ada yang error</span>'
+                                }
+                                
+                            })
+                    }
+                    break
+    
+                case 'link-terkait', 'layanan':
+                for(let key in data){
+                        console.log(key)
+                        modalField
+                            .filter(el => el.name == key)
+                            .forEach(el =>{
+                                el.element.innerHTML = data[key]
+                                if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0]
+                            })
+                    }
+                break
+                default:
+            }
+        }
+
+
+        //function untuk tabel user
+        defineUserTable(){
+            let userData = this.userData;
+            let table = this.modalDetail.querySelector('#table-user')
+            if(typeof table != 'undefined' || table === null){
+                userData.name =  table.querySelector('#name-show')
+                userData.username = table.querySelector('#username-show')
+                userData.email = table.querySelector('#email-show')
+            }
+        }
+
+
+        getData(modelPath,id){
+            //mungkinn this tidak bisa digunakan ddalam function yg mereturn value
+            // console.log(this)
+            // console.log(this.modelPath)
+            return fetch(`/admin/${modelPath}/${id}`)
+                .then(res => res.json())
+                .then(res => res)
+                .catch(err => err)
+        }
+    
+
+        //define button to trigger modal open
+        defineEventShow(){
+            //supaya variabelnya dapat diakses tanpa this didalam
+
+            this.openModal.forEach( btn => {
+                btn.addEventListener('click', async (e) => {
+                    try{
+                        this.modalData = await this.getData(this.modelPath ,btn.getAttribute('data-id'));
+                        console.log(this.modalData);
+                        this.updateDetailModal(this.modalData[0],this.modelPath);
+                        this.toggleModal();
+                    }catch(err){
+                        console.error(err);
+                    }
+                });
+            })
+        }
+
+    }
+    
+    //membuat objectnya
+    let modalDetail = new ModalDetail('{{ $modelPath }}')
+
 </script>
 @endpush
