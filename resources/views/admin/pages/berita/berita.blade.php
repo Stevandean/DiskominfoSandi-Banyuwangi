@@ -1,10 +1,14 @@
 @extends('admin.layouts.main')
 
 @section('container')
-  <div class="flex justify-between flex-wrap xl:flex-nowrap gap-2 mb-7"> <!-- tool bar-->
+  <div class="flex justify-between flex-wrap xl:flex-nowrap gap-2 mb-7 mx-2"> <!-- tool bar-->
     <!-- untuk pencaria -->
     <x-admin.search-input-dropdown inputValue="{{ request('search') }}" >
-      <select id="category" name="category" class="sm:basis-1/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <select 
+        id="category" 
+        name="category" 
+        class="sm:basis-1/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 px-5 focus-within:outline-0"
+        >
         <option value="" selected>semua</option>
         <option value="berita" @selected(request('category') == 'berita')>berita</option>
         <option value="goverment" @selected(request('category') == 'goverment')>goverment</option>
@@ -34,14 +38,15 @@
     <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
       
       <!-- info data -->
+      <span class="font-bold text-xl text-blue-kominfo">
       @if(request('category') && request('search'))
-      <span class="font-bold text-xl text-blue-kominfo">{{ request('category') }} : {{ request('search') }}
+      {{ request('category') }} : {{ request('search') }}
       @elseif(request('category'))
-      <span class="font-bold text-xl text-blue-kominfo">Jenis : {{ request('category') }}
+      Jenis : {{ request('category') }}
       @elseif (request('search'))
-      <span class="font-bold text-xl text-blue-kominfo">Hasil dari : {{ request('search') }}
+      Hasil dari : {{ request('search') }}
       @else
-        <span class="font-bold text-xl text-blue-kominfo">{{ $pageAction }}
+        {{ $pageAction }}
       @endif
         <span class="text-blue-900 bg-blue-300 text-lg font-normal px-7 rounded-2xl">{{ $newsCount }} item</span>
       </span>

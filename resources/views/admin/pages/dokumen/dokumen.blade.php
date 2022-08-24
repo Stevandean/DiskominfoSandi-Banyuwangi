@@ -22,10 +22,11 @@
   <!--data-->
   <div class="shadow-md bg-white rounded-lg p-3 pt-4">
     <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
+      <span class="font-bold text-xl text-blue-kominfo">
       @if (request('search'))
-      <span class="font-bold text-xl text-blue-kominfo">Hasil dari : {{ request('search') }}
+      Hasil dari : {{ request('search') }}
       @else
-      <span class="font-bold text-xl text-blue-kominfo">{{ $pageAction }}
+      {{ $pageAction }}
       @endif
         <span class="text-blue-900 bg-blue-300 text-lg font-normal px-7 rounded-2xl">{{ $documentCount }} item</span>
       </span>

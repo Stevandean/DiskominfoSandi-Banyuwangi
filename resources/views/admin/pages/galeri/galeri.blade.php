@@ -3,7 +3,13 @@
 @section('container')
   <div class="flex justify-between flex-wrap xl:flex-nowrap mx-2 sm:mx-0 gap-2 mb-7"> <!-- tool bar-->
     <x-admin.search-input-dropdown inputValue="{{ request('search') }}" >
-      <select id="type" name="type" class="sm:basis-1/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <select 
+        id="type" 
+        name="type" 
+        class="sm:basis-1/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 focus-within:outline-0 block w-full p-2.5 px-5"
+        >
+        {{-- <p>test untuk menampilkan teks</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg> --}}
         <option value="" selected>semua</option>
         <option value="image" @selected(request('type') == 'image')>gambar</option>
         <option value="video" @selected(request('type') == 'video')>video</option>
@@ -30,14 +36,15 @@
     <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
 
       <!-- info data -->
+      <span class="font-bold text-xl text-blue-kominfo">
       @if(request('type') && request('search'))
-      <span class="font-bold text-xl text-blue-kominfo">{{ request('type') }} : {{ request('search') }}
+      {{ request('type') }} : {{ request('search') }}
       @elseif(request('type'))
-      <span class="font-bold text-xl text-blue-kominfo">Jenis : {{ request('type') }}
+      Jenis : {{ request('type') }}
       @elseif (request('search'))
-      <span class="font-bold text-xl text-blue-kominfo">Hasil dari : {{ request('search') }}
+      Hasil dari : {{ request('search') }}
       @else
-        <span class="font-bold text-xl text-blue-kominfo">{{ $pageAction }}
+      {{ $pageAction }}
       @endif
         <span class="text-blue-900 bg-blue-300 text-lg font-normal px-7 rounded-2xl">{{ $galleryCount }} item</span>
       </span>
