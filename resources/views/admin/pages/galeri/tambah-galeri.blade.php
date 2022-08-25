@@ -4,56 +4,47 @@
   <!--data-->
   <div class="md:shadow-md bg-white rounded-lg p-3 pt-4">
     <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
-      <span class="font-bold text-xl text-blue-kominfo inline-flex items-center">
+      <a href="/admin/galeri" class="font-bold text-xl text-blue-kominfo inline-flex items-center">
         <svg 
           xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
         Tambah Galeri
-      </span>
+      </a>
     </div>
     <hr>
-    <form class="p-5" action="/admin/dokumen" method="post">
-      <div class="mb-6"><!--password-->
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Judul</label>
-        <input type="password" id="password" class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-within:outline-blue-500 focus:border-blue-500 block w-full p-2.5 " required><!--border-red-600-->
+    <form class="p-5" action="/admin/galeri" method="post">
+      @csrf
+      @error('title')
+        {{ $message }}
+      @endError
+      <div class="mb-6">
+        <label for="judul" class="block mb-2 text-sm font-medium text-gray-900">Judul</label>
+        <input type="text" id="judul" name="title" class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-within:outline-blue-500 focus:border-blue-500 block w-full p-2.5 " >
         <!-- pesar error -->
-        <p id="filled_error_help" class=" hidden mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
-        <!-- akhir pesar error -->
-      </div>
-      <div class="mb-6"><!--password-->
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Slug</label>
-        <input type="password" id="password" class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-within:outline-blue-500 focus:border-blue-500 block w-full p-2.5 " required><!--border-red-600-->
-        <!-- pesar error -->
-        <p id="filled_error_help" class=" hidden mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
+        <p id="filled_error_help" class=" hidden mt-2 text-xs text-red-600 "><span class="font-medium">Oh, snapp!</span> Some error message.</p>
         <!-- akhir pesar error -->
       </div>
       <div class="mb-6">
-        <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Tipe*</label>
-        <select id="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option value="gambar" selected>Gambar</option>
+        <label for="type" class="block mb-2 text-sm font-medium text-gray-900">Tipe*</label>
+        <select id="type" name="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <option value="image" selected>Gambar</option>
           <option value="video">Video</option>
         </select>
         <p class="mt-1 text-sm text-gray-500 ">pilih antara gambar dan video, bila video hrus menggunakan upload tersendiri</p>
       </div>
       <div class="mb-6">
-        <x-admin.input inputName="Source" formName="source" />
+        <label for="source" class="block mb-2 text-sm font-medium text-gray-900">Source</label>
+        <input type="text" name="source" id="source" class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-within:outline-blue-500 focus:border-blue-500 block w-full p-2.5 ">
       </div>
-      <div id="wrp" class="mb-6"><!--upload file / sumber-->
-        {{-- <x-admin.input-upload type="image" inputName="file gambar" formName="source" >
-        hanya menerima file gambar
-        </x-admin.input-upload> --}}
-        <x-admin.input-upload type="image" inputName="File Gambar" formName="source" :isReadOnly=false :isError=false >
-          hanya file gambar, untuk video bisa dimasukan kedalam input text
-        </x-admin.input-upload>
-      </div>
+      
       <div class="mb-6">
         <p class="block mb-2 text-sm font-medium text-gray-900 ">Body</p>
         <input type="hidden" name="body" id="body">
         <trix-editor input="body"></trix-editor>
       </div>
       <div class="mb-6">
-        <button class="text-sm bg-blue-700 hover:bg-blue-800 text-white focus:ring-4 focus:ring-blue-300 py-4 px-12 rounded-md w-full sm:w-auto">
+        <button type="submit" class="text-sm bg-blue-700 hover:bg-blue-800 text-white focus:ring-4 focus:ring-blue-300 py-4 px-12 rounded-md w-full sm:w-auto">
           <div class="flex items-center justify-center h-full table-fixed">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -75,10 +66,10 @@
 
       let sourceElement = 
       `
-      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sumber</label>
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Sumber</label>
       <input type="password" id="password" class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-within:outline-blue-500 focus:border-blue-500 block w-full p-2.5 " required><!--border-red-600-->
       <!-- pesar error -->
-      <p id="filled_error_help" class=" hidden mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
+      <p id="filled_error_help" class=" hidden mt-2 text-xs text-red-600 "><span class="font-medium">Oh, snapp!</span> Some error message.</p>
       <!-- akhir pesar error -->
       `
 

@@ -14,11 +14,13 @@
     <hr>
     <form id="form-upload" class="p-5" action="/admin/dokumen" method="post" enctype="multipart/form-data"> 
       @csrf
-      <div class="mb-6"><!-- nama dokumen -->
+      <div class="mb-6">
+        <!-- nama dokumen -->
         <x-admin.input inputName="Nama" formName="name" inputValue="{{ $document->name }}"  />
       </div>
-      <div class="mb-6"><!--preview file-->
-        <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Preview </p>
+      <div class="mb-6">
+        <!--preview file-->
+        <p class="block mb-2 text-sm font-medium text-gray-900">Preview </p>
         <div class="pdf">
           <iframe class="rounded-md w-full h-80" src="{{ asset('storage/'.$document->source) }}"></iframe>
         </div>

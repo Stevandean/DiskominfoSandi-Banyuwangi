@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage; 
 
 class DashboardServiceController extends Controller
 {
@@ -14,7 +16,14 @@ class DashboardServiceController extends Controller
      */
     public function index()
     {
-        //
+        $service = Service::latest()->filter(request(['search','type']))->paginate(7)->withQueryString();
+        $serviceCount = Service::latest()->filter(request(['search', 'type']))->count();
+        return view('admin.pages.layanan.layanan', [
+            'service' => $service,
+            'serviceCount' => $serviceCount,
+            'title' => 'Layanan',
+            'pageAction' => 'Layanan'
+        ]);
     }
 
     /**
@@ -24,7 +33,10 @@ class DashboardServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.pages.layanan.tambah-layanan', [
+            'title' => 'Tambah Layanan',
+            'pageAction' => 'Tambah Layanan',
+        ]);
     }
 
     /**
@@ -35,7 +47,17 @@ class DashboardServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //melakukan validasi
+        $validated = $request -> validate ([
+            'name' => 'required | max:225',
+            'description' => 'required',
+            'link' => 'required',
+        ]);
+
+        Service::create($validated);
+        $request->session()->flash('success', 'data berhasil ditambah');
+        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        return redirect('/admin/layanan')->with('success','data berhasil di tambah');
     }
 
     /**
@@ -44,9 +66,9 @@ class DashboardServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Service $layanan)
     {
-        //
+        return response()->json([$layanan]);
     }
 
     /**
@@ -55,9 +77,13 @@ class DashboardServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $layanan)
     {
-        //
+        return view ('admin.pages.layanan.edit-layanan', [
+            'layanan' => $layanan,
+            'title' => 'Edit Layanan',
+            'pageAction' => 'Edit Layanan'
+        ]);
     }
 
     /**
@@ -67,9 +93,22 @@ class DashboardServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Service $layanan)
     {
-        //
+        //melakunan validasi
+        $validated = $request -> validate ([
+            'name' => 'required | max:225',
+            'description' => 'required',
+            'link' => 'required',
+        ]);
+
+        Service::where ('id', $layanan -> id)
+                        ->update ($validated);
+        $request -> session() -> flash ('success', 'data berhasil diubah');
+        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+
+        return redirect('/admin/layanan') -> with ('success', 'data berhasil diubah');
+
     }
 
     /**
@@ -78,8 +117,10 @@ class DashboardServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $layanan)
     {
-        //
+        Service::destroy($layanan -> id);
+
+        return redirect('/admin/layanan')-> with ('success', 'data telah berhasil dihapus');
     }
 }

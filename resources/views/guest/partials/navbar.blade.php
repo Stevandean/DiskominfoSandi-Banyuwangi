@@ -243,8 +243,8 @@
                 text-gray-700
                 hover:text-blue-600
                 hover:bg-gray-100"
-              href="/info"
-              >Info
+              href="/berita"
+              >Berita
             </a>
           </li>
           <li>
@@ -268,9 +268,6 @@
           </li>
         </ul>
       </div>      
-      <li class="mx-4 my-6 md:my-0">
-        <a href="/berita" class="text-xl hover:text-blue-600 duration-500">Berita</a>
-      </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="/layanan" class="text-xl hover:text-blue-600 duration-500">Layanan</a>
       </li>

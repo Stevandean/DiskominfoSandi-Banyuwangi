@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\News;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardNewsController extends Controller
 {
@@ -14,7 +16,15 @@ class DashboardNewsController extends Controller
      */
     public function index()
     {
-        //
+        $beritum = News::latest() -> filter (request(['search', 'type'])) -> paginate (7) -> withQueryString();
+        $beritumCount = News::latest() -> filter (request (['search', 'type'])) -> count();
+
+        return view ('admin.pages.berita.berita', [
+            'news' => $beritum,
+            'newsCount' => $beritumCount,
+            'title' => 'Berita', 
+            'pageAction' => 'Berita',
+        ]);
     }
 
     /**
@@ -24,7 +34,10 @@ class DashboardNewsController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.pages.berita.tambah-berita', [
+            'title' => 'Tambah Berita',
+            'pageAction' => 'Tambah Berita',
+        ]);
     }
 
     /**
@@ -35,7 +48,31 @@ class DashboardNewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return response()->json([
+        //     $request->all(),
+        //     $request->file('image')
+        // ]);
+        //melakukan validasi
+        $validated = $request -> validate ([
+            'image' => 'required | image',
+            'title' => 'required',
+            'publish_at' => 'nullable',
+            'category' => 'required',
+            'body' => 'required',
+            'slug' => 'required',
+        ]);
+
+        if($request->hasFile('image')){
+            $validated['image'] = $request->file('image')->store('news-src');
+        }
+
+        $validated['user_id'] = auth()->user()->id;
+
+        News::create ($validated);
+        $request -> session() -> flash ('success', 'Data berhasil ditambah');
+
+        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        return redirect ('/admin/berita') -> with ('success', 'Data berhasil ditambah');
     }
 
     /**
@@ -44,9 +81,9 @@ class DashboardNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(News $beritum)
     {
-        //
+        return response() -> json ([$beritum]);
     }
 
     /**
@@ -55,9 +92,13 @@ class DashboardNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(News $beritum)
     {
-        //
+        return view ('admin.pages.berita.edit-berita', [
+            'news' => $beritum,
+            'title' => 'Edit Berita',
+            'pageAction' => 'Edit Berita',
+        ]);
     }
 
     /**
@@ -67,9 +108,27 @@ class DashboardNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, News $beritum)
     {
-        //
+        //melakukan validasi
+        $validated = $request -> validate ([
+            'image' => 'nullable | image',
+            'title' => 'required',
+            'category' => 'required',
+            'body' => 'required',
+            'slug' => 'required',
+        ]);
+
+        if($request->hasFile('image')){
+            Storage::delete($request->oldImage);
+            $validated['image'] = $request->file('image')->store('news-src');
+        }
+
+        News::where ('id', $beritum -> id) 
+                    -> update ($validated);
+        $request -> session() -> flash ('success', 'Data berhasil diubah');
+        
+        return redirect ('/admin/berita') -> with ('success', 'Data berhasil diubah');
     }
 
     /**
@@ -78,8 +137,10 @@ class DashboardNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(News $beritum)
     {
-        //
+        News::destroy ($beritum -> id);
+
+        return redirect ('/admin/berita') -> with ('success', 'Data berhasil dihapus');
     }
 }

@@ -47,10 +47,7 @@ class DashboardDocumentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // ddd($request);
-        // return $request->file();
-        
+    {        
         //melakukan validasi
         $validated = $request->validate([
             'name' => 'required|max:225',
@@ -60,12 +57,15 @@ class DashboardDocumentController extends Controller
         //jika ada dokumen yang diupload
         //jika gambar ada, maka simpan pada folder berikut
         if($request->file('source')){
-            $validated['source'] = $request->file('source')->storeAs('document-src', str_replace(' ', '-',$request->name).".pdf"); //simpan nama file ke array validated, jadi bukan file yg disimpan
+            $validated['source'] = $request->file('source')->storeAs('document-src', str_replace(' ', '-',$request->name).".pdf"); 
+            //simpan nama file ke array validated, jadi bukan file yg disimpan
         }
 
         Document::create($validated);
-        $request->session()->flash('success', 'data berhasil ditambah'); //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
-        return response()->json([$validated, 'success' => true]); //respon menggunakan json
+        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        $request->session()->flash('success', 'data berhasil ditambah'); 
+        //respon menggunakan json
+        return response()->json([$validated, 'success' => true]); 
 
 
     }
@@ -105,7 +105,6 @@ class DashboardDocumentController extends Controller
      */
     public function update(Request $request, Document $dokuman)
     {
-        // return response()->json(['hallo']);
         //melakukan validasi
         $validated = $request->validate([
             'name' => 'required|max:225',
@@ -113,8 +112,10 @@ class DashboardDocumentController extends Controller
 
         Document::where('id', $dokuman->id)
                     ->update($validated);
-        $request->session()->flash('success', 'data berhasil diubah'); //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
-        return response()->json([$validated, 'success' => true]); //respon menggunakan json
+        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        $request->session()->flash('success', 'data berhasil diubah'); 
+        //respon menggunakan json
+        return response()->json([$validated, 'success' => true]); 
     }
 
     /**
