@@ -82,6 +82,10 @@ Route::get('/modal-galeri', function () {
     return view ('modals.modal-galeri');
 });
 
+Route::get('/modal-detail-galeri', function () {
+    return view ('modals.modal-detail-galeri');
+});
+
 Route::get('/modal-layanan', function () {
     return view ('modals.modal-layanan');
 });
