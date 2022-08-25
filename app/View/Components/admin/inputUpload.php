@@ -11,25 +11,27 @@ class InputUpload extends Component
     public $errMsg;
     public $inputName;
     public $formName;
-    public $isReadOnly;
+    public $isFilled;
     public $type;
+    public $infoFileReadOnly;
     // public
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($inputName , $formName, $type, $isReadOnly, $inputValue = '', $isError = false, $errMsg = '')
+    public function __construct($inputName , $formName, $type, $isFilled, $inputValue = '', $isError = false, $errMsg = '', $infoFileReadOnly = '')
     {
         $this->formName = $formName;
         $this->inputName = $inputName;
         $this->inputValue = $inputValue;
         $this->isError = $isError;
         $this->errMsg = $errMsg;
-        $this->isReadOnly = $isReadOnly;
+        $this->isFilled = $isFilled;
         $this->type = $type;
+        $this->infoFileReadOnly = $infoFileReadOnly;
 
-        // ddd([$inputName , $formName, $type, $isReadOnly]);
+        // ddd([$inputName , $formName, $type, $isFilled]);
     }
 
     public function typeExtention($type){

@@ -14,17 +14,15 @@
     <hr>
     <form id="form-upload" class="p-5" action="/admin/dokumen" method="post" enctype="multipart/form-data"> 
       @csrf
-      <div class="mb-6">
-        <!-- nama dokumen -->
-        <x-admin.input inputName="Nama" formName="name" />
+      <div class="mb-6"><!-- nama dokumen -->
+        <x-admin.input input-name="Nama" form-name="name" />
       </div>
-      <div class="mb-6">
-        <!--upload file-->
-        <x-admin.input-upload type="pdf" inputName="Dokumen PDF" formName="source" :isReadOnly=false :isError=false >
+      <div class="mb-6"><!--upload file-->
+        <x-admin.input-upload type="pdf" input-name="Dokumen PDF" form-name="source" :isReadOnly=false :isError=false :is-filled=false >
         </x-admin.input-upload>
       </div>
       <div class="mb-6">
-        <x-admin.form-button isAjax={{ true }}>
+        <x-admin.form-button btn-name="send" :isAjax=true>
           Tambah
         </x-admin.form-button>
       </div>
@@ -37,6 +35,7 @@
 @push('upload-script') 
   <script>
     // ----------- UPLOAD ------------
+    let form = document.querySelector('form#form-upload');
     form.addEventListener('submit', (e)=>{
       e.preventDefault();
       upload()
@@ -44,7 +43,7 @@
 
     function upload(){
       let data =  new FormData(form);
-      data.set('source', fileVal);
+      data.set('source', form_source_file.fileVal);
       data.set('_token', '{{csrf_token()}}');
 
       fetch('/admin/dokumen', {

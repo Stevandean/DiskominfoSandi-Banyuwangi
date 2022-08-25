@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage; 
 
 class DashboardServiceController extends Controller
 {
@@ -16,12 +15,10 @@ class DashboardServiceController extends Controller
      */
     public function index()
     {
-        $service = Service::latest()->filter(request(['search','type']))->paginate(7)->withQueryString();
-        $serviceCount = Service::latest()->filter(request(['search', 'type']))->count();
         return view('admin.pages.layanan.layanan', [
-            'service' => $service,
-            'serviceCount' => $serviceCount,
-            'title' => 'Layanan',
+            'title' => 'halaman layanan',
+            'services' => Service::latest()->filter(request(['search']))->paginate(7)->withQueryString(),
+            'servicesCount' => Service::latest()->filter(request(['search']))->count(),
             'pageAction' => 'Layanan'
         ]);
     }
@@ -33,9 +30,9 @@ class DashboardServiceController extends Controller
      */
     public function create()
     {
-        return view ('admin.pages.layanan.tambah-layanan', [
-            'title' => 'Tambah Layanan',
-            'pageAction' => 'Tambah Layanan',
+        return view('admin.pages.layanan.tambah-layanan', [
+            'title' => 'Tambah layanan',
+            'pageAction' => 'Tambah Layanan'
         ]);
     }
 
@@ -47,17 +44,17 @@ class DashboardServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //melakukan validasi
-        $validated = $request -> validate ([
-            'name' => 'required | max:225',
-            'description' => 'required',
-            'link' => 'required',
+        // return response()->json([$request->all()]);
+        $validated = $request->validate([
+            'name' => 'required|max:400|unique:services',
+            'description' => 'nullable',
+            'link' => 'nullable'
         ]);
 
         Service::create($validated);
         $request->session()->flash('success', 'data berhasil ditambah');
-        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
-        return redirect('/admin/layanan')->with('success','data berhasil di tambah');
+        return response()->json([$validated, 'success' => true]);
+
     }
 
     /**
@@ -79,10 +76,10 @@ class DashboardServiceController extends Controller
      */
     public function edit(Service $layanan)
     {
-        return view ('admin.pages.layanan.edit-layanan', [
-            'layanan' => $layanan,
-            'title' => 'Edit Layanan',
-            'pageAction' => 'Edit Layanan'
+        return view('admin.pages.layanan.edit-layanan', [
+            'title' => 'Edit layanan',
+            'pageAction' => 'Edit Layanan',
+            'service' => $layanan
         ]);
     }
 
@@ -95,20 +92,16 @@ class DashboardServiceController extends Controller
      */
     public function update(Request $request, Service $layanan)
     {
-        //melakunan validasi
-        $validated = $request -> validate ([
-            'name' => 'required | max:225',
-            'description' => 'required',
-            'link' => 'required',
+        // return response()->json([$request->all()]);
+        $validated = $request->validate([
+            'name' => 'required|max:400|unique:services,name,'.$layanan->id,
+            'description' => 'nullable',
+            'link' => 'nullable'
         ]);
 
-        Service::where ('id', $layanan -> id)
-                        ->update ($validated);
-        $request -> session() -> flash ('success', 'data berhasil diubah');
-        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
-
-        return redirect('/admin/layanan') -> with ('success', 'data berhasil diubah');
-
+        Service::where('id', $layanan->id)->update($validated);
+        $request->session()->flash('success', 'data berhasil diubah');
+        return response()->json([$validated, 'success' => true]);
     }
 
     /**
@@ -119,8 +112,7 @@ class DashboardServiceController extends Controller
      */
     public function destroy(Service $layanan)
     {
-        Service::destroy($layanan -> id);
-
-        return redirect('/admin/layanan')-> with ('success', 'data telah berhasil dihapus');
+        Service::destroy($layanan->id);
+        return redirect('/admin/layanan')->with('success', 'data berhasil dihapus');
     }
 }

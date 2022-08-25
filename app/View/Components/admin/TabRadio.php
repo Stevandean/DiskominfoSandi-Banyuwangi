@@ -4,26 +4,27 @@ namespace App\View\Components\admin;
 
 use Illuminate\View\Component;
 
-class FormButton extends Component
+class TabRadio extends Component
 {
-    public $isAjax;
-    public $btnName;
+    public $active;
+    public $isReadOnly;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($btnName, $isAjax = false)
+    public function __construct( $active, $isReadOnly = false)
     {
-        $this->isAjax = $isAjax;
-        $this->btnName = $btnName;
+        $this->isReadOnly = $isReadOnly;
+        $this->active = $active;
     }
 
     public function getAllAttribute(){
-        return json_encode([
-            'isAjax' => $this->isAjax,
-            'btnName' => $this->btnName
+        $tes =  json_encode([
+            'isReadOnly' => $this->isReadOnly,
+            'active' => $this->active
         ]);
+        return $tes;
     }
 
     /**
@@ -33,6 +34,6 @@ class FormButton extends Component
      */
     public function render()
     {
-        return view('components.admin.form-button');
+        return view('components.admin.tab-radio');
     }
 }

@@ -30,7 +30,7 @@
       }
 
       *::-webkit-scrollbar{
-        width: 8px;
+        width: 6px;
         height: 5px;
       }
       *::-webkit-scrollbar:hover{
@@ -75,6 +75,16 @@
       table tbody tr:nth-child(odd){
         background-color: white
       }
+
+      /*-------- for select input --------*/
+      select {
+        appearance: none;
+        background: transparent;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+        background-repeat: no-repeat;
+        background-position-x: 95%;
+        background-position-y: 50%;
+      }
     </style>
         <title>{{ $title }}</title>
   </head>
@@ -108,8 +118,9 @@
 
     </div>
 
-    @stack('add-script')
-    @stack('upload-script')
+    @stack('add-script'){{-- for additional script and defining classs --}}
+    @stack('var-script'){{-- for declare variable ins an instance of a class from above --}}
+    @stack('upload-script'){{-- the logic how the form will be uploaded --}}
     <script>
 
       // --------- untuk tombol sidebar 1 [ketika lebar layar > 1024] -----------
