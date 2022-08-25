@@ -128,7 +128,7 @@ class DashboardDocumentController extends Controller
     {
         var_dump($dokuman->id);
         if($dokuman->source){
-            Storage::delete($dokuman->source);
+            Storage::delete('document-src/'.$dokuman->source);
         }
 
         Document::destroy($dokuman->id);

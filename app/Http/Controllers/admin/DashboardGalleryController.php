@@ -47,25 +47,41 @@ class DashboardGalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //melakukan  validasi
-        $validated = $request -> validate([
-            'title' => 'required | max:225',
-            'type' => 'required',
-            'source' => 'required',
-            'body' => 'required',
-        ]);
-
-        //jika ada dokumen yang diupload
-        //jika gambar ada, maka simpan pada folder berikut
-        if($request->file('source')){
-            $validated['source'] = $request->file('source')->storeAs('galeri-src', str_replace(' ', '-',$request->name).".pdf");
-        //simpan nama file ke array validated, jadi bukan file yg disimpan
+       // return response()->json(['test' => $request->type]);
+        $validated = '';
+        
+        if($request->type == 'image'){
+            $validated = $request->validate([
+                'title' => 'required | max:225',
+                'type' => 'required',
+                'source' => 'required | file',
+                'body' => 'nullable',
+            ]);
+        }elseif($request->type == 'video'){
+            $validated = $request->validate([
+                'title' => 'min:2|required',
+                'type' => 'required',
+                'body' => 'nullable',
+                'source' => 'require|url'
+            ]);
+        }else{
+            return response(422)->json(['error' => 'ada error dengan typenya']);
         }
 
+        if($request->hasFile('source')){
+            if($request->type == 'image'){
+                $validated['source'] = $request->file('source')->store('gallery-src');
+            }else{
+                return response(422)->json(["data tidak dapat diproses karean tipe tidak sesuai"]);
+            }
+        }
+
+        // //memasuakn data ke database
         Gallery::create($validated);
-        $request->session()->flash('success', 'Data berhasil ditambah');
-        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
-        return redirect('/admin/galeri')->with('success', 'Data berhasil di tambah');
+        $request->session()->flash('success', 'data berhasil ditambah');
+        return response()->json([$validated, 'success' => true]); //respon menggunakan json
+
+
     }
 
     /**
@@ -104,20 +120,34 @@ class DashboardGalleryController extends Controller
     public function update(Request $request, Gallery $galeri)
     {
         //melakukan validasi
-        $validated = $request->validate([
-            'title' => 'required|max:225',
-            'type' => 'required',
-            'source' => 'required',
-            'body' => 'required',
-        ]);
+        $validated = ''
+        if($request->type == 'image'){
+            $validated = $request->validate([
+                'title' => 'min:2|required',
+                'type' => 'required',
+                'source' => 'nullable'
+            ]);
 
-        Gallery::where('id', $galeri->id)
-                    ->update($validated);
-        //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
-        $request->session()->flash('success', 'data berhasil diubah'); 
+            //mneghapus data lama dan mengubahnya dengan data baru, jika diberi data baru
+            if($request->hasFile('source')){
+                Storage::delete($request->oldSource);
+                $validated['source'] = $request->file('source')->store('gallery-src');
+            }
+        }elseif($request->type == 'video'){
+            $validated = $request->validate([
+                'title' => 'min:2|required',
+                'type' => 'required',
+                'source' => 'nullable|url'
+            ]);
+        }else{
+            return response(422)->json(['error' => 'ada error dengan typenya']);
+        }
 
-        return redirect('/admin/galeri')->with('success', 'Data berhasil di ubah');
+        
 
+        Gallery::where('id', $galeri->id)->update($validated);
+        $request->session()->flash('success', 'data berhasil diubah'); //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
+        return response()->json([$validated, 'success' => true]); //respon menggunakan json
     }
 
     /**
@@ -129,11 +159,10 @@ class DashboardGalleryController extends Controller
     public function destroy(Gallery $galeri)
     {
         if($galeri->source){
-            Storage::delete('gallery-src/'.$galeri->source);
+            Storage::delete($galeri->source);
         }
-
         Gallery::destroy($galeri->id);
-
         return redirect('/admin/galeri')->with('success', 'data telah berhasil dihapus');
     }
 }
+

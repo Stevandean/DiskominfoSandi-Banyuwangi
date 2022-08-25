@@ -14,9 +14,8 @@
     <hr>
     <form id="form-upload" class="p-5" action="/admin/dokumen" method="post" enctype="multipart/form-data"> 
       @csrf
-      <div class="mb-6">
-        <!-- nama dokumen -->
-        <x-admin.input inputName="Nama" formName="name" inputValue="{{ $document->name }}"  />
+      <div class="mb-6"><!-- nama dokumen -->
+        <x-admin.input input-name="Nama" form-name="name" input-value="{{ $document->name }}"  />
       </div>
       <div class="mb-6">
         <!--preview file-->
@@ -26,7 +25,7 @@
         </div>
       </div>
       <div class="mb-6">
-        <x-admin.form-button isAjax={{ true }}>
+        <x-admin.form-button btn-name="send" isAjax={{ true }}>
           Edit
         </x-admin.form-button>
       </div>
@@ -54,15 +53,20 @@
       //keyword penyelesaian put di laavel :laravel response method not allowed when use PUT request from fetch()
       fetch('/admin/dokumen/{{ $document->id }}', {
         method: 'POST',
-        headers:{"X-CSRF-Token": "{{ csrf_token() }}"},
+        headers:{
+          "X-CSRF-Token": "{{ csrf_token() }}",
+          'Accept': 'application/json'
+        },
         mode: 'same-origin',
         body: data
       })
-      .then(res => res.json())
+      .then(async res =>[res.status, await res.json()])
       .then(result => {
         console.log(result)
-        if(result.success){
+        if(result[1].success){
           window.location = '/admin/dokumen'
+        }else if(res[0] == 422){
+          form_name_text.error(true, res[0].errors.name); 
         }
       })
       .catch(err => console.error(err))
