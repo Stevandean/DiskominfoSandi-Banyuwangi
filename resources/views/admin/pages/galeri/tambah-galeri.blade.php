@@ -98,6 +98,7 @@
         });
       }
 
+
       //untuk mengisi form
       function fillForm(){
         title = form_title_text.input.value
@@ -105,8 +106,9 @@
         type = TabType.value
         if(TabType.value == 'image'){
           source = form_source_file.fileVal || ""
-        }else if(TabType.value == 'image'){
+        }else if(TabType.value == 'video'){
           source = form_source_text.input.value || ""
+          console.log(form_source_text.input.value);
         }
 
         data.set('_token', '{{csrf_token()}}');

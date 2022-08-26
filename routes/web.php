@@ -59,7 +59,7 @@ Route::redirect('/admin', '/admin/login');
 //lupa membuat login😔
 
 Route::prefix('admin')->group(function(){
-    Route::get('dashboard', fn()=> view('admin.pages.dashboard'));
+    Route::get('dashboard',[DashboardController::class, 'index']);
     Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
     Route::resource('dokumen', DashboardDocumentController::class);
     Route::resource('galeri', DashboardGalleryController::class);

@@ -1,3 +1,6 @@
+
+
+
 @extends('admin.layouts.main')
 
 @section('container')
@@ -156,6 +159,27 @@
                     @if ($gallery->type == 'image')
                     <div class="max-h-16 overflow-hidden">
                       <img src="{{ Storage::exists($gallery->source )? asset('/storage/'.$gallery->source) : '../images/cliff.jpg' }}" class="max-w-[6rem] max-h-16" alt="ini seharusnya gambar" >
+                    </div>
+                    @elseif($gallery->type == 'video')
+                    <div class="max-h-16 overflow-hidden">
+                      @php
+                        #untuk mendapatkan id video dan menjadikanya api untuk mendapat thumbnail (saya tidak bisa regex)
+                        $videoURL = $gallery->source;
+                        $vidString = '';
+                        if(filter_var($videoURL, FILTER_VALIDATE_URL)){
+                          $vidId = explode("/",$videoURL);
+                          $vidId = end($vidId);
+                          $vidId = explode('?', $vidId);
+                          $vidId = end($vidId);
+                          $vidId = explode("&",$vidId)[0];
+                          $vidId = explode("=",$vidId)[1];
+
+                          $vidString = "https://img.youtube.com/vi/$vidId/mqdefault.jpg";
+                        }else{
+                          $vidString = "../images/cliff.jpg";
+                        }
+                      @endphp
+                      <img src="{{ $vidString }}" class="max-w-[6rem] max-h-16" alt="ini seharusnya gambar" >
                     </div>
                     @endif
                 </td>

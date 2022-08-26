@@ -32,7 +32,7 @@
                             </button>
                     </div> -->
                     <div class="relative mx-auto text-gray-600 w-full">
-                        <input class="border-2 border-gray-300 bg-white h-10 rounded-full px-3 text-sm focus:outline-none w-full" type="text" name="search" id="simple-search"  placeholder="Cari Berita Menarik">
+                        <input class="border-2 border-gray-300 bg-white h-10 rounded-full px-3 text-sm focus:outline-none w-full" value="{{ request('search') }}" type="text" name="search" id="simple-search"  placeholder="Cari Berita Menarik">
                         <button type="submit" class="absolute right-0 top-0 mt-3 mr-2">
                             <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                 version="1.1" id="Capa_1" x="0px" y="0px"
