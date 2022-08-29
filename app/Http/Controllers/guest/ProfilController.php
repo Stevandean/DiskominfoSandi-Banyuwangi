@@ -17,6 +17,12 @@ class ProfilController extends Controller
         ]);
     }
 
+    public function galeriShow(Gallery $gallery){
+        return view('modals.modal-detail-galeri',[
+            'gallery' => $gallery
+        ]);
+    }
+
     public function tupoksi(){
         return view ('guest.pages.profil.tupoksi', [
             'title' => 'Tupoksi'

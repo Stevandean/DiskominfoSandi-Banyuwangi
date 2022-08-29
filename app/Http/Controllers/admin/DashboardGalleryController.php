@@ -120,7 +120,7 @@ class DashboardGalleryController extends Controller
     public function update(Request $request, Gallery $galeri)
     {
         //melakukan validasi
-        $validated = ''
+        $validated = '';
         if($request->type == 'image'){
             $validated = $request->validate([
                 'title' => 'min:2|required',

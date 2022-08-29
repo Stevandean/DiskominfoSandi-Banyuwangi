@@ -59,7 +59,7 @@ Route::redirect('/admin', '/admin/login');
 //lupa membuat login😔
 
 Route::prefix('admin')->group(function(){
-    Route::get('dashboard', fn()=> view('admin.pages.dashboard'));
+    Route::get('dashboard',[DashboardController::class,'index'] );
     Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
     Route::resource('dokumen', DashboardDocumentController::class);
     Route::resource('galeri', DashboardGalleryController::class);
@@ -81,9 +81,7 @@ Route::get('/modal-galeri', function () {
     return view ('modals.modal-galeri');
 });
 
-Route::get('/modal-detail-galeri', function () {
-    return view ('modals.modal-detail-galeri');
-});
+Route::get('/modal-detail-galeri/{gallery}',[ProfilController::class, 'galeriShow']);
 
 Route::get('/modal-layanan', function () {
     return view ('modals.modal-layanan');

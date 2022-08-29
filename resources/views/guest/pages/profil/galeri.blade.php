@@ -75,13 +75,13 @@ body {
 <!-- Photo Grid -->
 <div class="row mx-auto"> 
   <div class="column">
-	<a href="/modal-detail-galeri" class="relative group">
+	<a href="/modal-detail-galeri/{{$galleries[0]->id}}" class="relative group">
 		<div class="inset-0 absolute z-10">
 			<div class="flex items-center h-full justify-center">
 				<h1 class="text-3xl text-center opacity-0 group-hover:text-red-400 group-hover:opacity-100 ease-in-out duration-300">{{ $galleries[0] -> title }}</h1>
 			</div>
 		</div>
-    	<img class="group-hover:scale-110 ease-in-out duration-300" src="https://images.unsplash.com/photo-1661344662582-81a5c6229d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" style="width:100%">
+    	<img class="group-hover:blur-sm blur-none group-hover:scale-110 ease-in-out duration-300" src="https://images.unsplash.com/photo-1661344662582-81a5c6229d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" style="width:100%">
 	</a>
     <img src="https://images.unsplash.com/photo-1661336581000-b0c41a876950?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
     <img src="https://images.unsplash.com/photo-1660866837673-76b45008913e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
