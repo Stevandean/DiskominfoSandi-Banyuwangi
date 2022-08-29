@@ -173,7 +173,6 @@
                           $vidId = end($vidId);
                           $vidId = explode("&",$vidId)[0];
                           $vidId = explode("=",$vidId)[1];
-
                           $vidString = "https://img.youtube.com/vi/$vidId/mqdefault.jpg";
                         }else{
                           $vidString = "../images/cliff.jpg";

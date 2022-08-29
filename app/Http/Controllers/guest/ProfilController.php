@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 
@@ -11,7 +12,14 @@ class ProfilController extends Controller
 {
     public function galeri(){
         return view ('guest.pages.profil.galeri',[
-            'title' => 'Galeri'
+            'title' => 'Galeri',
+            'galleries' => Gallery::latest()->get()
+        ]);
+    }
+
+    public function galeriShow(Gallery $gallery){
+        return view('modals.modal-detail-galeri',[
+            'gallery' => $gallery
         ]);
     }
 
