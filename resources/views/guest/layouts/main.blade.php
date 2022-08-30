@@ -43,6 +43,7 @@
   
     {{-- konten utama --}}
     @yield('container')
+    @include ('guest.partials.sampek-atas')
   </div>
   @include('guest.partials.footer')
 

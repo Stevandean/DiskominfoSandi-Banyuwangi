@@ -4,6 +4,7 @@ namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Document;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class DocumentandOtherController extends Controller
@@ -17,7 +18,8 @@ class DocumentandOtherController extends Controller
 
     public function layanan(){
         return view('guest.pages.layanan', [
-            'title' => 'layanan'
+            'title' => 'layanan',
+            'services' => Service::latest () -> paginate(9)
         ]);
     }
 
