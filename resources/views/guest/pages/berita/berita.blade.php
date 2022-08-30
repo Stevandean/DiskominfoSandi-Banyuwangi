@@ -61,7 +61,7 @@
                 @foreach ($news as $item)
                     <!-- CARD -->
                     <div class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto bg-white">
-                        <img class="w-full" src="/images/img1.jpg" >
+                        <img class="w-full" src="{{ Storage::exists($item->image ?? "null")? asset('/storage/'.$item->image) : '/images/null-image.png'  }}" >
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{{ $item->title }}</div>
                         </div>

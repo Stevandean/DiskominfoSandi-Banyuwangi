@@ -13,14 +13,18 @@ class ProfilController extends Controller
     public function galeri(){
         return view ('guest.pages.profil.galeri',[
             'title' => 'Galeri',
-            'galleries' => Gallery::latest()->get()
+            'galleries' => Gallery::latest()->paginate(16)
         ]);
     }
 
+    // public function galeriShow(Gallery $gallery){
+    //     return view('modals.modal-detail-galeri',[
+    //         'gallery' => $gallery
+    //     ]);
+    // }
+
     public function galeriShow(Gallery $gallery){
-        return view('modals.modal-detail-galeri',[
-            'gallery' => $gallery
-        ]);
+        return response()->json([$gallery]);
     }
 
     public function tupoksi(){

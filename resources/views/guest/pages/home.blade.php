@@ -1,6 +1,6 @@
 
   @extends('guest.layouts.main')
-
+  {{-- @dd() --}}
   @section('container')
     <!-- HOME Text -->
     <div class="bg-[url('/images/bg.png')]"></div>  
@@ -51,19 +51,33 @@
         <div class="content-start p-5 grid grid-cols-1 lg:grid-cols-3 gap-4 gap-y-8 items-start">
           <!-- CARD 1 -->
           @foreach ($news as $new)
-            <div class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
+            <a href="{{ (isset($new->slug)? "/berita/ $new->slug " : isset($new->link)) ? $new->link : '#' }}}}" class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
               {{-- <img class="w-full" src="https://www.banyuwangikab.go.id/media/berita/original/hypzsa_rfy_img-20220623-wa0015.jpg" > --}}
-              <img class="w-full" src="/images/img1.jpg" >
+              <img class="w-full" src="{{ Storage::exists($new->image ?? "null")? asset('/storage/'.$new->image) : '/images/null-image.png'  }}" >
               <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">{{ $new->title }}</div>
                 <p class="text-gray-700 text-base">
-                  {{ Str::limit(strip_tags($new->body), 300, "...") }}
+                  {{ Str::limit(strip_tags($new->body ?? "error"), 300, "...") }}
                 </p>
               </div>
               <div class="px-6 pt-4 pb-2">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $new->category }}</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{ $new->category ?? "error" }}</span>
               </div>
-            </div>
+            </a>
+          @endforeach
+          <!-- END CARD -->
+          <!-- CARD 2 -->
+          @foreach ($scraps as $scrap)
+            <a href="{{ isset($scrap['link']) ? $scrap['link'] : '#' }}" class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
+              {{-- <img class="w-full" src="https://www.banyuwangikab.go.id/media/berita/original/hypzsa_rfy_img-20220623-wa0015.jpg" > --}}
+              <img class="w-full" src="{{ $scrap['image'] }}" onerror="this.src='/images/null-image.png'" >
+              <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">{{ $scrap['title'] }}</div>
+                <p class="text-gray-700 text-base">
+                  {{ Str::limit(strip_tags($scrap['body'] ?? "error"), 300, "...") }}
+                </p>
+              </div>
+            </a>
           @endforeach
           <!-- END CARD -->
   
@@ -82,17 +96,19 @@
 
       <div class="flex flex-wrap justify-center gap-6 md:gap-6 xl:gap-8">
 
+        @foreach ($services as $service)
         <!-- card -->
-        <a href="/layanan" class="relative group block p-6  max-w-sm bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] hover:from-[#29323c] hover:to-[#485563] rounded-lg border border-gray-200 shadow-md hover:text-[#F6F6F6]">
+        <a href="{{ $service->link }}" class="min-w-[24rem] relative group block p-6  max-w-sm bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] hover:from-[#29323c] hover:to-[#485563] rounded-lg border border-gray-200 shadow-md hover:text-[#F6F6F6]">
           <div class="border rounded-full bg-sky-500 group-hover:bg-white inline-block p-3 absolute -top-5">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="fill-white group-hover:fill-sky-500" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
             </svg>
           </div>
-          <h5 class="mb-2 text-lg font-bold tracking-tight group-hover:text-[#F6F6F6]">Noteworthy technology acquisitions 2021</h5>
-          <p class="font-normal text-gray-700 text-base group-hover:text-gray-300">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+          <h5 class="mb-2 text-lg font-bold tracking-tight group-hover:text-[#F6F6F6]">{{ $service->name }}</h5>
+          <p class="font-normal text-gray-700 text-base group-hover:text-gray-300">{{ $service->description }}</p>
         </a>
         <!-- end card -->
+        @endforeach
 
         <!-- card [jangan dihapus, untuk logo] -->
         <a href="/layanan" class="group block p-6  max-w-sm bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] hover:from-[#29323c] hover:to-[#485563] rounded-lg border border-gray-200 shadow-md">
@@ -111,10 +127,9 @@
       <h1 class="py-5 text-black-600 text-4xl font-semibold text-center col-start-2">
         Link terkait
       </h1>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-stretch">
         <!-- card -->
-        <a href"http://sikd.banyuwangikab.go.id/" class="relative group block mx-auto p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] hover:from-[#29323c] hover:to-[#485563]">
+        <a href"http://sikd.banyuwangikab.go.id/" class="hidden relative group block mx-auto p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] hover:from-[#29323c] hover:to-[#485563]">
           <div class="flex">
             <p class="text-center font-semibold text-lg text-gray-700 group-hover:text-[#F6F6F6] ">Sistem Informasi Keuangan Daerah.</p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
@@ -123,6 +138,18 @@
           </div>
         </a>
         <!-- end card -->
+        @foreach ($links as $link)
+        <!-- card -->
+        <a href="{{ $link->link }}" class=" group p-6 bg-white rounded-lg border border-gray-200 shadow-md bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] hover:from-[#29323c] hover:to-[#485563]">
+          <div class="flex justify-between">
+            <p class="text-center font-semibold text-lg text-gray-700 group-hover:text-[#F6F6F6] ">{{ $link->name }}</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+            </svg>
+          </div>
+        </a>
+        <!-- end card -->
+        @endforeach
         
       </div>
     </div>

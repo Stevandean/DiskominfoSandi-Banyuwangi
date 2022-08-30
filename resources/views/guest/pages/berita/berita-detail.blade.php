@@ -50,7 +50,7 @@
             </div>
               
             <!-- ukuran gambar  --> 
-            <img class="max-w-full max-h-[420px] mx-auto mb-4 rounded-lg" src="/images/img1.jpg" alt="" srcset="">
+            <img class="max-w-full max-h-[420px] mx-auto mb-4 rounded-lg" src="{{ Storage::exists($news->image ?? "null")? asset('/storage/'.$news->image) : '/images/null-image.png'  }}" alt="" srcset="">
             {{-- <div class="w-full h-72 bg-center" style="background-image: url(/images/img1.jpg)"></div> --}}
             <div class="max-w-3xl mx-auto mb-5"> <!--wrapper untuk text body -->
                  {!! $news->body !!}
@@ -59,32 +59,17 @@
             <hr class="my-5">
 
             <h1 class="text-2xl font-semibold mb-3">Berita lainya</h1>
-            <div class="flex flex-wrap gap-2"><!-- wrapper untuk card berita lainya -->
-            
-                <a href="#" class=" flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:scale-105 hover:bg-gray-100 ">
+            <div class="flex justify-center flex-wrap gap-2"><!-- wrapper untuk card berita lainya -->
+                @foreach ($other as $otherNews)
+                <a href="/berita/{{ $otherNews->slug }}" class="min-w-full flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:scale-105 hover:bg-gray-100 ">
                     {{-- <img class="object-cover h-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/images/img1.jpg" alt=""> --}}
-                    <div class="h-32 lg:basis-1/3 md:h-full shrink w-full bg-[url('/images/img1.jpg')] rounded-t-lg md:rounded-l-lg bg-center bg-cover"></div>
+                    <div class="h-32 lg:basis-1/3 md:h-full shrink w-full bg-[url('{{ Storage::exists($otherNews->image ?? "null")? asset('/storage/'.$otherNews->image) : '/images/null-image.png'  }}')] rounded-t-lg md:rounded-l-lg bg-center bg-cover"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">Noteworthy technology acquisitions 2021</h5>
-                        <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">{{ Str::limit($otherNews->title, 40, "...") }}</h5>
+                        <p class="mb-3 font-normal text-gray-700">{{ Str::limit(strip_tags($otherNews->body), 60, "...") }}</p>
                     </div>
                 </a>
-                <a href="#" class=" flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:scale-105 hover:bg-gray-100 ">
-                    {{-- <img class="object-cover h-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/images/img1.jpg" alt=""> --}}
-                    <div class="h-32 lg:basis-1/3 md:h-full shrink w-full bg-[url('/images/img1.jpg')] rounded-t-lg md:rounded-l-lg bg-center bg-cover"></div>
-                    <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">Noteworthy technology acquisitions 2021</h5>
-                        <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </div>
-                </a>
-                <a href="#" class=" flex items-center bg-white rounded-lg border shadow-md flex-col md:flex-row max-w-full hover:scale-105 hover:bg-gray-100 ">
-                    {{-- <img class="object-cover h-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/images/img1.jpg" alt=""> --}}
-                    <div class="h-32 lg:basis-1/3 md:h-full shrink w-full bg-[url('/images/img1.jpg')] rounded-t-lg md:rounded-l-lg bg-center bg-cover"></div>
-                    <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">Noteworthy technology acquisitions 2021</h5>
-                        <p class="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </div>
-                </a>
+                @endforeach
                 
             </div>
             <div class="wrapper mt-5 font-bold">

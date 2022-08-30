@@ -62,55 +62,70 @@
 
 @section('container')
 
-<!DOCTYPE html>
-<html>
-
-<body>
-
-<!-- Header -->
-<div class="header">
-  <h1>Responsive Image Grid</h1>
-  <p>Resize the browser window to see the responsive effect.</p>
-</div>
-
-<!-- Photo Grid -->
-<div class="row mx-auto"> 
-  <div class="column">
-	<a href="/modal-detail-galeri/{{$galleries[0]->id}}" class="relative group">
-		<div class="inset-0 absolute z-10">
-			<div class="flex items-center h-full justify-center">
-				<h1 class="text-3xl text-center opacity-0 group-hover:text-red-400 group-hover:opacity-100 ease-in-out duration-300">{{ $galleries[0] -> title }}</h1>
-			</div>
-		</div>
-    	<img class="group-hover:blur-sm blur-none group-hover:scale-110 ease-in-out duration-300" src="https://images.unsplash.com/photo-1661344662582-81a5c6229d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" style="width:100%">
-	</a>
-    <img src="https://images.unsplash.com/photo-1661336581000-b0c41a876950?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1660866837673-76b45008913e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1659535824233-966cc8de61a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1661344663190-cf664c44b93e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1661357024202-5392113639b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1659535824233-966cc8de61a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
+  <!-- Header -->
+  <div class="text-4xl font-semibold mt-5">
+    <h1 class="text-center">Galeri</h1>
   </div>
-  <div class="column">
-    <img src="https://images.unsplash.com/photo-1661357024202-5392113639b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1659535836241-9901856696b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1661344662582-81a5c6229d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1661336581395-016256a78cd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1661336581000-b0c41a876950?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1657299170240-a1f811379b57?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwzMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-  </div>  
-  <div class="column">
-    <img src="https://images.unsplash.com/photo-1661344662582-81a5c6229d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1661336581000-b0c41a876950?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1660866837673-76b45008913e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1659535824233-966cc8de61a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1661344663190-cf664c44b93e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1661357024202-5392113639b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
-    <img src="https://images.unsplash.com/photo-1659535824233-966cc8de61a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" style="width:100%">
+
+  <!-- container, so the galleries doesn't change to much -->
+  <div class="container mx-auto overflow-hidden">
+    <!-- Photo Grid -->
+    <div class="flex justify-center flex-wrap py-10 mx-auto gap-1">  <!-- row -->
+    @php
+        $countGalleries = count($galleries);
+        $perCollumn = ceil( $countGalleries / 4);
+        $gallery = $galleries[0];
+    @endphp
+  
+    @for ($i = 0; $i < 4; $i++)
+    <div class="sm:basis-2/3 lg:basis-1/4 max-w-full px-3 sm:max-w-[70%] md:max-w-[45%] py-1"> <!-- collumn -->
+    {{-- <div class="basis-1/4 md:max-w-[50%] py-1 m-2"> <!-- collumn --> --}}
+      @for($j = $perCollumn*$i; $j < $perCollumn*($i+1) ; $j++)
+  
+        {{-- jika sudah mencapai batas data, maka keluar dari loop --}}
+        @if($j == $countGalleries)
+          @break
+        @endif
+  
+        <button class="btn-gallery relative group hover:z-10 w-full" data-id="{{ $galleries[$j]->id }}"> <!-- image -->
+          <div class="inset-0 absolute z-10">
+            <div class="flex items-center h-full justify-center">
+              <h1 class="text-3xl text-center opacity-0 group-hover:text-red-400 group-hover:opacity-100 ease-in-out duration-300">{{ $galleries[$j]->title }}</h1>
+            </div>
+          </div>
+            {{-- <img class="group-hover:blur-sm blur-none group-hover:scale-110 ease-in-out duration-300" src="https://images.unsplash.com/photo-1661344662582-81a5c6229d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" style="width:100%"> --}}
+            @if ($galleries[$j]->type == 'image')
+              <img class="group-hover:blur-sm blur-none group-hover:scale-110 ease-in-out duration-300 w-full" src="{{ Storage::exists($galleries[$j]->source)? asset('/storage/'.$galleries[$j]->source) : '/images/null-image.png'  }}">
+              @elseif($galleries[$j]->type == 'video')
+              @php
+                #untuk mendapatkan id video dan menjadikanya api untuk mendapat thumbnail (saya tidak bisa regex)
+                $videoURL = $galleries[$j]->source;
+                $vidString = '';
+                if(filter_var($videoURL, FILTER_VALIDATE_URL)){
+                  $vidId = explode("/",$videoURL);
+                  $vidId = end($vidId);
+                  $vidId = explode('?', $vidId);
+                  $vidId = end($vidId);
+                  $vidId = explode("&",$vidId)[0];
+                  $vidId = explode("=",$vidId)[1];
+                  $vidString = "https://img.youtube.com/vi/$vidId/mqdefault.jpg";
+                }else{
+                  $vidString = "../images/null-image.png";
+                }
+              @endphp
+              <img class="group-hover:blur-sm blur-none group-hover:scale-110 ease-in-out duration-300 w-full" src="{{ $vidString }}">
+            @endif
+        </button>
+          
+      @endfor
+    </div>
+    @endfor
+    </div>
+
+    <div class="mx-auto p-5 max-w-6xl">
+      {{ $galleries->links() }}
+    </div>
   </div>
-</div>
 
-</body>
-</html>
-
+  @include('guest.partials.gallery-modal')
 @endsection

@@ -151,7 +151,11 @@
                   </th>
                   <td class="py-4 px-6 ">
                       {{-- <img class="w-24" src="../images/cliff.jpg" alt=""> --}}
-                      <img class="w-24" src="{{ $news->image ? asset('/storage/'.$news->image) : '../images/cliff.jpg' }}" alt="">
+                      @if (isset($news->image))
+                        <img class="w-24" src="{{ Storage::exists($news->image )? asset('/storage/'.$news->image) : '../images/null-image.png' }}" alt="">
+                      @else
+                        <img class="w-24" src="/images/null-image.png" alt="null image">
+                      @endif
                   </td>
                   <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                     {{  Str::limit($news->title, 30, "...")}}
@@ -230,7 +234,7 @@
     </div>
     <!-- Modal body -->
     <div class="p-6 space-y-3">
-        <div class="flex">
+        <div class="flex flex-wrap">
             <p class="text-base leading-relaxed font-semibold">
                 Judul :
             </p>
@@ -238,7 +242,7 @@
               <span class="fill-detail" data-key="title"></span>
             </p>
         </div>
-        <div class="flex">
+        <div class="flex flex-wrap">
             <p class="text-base leading-relaxed font-semibold">
                 Slug :
             </p>
@@ -246,13 +250,13 @@
               <span class="fill-detail" data-key="slug"></span>
             </p>
         </div>
-        <div class="flex">
+        <div class="flex flex-wrap">
             <p class="text-base leading-relaxed font-semibold">
                 Kategori :
             </p>
             <span class="fill-detail" data-key="category"></span>
         </div>
-        <div class="flex">
+        <div class="flex flex-wrap">
             <p class="text-base leading-relaxed font-semibold">
                 Tanggal Dibuat :
             </p>
