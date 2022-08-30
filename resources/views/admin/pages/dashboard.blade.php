@@ -3,8 +3,8 @@
 @section('container')
 
   <div class="px-4 sm:px-0">
-    <h1 class="text-xl sm:text-2xl p-5 bg-white rounded-lg border-8 border-yellow-200">
-      Hallo, selamat datang kembali admin 🙂🙂🙂
+    <h1 class="text-xl sm:text-2xl p-5 bg-white rounded-lg border-b-4 border-yellow-300">
+      Hallo, selamat datang kembali <span class="underline decoration-yellow-400">{{ auth()->user()->name }}</span>
     </h1>
   
     <h2 class="mt-5">
@@ -149,6 +149,27 @@
                           <div class="max-h-16 overflow-hidden">
                             <img src="{{ asset('storage/'.$gallery->source) }}" class="w-16 mx-auto" alt="" >
                           </div>
+
+                          @elseif($gallery->type == 'video')
+                            @php
+                              #untuk mendapatkan id video dan menjadikanya api untuk mendapat thumbnail (saya tidak bisa regex)
+                              $videoURL = $gallery->source;
+                              $vidString = '';
+                              if(filter_var($videoURL, FILTER_VALIDATE_URL)){
+                                $vidId = explode("/",$videoURL);
+                                $vidId = end($vidId);
+                                $vidId = explode('?', $vidId);
+                                $vidId = end($vidId);
+                                $vidId = explode("&",$vidId)[0];
+                                $vidId = explode("=",$vidId)[1];
+                                $vidString = "https://img.youtube.com/vi/$vidId/mqdefault.jpg";
+                              }else{
+                                $vidString = "/images/null-image.png";
+                              }
+                            @endphp
+                            <div class="max-h-16 overflow-hidden">
+                              <img src="{{ $vidString }}" class="w-16 mx-auto" alt="" >
+                            </div>
                           @endif
                         </td>
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">

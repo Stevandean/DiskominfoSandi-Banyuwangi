@@ -24,7 +24,7 @@
                                 <p class="text-gray-500 text-sm font-semibold tracking-wide">{{  date_format($date, "j - F - o")  }}</p>
                             </div>
                         </div>                        
-                        <a href="/dokumen/download/{{ $document->source }}" class="px-5 flex items-center space-x-3 ">
+                        <a href="/document/download/{{ $document->source }}" class="px-5 flex items-center space-x-3 ">
                             <div class="mx-auto">
                                 <span class="text-white text-sm w-1/3 pb-1 bg-blue-600 font-semibold px-2 rounded-full cursor-pointer">    
                                     Download

@@ -2,6 +2,7 @@
 <button id="to-top-button" onclick="goToTop()" title="Go To Top"
 class="hidden fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-lg drop-shadow-md bg-white text-black text-3xl font-bold opacity-70">&uarr;</button>
 
+@push('script-end')
     <script>
     var toTopButton = document.getElementById("to-top-button");
 
@@ -17,3 +18,4 @@ class="hidden fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-lg drop-sha
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     </script>
+@endpush

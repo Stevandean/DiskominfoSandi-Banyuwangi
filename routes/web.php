@@ -45,6 +45,7 @@ Route::prefix('ppid')->group(function(){
 Route::get('/berita', [NewsController::class, 'index']);
 Route::get('/berita/{news:slug}', [NewsController::class, 'show']);
 Route::get('/document', [DocumentandOtherController::class, 'index']);
+Route::get('/document/download/document-src/{fileName}', [DocumentandOtherController::class, 'downloadDocument']); //download dokument
 Route::get('/kontak', [DocumentandOtherController::class, 'kontak']);
 Route::get('/layanan', [DocumentandOtherController::class, 'layanan']);
 
@@ -56,9 +57,8 @@ Route::redirect('/admin', '/admin/login');
     Route::get('/admin/login',[LoginController::class, 'halamanLogin']) -> name('login');
     Route::post('/admin/login',[LoginController::class, 'authenticate']);
     Route::post('/admin/logout',[LoginController::class, 'logout']);
-//lupa membuat login😔
 
-Route::prefix('admin')->group(function(){
+Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('dashboard',[DashboardController::class,'index'] );
     Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
     Route::resource('dokumen', DashboardDocumentController::class);
