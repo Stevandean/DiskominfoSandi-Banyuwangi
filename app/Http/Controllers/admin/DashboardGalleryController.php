@@ -47,9 +47,7 @@ class DashboardGalleryController extends Controller
      */
     public function store(Request $request)
     {
-       // return response()->json(['test' => $request->type]);
         $validated = '';
-        
         if($request->type == 'image'){
             $validated = $request->validate([
                 'title' => 'required | max:225',

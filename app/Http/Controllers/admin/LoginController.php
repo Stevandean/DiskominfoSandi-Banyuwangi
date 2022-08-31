@@ -23,7 +23,7 @@ class LoginController extends Controller
             return redirect() -> intended('admin/dashboard');
         }
 
-        return back() -> with('loginError', 'Login Failed');
+        return back()->with('loginError', 'Login Failed');
 
     }
 

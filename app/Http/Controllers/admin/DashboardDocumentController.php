@@ -110,8 +110,7 @@ class DashboardDocumentController extends Controller
             'name' => 'required|max:225',
         ]);
 
-        Document::where('id', $dokuman->id)
-                    ->update($validated);
+        Document::where('id', $dokuman->id)->update($validated);
         //supaya dapat menggunakan flash ketika diredirect menggunakan javascript
         $request->session()->flash('success', 'data berhasil diubah'); 
         //respon menggunakan json

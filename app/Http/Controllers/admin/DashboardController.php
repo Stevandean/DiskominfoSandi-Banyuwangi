@@ -12,17 +12,7 @@ use App\Models\Service;
 
 class DashboardController extends Controller
 {
-    function index(){   
-        // return response()->json([
-        //     'title' => 'Dashboard',
-        //     'documents' => Document::latest()->limit(4)->get(),
-        //     'galleries' => Gallery::latest()->limit(3)->get(),
-        //     'news' => News::latest()->limit(4)->get(),
-        //     'links' => Link::latest()->limit(4)->get(),
-        //     'services' => Service::latest()->limit(4)->get()
-        // ]);
-
-
+    function index(){  
         return view('admin.pages.dashboard',[
             'title' => 'Dashboard',
             'documents' => Document::latest()->limit(4)->get(),
