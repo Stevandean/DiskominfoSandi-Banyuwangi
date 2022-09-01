@@ -35,7 +35,7 @@
 </head>
 
 {{-- dibuat pecabangan uspaya halaman home dapat digunakan --}}
-<body @if(isset($title) && $title == 'home') class="bg-stone-50 transition-all ease-in duration-500" @endif> 
+<body> 
 
   {{-- class wapper untuk menjadikan footer mejadi kebawah --}}
   <div class="min-h-screen">

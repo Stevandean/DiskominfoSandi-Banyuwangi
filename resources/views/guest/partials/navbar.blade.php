@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center">
       <img class="h-12 inline mr-5"
         src="https://www.asliindonesia.net/wp-content/uploads/2015/04/hasil2BTKD2BCPNS2BKabupaten2BBanyuwangi2B2014.png">
-      <span class="text-xl max-w-sm font-[Poppins] cursor-pointer text-center">
+      <span class="text-base lg:text-xl max-w-sm font-[Poppins] cursor-pointer text-center">
         Dinas Komunikasi Informatika dan Persandian Kabupaten Banyuwangi
       </span>
 

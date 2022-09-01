@@ -17,7 +17,7 @@ class NewsFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => mt_rand(1,5),
+            'user_id' => mt_rand(1,5), //dapatkan user id dari 1 - 5 acak
             'category' => Array('goverment', 'technology', 'berita')[mt_rand(0,2)],
             'title' => $this->faker->sentence(mt_rand(3,8)),
             'slug' => $this->faker->slug(),

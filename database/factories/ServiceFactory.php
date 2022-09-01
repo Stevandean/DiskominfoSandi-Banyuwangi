@@ -17,7 +17,7 @@ class ServiceFactory extends Factory
     public function definition()
     {
         //random link
-        $link = "vdvdvfdfvdf";
+        $link = "";
         for($i = 0 ; $i <= mt_rand(1,4) ; $i++){
             $link .="/".$this->faker->word();
         }
