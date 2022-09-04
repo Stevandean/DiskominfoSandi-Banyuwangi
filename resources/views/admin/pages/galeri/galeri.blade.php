@@ -269,7 +269,7 @@
                 {{-- <img src="/images/null-image.png" alt="" srcset=""> --}}
             </p>
         </div>
-        <div class="flex flex-wrap">
+        <div class="">
             <p class="text-base leading-relaxed font-semibold">
                 Preview :
             </p>

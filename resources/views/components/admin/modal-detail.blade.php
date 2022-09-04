@@ -125,6 +125,17 @@
                                 el.element.innerHTML = data[key]
                                 if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
                                 if(el.element.hasAttribute('data-preview') && key == 'source' && data.type != 'video') el.element.innerHTML = `<img src="/storage/${data[key]}" onerror="this.src = '/images/null-image.png'" />`
+                                if(el.element.hasAttribute('data-preview') && key == 'source' && data.type == 'video'){
+                                    let videoId = data[key]
+                                        .split('/')
+                                        .pop()
+                                        .split('?')
+                                        .pop()
+                                        .split('&')[0]
+                                        .split("=")
+                                        .pop()
+                                    el.element.innerHTML = `<iframe class="mx-auto" width="420" height="315" src="https://www.youtube.com/embed/${videoId}"> </iframe>`
+                                }
                                 if(key == 'type'){
                                     data[key] == 'image' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#facc15] rounded-full px-3 mx-2">Image</p>` : 
                                     data[key] == 'video' ? el.element.innerHTML = `<p class="text-base  leading-relaxed bg-[#71FF40] rounded-full px-3 mx-2">Video</p>` :

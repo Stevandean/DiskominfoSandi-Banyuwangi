@@ -3,7 +3,7 @@
 @section('container')
 
   <div class="px-4 sm:px-0">
-    <h1 class="text-lg sm:text-2xl p-5 bg-white rounded-lg border sm:border-0 sm:border-b-4 border-yellow-300">
+    <h1 class="text-lg sm:text-2xl p-5 bg-yellow-100 sm:bg-white rounded-lg border sm:border-0 sm:border-b-4 border-yellow-300">
       Hallo, selamat datang kembali <span class="underline decoration-yellow-400">{{ auth()->user()->name }}</span>
     </h1>
   
