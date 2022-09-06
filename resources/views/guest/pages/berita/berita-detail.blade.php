@@ -5,7 +5,7 @@
     <!-- Page Berita -->
     <div class="min-h-screen relative overflow-hidden transition-all ease-in duration-500">
         <!-- gambar untuk latar belakang -->
-        <div class="container mx-auto px-12 md:px-32 lg:px-52  xl:px-80 py-10">
+        <div class="container mx-auto px-5 md:px-32 lg:px-52  xl:px-80 py-10">
 
             <div class="header mb-3">
                 <h1 class="text-4xl font-semibold mb-3">{{ $news->title }}</h1>

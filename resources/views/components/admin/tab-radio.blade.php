@@ -1,5 +1,5 @@
 <div>
-    <ul id="radio-tab" class="flex flex-wrap justify-end  -mb-px">
+    <ul id="radio-tab" class="flex flex-wrap justify-center sm:justify-end  -mb-px">
         <li class="mr-2">
             <input id="image" type="radio" name="type" class="hidden" value="image"   checked>
             <label for="image" class="inline-block p-4 pt-2 rounded-t-lg border-b-2 text-blue-600 border-blue-600 active">Gambar</label>

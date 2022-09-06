@@ -5,7 +5,7 @@
   <div class="relative md:shadow-md bg-white rounded-lg p-3 pt-4">
     <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
       <div class="inline-block w-full text-sm font-medium text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
-        <a href="/admin/galeri" class="absolute font-bold text-xl text-blue-kominfo inline-flex items-center">
+        <a href="/admin/galeri" class="static sm:absolute mb-2 font-bold text-xl text-blue-kominfo inline-flex items-center">
           <svg 
             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
             <polyline points="15 18 9 12 15 6"></polyline>

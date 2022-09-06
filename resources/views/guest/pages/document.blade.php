@@ -24,9 +24,13 @@
                                 <p class="text-gray-500 text-sm font-semibold tracking-wide">{{  date_format($date, "j - F - o")  }}</p>
                             </div>
                         </div>                        
-                        <a href="/document/download/{{ $document->source }}" type="download" class=" flex items-center space-x-3 ">
-                            <div class="mx-auto">
-                                <span class="text-white text-sm w-1/3 pb-1 bg-blue-600 font-semibold px-2 rounded-full cursor-pointer">    
+                        <a href="/document/download/{{ $document->source }}" type="download" tesst=" flex items-center space-x-3" class="w-full block">
+                            <div class="">
+                                <span class="hidden sm:inline text-white text-sm w-1/3 pb-1 bg-blue-600 font-semibold px-10 rounded-full cursor-pointer">    
+                                {{-- <span class="hidden sm:inline text-white text-sm w-1/3 pb-1 bg-blue-600 font-semibold px-2 rounded-full cursor-pointer">     --}}
+                                    Download
+                                </span>
+                                <span class="block sm:hidden text-white text-center text-sm w-full pb-1 bg-blue-600 font-semibold px-10 rounded-full cursor-pointer">    
                                     Download
                                 </span>
                             </div>

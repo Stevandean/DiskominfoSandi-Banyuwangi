@@ -18,9 +18,11 @@
 
     *::-webkit-scrollbar{
       width: 6px;
+      height: 4px;
     }
     *::-webkit-scrollbar-thumb{
       width: 4px;
+      height: 4px;
       background-color: #686868;
       border-radius: 10px;
       transition: all 150ms;
