@@ -20,7 +20,7 @@
                     <p class="mb-2 text-xs sm:text-sm text-gray-500 text-center break-all"><span class="font-semibold">{{ $infoFileReadOnly }}</span></p>
                   </div>
                 </div>
-                <p class="file-info hidden mb-2 text-sm text-gray-500"><span class="font-semibold">file info</span></p>
+                <p class="file-info hidden mb-2 text-sm text-gray-500 text-center"><span class="font-semibold">file info</span></p>
             </div>
           </div>
           <input name="{{ $formName }}" id="dropzone-file-{{ $formName }}" type="file" class="hidden" />

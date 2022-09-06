@@ -31,19 +31,32 @@
                         <div id="default-carousel" class="relative" data-carousel="static">
                             <!-- Carousel wrapper -->
                             <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-                                <!-- Item 1 -->
+                                {{-- <!-- Item 1 -->
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <span class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl">First Slide</span>
+                                    <span class="z-10 absolute bottom-10 left-10 text-2xl font-semibold text-white  sm:text-3xl">First Slide, lorem ipsum dolot sit amet</span>
                                     <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
                                 </div>
                                 <!-- Item 2 -->
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <span class="z-10 absolute bottom-10 left-10 text-2xl font-semibold text-white  sm:text-3xl">Second Slide</span>
                                     <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
                                 </div>
                                 <!-- Item 3 -->
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <span class="z-10 absolute bottom-10 left-10 text-2xl font-semibold text-white  sm:text-3xl">third Slide</span>
                                     <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
-                                </div>
+                                </div> --}}
+
+                                @for ($i = 0; $i < 3; $i++)
+                                    <a href="/berita/{{ $news[$i]->slug }}" class="hidden duration-700 ease-in-out" data-carousel-item>
+                                        <span class="z-20 absolute bottom-10 left-10 text-xl lg:text-2xl font-semibold text-white">{{ $news[$i]->title }}</span>
+
+                                        <div class="z-10 h-28  bg-gradient-to-t from-black opacity-50 absolute inset-x-0 bottom-0"></div>
+                                        <div class="bg-white block absolute top-1/2 left-1/2 w-full min-h-full -translate-x-1/2 -translate-y-1/2">
+                                            <img src="{{ Storage::exists($news[$i]->image ?? "null")? asset('/storage/'.$news[$i]->image) : '/images/null-image.png'  }}" class="" alt="...">
+                                        </div>
+                                    </a>
+                                @endfor
                             </div>
                             <!-- Slider indicators -->
                             <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">

@@ -2,21 +2,24 @@
 
 @section('container')
   <!--data-->
-  <div class="md:shadow-md relative bg-white rounded-lg p-3 pt-4">
-    <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
-      <div class="inline-block w-full text-sm font-medium text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
-        <a href="/admin/galeri" class="absolute font-bold text-xl text-blue-kominfo inline-flex items-center">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-          Tambah Galeri
-        </a>
-        <x-admin.tab-radio  active="image" />
-      </div>
+  <div class="md:shadow-md bg-white rounded-lg p-3 pt-4">
+    <div class="lex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
+      <a href="/admin/galeri" class="font-bold text-xl text-blue-kominfo inline-flex items-center">
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Tambah Galeri
+      </a>
     </div>
+    <hr>
     <form id="form-upload" class="p-5" action="/admin/galeri" method="post">
       @csrf
+      <div class="mb-6">
+        <div class="inline-block w-3/5 text-sm font-medium text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+          <x-admin.tab-radio  active="image" />
+        </div>
+      </div>
       <div class="mb-6">
         <x-admin.input input-name="Judul" form-name="title" />
       </div>
