@@ -26,6 +26,7 @@
             <!-- akhir pencarian -->
 
             <!-- section carrousell dan berita populer -->
+            @if (session('search')  || session('search') == '')
             <div class=" flex flex-col lg:flex-row pb-10 gap-10 px-5 sm:px-10 2xl:px-20">
                 <div class="md:basis-2/3 basis-full">
                     <div class="max-w-full lg:p-0 pb-10 mx-auto">
@@ -33,8 +34,8 @@
                             <!-- Carousel wrapper -->
                             <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
                                 @for ($i = 0; $i < 3; $i++)
-                                    <a href="/berita/{{ $news[$i]->slug }}" class="hidden duration-700 ease-in-out" data-carousel-item>
-                                        <span class="z-20 absolute bottom-10 left-10 text-xl lg:text-2xl font-semibold text-white">{{ $news[$i]->title }}</span>
+                                    <a href="/berita/{{ $news[$i]->slug ?? "#" }}" class="hidden duration-700 ease-in-out" data-carousel-item>
+                                        <span class="z-20 absolute bottom-10 left-10 text-xl lg:text-2xl font-semibold text-white">{{ $news[$i]->title ?? "Title" }}</span>
                                         <div class="z-10 h-28  bg-gradient-to-t from-black opacity-50 absolute inset-x-0 bottom-0"></div>
                                         <div class="bg-white block absolute top-1/2 left-1/2 w-full min-h-full -translate-x-1/2 -translate-y-1/2">
                                             <img src="{{ Storage::exists($news[$i]->image ?? "null")? asset('/storage/'.$news[$i]->image) : '/images/null-image.png'  }}" class="" alt="...">
@@ -69,18 +70,18 @@
                 <!-- berita populer -->
                 {{-- berita populer, walau sebenarnya ini hanyalah berita terbaru yg dijadikan seolah2 populer --}}
                 <div class="md:basis-1/3 basis-full">
-                    <div class="h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96 overflow-x-auto md:overflow-y-auto ">
-                        <div class="text-center text-[#f6ca29] font-bold text-2xl mx-auto mb-3">
-                            <h1>Berita Populer</h1>
-                        </div>
+                    <div class="text-center text-[#f6ca29] font-bold text-2xl mx-auto mb-3">
+                        <h1>Berita Populer</h1>
+                    </div>
+                    <div class=" rounded-lg md:h-64 xl:h-80 2xl:h-96 overflow-x-auto md:overflow-y-auto ">
                         <div class="h-fit wrapper">
                             <!-- berita --> 
                             <div class="flex flex-row md:flex-col divide-y-2">
                                 @for ($i = 0; $i < 3; $i++)
-                                <div class="flex gap-3 py-2 min-w-[20rem] max-w-xs">
+                                <div class="flex gap-3 py-2 min-w-[20rem] max-w-xs md:max-w-full md:w-full">
                                     <img class="max-h-24 rounded max-w-[8rem]" src="{{ Storage::exists($news[$i]->image ?? "null")? asset('/storage/'.$news[$i]->image) : '/images/null-image.png'  }}" >
                                     <div class="h-full">
-                                        <h1 class="font-semibold">{{ Str::limit(strip_tags($news[$i]->title ), 200, '...') }} </h1>
+                                        <h1 class="font-semibold">{{ Str::limit(strip_tags($news[$i]->title ?? "Title"), 200, '...') }} </h1>
                                     </div>
                                 </div>
                                 @endfor
@@ -90,6 +91,7 @@
                 </div>
 
             </div>
+            @endif
 
             <div class=" grid-cols-2 mb-6 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-8 items-start">
 

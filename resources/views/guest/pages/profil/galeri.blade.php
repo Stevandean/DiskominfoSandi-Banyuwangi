@@ -70,20 +70,19 @@
   <!-- container, so the galleries doesn't change to much -->
   <div class="container mx-auto overflow-hidden">
     <!-- Photo Grid -->
-    <div class="flex justify-center flex-wrap py-10 mx-auto gap-1">  <!-- row -->
+    <div class="flex justify-center flex-wrap px-5 py-10 mx-auto gap-1">  <!-- row -->
     @php
-        $countGalleries = count($galleries);
-        $perCollumn = ceil( $countGalleries / 4);
-        $gallery = $galleries[0];
+      $countGalleries = count($galleries);
+      $perCollumn = ceil( $countGalleries / 4);
+      $gallery = $galleries[0];
     @endphp
   
     @for ($i = 0; $i < 4; $i++)
     <div class="sm:basis-2/3 lg:basis-1/4 max-w-full px-3 sm:max-w-[70%] md:max-w-[45%] py-1"> <!-- collumn -->
     {{-- <div class="basis-1/4 md:max-w-[50%] py-1 m-2"> <!-- collumn --> --}}
       @for($j = $perCollumn*$i; $j < $perCollumn*($i+1) ; $j++)
-  
         {{-- jika sudah mencapai batas data, maka keluar dari loop --}}
-        @if($j == $countGalleries)
+        @if($j >= $countGalleries)
           @break
         @endif
   
