@@ -18,9 +18,11 @@
 
     *::-webkit-scrollbar{
       width: 6px;
+      height: 4px;
     }
     *::-webkit-scrollbar-thumb{
       width: 4px;
+      height: 4px;
       background-color: #686868;
       border-radius: 10px;
       transition: all 150ms;
@@ -35,7 +37,7 @@
 </head>
 
 {{-- dibuat pecabangan uspaya halaman home dapat digunakan --}}
-<body @if(isset($title) && $title == 'home') class="bg-stone-50 transition-all ease-in duration-500" @endif> 
+<body> 
 
   {{-- class wapper untuk menjadikan footer mejadi kebawah --}}
   <div class="min-h-screen">

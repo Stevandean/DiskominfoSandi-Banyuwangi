@@ -1,6 +1,6 @@
 <div id="input-{{ $formName }}-text">
     <label for="{{ $formName }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $inputName }}</label>
-    <input name="{{ $formName }}" id="input-{{ $formName }}" @class(['bg-gray-50','border','border-gray-300' => !$isError, 'border-red-300' => $isError,'text-gray-900','text-sm','rounded-lg','focus-within:ring-blue-500','focus-within:outline-blue-500','focus:border-blue-500','block','w-full','p-2.5' ]) type="text" id="{{ $formName }}" value="{{ $inputValue }}" {{ $isRequired? "required" : "" }}>
+    <input name="{{ $formName }}" id="input-{{ $formName }}" @class(['bg-gray-50','border','border-gray-300' => !$isError, 'border-red-300' => $isError,'text-gray-900','text-sm','rounded-lg','focus-within:ring-blue-500','focus-within:outline-blue-500','focus-within:bg-white','focus:border-blue-500','block','w-full','p-2.5' ]) type="text" id="{{ $formName }}" value="{{ $inputValue }}" {{ $isRequired? "required" : "" }}>
     <!-- pesar error -->
     {{-- <p id="filled_error_help" class="hidden mt-2 text-xs text-red-600 dark:text-red-400"><span class="font-medium">tempat error</span></p> --}}
     <!-- akhir pesar error -->

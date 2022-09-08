@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\guest;
 
-use App\Http\Controllers\Controller;
-use App\Models\Document;
 use App\Models\Service;
+use App\Models\Document;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentandOtherController extends Controller
 {
@@ -14,6 +15,10 @@ class DocumentandOtherController extends Controller
             'documents' => Document::latest()->get(),
             'title' => 'Dokumen'
         ]);
+    }
+
+    public function downloadDocument($fileName){
+        return Storage::download('document-src/'.$fileName);
     }
 
     public function layanan(){

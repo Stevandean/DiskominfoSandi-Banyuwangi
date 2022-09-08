@@ -1,3 +1,6 @@
+
+
+
 @extends('admin.layouts.main')
 
 @section('container')
@@ -98,7 +101,7 @@
                       1
                   </th>
                   <td class="py-4 px-6 ">
-                      <img class="w-24 max-h-60" src="../images/cliff.jpg" alt="">
+                      <img class="w-24 max-h-60" src="../images/null-image.png" alt="">
                   </td>
                   <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                       pantai di selatan
@@ -155,7 +158,27 @@
                     {{-- <img class="w-24" src="../img/cliff.jpg" alt=""> --}}
                     @if ($gallery->type == 'image')
                     <div class="max-h-16 overflow-hidden">
-                      <img src="{{ Storage::exists($gallery->source )? asset('/storage/'.$gallery->source) : '../images/cliff.jpg' }}" class="max-w-[6rem] max-h-16" alt="ini seharusnya gambar" >
+                      <img src="{{ Storage::exists($gallery->source )? asset('/storage/'.$gallery->source) : '../images/null-image.png' }}" class="max-w-[6rem] max-h-16" alt="ini seharusnya gambar" >
+                    </div>
+                    @elseif($gallery->type == 'video')
+                    <div class="max-h-16 overflow-hidden">
+                      @php
+                        #untuk mendapatkan id video dan menjadikanya api untuk mendapat thumbnail (saya tidak bisa regex)
+                        $videoURL = $gallery->source;
+                        $vidString = '';
+                        if(filter_var($videoURL, FILTER_VALIDATE_URL)){
+                          $vidId = explode("/",$videoURL);
+                          $vidId = end($vidId);
+                          $vidId = explode('?', $vidId);
+                          $vidId = end($vidId);
+                          $vidId = explode("&",$vidId)[0];
+                          $vidId = explode("=",$vidId)[1];
+                          $vidString = "https://img.youtube.com/vi/$vidId/mqdefault.jpg";
+                        }else{
+                          $vidString = "../images/null-image.png";
+                        }
+                      @endphp
+                      <img src="{{ $vidString }}" class="max-w-[6rem] max-h-16" alt="ini seharusnya gambar" >
                     </div>
                     @endif
                 </td>
@@ -229,7 +252,7 @@
     </div>
     <!-- Modal body -->
     <div class="p-6 space-y-3">
-        <div class="flex">
+        <div class="flex flex-wrap">
             <p class="text-base leading-relaxed font-semibold">
                 Judul :
             </p>
@@ -243,10 +266,10 @@
             </p>
             <p class="text-base leading-relaxed mx-2">
               <span class="fill-detail" data-key="source" ></span>
-                {{-- <img src="/images/cliff.jpg" alt="" srcset=""> --}}
+                {{-- <img src="/images/null-image.png" alt="" srcset=""> --}}
             </p>
         </div>
-        <div class="flex flex-wrap">
+        <div class="">
             <p class="text-base leading-relaxed font-semibold">
                 Preview :
             </p>

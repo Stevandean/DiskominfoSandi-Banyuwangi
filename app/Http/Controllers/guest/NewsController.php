@@ -19,7 +19,7 @@ class NewsController extends Controller
 
     public function index(){
         return view('guest.pages.berita.berita',[
-            'news' => News::latest()->filter(request(['search', 'category']))->paginate(6)
+            'news' => News::latest()->filter(request(['search', 'category']))->paginate(7)
             ->withQueryString(),
             'title' => 'Berita'
         ]);
@@ -28,8 +28,9 @@ class NewsController extends Controller
     //untuk info berita lengkpa
     public function show(News $news){
         return view('guest.pages.berita.berita-detail',[
-            'news' => $news,
-            'title' => $news->title
+            'news' => $news ,
+            'title' => $news->title,
+            'other' =>News::inRandomOrder()->limit(3)->get()
         ]);
     }
 }

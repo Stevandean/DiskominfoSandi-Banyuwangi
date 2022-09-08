@@ -5,7 +5,7 @@
         <div class="lg:col-span-4 md:col-span-6">
             @include ('guest.partials.side-bar-ppid')
         </div>
-        <div class="lg:col-span-8 md:col-span-6 px-4">
+        <div class="lg:col-span-8 md:col-span-6 px-4 text-center">
             <div class="underline underline-offset-8 decoration-2 decoration-[#f6ca29] text-3xl font-bold pt-10 ">
                 PPID (Pejabat Pengelola Informasi dan Dokumentasi)
             </div>

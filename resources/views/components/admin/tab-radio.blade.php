@@ -1,12 +1,12 @@
 <div>
-    <ul id="radio-tab" class="inline-flex flex-wrap -mb-px">
+    <ul id="radio-tab" class="flex flex-wrap justify-center sm:justify-end  -mb-px">
         <li class="mr-2">
             <input id="image" type="radio" name="type" class="hidden" value="image"   checked>
-            <label for="image" class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 border-blue-600 active">Gambar</label>
+            <label for="image" class="inline-block p-4 pt-2 rounded-t-lg border-b-2 text-blue-600 border-blue-600 active">Gambar</label>
         </li>
         <li class="mr-2">
             <input id="video" type="radio" name="type" class="hidden" value="video">
-            <label for="video" class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300">Video</label>
+            <label for="video" class="inline-block p-4 pt-2 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300">Video</label>
         </li>
     </ul>
 </div>
@@ -74,9 +74,9 @@
             setActive(label){ //label ini adalah value inputnya
                 console.log('lablnya adalah'+label)
                 this.label.forEach(lab => {
-                    lab.classList = "inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"
+                    lab.classList = "inline-block p-4 pt-2 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"
                     if(lab.previousElementSibling.value == label){
-                        lab.classList = "inline-block p-4 rounded-t-lg border-b-2 text-blue-600 border-blue-600 active"
+                        lab.classList = "inline-block p-4 pt-2 rounded-t-lg border-b-2 text-blue-600 border-blue-600 active"
                         // lab.previousElementSibling.checked = true
                         this.value = lab.previousElementSibling.value;
                         console.log(this.value)

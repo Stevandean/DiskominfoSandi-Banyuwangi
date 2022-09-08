@@ -50,19 +50,19 @@
       .is-active::before{
         content: "";
         position: absolute;
-        width: 5px;
+        width: 2px;
         height: 40px;
-        background-color: rgb(253 224 71);
+        background-color: rgb(253, 224, 71);
         left: 0; /* <--- supaya bisa menempel dilayar yg sebelah kiri */
         
       }
       .is-active > a > span{
-        color: rgb(209 213 219);
+        color: rgb(209, 213, 219);
         /* color: rgb(156 163 175); */
       }
       .is-active > a > svg{
-        color: rgb(253 224 71);
-        font: rgb(253 224 71);
+        color: rgb(253, 224, 71);
+        font: rgb(253, 224, 71);
       }
       .is-active > a{
         background: linear-gradient(90deg, rgba(253,223,71,0.39) 0%, rgba(0,0,0,0) 100%);

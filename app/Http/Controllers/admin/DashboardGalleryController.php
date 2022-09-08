@@ -47,9 +47,7 @@ class DashboardGalleryController extends Controller
      */
     public function store(Request $request)
     {
-       // return response()->json(['test' => $request->type]);
         $validated = '';
-        
         if($request->type == 'image'){
             $validated = $request->validate([
                 'title' => 'required | max:225',
@@ -57,12 +55,12 @@ class DashboardGalleryController extends Controller
                 'source' => 'required | file',
                 'body' => 'nullable',
             ]);
-        }elseif($request->type == 'video'){
+        }else if($request->type == 'video'){
             $validated = $request->validate([
                 'title' => 'min:2|required',
                 'type' => 'required',
                 'body' => 'nullable',
-                'source' => 'require|url'
+                'source' => 'required|url'
             ]);
         }else{
             return response(422)->json(['error' => 'ada error dengan typenya']);
@@ -104,7 +102,7 @@ class DashboardGalleryController extends Controller
     public function edit(Gallery $galeri)
     {
         return view ('admin.pages.galeri.edit-galeri', [
-            'galery' => $galeri,
+            'gallery' => $galeri,
             'title' => 'Edit Galery',
             'pageAction' => 'Edit Galery',
         ]);
