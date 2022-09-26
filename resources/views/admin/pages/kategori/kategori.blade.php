@@ -4,7 +4,7 @@
   <div class="flex justify-between flex-wrap xl:flex-nowrap mx-2 sm:mx-0 gap-2 mb-7"> <!-- tool bar-->
     <x-admin.search-input inputValue="{{ request('search') }}" />
     <div class="mx-auto xl:mx-0"> <!-- untuk pagination -->
-      {{ $links->links('vendor.pagination.admin-pagination') }}
+      {{ $categories->links('vendor.pagination.admin-pagination') }}
     </div>
   </div>
 
@@ -28,9 +28,9 @@
       @else
       {{ $pageAction }}
       @endif
-        <span class="text-blue-900 bg-blue-300 text-lg font-normal px-7 rounded-2xl">{{ $linksCount }} item</span>
+        <span class="text-blue-900 bg-blue-300 text-lg font-normal px-7 rounded-2xl">{{ $categoriesCount }} item</span>
       </span>
-      <a href="/admin/link-terkait/create" class="text-sm bg-blue-700 hover:bg-blue-800 text-white focus:ring-4 focus:ring-blue-300 py-2 px-8 rounded-md w-full sm:w-auto">
+      <a href="/admin/kategori/create" class="text-sm bg-blue-700 hover:bg-blue-800 text-white focus:ring-4 focus:ring-blue-300 py-2 px-8 rounded-md w-full sm:w-auto">
         <div class="flex items-center justify-center h-full table-fixed">
           <svg 
             class="inline"
@@ -51,13 +51,13 @@
                       #
                   </th>
                   <th scope="col" class="py-3 px-6">
-                      Nama
+                      Kategori
                   </th>
                   <th scope="col" class="py-3 px-6">
                       Deskripsi
                   </th>
                   <th scope="col" class="py-3 px-6">
-                      Link
+                      jumlah layanan
                   </th>
                   <th scope="col" class="py-3 px-6">
                       Action
@@ -70,10 +70,10 @@
                       1
                   </th>
                   <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                      CCTV
+                      kesehatan
                   </td>
                   <td class="py-4 px-6">
-                    catatan pengawasan daerah banyuwangi, setiap pengawasan selalu dipantau oleh cctv
+                    layana dalam bidang kesehatan oleh dinas Banyuwangi
                   </td>
                   <td class="py-4 px-6">
                     https://ini-adalah-web/sub-1/sub-2/ini-file.html
@@ -114,25 +114,25 @@
                     </div>
                   </td>
               </tr>
-              @foreach ($links as $link)
+              @foreach ($categories as $category)
                 <tr class="border-b">
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $loop->iteration }}
                     </th>
                     <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                        {{ $link->name }}
+                        {{ $category->name }}
                     </td>
                     <td class="py-4 px-6">
-                      {{Str::limit($link->description, 300, '...') }}
+                      {{Str::limit($category->description, 300, '...') }}
                     </td>
                     <td class="py-4 px-6">
-                      {{ $link->link }}
+                      {{ $category->link }}
                     </td>
                     
                     <td class="py-4 px-6">
                       <div class="inline-flex">
                         <!-- delete -->
-                        <button data-id="{{ $link->id }}" class="btn-delete btn-s inline-block rounded-full bg-red-200 hover:bg-red-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-red-300 transition-all" >
+                        <button data-id="{{ $category->id }}" class="btn-delete btn-s inline-block rounded-full bg-red-200 hover:bg-red-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-red-300 transition-all" >
                           <svg 
                             class=" fill-red-700 "
                             fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="20px"><path d="M 6.496094 1 C 5.675781 1 5 1.675781 5 2.496094 L 5 3 L 2 3 L 2 4 L 3 4 L 3 12.5 C 3 13.324219 3.675781 14 4.5 14 L 10.5 14 C 11.324219 14 12 13.324219 12 12.5 L 12 4 L 13 4 L 13 3 L 10 3 L 10 2.496094 C 10 1.675781 9.324219 1 8.503906 1 Z M 6.496094 2 L 8.503906 2 C 8.785156 2 9 2.214844 9 2.496094 L 9 3 L 6 3 L 6 2.496094 C 6 2.214844 6.214844 2 6.496094 2 Z M 4 4 L 11 4 L 11 12.5 C 11 12.78125 10.78125 13 10.5 13 L 4.5 13 C 4.21875 13 4 12.78125 4 12.5 Z M 5 5 L 5 12 L 6 12 L 6 5 Z M 7 5 L 7 12 L 8 12 L 8 5 Z M 9 5 L 9 12 L 10 12 L 10 5 Z" />
@@ -140,7 +140,7 @@
                           </button>  
                   
                         <!-- ini untuk icon edit -->
-                        <a href="/admin/link-terkait/{{ $link->id }}/edit" class="btn-s inline-block rounded-full bg-amber-200 hover:bg-amber-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-amber-300 transition-all">
+                        <a href="/admin/layanan/{{ $category->id }}/edit" class="btn-s inline-block rounded-full bg-amber-200 hover:bg-amber-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-amber-300 transition-all">
                           <svg
                             class="fill-amber-700"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" height="20px">
@@ -152,7 +152,7 @@
                         </a> 
                         
                         <!-- ini untuk icon views -->
-                        <button data-id="{{ $link->id }}" class="btn-detail btn-s inline-block rounded-full bg-green-200 hover:bg-green-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-green-300 transition-all" >
+                        <button data-id="{{ $category->id }}" class="btn-detail btn-s inline-block rounded-full bg-green-200 hover:bg-green-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-green-300 transition-all" >
                           <svg 
                             class="stroke-green-700 "
                             height="20px" width="20px"
@@ -172,47 +172,47 @@
   
   <x-admin.modal-detail modelPath="layanan" >
     <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
-      <h3 class="text-xl font-semibold text-gray-900">
-         <span class="fill-detail" data-key="name"></span>
-      </h3>
-      <h3 class="text-lg text-center font-semibold">
-          <span class="fill-detail" data-key="created_at"></span>
-      </h3>
+        <h3 class="text-xl font-semibold text-gray-900">
+           <span class="fill-detail" data-key="name"></span>
+        </h3>
+        <h3 class="text-lg text-center font-semibold">
+            <span class="fill-detail" data-key="created_at"></span>
+        </h3>
     </div>
     <!-- Modal body -->
     <div class="p-6 space-y-3">
-      <div class="flex">
-          <p class="text-base leading-relaxed font-semibold">
-              Nama :
-          </p>
-          <p class="text-base leading-relaxed mx-2">
-             <span class="fill-detail" data-key="name"></span>
-          </p>
-      </div>
-      <div class="flex">
-          <p class="text-base leading-relaxed font-semibold">
-              Tanggal Dibuat :
-          </p>
-          <p class="text-base leading-relaxed mx-2">
-            <span class="fill-detail" data-key="created_at"></span>
-          </p>
-      </div>
-      <div class="flex flex-wrap">
-          <p class="text-base  leading-relaxed font-semibold">
-              Deskripsi :
-          </p>
-          <p class="text-base leading-relaxed mx-2 break-all">
-            <span class="fill-detail" data-key="description"></span>
-          </p>
-      </div>
-      <div class="flex flex-wrap">
-          <p class="text-base  leading-relaxed font-semibold">
-              Link :
-          </p>
-          <p class="text-base leading-relaxed mx-2 break-all">
-            <span class="fill-detail" data-key="link"></span>
-          </p>
-      </div>
+        <div class="flex">
+            <p class="text-base leading-relaxed font-semibold">
+                Nama :
+            </p>
+            <p class="text-base leading-relaxed mx-2">
+               <span class="fill-detail" data-key="name"></span>
+            </p>
+        </div>
+        <div class="flex">
+            <p class="text-base leading-relaxed font-semibold">
+                Tanggal Dibuat :
+            </p>
+            <p class="text-base leading-relaxed mx-2">
+              <span class="fill-detail" data-key="created_at"></span>
+            </p>
+        </div>
+        <div class="flex flex-wrap">
+            <p class="text-base  leading-relaxed font-semibold">
+                Deskripsi :
+            </p>
+            <p class="text-base leading-relaxed mx-2 break-all">
+              <span class="fill-detail" data-key="description"></span>
+            </p>
+        </div>
+        <div class="flex flex-wrap">
+            <p class="text-base  leading-relaxed font-semibold">
+                Link :
+            </p>
+            <p class="text-base leading-relaxed mx-2 break-all">
+              <span class="fill-detail" data-key="link"></span>
+            </p>
+        </div>
     </div>
   </x-admin.modal-detail>
 @endsection

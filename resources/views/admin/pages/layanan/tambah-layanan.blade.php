@@ -18,6 +18,13 @@
       <x-admin.input input-name="Nama" form-name="name" />
     </div>
     <div class="mb-6">
+      <x-admin.input-select input-name="Kategori" form-name="category">
+        @foreach ($categories as $category )
+          <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+      </x-admin.input-select>
+    </div>
+    <div class="mb-6">
       <x-admin.input input-name="Deskripsi" form-name="description" />
     </div>
     <div class="mb-6">

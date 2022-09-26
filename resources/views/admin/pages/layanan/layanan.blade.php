@@ -191,6 +191,14 @@
         </div>
         <div class="flex">
             <p class="text-base leading-relaxed font-semibold">
+                Kategori :
+            </p>
+            <p class="text-base leading-relaxed mx-2">
+               <span class="fill-detail px-2 bg-yellow-300 rounded" data-key="category"></span>
+            </p>
+        </div>
+        <div class="flex">
+            <p class="text-base leading-relaxed font-semibold">
                 Tanggal Dibuat :
             </p>
             <p class="text-base leading-relaxed mx-2">

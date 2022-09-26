@@ -205,41 +205,6 @@
     <div class="flex flex-wrap shadow-none sm:shadow-md mt-6 divide-x-2 bg-white pt-4 rounded-md">
       <div class="grow xl:basis-1/2 p-3 max-w-full">
         <div class="flex justify-between items-center p-4 pt-1">
-          <span class="font-semibold text-lg text-blue-kominfo">Link terbaru terbaru</span>
-          <span class="sm:hidden inline text-md text-sky-600">
-            <svg class="stroke-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-            </svg>
-          </span>
-          <a href="/admin/link-terkait" class="hidden sm:inline text-sm text-sky-600">
-            Lihat selengkapnya...
-          </a>
-        </div>
-        <hr>
-        <div class="overflow-x-auto relative">
-          <table class="w-full text-sm text-left text-gray-500 ">
-              <tbody>
-                @foreach ($links as $link)
-                <tr class="bg-white border-b ">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                        {{ Str::limit($link->name, 30, '...') }}
-                    </th>
-                    <td class="py-4 px-6">
-                      {{ Str::limit($link->link, 30, '...') }}
-                    </td>   
-                    <td class="py-4 px-6">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                      </svg>
-                    </td>
-                </tr>
-                @endforeach
-              </tbody>
-          </table>
-        </div> <!-- end overflow relative -->
-      </div>
-      <div class="grow xl:basis-1/2 p-3 max-w-full">
-        <div class="flex justify-between items-center p-4 pt-1">
           <span class="font-semibold text-lg text-blue-kominfo">Layanan terbaru terbaru</span>
           <span class="sm:hidden inline text-md text-sky-600">
             <svg class="stroke-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
@@ -260,7 +225,42 @@
                     {{ Str::limit($service->name, 30, '...') }}
                   </th>
                   <td class="py-4 px-6">
-                    {{ Str::limit($service->name, 30, '...') }}
+                    {{ Str::limit($service->description, 30, '...') }}
+                  </td>   
+                  <td class="py-4 px-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                  </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div> <!-- end overflow relative -->
+      </div>
+      <div class="grow xl:basis-1/2 p-3 max-w-full">
+        <div class="flex justify-between items-center p-4 pt-1">
+          <span class="font-semibold text-lg text-blue-kominfo">Kategori Layanan</span>
+          <span class="sm:hidden inline text-md text-sky-600">
+            <svg class="stroke-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </span>
+          <a href="/admin/layanan" class="hidden sm:inline text-sm text-sky-600">
+            Lihat selengkapnya...
+          </a>
+        </div>
+        <hr>
+        <div class="overflow-x-auto relative">
+          <table class="w-full text-sm text-left text-gray-500 ">
+            <tbody>
+              @foreach ($categories as $category)
+              <tr class="bg-white border-b ">
+                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
+                    {{ Str::limit($category->name, 30, '...') }}
+                  </th>
+                  <td class="py-4 px-6">
+                    {{ Str::limit($category->description, 30, '...') }}
                   </td>   
                   <td class="py-4 px-6">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">

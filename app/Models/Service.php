@@ -9,6 +9,7 @@ class Service extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    protected $with = ['category'];
 
     public function scopeFilter($query, array $filters){
         $query->when($filters['search'] ?? false, function($query, $search) {
@@ -16,5 +17,9 @@ class Service extends Model
                  $query->where('name', 'like', '%' . $search . '%');
             });
         });
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class); 
     }
 }

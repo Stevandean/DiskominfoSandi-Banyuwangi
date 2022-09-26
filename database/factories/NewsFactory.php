@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,10 @@ class NewsFactory extends Factory
      */
     public function definition()
     {
+        //get availabel user
+        $user = User::all()->random();
         return [
-            'user_id' => mt_rand(1,5), //dapatkan user id dari 1 - 5 acak
+            'user_id' => $user->id,
             'category' => Array('goverment', 'technology', 'berita')[mt_rand(0,2)],
             'title' => $this->faker->sentence(mt_rand(3,8)),
             'slug' => $this->faker->slug(),
