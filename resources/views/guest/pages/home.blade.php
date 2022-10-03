@@ -117,40 +117,129 @@
     </div>
     <!-- ** AKHIR PELAYANAN ** -->
 
-    <!-- ** AWAL LINK TERKAIT ** -->
-    <div class="px-5 sm:px-20 pb-40 pt-10 ">
-      <h1 class="py-5 text-black-600 text-4xl font-semibold text-center col-start-2">
-        Link terkait
+
+
+    <!-- Carousels Layanan -->
+
+    <!-- ** AKHIR layanan slide ** -->
+    <div class="p-4 px-5 pb-40 bg-white min-w-screen">
+      <h1 class=" py-5 text-black-600 text-4xl font-semibold text-center col-start-2">
+        Semua Layanan
       </h1>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-stretch">
-        <!-- card -->
-        <a href="http://sikd.banyuwangikab.go.id/" class="hidden relative group block mx-auto p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] ">
-          <div class="flex">
-            <p class="text-center font-semibold text-lg text-gray-700">Sistem Informasi Keuangan Daerah.</p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-            </svg>
+
+      <div class="flex grid grid-cols-1 md:grid-cols-5 justify-center gap-4 px-5 md:px-56">
+
+        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
+          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+            <img src="images/avatar.svg">
           </div>
+          <h2 class="font-bold text-xl text-indigo-500 text-center">
+            Layanan Desa
+          </h2>
+          <div class="border-b-2 border-gray-200 my-3"></div>
+          <p class="text-sm leading-tight text-center mb-5">
+            Permohonan Surat Keterangan (Tingkat Desa)
+          </p>
         </a>
-        <!-- end card -->
-        @foreach ($links as $link)
-        <!-- card -->
-        <a href="{{ $link->link }}" class=" group p-6 bg-white rounded-lg border border-gray-200 shadow-md bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] hover:from-[#29323c] hover:to-[#485563]">
-          <div class="flex justify-between">
-            <p class="text-center font-semibold text-lg text-gray-700 group-hover:text-[#F6F6F6] ">{{ $link->name }}</p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-            </svg>
+        
+        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
+          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+            <img src="images/avatar.svg">
           </div>
+          <h2 class="font-bold text-xl text-indigo-500 text-center">
+            Layanan Desa
+          </h2>
+          <div class="border-b-2 border-gray-200 my-3"></div>
+          <p class="text-sm leading-tight text-center mb-5">
+            Permohonan Surat Keterangan (Tingkat Desa)
+          </p>
         </a>
-        <!-- end card -->
-        @endforeach
+        
+        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
+          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+            <img src="images/avatar.svg">
+          </div>
+          <h2 class="font-bold text-xl text-indigo-500 text-center">
+            Layanan Desa
+          </h2>
+          <div class="border-b-2 border-gray-200 my-3"></div>
+          <p class="text-sm leading-tight text-center mb-5">
+            Permohonan Surat Keterangan (Tingkat Desa)
+          </p>
+        </a>
+        
+        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
+          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+            <img src="images/avatar.svg">
+          </div>
+          <h2 class="font-bold text-xl text-indigo-500 text-center">
+            Layanan Desa
+          </h2>
+          <div class="border-b-2 border-gray-200 my-3"></div>
+          <p class="text-sm leading-tight text-center mb-5">
+            Permohonan Surat Keterangan (Tingkat Desa)
+          </p>
+        </a>
+        
+        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
+          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+            <img src="images/avatar.svg">
+          </div>
+          <h2 class="font-bold text-xl text-indigo-500 text-center">
+            Layanan Desa
+          </h2>
+          <div class="border-b-2 border-gray-200 my-3"></div>
+          <p class="text-sm leading-tight text-center mb-5">
+            Permohonan Surat Keterangan (Tingkat Desa)
+          </p>
+        </a>
+
+        <!-- Slider indicators -->
+        <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        </div>
+        <!-- Slider controls -->
+        <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
+          <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30  group-hover:bg-white/50  group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
+            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <span class="hidden">Previous</span>
+          </span>
+        </button>
+        <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
+          <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30  group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <span class="hidden">Next</span>
+          </span>
+        </button>
+        <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
         
       </div>
+
     </div>
-    <!-- ** AKHIR LINK TERKAIT ** -->  
+    <!-- ** AKHIR PELAYANAN ** -->
+
+
     @endsection
 
 
-  
-
+@push('script-end')
+<script>
+  let defaultTransform = 0;
+    function goNext() {
+        defaultTransform = defaultTransform - 398;
+        var slider = document.getElementById("slider");
+        if (Math.abs(defaultTransform) >= slider.scrollWidth / 1.7) defaultTransform = 0;
+        slider.style.transform = "translateX(" + defaultTransform + "px)";
+    }
+    next.addEventListener("click", goNext);
+    function goPrev() {
+        var slider = document.getElementById("slider");
+        if (Math.abs(defaultTransform) === 0) defaultTransform = 0;
+        else defaultTransform = defaultTransform + 398;
+        slider.style.transform = "translateX(" + defaultTransform + "px)";
+    }
+    prev.addEventListener("click", goPrev);
+</script>
+@endpush
