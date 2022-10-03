@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class DashboardServiceController extends Controller
@@ -32,7 +33,8 @@ class DashboardServiceController extends Controller
     {
         return view('admin.pages.layanan.tambah-layanan', [
             'title' => 'Tambah layanan',
-            'pageAction' => 'Tambah Layanan'
+            'pageAction' => 'Tambah Layanan',
+            'categories' => collect(Category::get())
         ]);
     }
 
@@ -79,7 +81,8 @@ class DashboardServiceController extends Controller
         return view('admin.pages.layanan.edit-layanan', [
             'title' => 'Edit layanan',
             'pageAction' => 'Edit Layanan',
-            'service' => $layanan
+            'service' => $layanan,
+            'categories' => collect(Category::get())
         ]);
     }
 

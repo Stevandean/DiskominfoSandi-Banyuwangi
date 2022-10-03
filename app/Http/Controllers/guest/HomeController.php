@@ -19,18 +19,11 @@ class HomeController extends Controller
 
     public function home(){
         // return $this->scraper();
-
-        // return [
-        //     'news' => News::latest()->limit(3)->get(),
-        //     'scraps' => array_slice($this->scraper(), 0,3),
-        //     'services' => Service::latest()->limit(5)->get(),
-        //     'links' => Link::latest()->limit(16)->get()
-        // ];
+        // return response()->json($this->newskab()->data->items);
         return view('guest.pages.home', [
             'news' => News::latest()->limit(3)->get(),
-            'scraps' => collect(array_slice($this->scraper(), 0,3)),
+            'scraps' => collect(array_slice($this->newskab()->data->items, 0,3)),
             'services' => Service::latest()->limit(5)->get(),
-            'links' => Link::latest()->limit(16)->get()
         ]);
 
 
@@ -69,6 +62,29 @@ class HomeController extends Controller
         // return $results;
         return $this->results;
     }
+
+    //untuk consume api dari banuwangi kab
+    public function newskab()
+	{		
+		$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYmFueXV3YW5naWthYi5nby5pZFwvYXBpXC9sb2dpbiIsImlhdCI6MTY2Mjk0NTQxMCwibmJmIjoxNjYyOTQ1NDEwLCJqdGkiOiJTQTI4ZkFzVzNmd1dPT0ZvIiwic3ViIjoyNiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Irrj5qmQPe229cpZXHEQfnGzsVD7V8mz1naneyRmK9A';
+		$auth = "Authorization: Bearer ".$token;
+		$header = array('Content-type: application/json',$auth);
+		
+		
+        $url = 'https://banyuwangikab.go.id/api/berita/newRelease';
+        $ch = curl_init($url);
+
+
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 GTB5');
+		
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch); 
+             
+        curl_close($ch);
+		return json_decode($result);
+	}
 }
 
 //contoh menggunakan github

@@ -63,13 +63,13 @@
           <!-- END CARD -->
           <!-- CARD 2 -->
           @foreach ($scraps as $scrap)
-            <a href="{{ isset($scrap['link']) ? $scrap['link'] : '#' }}" class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
+            <a href="https://banyuwangikab.go.id/berita/{{ $scrap->slug }}" class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
               {{-- <img class="w-full" src="https://www.banyuwangikab.go.id/media/berita/original/hypzsa_rfy_img-20220623-wa0015.jpg" > --}}
-              <img class="w-full" src="{{ $scrap['image'] }}" onerror="this.src='/images/null-image.png'" >
+              <img class="w-full" src="https://banyuwangikab.go.id/media/berita/original/{{ $scrap->img_raw }}" onerror="this.src='/images/null-image.png'" >
               <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2">{{ $scrap['title'] }}</div>
+                <div class="font-bold text-xl mb-2">{{ $scrap->title }}</div>
                 <p class="text-gray-700 text-base">
-                  {{ Str::limit(strip_tags($scrap['body'] ?? "error"), 300, "...") }}
+                  {{ Str::limit(strip_tags($scrap->content ?? "error"), 300, "...") }}
                 </p>
               </div>
             </a>
@@ -100,7 +100,7 @@
             </svg>
           </div>
           <h5 class="mb-2 text-lg font-bold tracking-tight ">{{ $service->name }}</h5>
-          <p class="font-normal text-gray-700 text-base ">{{ $service->description }}</p>
+          <p class="font-normal text-gray-700 text-base ">{{ Str::limit($service->description, 200, "...") }}</p>
         </a>
         <!-- end card -->
         @endforeach
@@ -115,40 +115,7 @@
         <!-- end card -->
       </div>
     </div>
-    <!-- ** AKHIR PELAYANAN ** -->
-
-    <!-- ** AWAL LINK TERKAIT ** -->
-    <div class="px-5 sm:px-20 pb-40 pt-10 ">
-      <h1 class="py-5 text-black-600 text-4xl font-semibold text-center col-start-2">
-        Link terkait
-      </h1>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-stretch">
-        <!-- card -->
-        <a href="http://sikd.banyuwangikab.go.id/" class="hidden relative group block mx-auto p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] ">
-          <div class="flex">
-            <p class="text-center font-semibold text-lg text-gray-700">Sistem Informasi Keuangan Daerah.</p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-            </svg>
-          </div>
-        </a>
-        <!-- end card -->
-        @foreach ($links as $link)
-        <!-- card -->
-        <a href="{{ $link->link }}" class=" group p-6 bg-white rounded-lg border border-gray-200 shadow-md bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] hover:from-[#29323c] hover:to-[#485563]">
-          <div class="flex justify-between">
-            <p class="text-center font-semibold text-lg text-gray-700 group-hover:text-[#F6F6F6] ">{{ $link->name }}</p>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 flex-none group-hover:fill-sky-600" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-            </svg>
-          </div>
-        </a>
-        <!-- end card -->
-        @endforeach
-        
-      </div>
-    </div>
-    <!-- ** AKHIR LINK TERKAIT ** -->  
+    <!-- ** AKHIR PELAYANAN ** --> 
     @endsection
 
 

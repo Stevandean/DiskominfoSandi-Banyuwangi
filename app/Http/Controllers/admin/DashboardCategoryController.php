@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Models\Link;
 use Illuminate\Http\Request;
 
-class DashboardLinkController extends Controller
+class DashboardCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class DashboardLinkController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.link-terkait.link-terkait', [
-            'title' => 'halaman layanan',
-            'links' => Link::latest()->filter(request(['search']))->paginate(7)->withQueryString(),
-            'linksCount' => Link::latest()->filter(request(['search']))->count(),
+        return view("admin.pages.kategori.kategori",[
+            'title' => 'halaman kategori',
+            'categories' => Category::latest()->filter(request(['search']))->paginate(7)->withQueryString(),
+            'categoriesCount' => Category::latest()->filter(request(['search']))->count(),
             'pageAction' => 'Layanan'
         ]);
     }
@@ -30,9 +30,8 @@ class DashboardLinkController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.link-terkait.tambah-link-terkait', [
-            'title' => 'Tambah layanan',
-            'pageAction' => 'Tambah Layanan'
+        return view("admin.pages.kategori.tambah-kategori",[
+            'title' => "tambah kategori"
         ]);
     }
 
@@ -46,15 +45,14 @@ class DashboardLinkController extends Controller
     {
         // return response()->json([$request->all()]);
         $validated = $request->validate([
-            'name' => 'required|max:400|unique:links',
+            'name' => 'required|max:400|unique:categories',
             'description' => 'nullable',
             'link' => 'nullable'
         ]);
 
-        Link::create($validated);
+        Category::create($validated);
         $request->session()->flash('success', 'data berhasil ditambah');
         return response()->json([$validated, 'success' => true]);
-
     }
 
     /**
@@ -63,9 +61,9 @@ class DashboardLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Link $link_terkait)
+    public function show($id)
     {
-        return response()->json([$link_terkait]);
+        //
     }
 
     /**
@@ -74,13 +72,9 @@ class DashboardLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Link $link_terkait)
+    public function edit($id)
     {
-        return view('admin.pages.link-terkait.edit-link-terkait', [
-            'title' => 'Edit layanan',
-            'pageAction' => 'Edit Layanan',
-            'link' => $link_terkait
-        ]);
+        //
     }
 
     /**
@@ -90,18 +84,9 @@ class DashboardLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Link $link_terkait)
+    public function update(Request $request, $id)
     {
-        // return response()->json([$request->all()]);
-        $validated = $request->validate([
-            'name' => 'required|max:400|unique:links,name,'.$link_terkait->id,
-            'description' => 'nullable',
-            'link' => 'nullable'
-        ]);
-
-        Link::where('id', $link_terkait->id)->update($validated);
-        $request->session()->flash('success', 'data berhasil diubah');
-        return response()->json([$validated, 'success' => true]);
+        //
     }
 
     /**
@@ -110,9 +95,8 @@ class DashboardLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Link $link_terkait)
+    public function destroy($id)
     {
-        Link::destroy($link_terkait->id);
-        return redirect('/admin/link-terkait')->with('success', 'data berhasil dihapus');
+        //
     }
 }

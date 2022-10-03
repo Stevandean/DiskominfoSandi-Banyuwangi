@@ -8,20 +8,21 @@
         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
-      Edit {{ $link->name }}
+      Edit {{ $service->name }}
     </a>
   </div>
   <hr>
   <form id="form-upload" class="p-5" action="/admin/layanan" method="post" enctype="multipart/form-data"> 
+    @method ('put')
     @csrf
     <div class="mb-6">
-      <x-admin.input input-name="Nama" form-name="name" input-value="{{ $link->name }}" />
+      <x-admin.input input-name="Nama" form-name="name" input-value="{{ $service->name }}" />
     </div>
     <div class="mb-6">
-      <x-admin.input input-name="Deskripsi" form-name="description" input-value="{{ $link->description }}" />
+      <x-admin.input input-name="Deskripsi" form-name="description" input-value="{{ $service->description }}" />
     </div>
     <div class="mb-6">
-      <x-admin.input input-name="Link" form-name="link" input-value="{{ $link->link }}" />
+      <x-admin.input input-name="Link" form-name="link" input-value="{{ $service->link }}" />
     </div>
     <div class="mb-6">
       <x-admin.form-button btn-name="send" :isAjax=true>
@@ -73,7 +74,7 @@
   //untukmelakukan upload
   console.log('ini adalah console..og sebelum upload')
   function upload(){
-    fetch('/admin/link-terkait/{{ $link->id }}',{
+    fetch('/admin/layanan/{{ $service->id }}',{
       method: 'POST',
       headers:{
         'Accept': 'application/json',
@@ -91,7 +92,7 @@
     .then(res => {
       console.log(res)
       if(res.json.success && res.status == 200){
-        window.location = '/admin/link-terkait'
+        window.location = '/admin/layanan'
       }else if(res.status == 422){
         handleError(res.json);
       }
