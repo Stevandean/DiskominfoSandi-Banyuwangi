@@ -115,10 +115,7 @@
         <!-- end card -->
       </div>
     </div>
-<<<<<<< HEAD
     <!-- ** AKHIR PELAYANAN ** -->
-
-
 
     <!-- Carousels Layanan -->
 
@@ -128,122 +125,140 @@
         Semua Layanan
       </h1>
 
-      <div class="flex grid grid-cols-1 md:grid-cols-5 justify-center gap-4 px-5 md:px-56">
 
-        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
-          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-            <img src="images/avatar.svg">
-          </div>
-          <h2 class="font-bold text-xl text-indigo-500 text-center">
-            Layanan Desa
-          </h2>
-          <div class="border-b-2 border-gray-200 my-3"></div>
-          <p class="text-sm leading-tight text-center mb-5">
-            Permohonan Surat Keterangan (Tingkat Desa)
-          </p>
-        </a>
-        
-        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
-          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-            <img src="images/avatar.svg">
-          </div>
-          <h2 class="font-bold text-xl text-indigo-500 text-center">
-            Layanan Desa
-          </h2>
-          <div class="border-b-2 border-gray-200 my-3"></div>
-          <p class="text-sm leading-tight text-center mb-5">
-            Permohonan Surat Keterangan (Tingkat Desa)
-          </p>
-        </a>
-        
-        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
-          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-            <img src="images/avatar.svg">
-          </div>
-          <h2 class="font-bold text-xl text-indigo-500 text-center">
-            Layanan Desa
-          </h2>
-          <div class="border-b-2 border-gray-200 my-3"></div>
-          <p class="text-sm leading-tight text-center mb-5">
-            Permohonan Surat Keterangan (Tingkat Desa)
-          </p>
-        </a>
-        
-        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
-          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-            <img src="images/avatar.svg">
-          </div>
-          <h2 class="font-bold text-xl text-indigo-500 text-center">
-            Layanan Desa
-          </h2>
-          <div class="border-b-2 border-gray-200 my-3"></div>
-          <p class="text-sm leading-tight text-center mb-5">
-            Permohonan Surat Keterangan (Tingkat Desa)
-          </p>
-        </a>
-        
-        <a href="/layanan" class=" mx-auto rounded-xl shadow-lg w-full p-5">
-          <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-            <img src="images/avatar.svg">
-          </div>
-          <h2 class="font-bold text-xl text-indigo-500 text-center">
-            Layanan Desa
-          </h2>
-          <div class="border-b-2 border-gray-200 my-3"></div>
-          <p class="text-sm leading-tight text-center mb-5">
-            Permohonan Surat Keterangan (Tingkat Desa)
-          </p>
-        </a>
+      <div class=" w-[1000px] swiper mySwiper">
 
-        <!-- Slider indicators -->
-        <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+          <!-- Slider controls -->
+          <!-- <button class="p-5 self-center">   
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button> -->
+
+          <!-- Main Content -->
+          <!-- <div class="flex grid grid-cols-1 md:grid-cols-5 justify-center gap-4"> -->
+          <div class="swiper-wrapper">
+
+            <a href="/layanan" class="swiper-slide">
+              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+                <img src="images/avatar.svg">
+              </div>
+              <h2 class="font-bold text-xl text-indigo-500 text-center">
+                Layanan Desa
+              </h2>
+              <div class="border-b-2 border-gray-200 my-3"></div>
+              <p class="text-sm leading-tight text-center mb-5">
+                Permohonan Surat Keterangan (Tingkat Desa)
+              </p>
+            </a>
+            
+            <a href="/layanan" class="swiper-slide">
+              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+                <img src="images/avatar.svg">
+              </div>
+              <h2 class="font-bold text-xl text-indigo-500 text-center">
+                Layanan Desa
+              </h2>
+              <div class="border-b-2 border-gray-200 my-3"></div>
+              <p class="text-sm leading-tight text-center mb-5">
+                Permohonan Surat Keterangan (Tingkat Desa)
+              </p>
+            </a>
+            
+            <a href="/layanan" class="swiper-slide">
+              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+                <img src="images/avatar.svg">
+              </div>
+              <h2 class="font-bold text-xl text-indigo-500 text-center">
+                Layanan Desa
+              </h2>
+              <div class="border-b-2 border-gray-200 my-3"></div>
+              <p class="text-sm leading-tight text-center mb-5">
+                Permohonan Surat Keterangan (Tingkat Desa)
+              </p>
+            </a>
+            
+            <a href="/layanan" class="swiper-slide">
+              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+                <img src="images/avatar.svg">
+              </div>
+              <h2 class="font-bold text-xl text-indigo-500 text-center">
+                Layanan Desa
+              </h2>
+              <div class="border-b-2 border-gray-200 my-3"></div>
+              <p class="text-sm leading-tight text-center mb-5">
+                Permohonan Surat Keterangan (Tingkat Desa)
+              </p>
+            </a>
+            
+            <a href="/layanan" class="swiper-slide">
+              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+                <img src="images/avatar.svg">
+              </div>
+              <h2 class="font-bold text-xl text-indigo-500 text-center">
+                Layanan Desa
+              </h2>
+              <div class="border-b-2 border-gray-200 my-3"></div>
+              <p class="text-sm leading-tight text-center mb-5">
+                Permohonan Surat Keterangan (Tingkat Desa)
+              </p>
+            </a>
+            
+            <a href="/layanan" class="swiper-slide">
+              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
+                <img src="images/avatar.svg">
+              </div>
+              <h2 class="font-bold text-xl text-indigo-500 text-center">
+                Layanan Desa
+              </h2>
+              <div class="border-b-2 border-gray-200 my-3"></div>
+              <p class="text-sm leading-tight text-center mb-5">
+                Permohonan Surat Keterangan (Tingkat Desa)
+              </p>
+            </a>
+
+
+
+
+
+            
+            <!-- Slider controls -->
+            <!-- <button class="p-5 self-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button> -->
+
+          <!-- </div> -->
         </div>
-        <!-- Slider controls -->
-        <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
-          <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30  group-hover:bg-white/50  group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
-            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            <span class="hidden">Previous</span>
-          </span>
-        </button>
-        <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
-          <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30  group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            <span class="hidden">Next</span>
-          </span>
-        </button>
-        <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
         
-      </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
 
+      </div>
     </div>
     <!-- ** AKHIR PELAYANAN ** -->
 
-
-=======
-    <!-- ** AKHIR PELAYANAN ** --> 
->>>>>>> dd38becdffbccc4b9402dbbf72949fdb7eed6614
-    @endsection
+  @endsection
 
 
 @push('script-end')
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
 <script>
-  let defaultTransform = 0;
-    function goNext() {
-        defaultTransform = defaultTransform - 398;
-        var slider = document.getElementById("slider");
-        if (Math.abs(defaultTransform) >= slider.scrollWidth / 1.7) defaultTransform = 0;
-        slider.style.transform = "translateX(" + defaultTransform + "px)";
-    }
-    next.addEventListener("click", goNext);
-    function goPrev() {
-        var slider = document.getElementById("slider");
-        if (Math.abs(defaultTransform) === 0) defaultTransform = 0;
-        else defaultTransform = defaultTransform + 398;
-        slider.style.transform = "translateX(" + defaultTransform + "px)";
-    }
-    prev.addEventListener("click", goPrev);
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    slidesPerGroup: 3,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
 </script>
 @endpush
