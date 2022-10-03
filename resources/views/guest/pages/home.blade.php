@@ -63,13 +63,13 @@
           <!-- END CARD -->
           <!-- CARD 2 -->
           @foreach ($scraps as $scrap)
-            <a href="{{ isset($scrap['link']) ? $scrap['link'] : '#' }}" class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
+            <a href="https://banyuwangikab.go.id/berita/{{ $scrap->slug }}" class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
               {{-- <img class="w-full" src="https://www.banyuwangikab.go.id/media/berita/original/hypzsa_rfy_img-20220623-wa0015.jpg" > --}}
-              <img class="w-full" src="{{ $scrap['image'] }}" onerror="this.src='/images/null-image.png'" >
+              <img class="w-full" src="https://banyuwangikab.go.id/media/berita/original/{{ $scrap->img_raw }}" onerror="this.src='/images/null-image.png'" >
               <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2">{{ $scrap['title'] }}</div>
+                <div class="font-bold text-xl mb-2">{{ $scrap->title }}</div>
                 <p class="text-gray-700 text-base">
-                  {{ Str::limit(strip_tags($scrap['body'] ?? "error"), 300, "...") }}
+                  {{ Str::limit(strip_tags($scrap->content ?? "error"), 300, "...") }}
                 </p>
               </div>
             </a>
@@ -100,7 +100,7 @@
             </svg>
           </div>
           <h5 class="mb-2 text-lg font-bold tracking-tight ">{{ $service->name }}</h5>
-          <p class="font-normal text-gray-700 text-base ">{{ $service->description }}</p>
+          <p class="font-normal text-gray-700 text-base ">{{ Str::limit($service->description, 200, "...") }}</p>
         </a>
         <!-- end card -->
         @endforeach
@@ -115,6 +115,7 @@
         <!-- end card -->
       </div>
     </div>
+<<<<<<< HEAD
     <!-- ** AKHIR PELAYANAN ** -->
 
 
@@ -221,6 +222,9 @@
     <!-- ** AKHIR PELAYANAN ** -->
 
 
+=======
+    <!-- ** AKHIR PELAYANAN ** --> 
+>>>>>>> dd38becdffbccc4b9402dbbf72949fdb7eed6614
     @endsection
 
 

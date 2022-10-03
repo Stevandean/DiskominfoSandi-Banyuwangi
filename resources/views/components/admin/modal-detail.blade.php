@@ -178,7 +178,8 @@
                             .filter(el => el.name == key)
                             .forEach(el =>{
                                 el.element.innerHTML = data[key]
-                                if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0]
+                                if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
+                                if(key == 'category') el.element.innerHTML = data[key].name;
                             })
                     }
                 break

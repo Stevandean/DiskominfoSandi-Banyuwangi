@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardCategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\guest\HomeController;
@@ -63,30 +64,9 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
     Route::resource('dokumen', DashboardDocumentController::class);
     Route::resource('galeri', DashboardGalleryController::class);
-    Route::resource('link-terkait', DashboardLinkController::class);
     Route::resource('berita', DashboardNewsController::class);
     Route::resource('layanan', DashboardServiceController::class);
+    Route::resource('kategori', DashboardCategoryController::class);
 });
 
 
-Route::get('/modal-dokumen', function () {
-    return view ('modals.modal-dokumen');
-});
-
-Route::get('/modal-berita', function () {
-    return view ('modals.modal-berita');
-});
-
-Route::get('/modal-galeri', function () {
-    return view ('modals.modal-galeri');
-});
-
-Route::get('/modal-detail-galeri/{gallery}',[ProfilController::class, 'galeriShow']);
-
-Route::get('/modal-layanan', function () {
-    return view ('modals.modal-layanan');
-});
-
-Route::get('/modal-link', function () {
-    return view ('modals.modal-link');
-});

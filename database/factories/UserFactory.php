@@ -18,7 +18,6 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'username' => $this->faker->unique()->userName(),
-            'email' => $this->faker->unique()->safeEmail(),
             'password' => '$2y$10$4w1wC65i3mz/B1LRbKzDqeo0r4vdv2RmCyYibbx7ht04pOJ2FtNEu' //12345
         ];
     }

@@ -63,15 +63,14 @@
             <span class="side-list flex-1 ml-3 whitespace-nowrap">Layanan</span>
           </a>
        </li>
-       <li class="{{ Request::is('admin/link-terkait*')? "is-active" : '' }}">
-          <a href="/admin/link-terkait" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
+       <li class="{{ Request::is('admin/kategori*')? "is-active" : '' }}">
+          <a href="/admin/kategori" class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
             <svg 
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition-all duration-75 group-hover:text-gray-900"
-              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-2 -2 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-              <line x1="8" y1="12" x2="16" y2="12"></line>
+              xmlns="http://www.w3.org/2000/svg"  viewBox="-2 -2 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
             </svg>
-            <span class="side-list flex-1 ml-3 whitespace-nowrap">Link terkait</span>
+            <span class="side-list flex-1 ml-3 whitespace-nowrap">Kategori</span>
           </a>
        </li>
       </ul>
