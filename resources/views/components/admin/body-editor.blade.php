@@ -1,5 +1,5 @@
 <div id="">
-    <p class="block mb-2 text-sm font-medium text-gray-900 ">{{ $inputName }}</p>
+    <p class="block mb-2 text-sm font-medium text-gray-900">{{ $inputName }}</p>
     <input type="hidden" name="{{ $formName }}" id="{{ $formName }}" value="{{ $inputValue }}">
     <trix-editor input="{{ $formName }}"></trix-editor>
 </div>
