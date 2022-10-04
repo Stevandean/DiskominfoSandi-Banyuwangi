@@ -241,7 +241,6 @@
 @push('script-end')
 
 <script>
-
   let pagination = 0;
 
   let cardContainer = document.querySelector ('#cardContainer')
@@ -259,7 +258,6 @@
     cardContainer.scroll (220 * pagination, 0)
     console.log (pagination);
   }
-
 </script>
 
 @endpush
