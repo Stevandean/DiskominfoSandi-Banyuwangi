@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('link');

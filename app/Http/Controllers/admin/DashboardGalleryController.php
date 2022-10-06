@@ -123,7 +123,7 @@ class DashboardGalleryController extends Controller
             $validated = $request->validate([
                 'title' => 'min:2|required',
                 'type' => 'required',
-                'source' => 'nullable'
+                'source' => 'nullable|file'
             ]);
 
             //mneghapus data lama dan mengubahnya dengan data baru, jika diberi data baru

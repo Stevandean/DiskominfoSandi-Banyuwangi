@@ -51,6 +51,9 @@
                       #
                   </th>
                   <th scope="col" class="py-3 px-6">
+                      Icon
+                  </th>
+                  <th scope="col" class="py-3 px-6">
                       Kategori
                   </th>
                   <th scope="col" class="py-3 px-6">
@@ -69,6 +72,9 @@
                   <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       1
                   </th>
+                  <td class="py-4 px-6 ">
+                      <img class="max-w-[6rem] max-h-10" src="/images/null-icon.png" alt="null image">
+                  </td>
                   <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                       kesehatan
                   </td>
@@ -119,6 +125,14 @@
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $loop->iteration }}
                     </th>
+                    <td class="py-4 px-6 ">
+                      {{-- <img class="w-24" src="../images/cliff.jpg" alt=""> --}}
+                      @if (isset($category->icon))
+                        <img class="max-w-[6rem] max-h-10" src="{{ Storage::exists($category->icon )? asset('/storage/'.$category->icon) : '../images/null-icon.png' }}" alt="">
+                      @else
+                        <img class="w-24" src="/images/null-icon.png" alt="null image">
+                      @endif
+                    </td>
                     <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                         {{ $category->name }}
                     </td>
@@ -126,7 +140,7 @@
                       {{Str::limit($category->description, 300, '...') }}
                     </td>
                     <td class="py-4 px-6">
-                      {{ $category->link }}
+                      {{ ($category->services_count) }}
                     </td>
                     
                     <td class="py-4 px-6">
@@ -140,7 +154,7 @@
                           </button>  
                   
                         <!-- ini untuk icon edit -->
-                        <a href="/admin/layanan/{{ $category->id }}/edit" class="btn-s inline-block rounded-full bg-amber-200 hover:bg-amber-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-amber-300 transition-all">
+                        <a href="/admin/kategori/{{ $category->id }}/edit" class="btn-s inline-block rounded-full bg-amber-200 hover:bg-amber-400 p-2 hover:fill-white mx-1 active:ring-2 active:ring-amber-300 transition-all">
                           <svg
                             class="fill-amber-700"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" height="20px">
@@ -159,7 +173,7 @@
                             viewBox="0 0 80 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M76 39.5C76 19.6177 59.8823 3.5 40 3.5C20.1177 3.5 4 19.6177 4 39.5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
                             <circle class="fill-green-700" cx="40" cy="35" r="16" />
-                          </svg>
+                          </svg> 
                         </button> 
                       </div>
                     </td>
@@ -170,48 +184,49 @@
     </div>
   </div>
   
-  <x-admin.modal-detail modelPath="layanan" >
+  <x-admin.modal-detail modelPath="kategori" >
     <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
-        <h3 class="text-xl font-semibold text-gray-900">
-           <span class="fill-detail" data-key="name"></span>
-        </h3>
-        <h3 class="text-lg text-center font-semibold">
-            <span class="fill-detail" data-key="created_at"></span>
-        </h3>
+      <h3 class="text-xl font-semibold text-gray-900">
+          <span class="fill-detail" data-key="name"></span>
+      </h3>
+      <h3 class="text-lg text-center font-semibold">
+          <span class="fill-detail" data-key="created_at"></span>
+      </h3>
     </div>
     <!-- Modal body -->
     <div class="p-6 space-y-3">
         <div class="flex">
-            <p class="text-base leading-relaxed font-semibold">
-                Nama :
-            </p>
-            <p class="text-base leading-relaxed mx-2">
-               <span class="fill-detail" data-key="name"></span>
-            </p>
+          <p class="text-base leading-relaxed font-semibold">
+              Nama :
+          </p>
+          <p class="text-base leading-relaxed mx-2">
+              <span class="fill-detail" data-key="name"></span>
+          </p>
+        </div>
+        
+        <div class="flex flex-col flex-wrap">
+          <p class="text-base  leading-relaxed font-semibold">
+              Icon :
+          </p>
+          <p class="text-base leading-relaxed mx-2 break-all">
+            <span class="fill-detail" data-key="icon" data-preview="true"></span>
+          </p>
         </div>
         <div class="flex">
-            <p class="text-base leading-relaxed font-semibold">
-                Tanggal Dibuat :
-            </p>
-            <p class="text-base leading-relaxed mx-2">
-              <span class="fill-detail" data-key="created_at"></span>
-            </p>
+          <p class="text-base leading-relaxed font-semibold">
+              Tanggal Dibuat :
+          </p>
+          <p class="text-base leading-relaxed mx-2">
+            <span class="fill-detail" data-key="created_at"></span>
+          </p>
         </div>
         <div class="flex flex-wrap">
-            <p class="text-base  leading-relaxed font-semibold">
-                Deskripsi :
-            </p>
-            <p class="text-base leading-relaxed mx-2 break-all">
-              <span class="fill-detail" data-key="description"></span>
-            </p>
-        </div>
-        <div class="flex flex-wrap">
-            <p class="text-base  leading-relaxed font-semibold">
-                Link :
-            </p>
-            <p class="text-base leading-relaxed mx-2 break-all">
-              <span class="fill-detail" data-key="link"></span>
-            </p>
+          <p class="text-base  leading-relaxed font-semibold">
+              Deskripsi :
+          </p>
+          <p class="text-base leading-relaxed mx-2 break-all">
+            <span class="fill-detail" data-key="description"></span>
+          </p>
         </div>
     </div>
   </x-admin.modal-detail>

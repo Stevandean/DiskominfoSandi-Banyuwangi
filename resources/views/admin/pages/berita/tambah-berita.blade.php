@@ -48,8 +48,14 @@
 
 @push('upload-script')
   <script>
-    //----- untuk actifitas mengupload -----------
+    //----- event untuk slug -----
+    form_title_text.input.addEventListener('change', (e)=>{
+      fetch("/admin/slug?title="+form_title_text.input.value)
+      .then(res => res.json())
+      .then(data => form_slug_text.input.value = data.slug)
+    })
 
+    //----- uploading ------
     let form = document.querySelector('#form-upload');
     let data; //untuk object formnanti
     console.log(form)
@@ -71,6 +77,9 @@
           case 'image' :
             form_image_file.error(true, err.errors[key]);
             break;
+          case  'category' :
+            form_category_select.error(true, err.errors[key])
+            break;
           default :
             console.error('key tidak sesuai, harap masukan yg sesuai');
         }
@@ -82,6 +91,7 @@
       data.set('_token', '{{csrf_token()}}');
       data.set('image', form_image_file.fileVal)
       data.set('slug', form_slug_text.input.value)
+      data.set('category', form_category_select.input.value)
       data.set('title', form_title_text.input.value)
       data.set('body', form_body_editor.input.value)
     }
@@ -91,9 +101,7 @@
 
       fetch('/admin/berita',{
         method: 'POST',
-        headers:{
-          'Accept': 'application/json',
-        },
+        headers:{'Accept': 'application/json',},
         mode: 'same-origin',
         body: data
       })

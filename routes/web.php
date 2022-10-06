@@ -62,6 +62,7 @@ Route::post('/admin/logout',[LoginController::class, 'logout']);
 Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('dashboard',[DashboardController::class,'index'] );
     Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
+    Route::get('slug', [DashboardNewsController::class, 'checkSlug']);
     Route::resource('dokumen', DashboardDocumentController::class);
     Route::resource('galeri', DashboardGalleryController::class);
     Route::resource('berita', DashboardNewsController::class);

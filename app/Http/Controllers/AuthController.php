@@ -7,8 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
-use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
+// use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
+// use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
 // use PHPOpenSourceSaver\JWTAuth;
 
 class AuthController extends Controller
@@ -46,27 +46,6 @@ class AuthController extends Controller
             return response()->json(['message' => 'Register Failed']);
         }
     }
-
-
-                    /**Cara Zidan*/
-    // public function register (Request $request){
-    //     $validator = $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email|unique:user',
-    //         'password' => 'required'
-    //     ]);
-
-    //     $user = User::create([
-    //         'name' => $validator['name'],
-    //         'email' => $validator['email'],
-    //         'password' => Hash::make($validator['password']), 
-    //     ]);
-    //     if ($user) {
-    //         return response()->json(['message' => 'Register Successfully']);
-    //     } else {
-    //         return response()->json(['message' => 'Register Failed']);
-    //     }
-    // }
 
     /**
      * Get a JWT via given credentials.
@@ -111,7 +90,7 @@ class AuthController extends Controller
              "status" => "success", 
              "message"=> "User successfully logged out."
          ]);
-     } catch (JWTException $e) {
+        } catch (JWTException $e) {
          // something went wrong whilst attempting to encode the token
          return response()->json([
          "status" => "error", 
@@ -127,7 +106,10 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return response()->json([
+            $this->respondWithToken(auth()->refresh())
+        ]);
+        // return $this->respondWithToken(auth()->refresh());
     }
 
     /**

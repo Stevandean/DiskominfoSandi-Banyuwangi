@@ -178,11 +178,25 @@
                             .filter(el => el.name == key)
                             .forEach(el =>{
                                 el.element.innerHTML = data[key]
-                                if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
-                                if(key == 'category') el.element.innerHTML = data[key].name;
+                                if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0]
+                                if(key == 'category') el.element.innerHTML = (data[key]?.name || "deleted")
                             })
                     }
-                break
+                    break
+                
+                case "kategori":
+                    for(let key in data){
+                        console.log(key)
+                        modalField
+                            .filter(el => el.name == key)
+                            .forEach(el =>{
+                                el.element.innerHTML = data[key]
+                                if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
+                                if(key == 'category') el.element.innerHTML = data[key].name ?? "deleted";
+                                if(el.element.hasAttribute('data-preview') && key == 'icon') el.element.innerHTML = `<img class="mx-auto max-h-64" src="/storage/${data[key]}" onerror="this.src = '/images/null-icon.png'" />`
+                            })
+                    }
+                    break
                 default:
             }
         }

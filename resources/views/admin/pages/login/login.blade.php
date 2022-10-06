@@ -56,5 +56,41 @@
             <button type="submit" class="py-3 px-20 bg-gradient-to-r from-[#595cff] to-[#54b8ff] rounded-full text-white font-bold uppercase text-lg mt-4 transform hover:translate-y-1 transition-all duration-500">Login </button>
         </form>
     </div>
+    <script>
+    //     let form = document.querySelector('form');
+    //     let data;
+
+    //     function fillForm(){
+    //         data = new FormData();
+    //         data.set('_token', '{{csrf_token()}}');
+    //         data.set('username', form.querySelector('[name=username]').value)
+    //         data.set('password', form.querySelector('[name=password]').value)
+    //     }
+    //     function login(){
+    //     fetch('/admin/login',{
+    //       method: 'POST',
+    //       headers:{'Accept': 'application/json'},
+    //       mode: 'same-origin',
+    //       body: data
+    //     })
+    //     .then(async res => {
+    //       return [res.status, await res.json()]
+    //     })
+    //     .then(res => {
+    //       console.log(res)
+    //       if(res[1].success){
+    //         window.location = '/admin/dashboard'
+    //       }else if(res[0] == 422){
+    //         console.log("pastinya ada sesuatu yang error")
+    //       }
+    //     })
+    //     .catch(err => console.error(err));
+    //   }
+    //     form.addEventListener('submit', (e) => {
+    //         e.preventDefault();
+    //         fillForm()
+    //         login();
+    //     })
+    </script>
 </body>
 </html>
