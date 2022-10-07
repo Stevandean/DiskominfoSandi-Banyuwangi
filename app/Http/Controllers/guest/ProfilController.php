@@ -17,8 +17,12 @@ class ProfilController extends Controller
         ]);
     }
 
-    public function galeriShow(Gallery $gallery){
-        return response()->json([$gallery]);
+    // public function galeriShow(Gallery $gallery){
+    //     return response()->json([$gallery]);
+    // }
+
+    public function galeriShow(Gallery $galeri){
+        return response()->json([$galeri]);
     }
 
     public function tupoksi(){

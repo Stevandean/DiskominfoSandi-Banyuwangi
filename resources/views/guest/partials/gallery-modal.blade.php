@@ -99,8 +99,10 @@
     }
 
     function getData(id){
-        return fetch(`/modal-detail-galeri/${id}`)
-            .then(res => res.json())
+        return fetch(`/profil/show-galeri/${id}`)
+            .then(res => {
+                return res.json()
+            })
             .then(res => res)
             .catch(err => err)
     }

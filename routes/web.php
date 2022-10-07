@@ -26,6 +26,7 @@ Route::get('/', [HomeController::class, 'home']);
 // -- profil --
 Route::prefix('profil')->group(function(){
     Route::get('galeri', [ProfilController::class, 'galeri']);
+    Route::get('show-galeri/{galeri}', [ProfilController::class, 'galeriShow']);
     Route::get('tupoksi', [ProfilController::class, 'tupoksi']);
     Route::get('struktur-organisasi', [ProfilController::class,'strukturOrganisasi']);
     Route::get('visi-misi', [ProfilController::class, 'visiMisi']);
