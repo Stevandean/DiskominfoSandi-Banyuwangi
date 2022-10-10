@@ -90,109 +90,6 @@
         Semua Layanan
       </h1>
 
-      <!-- <mati> -->
-
-        <!-- <div class=" w-[1000px] swiper mySwiper"> -->
-  
-          <!-- Slider controls -->
-          <!-- <button class="p-5 self-center">   
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          </button> -->
-
-          <!-- Main Content -->
-          <!-- <div class="flex grid grid-cols-1 md:grid-cols-5 justify-center gap-4"> -->
-          <!-- <div class="swiper-wrapper"> -->
-  
-            <!-- <a href="/layanan" class="swiper-slide">
-              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-                <img src="images/avatar.svg">
-              </div>
-              <h2 class="font-bold text-xl text-indigo-500 text-center">
-                Layanan Desa
-              </h2>
-              <div class="border-b-2 border-gray-200 my-3"></div>
-              <p class="text-sm leading-tight text-center mb-5">
-                Permohonan Surat Keterangan (Tingkat Desa)
-              </p>
-            </a>
-            
-            <a href="/layanan" class="swiper-slide">
-              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-                <img src="images/avatar.svg">
-              </div>
-              <h2 class="font-bold text-xl text-indigo-500 text-center">
-                Layanan Desa
-              </h2>
-              <div class="border-b-2 border-gray-200 my-3"></div>
-              <p class="text-sm leading-tight text-center mb-5">
-                Permohonan Surat Keterangan (Tingkat Desa)
-              </p>
-            </a>
-            
-            <a href="/layanan" class="swiper-slide">
-              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-                <img src="images/avatar.svg">
-              </div>
-              <h2 class="font-bold text-xl text-indigo-500 text-center">
-                Layanan Desa
-              </h2>
-              <div class="border-b-2 border-gray-200 my-3"></div>
-              <p class="text-sm leading-tight text-center mb-5">
-                Permohonan Surat Keterangan (Tingkat Desa)
-              </p>
-            </a>
-            
-            <a href="/layanan" class="swiper-slide">
-              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-                <img src="images/avatar.svg">
-              </div>
-              <h2 class="font-bold text-xl text-indigo-500 text-center">
-                Layanan Desa
-              </h2>
-              <div class="border-b-2 border-gray-200 my-3"></div>
-              <p class="text-sm leading-tight text-center mb-5">
-                Permohonan Surat Keterangan (Tingkat Desa)
-              </p>
-            </a>
-            
-            <a href="/layanan" class="swiper-slide">
-              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-                <img src="images/avatar.svg">
-              </div>
-              <h2 class="font-bold text-xl text-indigo-500 text-center">
-                Layanan Desa
-              </h2>
-              <div class="border-b-2 border-gray-200 my-3"></div>
-              <p class="text-sm leading-tight text-center mb-5">
-                Permohonan Surat Keterangan (Tingkat Desa)
-              </p>
-            </a>
-            
-            <a href="/layanan" class="swiper-slide">
-              <div class="w-20 h-20 rounded-full mx-auto overflow-hidden bg-cover mb-3">
-                <img src="images/avatar.svg">
-              </div>
-              <h2 class="font-bold text-xl text-indigo-500 text-center">
-                Layanan Desa
-              </h2>
-              <div class="border-b-2 border-gray-200 my-3"></div>
-              <p class="text-sm leading-tight text-center mb-5">
-                Permohonan Surat Keterangan (Tingkat Desa)
-              </p>
-            </a> -->
-  
-            <!-- Slider controls -->
-            <!-- <button class="p-5 self-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button> -->
-
-          <!-- </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-      </mati> -->
-
       <!-- COBA MULTI SLIDER 2 -->
       <div class="flex justify-center">
 
@@ -201,25 +98,25 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         </button>
 
-        <div class="flex p-5 gap-x-5 w-[72%] overflow-hidden cursor-pointer scroll-smooth" id="cardContainer">
+        <div class="flex  md:p-5 gap-x-5 w-[72%] overflow-hidden cursor-pointer scroll-smooth" id="cardContainer">
 
         <!-- Content -->
-
+        @foreach ($services as $service)
           <!-- Awal Content -->
-          <div class="bg-white h-64 max-w-[200px] min-w-[200px] px-5 py-5 rounded-lg drop-shadow-xl">
+          <a href="{{ $service->link }}" class="bg-white h-64 max-w-[200px] min-w-[200px] px-5 py-5 rounded-lg drop-shadow-xl">
             <div class="w-20 h-20 mb-3 bg-cover mx-auto">
               <img src="images/avatar.svg">
             </div>
             <h2 class="text-center text-xl font-bold text-md">
-              Test 1
+              {{ Str::limit($service->name, 50, "...") }}
             </h2>
             <div class="border-b-2 border-gray-200 my-3"></div>
             <p class="text-sm leading-tight text-center mb-5">
-              Permohonan Surat Keterangan (Tingkat Desa).
+              {{ Str::limit($service->description, 50, "...") }}
             </p>
-          </div>
+          </a>
           <!-- Akhir Content -->
-          
+        @endforeach
           
         </div>
 
@@ -242,13 +139,14 @@
 
 <script>
   let pagination = 0;
-
+  let itemShowCOntainer = 0;
   let cardContainer = document.querySelector ('#cardContainer')
 
   function next() {
-    pagination ++;
+    if(pagination < {{ $service->count() }} - itemShowCOntainer){
+      pagination ++;
+    }
     cardContainer.scroll (220 * pagination, 0)
-    console.log (pagination)
   }
 
   function prev () {
@@ -256,8 +154,17 @@
       pagination --; 
     }
     cardContainer.scroll (220 * pagination, 0)
-    console.log (pagination);
   }
+
+  function getFixScrollStep(){
+    let containerServiceLength = cardContainer.offsetWidth;
+    itemShowCOntainer = Math.floor(containerServiceLength / 256);
+  }
+  getFixScrollStep()
+
+  window.onresize = getFixScrollStep
+
+  windo
 </script>
 
 @endpush

@@ -23,7 +23,7 @@ class HomeController extends Controller
         return view('guest.pages.home', [
             'news' => News::latest()->limit(3)->get(),
             'scraps' => collect(array_slice($this->newskab()->data->items, 0,3)),
-            'services' => Service::latest()->limit(5)->get(),
+            'services' => Service::latest()->get(),
         ]);
 
 
