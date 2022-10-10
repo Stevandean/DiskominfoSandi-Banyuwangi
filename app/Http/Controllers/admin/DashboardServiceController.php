@@ -53,7 +53,10 @@ class DashboardServiceController extends Controller
             'link' => 'nullable'
         ]);
 
-        Service::create($validated);
+        $category = Category::find($request->category_id);
+        $category->services()->create($validated);
+
+        // Service::create($validated);
         $request->session()->flash('success', 'data berhasil ditambah');
         return response()->json([$validated, 'success' => true]);
 
@@ -95,9 +98,12 @@ class DashboardServiceController extends Controller
      */
     public function update(Request $request, Service $layanan)
     {
+
+
         // return response()->json([$request->all()]);
         $validated = $request->validate([
             'name' => 'required|max:400|unique:services,name,'.$layanan->id,
+            'category_id' => 'required|exists:categories,id',
             'description' => 'nullable',
             'link' => 'nullable'
         ]);

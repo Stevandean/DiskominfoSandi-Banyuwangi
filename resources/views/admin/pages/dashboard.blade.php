@@ -172,8 +172,8 @@
                             </div>
                           @endif
                         </td>
-                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                            {{ $gallery->title }}
+                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap truncate">
+                          {{ Str::limit($gallery->title, 23, "...") }}
                         </th>
                         <td class="py-4 px-6">
                           @php
