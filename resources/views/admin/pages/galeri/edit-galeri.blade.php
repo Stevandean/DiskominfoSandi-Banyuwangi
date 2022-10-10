@@ -101,18 +101,25 @@
         body = form_body_editor.input.value
         type = TabType.value
         if(TabType.value == 'image'){
-          source = form_source_file.fileVal || ""
-        }else if(TabType.value == 'image'){
+          if(typeof form_source_file.fileVal != "undefined"){
+            // source = form_source_file.fileVal || ""
+            data.set('source', form_source_file.fileVal);
+          }else{
+            source = "";
+          }
+        }else if(TabType.value == 'video'){
           source = form_source_text.input.value || ""
+          data.set('source',form_source_text.input.value );
         }
 
         data.set('_token', '{{csrf_token()}}');
         data.set('title', title);
         data.set('type', type);
-        data.set('source', source);
         data.set('body', body);
         data.set('oldSource', oldSource);
         data.set('_method', 'PUT');
+
+        console.log(source);
       }
 
       //untukmelakukan upload

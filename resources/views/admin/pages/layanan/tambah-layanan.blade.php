@@ -81,13 +81,10 @@
   function upload(){
     fetch('/admin/layanan',{
       method: 'POST',
-      headers:{
-        'Accept': 'application/json',
-      },
+      headers:{'Accept': 'application/json',},
       mode: 'same-origin',
       body: data
     })
-
     .then(async res => {
       console.log(res)
       return {
@@ -95,7 +92,6 @@
         json: await res.json()
       }
     })
-    
     .then(res => {
       console.log(res)
       if(res.json.success && res.status == 200){

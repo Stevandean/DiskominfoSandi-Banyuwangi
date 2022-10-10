@@ -20,6 +20,11 @@
     <div class="mb-6">
       <x-admin.input input-name="Deskripsi" form-name="description" />
     </div>
+    <div id="wrp" class="mb-6">
+      <x-admin.input-upload type="image" input-name="File Icon *optional" form-name="icon" :is-filled=false :is-read-only=false :is-error=false >
+        hanya file icon
+      </x-admin.input-upload>
+    </div>
     <div class="mb-6">
       <x-admin.form-button btn-name="send" :isAjax=true>
         Tambah
@@ -51,6 +56,9 @@
         case 'description' :
           form_description_text.error(true, err.errors[key]);
           break;
+        case 'icon':
+          form_icon_file.error(true, err.errors[key]);
+          break;
         default :
           console.error('key tidak sesuai, harap masukan yg sesuai');
       }
@@ -61,6 +69,9 @@
   function fillForm(){
     data = new FormData(document.querySelector('#form-upload'));
     data.set('_token', '{{csrf_token()}}');
+    data.set('name', form_name_text.input.value);
+    data.set('description', form_description_text.input.value)
+    data.set('icon', form_icon_file.fileVal)
   }
 
   //untukmelakukan upload
@@ -68,9 +79,7 @@
   function upload(){
     fetch('/admin/kategori',{
       method: 'POST',
-      headers:{
-        'Accept': 'application/json',
-      },
+      headers:{'Accept': 'application/json'},
       mode: 'same-origin',
       body: data
     })

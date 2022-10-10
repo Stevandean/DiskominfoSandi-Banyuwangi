@@ -21,7 +21,7 @@
     <div class="mb-6">
       <x-admin.input-select input-name="Kategori" form-name="category">
         @foreach ($categories as $category )
-          <option value="{{ $category->id }}" @selected($service->category->id == $category->id)>{{ $category->name }}</option>
+          <option value="{{ $category->id }}" @selected($service->category->id ?? null == $category->id)>{{ $category->name }}</option>
         @endforeach
       </x-admin.input-select>
     </div>
@@ -33,7 +33,7 @@
     </div>
     <div class="mb-6">
       <x-admin.form-button btn-name="send" :isAjax=true>
-        Tambah
+        Edit
       </x-admin.form-button>
     </div>
   </form>

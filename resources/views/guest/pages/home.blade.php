@@ -69,7 +69,7 @@
               <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">{{ $scrap->title }}</div>
                 <p class="text-gray-700 text-base">
-                  {{ Str::limit(strip_tags($scrap->content ?? "error"), 300, "...") }}
+                  {!! Str::limit(strip_tags($scrap->content ?? "error"), 300, "...") !!}
                 </p>
               </div>
             </a>

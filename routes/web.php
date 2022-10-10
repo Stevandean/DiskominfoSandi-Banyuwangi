@@ -26,6 +26,7 @@ Route::get('/', [HomeController::class, 'home']);
 // -- profil --
 Route::prefix('profil')->group(function(){
     Route::get('galeri', [ProfilController::class, 'galeri']);
+    Route::get('show-galeri/{galeri}', [ProfilController::class, 'galeriShow']);
     Route::get('tupoksi', [ProfilController::class, 'tupoksi']);
     Route::get('struktur-organisasi', [ProfilController::class,'strukturOrganisasi']);
     Route::get('visi-misi', [ProfilController::class, 'visiMisi']);
@@ -62,6 +63,7 @@ Route::post('/admin/logout',[LoginController::class, 'logout']);
 Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('dashboard',[DashboardController::class,'index'] );
     Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
+    Route::get('slug', [DashboardNewsController::class, 'checkSlug']);
     Route::resource('dokumen', DashboardDocumentController::class);
     Route::resource('galeri', DashboardGalleryController::class);
     Route::resource('berita', DashboardNewsController::class);

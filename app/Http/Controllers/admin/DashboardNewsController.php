@@ -6,6 +6,7 @@ use App\Models\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardNewsController extends Controller
 {
@@ -137,5 +138,14 @@ class DashboardNewsController extends Controller
         }
         News::destroy($beritum->id);
         return redirect('/admin/berita')->with('success', 'data telah berhasil dihapus');
+    }
+
+    /**
+     * route utilities for convet title to slug in client side
+     */
+    public function checkSlug(Request $request){
+        //SlugService::createSlug(model_yang_ingin_diberi_slug, 'field_slug', "string_untuk_diubah")
+        $slug = SlugService::createSlug(News::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
     }
 }
