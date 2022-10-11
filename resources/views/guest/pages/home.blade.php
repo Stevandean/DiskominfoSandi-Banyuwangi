@@ -48,7 +48,7 @@
           @foreach ($news as $new)
             <a href="/berita/{{ $new->slug ?? "#" /*(isset($new->slug)? "/berita/ $new->slug " : isset($new->link)) ? $new->link : '#' */ }}" class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">
               {{-- <img class="w-full" src="https://www.banyuwangikab.go.id/media/berita/original/hypzsa_rfy_img-20220623-wa0015.jpg" > --}}
-              <img class="w-full" src="{{ Storage::exists($new->image ?? "null")? asset('/storage/'.$new->image) : '/images/null-image.png'  }}" >
+              <img class="mx-auto max-h-64" src="{{ Storage::exists($new->image ?? "null")? asset('/storage/'.$new->image) : '/images/null-image.png'  }}" >
               <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">{{ $new->title }}</div>
                 <p class="text-gray-700 text-base">
@@ -141,11 +141,13 @@
   let pagination = 0;
   let itemShowCOntainer = 0;
   let cardContainer = document.querySelector ('#cardContainer')
+  
 
   function next() {
     if(pagination < {{ $service->count() }} - itemShowCOntainer){
       pagination ++;
     }
+    console.log(pagination)
     cardContainer.scroll (220 * pagination, 0)
   }
 
@@ -153,12 +155,14 @@
     if (pagination > 0) {
       pagination --; 
     }
+    console.log(pagination)
     cardContainer.scroll (220 * pagination, 0)
   }
 
   function getFixScrollStep(){
     let containerServiceLength = cardContainer.offsetWidth;
     itemShowCOntainer = Math.floor(containerServiceLength / 256);
+    console.log("item shown : ", itemShowCOntainer)
   }
   getFixScrollStep()
 
