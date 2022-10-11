@@ -21,7 +21,7 @@
     <div class="mb-6">
       <x-admin.input-select input-name="Kategori" form-name="category">
         @foreach ($categories as $category )
-          <option value="{{ $category->id }}" @selected($service->category->id ?? null == $category->id)>{{ $category->name }}</option>
+          <option value="{{ $category->id }}" @selected(($service->category_id ? $service->category_id : null) == $category->id)>{{ $category->name }}</option>
         @endforeach
       </x-admin.input-select>
     </div>
@@ -76,6 +76,10 @@
     data = new FormData(document.querySelector('#form-upload'));
     data.set('_token', '{{csrf_token()}}');
     data.set('_method', 'PUT');
+    data.set('category_id', form_category_select.input.value);
+    data.set('name', form_name_text.input.value);
+    data.set('description', form_description_text.input.value);
+    data.set('link', form_link_text.input.value);
   }
 
   //untukmelakukan upload
@@ -83,9 +87,7 @@
   function upload(){
     fetch('/admin/layanan/{{ $service->id }}',{
       method: 'POST',
-      headers:{
-        'Accept': 'application/json',
-      },
+      headers:{'Accept': 'application/json'},
       mode: 'same-origin',
       body: data
     })

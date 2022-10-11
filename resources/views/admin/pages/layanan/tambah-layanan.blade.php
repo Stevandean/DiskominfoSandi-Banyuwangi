@@ -72,8 +72,12 @@
 
   //untuk mengisi form
   function fillForm(){
-    data = new FormData(document.querySelector('#form-upload'));
+    data = new FormData();
     data.set('_token', '{{csrf_token()}}');
+    data.set('category_id', form_category_select.input.value);
+    data.set('name', form_name_text.input.value);
+    data.set('description', form_description_text.input.value);
+    data.set('link', form_link_text.input.value);
   }
 
   //untukmelakukan upload
