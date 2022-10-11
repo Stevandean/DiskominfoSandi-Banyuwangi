@@ -155,7 +155,6 @@
             return;
           }
           dropdownItem.classList.toggle("hidden")
-          console.log(e.target)
         })
       })
     </script>

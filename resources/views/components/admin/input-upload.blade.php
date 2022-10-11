@@ -133,12 +133,8 @@
 
       const fileList = file;
       this.dropArea.classList.remove('bg-gray-100', 'border-sky-400')
-      //test 1
-      console.log('Test 1 -->',fileList);
       
       if(this.cekExtention(fileList[0].name, this.type)){
-        //test 2
-        console.log('test 2 -->', fileList[0])
 
         //tambah nama
         this.fileInfo.innerHTML = fileList[0].name;
@@ -161,8 +157,6 @@
       this.errUpload.innerHTML = `file bukan ${this.type}, mohon masukan file yg sesuai`
       this.errUpload.classList.toggle('hidden')
       this.dropArea.classList.add('border-red-500')
-      
-      console.log(this.input.value)
     }
     setFilled(val){
       if(val){
@@ -175,23 +169,18 @@
     }
 
     setHidden(val){
-      console.log(this.formInput)
-      console.log(val)
       if(val){
         this.formInput.classList.add('hidden')
-        console.log('ini seharusnya menghapusnua')
         return
       }
       this.formInput.classList.remove('hidden')
     }
 
     main(){
-      console.log('test untuk menjalankan class')
       this.readElement();
       this.setFilled(this.isFilled)
       // if(!this.isFilled)
       this.addEvent();
-      console.log(this.formInput)
     }
 
     previewImage(fileOne){

@@ -9,7 +9,6 @@
             {{ $slot }}
             <!-- Modal footer -->
             <div class="flex items-center p-6 mx-5 space-x-2 rounded-b border-t border-gray-200">
-                <button data-modal-toggle="defaultModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center ">Save</button>
                 <button data-modal-toggle="defaultModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 close-modal-detail">Close</button>
             </div>
         </div>
@@ -51,8 +50,6 @@
             this.visibilityEvent()
             this.defineEventShow()
 
-            console.log(modelPath, this.modelPath)
-
         }
 
         //untuk visibility modal
@@ -85,10 +82,6 @@
             keysElement.forEach(el => {
                 this.modalField.push({name:el.getAttribute('data-key'), element: el});
             })
-
-            console.log(keysElement)
-            console.log(this.modalField)
-            console.log(this.modelPath)
         }
         
 
@@ -99,17 +92,14 @@
             let userData
             if(model == 'berita') {
                 userData = this.userData
-                console.log(userData)
             }
 
             switch(model){
                 case 'dokumen':
                     for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
-                                console.log(el)
                                 el.element.innerHTML = data[key]
                                 if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
                             })
@@ -117,11 +107,9 @@
                     break;
                 case 'galeri':
                     for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
-                                console.log(el)
                                 el.element.innerHTML = data[key]
                                 if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
                                 if(el.element.hasAttribute('data-preview') && key == 'source' && data.type != 'video') el.element.innerHTML = `<img src="/storage/${data[key]}" onerror="this.src = '/images/null-image.png'" />`
@@ -146,11 +134,9 @@
                     break
                 case 'berita':
                     for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
-                                console.log(el)
                                 if(key == 'author'){//karean pada field athor menggunakan return untuk menghentikan loop, maka sebaiknya author diletakan di paling bawah
                                     userData.name.innerHTML = data[key].name
                                     userData.username.innerHTML = data[key].username
@@ -173,7 +159,6 @@
     
                 case 'link-terkait', 'layanan':
                 for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
@@ -186,7 +171,6 @@
                 
                 case "kategori":
                     for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
@@ -230,7 +214,6 @@
                 btn.addEventListener('click', async (e) => {
                     try{
                         this.modalData = await this.getData(this.modelPath ,btn.getAttribute('data-id'));
-                        console.log(this.modalData);
                         this.updateDetailModal(this.modalData[0],this.modelPath);
                         this.toggleModal();
                     }catch(err){

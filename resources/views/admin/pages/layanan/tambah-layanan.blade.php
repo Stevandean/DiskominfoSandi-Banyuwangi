@@ -20,7 +20,7 @@
     <div class="mb-6">
       <x-admin.input-select input-name="Kategori" form-name="category">
         @foreach ($categories as $category )
-          <option value="{{ $category->id }}">{{ $category->name }}</option>
+          <option value="{{ $category->id }}" @if ($loop->first) {{ "selected" }} @endif>{{ $category->name }}</option>
         @endforeach
       </x-admin.input-select>
     </div>
@@ -50,8 +50,6 @@
   function handleError(err){
     let keys = Object.keys(err.errors);
     let values = Object.values(err.errors);
-    console.log(keys);
-    console.log(values);
 
     keys.forEach(key => {
       switch(key){
@@ -81,7 +79,6 @@
   }
 
   //untukmelakukan upload
-  console.log('ini adalah console..og sebelum upload')
   function upload(){
     fetch('/admin/layanan',{
       method: 'POST',
