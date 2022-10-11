@@ -57,8 +57,7 @@
       form_source_text.setHidden(true)
 
       //untuk membuat elemen source menjadi dinamis
-      TabType.form.addEventListener('change', (e)=> { 
-        console.log(e.target.value)
+      TabType.form.addEventListener('change', (e)=> {
         if(e.target.value == 'image'){
           form_source_file.setHidden(false)
           form_source_text.setHidden(true)
@@ -72,8 +71,6 @@
       function handleError(err){
         let keys = Object.keys(err.errors);
         let values = Object.values(err.errors);
-        console.log(keys);
-        console.log(values);
 
         keys.forEach(key => {
           switch(key){
@@ -105,7 +102,6 @@
           source = form_source_file.fileVal || ""
         }else if(TabType.value == 'video'){
           source = form_source_text.input.value || ""
-          console.log(form_source_text.input.value);
         }
 
         data.set('_token', '{{csrf_token()}}');
@@ -116,7 +112,6 @@
       }
 
       //untukmelakukan upload
-      console.log('ini adalah console..og sebelum upload')
       function upload(){
         fetch('/admin/galeri',{
           method: 'POST',
@@ -147,8 +142,6 @@
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         fillForm()
-        console.log(source);
-        
         upload();
       })
     </script>

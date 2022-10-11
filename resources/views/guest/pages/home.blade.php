@@ -147,7 +147,6 @@
     if(pagination < {{ $service->count() }} - itemShowCOntainer){
       pagination ++;
     }
-    console.log(pagination)
     cardContainer.scroll (220 * pagination, 0)
   }
 
@@ -155,14 +154,12 @@
     if (pagination > 0) {
       pagination --; 
     }
-    console.log(pagination)
     cardContainer.scroll (220 * pagination, 0)
   }
 
   function getFixScrollStep(){
     let containerServiceLength = cardContainer.offsetWidth;
     itemShowCOntainer = Math.floor(containerServiceLength / 256);
-    console.log("item shown : ", itemShowCOntainer)
   }
   getFixScrollStep()
 

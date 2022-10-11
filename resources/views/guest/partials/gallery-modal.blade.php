@@ -68,10 +68,8 @@
     defineField();
 
     function updateModal(data){
-        console.log(data);
         //saya asumsikan datanya akan selalu seperti ini
         for (let key in data){
-            console.log(key);
             modalField
                 .filter(el => el.name == key)
                 .forEach(el => {
@@ -114,7 +112,6 @@
 
     btnGalleries.forEach(btn => {
         btn.addEventListener('click',async (e) => {
-            console.log(modalField)
             let data = await getData(btn.getAttribute('data-id'));
             updateModal(data[0]);
             toggleModal();

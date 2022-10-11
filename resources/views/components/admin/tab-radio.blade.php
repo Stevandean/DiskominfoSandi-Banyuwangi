@@ -39,7 +39,6 @@
                     });
                     this.label.forEach(el => {
                         el.classList.remove('hover:text-gray-600','hover:border-gray-300')
-                        // console.log(el)
                     })
                     this.readDom();
                     return
@@ -47,7 +46,6 @@
                 this.inputs.forEach(el => el.disabled = false);
                 this.label.forEach(el => {
                     el.classList.add('hover:text-gray-600','hover:border-gray-300')
-                    // console.log(el)
                 })
 
             }
@@ -61,25 +59,19 @@
                 this.form.addEventListener('click', e => {
                     if(e.target.tagName == 'LABEL'){
                         this.setActive(e.target.previousElementSibling.value)
-                        console.log(e.target.previousElementSibling)
                     }
-                    
                     this.getValue();
-                    // console.log(this.value)
-
                 })
             }
 
             //berikut buka merupakan method yang modular
             setActive(label){ //label ini adalah value inputnya
-                console.log('lablnya adalah'+label)
                 this.label.forEach(lab => {
                     lab.classList = "inline-block p-4 pt-2 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"
                     if(lab.previousElementSibling.value == label){
                         lab.classList = "inline-block p-4 pt-2 rounded-t-lg border-b-2 text-blue-600 border-blue-600 active"
                         // lab.previousElementSibling.checked = true
                         this.value = lab.previousElementSibling.value;
-                        console.log(this.value)
                     }
                 })
             }

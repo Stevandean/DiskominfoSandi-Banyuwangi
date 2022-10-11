@@ -59,14 +59,10 @@
     //----- untuk aktifitas mengupload -----------
     let form = document.querySelector('#form-upload');
     let data; //untuk object formnanti
-    console.log(form)
-    console.log(typeof form_image_file.fileVal == 'undefined')
 
     function handleError(err){
       let keys = Object.keys(err.errors);
       let values = Object.values(err.errors);
-      console.log(keys);
-      console.log(values);
 
       keys.forEach(key => {
         switch(key){
@@ -137,9 +133,6 @@
       e.preventDefault();
       e.stopPropagation();
       upload()
-      // console.log(form_body_editor.input.value)
-      // fillForm();
-      // console.log(data.get('body'))
     })
   </script>
 @endpush

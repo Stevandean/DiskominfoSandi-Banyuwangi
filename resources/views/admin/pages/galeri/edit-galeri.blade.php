@@ -72,8 +72,6 @@
       function handleError(err){
         let keys = Object.keys(err.errors);
         let values = Object.values(err.errors);
-        console.log(keys);
-        console.log(values);
 
         keys.forEach(key => {
           switch(key){
@@ -119,11 +117,9 @@
         data.set('oldSource', oldSource);
         data.set('_method', 'PUT');
 
-        console.log(source);
       }
 
       //untukmelakukan upload
-      console.log('ini adalah console.log sebelum upload')
       function upload(){
         fetch('/admin/galeri/{{ $gallery->id }}',{
           method: 'POST',
@@ -154,7 +150,6 @@
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         fillForm()
-        console.log(source);
         
         upload();
       })

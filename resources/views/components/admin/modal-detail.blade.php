@@ -50,8 +50,6 @@
             this.visibilityEvent()
             this.defineEventShow()
 
-            console.log(modelPath, this.modelPath)
-
         }
 
         //untuk visibility modal
@@ -84,10 +82,6 @@
             keysElement.forEach(el => {
                 this.modalField.push({name:el.getAttribute('data-key'), element: el});
             })
-
-            console.log(keysElement)
-            console.log(this.modalField)
-            console.log(this.modelPath)
         }
         
 
@@ -98,17 +92,14 @@
             let userData
             if(model == 'berita') {
                 userData = this.userData
-                console.log(userData)
             }
 
             switch(model){
                 case 'dokumen':
                     for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
-                                console.log(el)
                                 el.element.innerHTML = data[key]
                                 if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
                             })
@@ -116,11 +107,9 @@
                     break;
                 case 'galeri':
                     for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
-                                console.log(el)
                                 el.element.innerHTML = data[key]
                                 if(key == 'created_at') el.element.innerHTML = data[key].split('T')[0];
                                 if(el.element.hasAttribute('data-preview') && key == 'source' && data.type != 'video') el.element.innerHTML = `<img src="/storage/${data[key]}" onerror="this.src = '/images/null-image.png'" />`
@@ -145,11 +134,9 @@
                     break
                 case 'berita':
                     for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
-                                console.log(el)
                                 if(key == 'author'){//karean pada field athor menggunakan return untuk menghentikan loop, maka sebaiknya author diletakan di paling bawah
                                     userData.name.innerHTML = data[key].name
                                     userData.username.innerHTML = data[key].username
@@ -172,7 +159,6 @@
     
                 case 'link-terkait', 'layanan':
                 for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
@@ -185,7 +171,6 @@
                 
                 case "kategori":
                     for(let key in data){
-                        console.log(key)
                         modalField
                             .filter(el => el.name == key)
                             .forEach(el =>{
@@ -229,7 +214,6 @@
                 btn.addEventListener('click', async (e) => {
                     try{
                         this.modalData = await this.getData(this.modelPath ,btn.getAttribute('data-id'));
-                        console.log(this.modalData);
                         this.updateDetailModal(this.modalData[0],this.modelPath);
                         this.toggleModal();
                     }catch(err){

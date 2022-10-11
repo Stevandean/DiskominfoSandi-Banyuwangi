@@ -50,8 +50,6 @@
   function handleError(err){
     let keys = Object.keys(err.errors);
     let values = Object.values(err.errors);
-    console.log(keys);
-    console.log(values);
 
     keys.forEach(key => {
       switch(key){
@@ -81,7 +79,6 @@
   }
 
   //untukmelakukan upload
-  console.log('ini adalah console..og sebelum upload')
   function upload(){
     fetch('/admin/layanan',{
       method: 'POST',
