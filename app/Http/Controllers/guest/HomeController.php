@@ -26,6 +26,7 @@ class HomeController extends Controller
             'services' => Service::latest()->limit(5)->get(),
         ]);
 
+        
 
     }
 
