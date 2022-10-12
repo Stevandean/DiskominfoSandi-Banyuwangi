@@ -50,8 +50,13 @@ class DashboardServiceController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:400|unique:services',
             'description' => 'nullable',
-            'link' => 'nullable'
+            'link' => 'nullable',
+            'icon' => 'nullable|file'
         ]);
+
+        if($request->hasFile('icon')){
+            $validated['icon'] = $request->file('icon')->store('category-src');
+        }
 
         $category = Category::find($request->category_id);
         $category->services()->create($validated);
@@ -105,8 +110,16 @@ class DashboardServiceController extends Controller
             'name' => 'required|max:400|unique:services,name,'.$layanan->id,
             'category_id' => 'required|exists:categories,id',
             'description' => 'nullable',
-            'link' => 'nullable'
+            'link' => 'nullable',
+            'icon' => 'nullable|file'
         ]);
+
+        if($request->hasFile('icon')){
+            Storage::delete($request->oldIcon);
+            $validated['icon'] = $request->file('icon')->store('category-src');
+        }else{
+            $validated['icon'] = $request->oldIcon;
+        }
 
         Service::where('id', $layanan->id)->update($validated);
         $request->session()->flash('success', 'data berhasil diubah');
