@@ -54,9 +54,6 @@
         case 'description' :
           form_description_text.error(true, err.errors[key]);
           break;
-        case 'icon':
-          form_icon_file.error(true, err.errors[key]);
-          break;
         default :
           console.error('key tidak sesuai, harap masukan yg sesuai');
       }
