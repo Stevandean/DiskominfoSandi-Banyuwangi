@@ -52,7 +52,6 @@
                     </div>
                 @enderror
             </div>
-            <a href="#" class="place-self-end text-gray-600 font-bold mt-4">Forget Password</a>
             <button type="submit" class="py-3 px-20 bg-gradient-to-r from-[#595cff] to-[#54b8ff] rounded-full text-white font-bold uppercase text-lg mt-4 transform hover:translate-y-1 transition-all duration-500">Login </button>
         </form>
     </div>

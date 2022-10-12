@@ -78,12 +78,12 @@
                             <!-- berita --> 
                             <div class="flex flex-row md:flex-col divide-y-2">
                                 @for ($i = 0; $i < 3; $i++)
-                                <div class="flex gap-3 py-2 min-w-[20rem] max-w-xs md:max-w-full md:w-full">
+                                <a href="/berita/{{ $news [$i] -> slug }}" class="flex gap-3 py-2 min-w-[20rem] max-w-xs md:max-w-full md:w-full">
                                     <img class="max-h-24 rounded max-w-[8rem]" src="{{ Storage::exists($news[$i]->image ?? "null")? asset('/storage/'.$news[$i]->image) : '/images/null-image.png'  }}" >
                                     <div class="h-full">
                                         <h1 class="font-semibold">{{ Str::limit(strip_tags($news[$i]->title ?? "Title"), 200, '...') }} </h1>
                                     </div>
-                                </div>
+                                </a>
                                 @endfor
                             </div>
                         </div>
@@ -93,7 +93,7 @@
             </div>
             @endif
 
-            <div class=" grid-cols-2 mb-6 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-8 items-start">
+            <div class=" grid-cols-1 mb-6 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-8 items-start">
 
                 {{-- <!-- CARD 1 -->
                 <div class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">

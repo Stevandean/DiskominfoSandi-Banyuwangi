@@ -128,7 +128,6 @@
       let overlap = document.querySelector('#overLap');
       let aside =  document.querySelector('aside');
       function toggleSidebar2(){
-        //-translate-x-full
        aside.classList.toggle('-translate-x-full');
        overlap.classList.toggle('hidden')
       }

@@ -17,13 +17,12 @@
       <div class="grow max-w-full">
         <div class="shadow-none sm:shadow-md bg-white rounded-lg p-3 pt-4">
           <div class="flex justify-between items-center p-4 pt-1">
-            <span class="font-semibold text-lg text-blue-kominfo">Dokumen terbaru</span>
-  
-            <span class="sm:hidden inline text-md text-sky-600">
+            <span class="font-semibold text-lg text-blue-kominfo">Dokumen terbaru</span> 
+            <a href="/admin/dokumen" class="sm:hidden inline text-md text-sky-600">
               <svg class="stroke-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
               </svg>
-            </span>
+            </a>
             <a href="/admin/dokumen" class="hidden sm:inline text-sm text-sky-600">
               Lihat selengkapnya...
             </a>
@@ -34,21 +33,15 @@
                 <tbody>
                   @foreach ($documents as $document)
                     <tr class="bg-white border-b ">
-                      
-                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                            {{ $document->name }}
-                        </th>
-                        <td class="py-4 px-6">
-                          @php
-                          $date = date_create($document->create_date)
-                          @endphp
-                        {{ date_format($date, "j - F - o") }}
-                        </td>
-                        <td class="py-4 px-6">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                          </svg>
-                        </td>
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
+                        {{ Str::limit($document->name, 20, '...') }}
+                      </th>
+                      <td class="py-4 px-6">
+                        @php
+                        $date = date_create($document->create_date)
+                        @endphp
+                      {{ date_format($date, "j - F - o") }}
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -61,11 +54,11 @@
         <div class="shadow-none sm:shadow-md bg-white rounded-lg p-3 pt-4">
           <div class="flex justify-between items-center p-4 pt-1">
             <span class="font-semibold text-lg text-blue-kominfo">Berita terbaru</span>
-            <span class="sm:hidden inline text-md text-sky-600">
+            <a href="/admin/berita" class="sm:hidden inline text-md text-sky-600">
               <svg class="stroke-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
               </svg>
-            </span>
+            </a>
             <a href="/admin/berita" class="hidden sm:inline text-sm text-sky-600">
               Lihat selengkapnya...
             </a>
@@ -76,34 +69,29 @@
                 <tbody>
                   @foreach ($news as $news)
                   <tr class="bg-white border-b ">
-                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                          {{Str::limit($news->title, 20, '...') }}
-                      </th>
-                      <td class="py-4 px-6">
-                        @php
-                        $date = date_create($news->created_at)
-                        @endphp
-                        {{ date_format($date, "j - F - o") }}
-                      </td>
-                      <td class="py-4 px-6 hidden sm:block">
-                        @switch($news->category)
-                            @case('berita')
-                            <span class="bg-amber-200 rounded-full px-2 py-0.5 border border-amber-600 text-amber-900">Berita</span>  
-                              @break
-                            @case('goverment')
-                              <span class="bg-lime-200 rounded-full px-2 py-0.5 border border-lime-600 text-lime-900">Goverment</span>
-                              @break
-                            @case('technology')
-                              <span class="bg-sky-200 rounded-full px-2 py-0.5 border border-sky-600 text-blue-900">Teknologi</span>
-                              @break
-                            @default   
-                        @endswitch
-                      </td>
-                      <td class="py-4 px-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                      </td>
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
+                        {{Str::limit($news->title, 20, '...') }}
+                    </th>
+                    <td class="py-4 px-6">
+                      @php
+                      $date = date_create($news->created_at)
+                      @endphp
+                      {{ date_format($date, "j - F - o") }}
+                    </td>
+                    <td class="py-4 px-6 hidden sm:block">
+                      @switch($news->category)
+                          @case('berita')
+                          <span class="bg-amber-200 rounded-full px-2 py-0.5 border border-amber-600 text-amber-900">Berita</span>  
+                            @break
+                          @case('goverment')
+                            <span class="bg-lime-200 rounded-full px-2 py-0.5 border border-lime-600 text-lime-900">Goverment</span>
+                            @break
+                          @case('technology')
+                            <span class="bg-sky-200 rounded-full px-2 py-0.5 border border-sky-600 text-blue-900">Teknologi</span>
+                            @break
+                          @default   
+                      @endswitch
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -129,11 +117,11 @@
         <div class="shadow-none sm:shadow-md bg-white rounded-lg p-3 pt-4">
           <div class="flex justify-between items-center p-4 pt-1">
             <span class="font-semibold text-lg text-blue-kominfo">Galeri terbaru terbaru</span>
-            <span class="sm:hidden inline text-md text-sky-600">
+            <a href="/admin/galeri" class="sm:hidden inline text-md text-sky-600">
               <svg class="stroke-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
               </svg>
-            </span>
+            </a>
             <a href="/admin/galeri" class="hidden sm:inline text-sm text-sky-600">
               Lihat selengkapnya...
             </a>
@@ -144,55 +132,50 @@
                 <tbody>
                     @foreach ($galleries as $gallery)
                     <tr class="bg-white border-b ">
-                        <td class="hidden lg:block py-4 px-6">
-                          @if($gallery->type == 'image')
-                          <div class="max-h-16 overflow-hidden">
-                            <img src="{{ asset('storage/'.$gallery->source) }}" class="w-16 mx-auto" alt="" >
-                          </div>
+                      <td class="hidden lg:block py-4 px-6">
+                        @if($gallery->type == 'image')
+                        <div class="max-h-16 overflow-hidden">
+                          <img src="{{ asset('storage/'.$gallery->source) }}" class="w-16 mx-auto" alt="" >
+                        </div>
 
-                          @elseif($gallery->type == 'video')
-                            @php
-                              #untuk mendapatkan id video dan menjadikanya api untuk mendapat thumbnail (saya tidak bisa regex)
-                              $videoURL = $gallery->source;
-                              $vidString = '';
-                              if(filter_var($videoURL, FILTER_VALIDATE_URL)){
-                                $vidId = explode("/",$videoURL);
-                                $vidId = end($vidId);
-                                $vidId = explode('?', $vidId);
-                                $vidId = end($vidId);
-                                $vidId = explode("&",$vidId)[0];
-                                $vidId = explode("=",$vidId)[1];
-                                $vidString = "https://img.youtube.com/vi/$vidId/mqdefault.jpg";
-                              }else{
-                                $vidString = "/images/null-image.png";
-                              }
-                            @endphp
-                            <div class="max-h-16 overflow-hidden">
-                              <img src="{{ $vidString }}" class="w-16 mx-auto" alt="" >
-                            </div>
-                          @endif
-                        </td>
-                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap truncate">
-                          {{ Str::limit($gallery->title, 23, "...") }}
-                        </th>
-                        <td class="py-4 px-6">
+                        @elseif($gallery->type == 'video')
                           @php
-                          $date = date_create($gallery->created_at)
+                            #untuk mendapatkan id video dan menjadikanya api untuk mendapat thumbnail (saya tidak bisa regex)
+                            $videoURL = $gallery->source;
+                            $vidString = '';
+                            if(filter_var($videoURL, FILTER_VALIDATE_URL)){
+                              $vidId = explode("/",$videoURL);
+                              $vidId = end($vidId);
+                              $vidId = explode('?', $vidId);
+                              $vidId = end($vidId);
+                              $vidId = explode("&",$vidId)[0];
+                              $vidId = explode("=",$vidId)[1];
+                              $vidString = "https://img.youtube.com/vi/$vidId/mqdefault.jpg";
+                            }else{
+                              $vidString = "/images/null-image.png";
+                            }
                           @endphp
-                          {{ date_format($date, "j - F - o") }}
-                        </td>
-                        <td class="py-4 px-6 hidden sm:table-cell">
-                          @if($gallery->type == 'image')
-                          <span class="bg-amber-200 hover:bg-amber-300 rounded-full px-2 py-0.5 border border-amber-600 text-amber-900">Gambar</span>
-                          @elseif($gallery->type == 'video')
-                          <span class="bg-lime-200 hover:bg-lime-300 rounded-full px-2 py-0.5 border border-lime-600 text-lime-900">Video</span>
-                          @endif
-                        </td>
-                        <td class="py-4 px-6">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                          </svg>
-                        </td>
+                          <div class="max-h-16 overflow-hidden">
+                            <img src="{{ $vidString }}" class="w-16 mx-auto" alt="" >
+                          </div>
+                        @endif
+                      </td>
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap truncate">
+                        {{ Str::limit($gallery->title, 20, "...") }}
+                      </th>
+                      <td class="py-4 px-6">
+                        @php
+                        $date = date_create($gallery->created_at)
+                        @endphp
+                        {{ date_format($date, "j - F - o") }}
+                      </td>
+                      <td class="py-4 px-6 hidden sm:table-cell">
+                        @if($gallery->type == 'image')
+                        <span class="bg-amber-200 hover:bg-amber-300 rounded-full px-2 py-0.5 border border-amber-600 text-amber-900">Gambar</span>
+                        @elseif($gallery->type == 'video')
+                        <span class="bg-lime-200 hover:bg-lime-300 rounded-full px-2 py-0.5 border border-lime-600 text-lime-900">Video</span>
+                        @endif
+                      </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -206,11 +189,11 @@
       <div class="grow xl:basis-1/2 p-3 max-w-full">
         <div class="flex justify-between items-center p-4 pt-1">
           <span class="font-semibold text-lg text-blue-kominfo">Layanan terbaru terbaru</span>
-          <span class="sm:hidden inline text-md text-sky-600">
+          <a href="/admin/layanan" class="sm:hidden inline text-md text-sky-600">
             <svg class="stroke-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
             </svg>
-          </span>
+          </a>
           <a href="/admin/layanan" class="hidden sm:inline text-sm text-sky-600">
             Lihat selengkapnya...
           </a>
@@ -221,17 +204,12 @@
             <tbody>
               @foreach ($services as $service)
               <tr class="bg-white border-b ">
-                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                    {{ Str::limit($service->name, 30, '...') }}
-                  </th>
-                  <td class="py-4 px-6">
-                    {{ Str::limit($service->description, 30, '...') }}
-                  </td>   
-                  <td class="py-4 px-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                  </td>
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
+                  {{ Str::limit($service->name, 20, '...') }}
+                </th>
+                <td class="py-4 px-6">
+                  {{ Str::limit($service->description, 20, '...') }}
+                </td>   
               </tr>
               @endforeach
             </tbody>
@@ -241,11 +219,11 @@
       <div class="grow xl:basis-1/2 p-3 max-w-full">
         <div class="flex justify-between items-center p-4 pt-1">
           <span class="font-semibold text-lg text-blue-kominfo">Kategori Layanan</span>
-          <span class="sm:hidden inline text-md text-sky-600">
+          <a href="/admin/kategori" class="sm:hidden inline text-md text-sky-600">
             <svg class="stroke-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
             </svg>
-          </span>
+          </a>
           <a href="/admin/layanan" class="hidden sm:inline text-sm text-sky-600">
             Lihat selengkapnya...
           </a>
@@ -255,19 +233,14 @@
           <table class="w-full text-sm text-left text-gray-500 ">
             <tbody>
               @foreach ($categories as $category)
-              <tr class="bg-white border-b ">
+                <tr class="bg-white border-b ">
                   <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                    {{ Str::limit($category->name, 30, '...') }}
+                    {{ Str::limit($category->name, 20 , '...') }}
                   </th>
                   <td class="py-4 px-6">
-                    {{ Str::limit($category->description, 30, '...') }}
-                  </td>   
-                  <td class="py-4 px-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-auto" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                  </td>
-              </tr>
+                    {{ Str::limit($category->description, 20, '...') }}
+                  </td>  
+                </tr>
               @endforeach
             </tbody>
           </table>
@@ -280,6 +253,3 @@
 
             
 @endsection
-
-
-  

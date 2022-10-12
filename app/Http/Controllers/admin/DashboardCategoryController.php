@@ -24,7 +24,7 @@ class DashboardCategoryController extends Controller
                         ->paginate(7)
                         ->withQueryString(),
             'categoriesCount' => Category::latest()->filter(request(['search']))->count(),
-            'pageAction' => 'Layanan'
+            'pageAction' => 'Kategori'
         ]);
     }
 
@@ -52,11 +52,8 @@ class DashboardCategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:400|unique:categories',
             'description' => 'nullable',
-<<<<<<< HEAD
             'link' => 'nullable',
             'icon' => 'nullable|file'
-=======
->>>>>>> e0926ae71489b906256800dd8e2de35640b5f37a
         ]);
 
 

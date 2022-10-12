@@ -67,11 +67,7 @@
           <tbody>
               @foreach ($categories as $category)
                 <tr class="border-b">
-<<<<<<< HEAD
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-=======
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
->>>>>>> e0926ae71489b906256800dd8e2de35640b5f37a
                         {{ $loop->iteration }}
                     </th>
                     <td class="py-4 px-6 font-medium text-gray-900">
