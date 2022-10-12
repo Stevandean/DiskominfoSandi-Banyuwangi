@@ -53,7 +53,7 @@ class DashboardCategoryController extends Controller
             'name' => 'required|max:400|unique:categories',
             'description' => 'nullable',
             'link' => 'nullable',
-            'icon' => 'nullable | file'
+            'icon' => 'nullable|file'
         ]);
 
         if($request->hasFile('icon')){

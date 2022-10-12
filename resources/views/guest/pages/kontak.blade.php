@@ -7,7 +7,7 @@
                 <h1 class="text-3xl font-bold text-center py-10 underline underline-offset-8 decoration-2 decoration-sky-500">
                     Dinas Komunikasi, Informatika, dan Persandian Banyuwangi
                 </h1>
-                <div class="img-kontak m-auto" style="background-image:url(/images/logo-kominfo.jpg)"></div>
+                <div class="img-kontak m-auto" style="background-image:url(/images/diskominfo-logo.png)"></div>
                 <h1 class="text-xl font-bold pt-5  underline underline-offset-2 decoration-2 decoration-sky-500">Alamat :</h1>
                 <h1 class=" text-xl">Jl. Kh. Agus Salim No 83, Taman Baru, Kec. Banyuwangi, Kabupaten Banyuwangi, Jawa Timur 68416, Indonesia</h1>
                 <h1 class="text-xl font-bold pt-3  underline underline-offset-2 decoration-2 decoration-sky-500">Email :</h1>

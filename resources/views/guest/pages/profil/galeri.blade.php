@@ -63,8 +63,8 @@
 @section('container')
 
   <!-- Header -->
-  <div class="text-4xl font-semibold mt-5">
-    <h1 class="text-center">Galeri</h1>
+  <div class="text-center underline underline-offset-8 decoration-2 decoration-[#f6ca29] text-4xl font-bold pt-10">
+    Galery
   </div>
 
   <!-- container, so the galleries doesn't change to much -->
@@ -89,10 +89,9 @@
         <button class="btn-gallery relative group hover:z-10 w-full" data-id="{{ $galleries[$j]->id }}"> <!-- image -->
           <div class="inset-0 absolute z-10">
             <div class="flex items-center h-full justify-center">
-              <h1 class="text-3xl text-center opacity-0 group-hover:text-red-400 group-hover:opacity-100 ease-in-out duration-300">{{ $galleries[$j]->title }}</h1>
+              <h1 class="text-3xl text-center opacity-0 group-hover:text-white group-hover:opacity-100 ease-in-out duration-300">{{ $galleries[$j]->title }}</h1>
             </div>
           </div>
-            {{-- <img class="group-hover:blur-sm blur-none group-hover:scale-110 ease-in-out duration-300" src="https://images.unsplash.com/photo-1661344662582-81a5c6229d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" style="width:100%"> --}}
             @if ($galleries[$j]->type == 'image')
               <img class="group-hover:blur-sm blur-none group-hover:scale-110 ease-in-out duration-300 w-full" src="{{ Storage::exists($galleries[$j]->source)? asset('/storage/'.$galleries[$j]->source) : '/images/null-image.png'  }}">
               @elseif($galleries[$j]->type == 'video')

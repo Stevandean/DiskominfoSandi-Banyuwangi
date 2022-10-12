@@ -9,10 +9,10 @@
 		<div class="flex flex-wrap relative justify-center gap-7 p-10 ">
 			@foreach ($services as $service)
 			<div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md basis-full  md:basis-1/3">
-				<svg class="mb-2 w-10 h-10 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"></path><path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path></svg>
-				<a href="#">
+				<svg class="mb-2 w-10 h-10 text-gray-500" viewBox="0 0 1024 1024" class="icon" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M864 409.6a192 192 0 01-37.888 349.44A256.064 256.064 0 01576 960h-96a32 32 0 110-64h96a192.064 192.064 0 00181.12-128H736a32 32 0 01-32-32V416a32 32 0 0132-32h32c10.368 0 20.544.832 30.528 2.432a288 288 0 00-573.056 0A193.235 193.235 0 01256 384h32a32 32 0 0132 32v320a32 32 0 01-32 32h-32a192 192 0 01-96-358.4 352 352 0 01704 0zM256 448a128 128 0 100 256V448zm640 128a128 128 0 00-128-128v256a128 128 0 00128-128z"/></svg>
+				<div>
 					<h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">{{ $service -> name }}</h5>
-				</a>
+				</div>
 				<p class="mb-3 font-normal text-gray-500 ">{{ Str::limit($service -> description, 90, '...') }}</p>
 				<a href="{{ $service -> link }}" class="inline-flex items-center text-blue-600 hover:underline">
 					Lihat Selengkapnya

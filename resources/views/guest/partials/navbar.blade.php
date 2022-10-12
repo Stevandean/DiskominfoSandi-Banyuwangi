@@ -87,7 +87,7 @@
               text-gray-700
               hover:text-blue-600
               hover:bg-gray-100"
-            href="#"
+            href="/kontak"
             >Diskominfo & Sandi
           </a>
         </li>
@@ -263,7 +263,7 @@
                 hover:text-blue-600
                 hover:bg-gray-100"
               href="/document"
-              >Doc
+              >Document
             </a>
           </li>
         </ul>
