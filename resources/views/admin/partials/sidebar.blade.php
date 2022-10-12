@@ -1,4 +1,4 @@
-<aside class="absolute translate-x-0 -translate-x-full z-20 lg:translate-x-0 lg:relative transition-all">
+<aside class="absolute -translate-x-full z-20 lg:translate-x-0 lg:relative transition-all">
     <div class="h-screen overflow-y-auto  w-64  shadow-md bg-side transition-all py-2 px-3 drop-shadow-md">
       <h1 class="admin-title text-center font-sans font-semibold text-xl py-6 mb-6 text-slate-200 border-b border-gray-500">ADMIN</h1>
       <h1 class="admin-title text-center font-sans font-semibold text-xl py-6 mb-6 text-slate-200 border-b border-gray-500 hidden">A</h1>
