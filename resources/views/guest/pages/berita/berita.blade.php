@@ -38,7 +38,7 @@
                                         <span class="z-20 absolute bottom-10 left-10 text-xl lg:text-2xl font-semibold text-white">{{ $news[$i]->title ?? "Title" }}</span>
                                         <div class="z-10 h-28  bg-gradient-to-t from-black opacity-50 absolute inset-x-0 bottom-0"></div>
                                         <div class="bg-white block absolute top-1/2 left-1/2 w-full min-h-full -translate-x-1/2 -translate-y-1/2">
-                                            <img src="{{ Storage::exists($news[$i]->image ?? "null")? asset('/storage/'.$news[$i]->image) : '/images/null-image.png'  }}" class="" alt="...">
+                                            <img class="w-full" src="{{ Storage::exists($news[$i]->image ?? "null")? asset('/storage/'.$news[$i]->image) : '/images/null-image.png'  }}" class="" alt="...">
                                         </div>
                                     </a>
                                 @endfor

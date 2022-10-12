@@ -52,8 +52,7 @@ class DashboardCategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:400|unique:categories',
             'description' => 'nullable',
-            'link' => 'nullable',
-            'icon' => 'nullable | file'
+            'icon' => 'nullable|file'
         ]);
 
         if($request->hasFile('icon')){
@@ -105,7 +104,7 @@ class DashboardCategoryController extends Controller
             'name' => 'required|max:400',
             'description' => 'nullable',
             'link' => 'nullable',
-            'icon' => 'nullable | file'
+            'icon' => 'nullable|file'
         ]);
 
         if($request->hasFile('icon')){

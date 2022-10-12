@@ -70,7 +70,7 @@
           <tbody>
               @foreach ($categories as $category)
                 <tr class="border-b">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
                         {{ $loop->iteration }}
                     </th>
                     <td class="py-4 px-6 ">
@@ -78,7 +78,7 @@
                       @if (isset($category->icon))
                         <img class="max-w-[6rem] max-h-10" src="{{ Storage::exists($category->icon )? asset('/storage/'.$category->icon) : '../images/null-icon.png' }}" alt="">
                       @else
-                        <img class="w-24" src="/images/null-icon.png" alt="null image">
+                        <img class="max-w-[6rem] max-h-10" src="/images/null-icon.png" alt="null image">
                       @endif
                     </td>
                     <td class="py-4 px-6 font-medium text-gray-900">
