@@ -133,6 +133,58 @@
 
     </div>
 
+<<<<<<< HEAD
+=======
+    <!-- Carousels Layanan -->
+
+    <div class=" px-5 pb-5 bg-white min-w-screen">
+      <h1 class=" py-5 text-black-600 text-4xl font-semibold text-center col-start-2">
+        Semua Layanan
+      </h1>
+
+      <!-- COBA MULTI SLIDER 2 -->
+      <div class="flex justify-center">
+
+        <!-- Slider controls -->
+        <button class="p-5 self-center" id="prev-button" onclick="prev()">   
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+
+        <div class="flex  md:p-5 gap-x-5 w-[72%] overflow-hidden cursor-pointer scroll-smooth" id="cardContainer">
+
+        <!-- Content -->
+        @foreach ($services as $service)
+          <!-- Awal Content -->
+          <a href="{{ $service->link }}" class="bg-white h-64 max-w-[200px] min-w-[200px] px-5 py-5 rounded-lg drop-shadow-xl">
+            <div class="w-20 h-20 mb-3 bg-cover mx-auto">
+              <img src="{{ Storage::exists($service->icon ?? "null")? asset('/storage/'.$service->icon) : '/images/null-icon.png'  }}">
+            </div>
+            <h2 class="text-center text-xl font-bold text-md">
+              {{ Str::limit($service->name, 50, "...") }}
+            </h2>
+            <div class="border-b-2 border-gray-200 my-3"></div>
+            <p class="text-sm leading-tight text-center mb-5">
+              {{ Str::limit($service->description, 50, "...") }}
+            </p>
+          </a>
+          <!-- Akhir Content -->
+        @endforeach
+          
+        </div>
+
+        <!-- Slider controls -->
+        <button class="p-5 self-center" id="next-button" onclick="next()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+
+      </div>
+
+      
+    </div>
+
+    <!-- ** AKHIR PELAYANAN ** -->
+
+>>>>>>> e0926ae71489b906256800dd8e2de35640b5f37a
   @endsection
 
 

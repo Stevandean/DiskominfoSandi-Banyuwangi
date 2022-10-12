@@ -50,10 +50,13 @@
                   <th scope="col" class="py-3 px-6">
                       #
                   </th>
-                  <th scope="col" class="py-3 px-6 min-w-[15rem]">
+                  <th scope="col" class="py-3 px-6">
+                    Icon
+                  </th>
+                  <th scope="col" class="py-3 px-6 min-w-[10rem]">
                       Nama
                   </th>
-                  <th scope="col" class="py-3 px-6 min-w-[18rem]">
+                  <th scope="col" class="py-3 px-6 min-w-[15rem]">
                       Deskripsi
                   </th>
                   <th scope="col" class="py-3 px-6">
@@ -70,6 +73,14 @@
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900">
                         {{ $loop->iteration }}
                     </th>
+                    <td class="py-4 px-6 ">
+                      {{-- <img class="w-24" src="../images/cliff.jpg" alt=""> --}}
+                      @if (isset($service->icon))
+                        <img class="max-w-[6rem] max-h-10" src="{{ Storage::exists($service->icon )? asset('/storage/'.$service->icon) : '../images/null-icon.png' }}" alt="">
+                      @else
+                        <img class="max-w-[6rem] max-h-10" src="/images/null-icon.png" alt="null image">
+                      @endif
+                    </td>
                     <td class="py-4 px-6 font-medium text-gray-900">
                         {{ $service->name }}
                     </td>

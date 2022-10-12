@@ -52,13 +52,13 @@ class DashboardCategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:400|unique:categories',
             'description' => 'nullable',
+<<<<<<< HEAD
             'link' => 'nullable',
             'icon' => 'nullable|file'
+=======
+>>>>>>> e0926ae71489b906256800dd8e2de35640b5f37a
         ]);
 
-        if($request->hasFile('icon')){
-            $validated['icon'] = $request->file('icon')->store('category-src');
-        }
 
         Category::create($validated);
         $request->session()->flash('success', 'data berhasil ditambah');
@@ -105,7 +105,7 @@ class DashboardCategoryController extends Controller
             'name' => 'required|max:400',
             'description' => 'nullable',
             'link' => 'nullable',
-            'icon' => 'nullable | file'
+            'icon' => 'nullable|file'
         ]);
 
         if($request->hasFile('icon')){

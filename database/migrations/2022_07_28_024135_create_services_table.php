@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('link');
+            $table->text('icon')->nullable();
             $table->timestamps();
         });
     }

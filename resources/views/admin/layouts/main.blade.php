@@ -6,21 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/trix.css">
     <script src="/js/trix.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      //------- konfigurasi tailwind ---------
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'side': '#001B43',
-              'side-bright': '#233A5C',
-              'blue-kominfo' : '#0100CC'
-            }
-          }
-        }
-      }
-    </script>
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         *::-webkit-scrollbar-track{
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -128,6 +115,7 @@
       let sideList = document.querySelectorAll('.side-list')
       function toogleSidebar(){
         asideDiv.classList.toggle('w-64');
+        asideDiv.classList.toggle('w-20');
         sideList.forEach(el => {
           el.classList.toggle('hidden')
         })

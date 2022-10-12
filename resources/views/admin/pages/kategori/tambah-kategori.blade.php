@@ -69,7 +69,9 @@
     data.set('_token', '{{csrf_token()}}');
     data.set('name', form_name_text.input.value);
     data.set('description', form_description_text.input.value)
-    data.set('icon', form_icon_file.fileVal)
+    if(typeof form_icon_file.fileVal != "undefined") {
+        data.set('icon', form_icon_file.fileVal)
+    }
   }
 
   //untukmelakukan upload

@@ -51,7 +51,7 @@ class DashboardDocumentController extends Controller
         //melakukan validasi
         $validated = $request->validate([
             'name' => 'required|max:225',
-            'source' => 'file'
+            'source' => 'file|mimes:pdf'
         ]);
 
         //jika ada dokumen yang diupload

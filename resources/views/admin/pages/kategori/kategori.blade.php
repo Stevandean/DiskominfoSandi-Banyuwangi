@@ -50,9 +50,6 @@
                   <th scope="col" class="py-3 px-6">
                       #
                   </th>
-                  <th scope="col" class="py-3 px-6">
-                      Icon
-                  </th>
                   <th scope="col" class="py-3 px-6 min-w-[10rem]">
                       Kategori
                   </th>
@@ -70,17 +67,13 @@
           <tbody>
               @foreach ($categories as $category)
                 <tr class="border-b">
+<<<<<<< HEAD
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+=======
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
+>>>>>>> e0926ae71489b906256800dd8e2de35640b5f37a
                         {{ $loop->iteration }}
                     </th>
-                    <td class="py-4 px-6 ">
-                      {{-- <img class="w-24" src="../images/cliff.jpg" alt=""> --}}
-                      @if (isset($category->icon))
-                        <img class="max-w-[6rem] max-h-10" src="{{ Storage::exists($category->icon )? asset('/storage/'.$category->icon) : '../images/null-icon.png' }}" alt="">
-                      @else
-                        <img class="w-24" src="/images/null-icon.png" alt="null image">
-                      @endif
-                    </td>
                     <td class="py-4 px-6 font-medium text-gray-900">
                         {{ $category->name }}
                     </td>
