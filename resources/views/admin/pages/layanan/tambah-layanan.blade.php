@@ -27,6 +27,11 @@
     <div class="mb-6">
       <x-admin.input input-name="Deskripsi" form-name="description" />
     </div>
+    <div id="wrp" class="mb-6"><!--upload file-->
+      <x-admin.input-upload type="image" input-name="File icon" form-name="icon" :is-filled=false :is-read-only=false :is-error=false >
+        hanya file gambar
+      </x-admin.input-upload>
+    </div>
     <div class="mb-6">
       <x-admin.input input-name="Link" form-name="link" />
     </div>
@@ -62,6 +67,9 @@
         case 'link' :
           form_link_text.error(true, err.errors[key]);
           break;
+        case 'icon':
+          form_icon_file.error(true, err.errors[key]);
+          break;
         default :
           console.error('key tidak sesuai, harap masukan yg sesuai');
       }
@@ -76,6 +84,10 @@
     data.set('name', form_name_text.input.value);
     data.set('description', form_description_text.input.value);
     data.set('link', form_link_text.input.value);
+    if(typeof form_icon_file.fileVal != "undefined"){
+      data.set('icon', form_icon_file.fileVal);
+      console.log("data seharusnya sudah dimasukan")
+    }
   }
 
   //untukmelakukan upload

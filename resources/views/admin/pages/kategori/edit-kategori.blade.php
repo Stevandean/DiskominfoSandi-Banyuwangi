@@ -21,12 +21,6 @@
     <div class="mb-6">
       <x-admin.input input-name="Deskripsi" form-name="description" input-value="{{ $category->description }}" />
     </div>
-    <div id="wrp" class="mb-6"><!--upload file-->
-      <x-admin.input-upload info-file-read-only="{{ $category->icon }}" type="image" input-name="File icon" form-name="icon" :is-filled=true :is-read-only=false :is-error=false >
-        hanya file gambar
-      </x-admin.input-upload>
-      <input type="hidden" name="old-icon" value="{{ $category->icon }}">
-    </div>
     <div class="mb-6">
       <x-admin.form-button btn-name="send" :isAjax=true>
         Edit
@@ -56,9 +50,6 @@
         case 'description' :
           form_description_text.error(true, err.errors[key]);
           break;
-        case 'icon':
-          form_icon_file.error(true, err.errors[key]);
-          break;
         default :
           console.error('key tidak sesuai, harap masukan yg sesuai');
       }
@@ -72,11 +63,6 @@
     data.set('_method', 'PUT');
     data.set('name', form_name_text.input.value);
     data.set('description', form_description_text.input.value);
-    if(typeof form_icon_file.fileVal != "undefined"){
-      data.set('icon', form_icon_file.fileVal);
-      console.log("data seharusnya sudah dimasukan")
-    }
-    data.set('oldIcon', document.querySelector('[name=old-icon]').value);
   }
 
   //untukmelakukan upload

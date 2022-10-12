@@ -105,7 +105,7 @@
           <!-- Awal Content -->
           <a href="{{ $service->link }}" class="bg-white h-64 max-w-[200px] min-w-[200px] px-5 py-5 rounded-lg drop-shadow-xl">
             <div class="w-20 h-20 mb-3 bg-cover mx-auto">
-              <img src="images/avatar.svg">
+              <img src="{{ Storage::exists($service->icon ?? "null")? asset('/storage/'.$service->icon) : '/images/null-icon.png'  }}">
             </div>
             <h2 class="text-center text-xl font-bold text-md">
               {{ Str::limit($service->name, 50, "...") }}
