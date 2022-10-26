@@ -20,3 +20,13 @@
         })
     </script>
 @endPush
+
+@push('dummy-push')
+    {{-- ini adalaah dummy suapay tailwind dapat membaca elemen secara langsung --}}
+    <h1 class="
+    bg-green-100 rounded-lg border border-green-500 
+    text-green-700 dark:text-green-800
+    text-green-500
+    focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200
+    "></h1>
+@endpush
