@@ -52,6 +52,8 @@
 
   let data
   let form = document.querySelector('#form-upload')
+  let oldIcon = document.querySelector('input[name="old-icon"]');
+  console.log(oldIcon)
 
   //untuk menangani bila gerdapat error yg dilempar
   function handleError(err){
@@ -87,6 +89,7 @@
     data.set('name', form_name_text.input.value);
     data.set('description', form_description_text.input.value);
     data.set('link', form_link_text.input.value);
+    data.set('oldIcon', oldIcon.value)
     if(typeof form_icon_file.fileVal != "undefined"){
       data.set('icon', form_icon_file.fileVal);
       console.log("data seharusnya sudah dimasukan")

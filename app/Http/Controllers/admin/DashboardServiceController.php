@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardServiceController extends Controller
 {
@@ -115,7 +116,9 @@ class DashboardServiceController extends Controller
         ]);
 
         if($request->hasFile('icon')){
-            Storage::delete($request->oldIcon);
+            if($request->oldIcon){
+                Storage::delete($request->oldIcon);
+            }
             $validated['icon'] = $request->file('icon')->store('category-src');
         }else{
             $validated['icon'] = $request->oldIcon;

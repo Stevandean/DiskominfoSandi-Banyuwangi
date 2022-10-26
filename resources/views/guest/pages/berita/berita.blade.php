@@ -34,6 +34,9 @@
                             <!-- Carousel wrapper -->
                             <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
                                 @for ($i = 0; $i < 3; $i++)
+                                    @if (!$news[$i])
+                                        @break
+                                    @endif
                                     <a href="/berita/{{ $news[$i]->slug ?? "#" }}" class="hidden duration-700 ease-in-out" data-carousel-item>
                                         <span class="z-20 absolute bottom-10 left-10 text-xl lg:text-2xl font-semibold text-white">{{ $news[$i]->title ?? "Title" }}</span>
                                         <div class="z-10 h-28  bg-gradient-to-t from-black opacity-50 absolute inset-x-0 bottom-0"></div>
@@ -78,6 +81,9 @@
                             <!-- berita --> 
                             <div class="flex flex-row md:flex-col divide-y-2">
                                 @for ($i = 0; $i < 3; $i++)
+                                @if (!$news[$i])
+                                    @break;
+                                @endif
                                 <a href="/berita/{{ $news [$i] -> slug }}" class="flex gap-3 py-2 min-w-[20rem] max-w-xs md:max-w-full md:w-full">
                                     <img class="max-h-24 rounded max-w-[8rem]" src="{{ Storage::exists($news[$i]->image ?? "null")? asset('/storage/'.$news[$i]->image) : '/images/null-image.png'  }}" >
                                     <div class="h-full">
