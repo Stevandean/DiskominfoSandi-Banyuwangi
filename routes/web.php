@@ -56,12 +56,13 @@ Route::get('/layanan', [DocumentandOtherController::class, 'layanan']);
 
 //------------------ ## ADMIN ## ----------------------
 Route::redirect('/admin', '/admin/login');
+Route::redirect('/login', '/admin/login');
 Route::get('/admin/login',[LoginController::class, 'halamanLogin']) -> name('login')->middleware('guest');
 Route::post('/admin/login',[LoginController::class, 'authenticate']);
 Route::post('/admin/logout',[LoginController::class, 'logout']);
 
 Route::middleware('auth')->prefix('admin')->group(function(){
-    Route::get('dashboard',[DashboardController::class,'index'] );
+    Route::get('dashboard',[DashboardController::class,'index'] ) -> name('home');
     Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
     Route::get('slug', [DashboardNewsController::class, 'checkSlug']);
     Route::resource('dokumen', DashboardDocumentController::class);
