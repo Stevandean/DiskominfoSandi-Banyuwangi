@@ -102,15 +102,7 @@ class DashboardCategoryController extends Controller
             'name' => 'required|max:400',
             'description' => 'nullable',
             'link' => 'nullable',
-            'icon' => 'nullable|file'
         ]);
-
-        if($request->hasFile('icon')){
-            Storage::delete($request->oldIcon);
-            $validated['icon'] = $request->file('icon')->store('category-src');
-        }else{
-            $validated['icon'] = $request->oldIcon;
-        }
 
         Category::where('id', $kategori->id)->update($validated);
         $request->session()->flash('success', 'data berhasil diubah'); //supaya dapat menggunakan flash ketika diredirect menggunakan javascript

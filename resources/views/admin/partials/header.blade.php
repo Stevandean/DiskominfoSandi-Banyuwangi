@@ -1,4 +1,4 @@
-<div class="sticky top-0 z-40 header border-b bg-white w-full p-2">
+<div class="sticky top-0 z-10 header border-b bg-white w-full p-2">
   <div class="flex justify-between">
     <div class="inline-flex items-center">
       <!-- &#x1F5D9; -->
