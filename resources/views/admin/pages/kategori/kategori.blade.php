@@ -142,15 +142,6 @@
               <span class="fill-detail" data-key="name"></span>
           </p>
         </div>
-        
-        <div class="flex flex-col flex-wrap">
-          <p class="text-base  leading-relaxed font-semibold">
-              Icon :
-          </p>
-          <p class="text-base leading-relaxed mx-2 break-all">
-            <span class="fill-detail" data-key="icon" data-preview="true"></span>
-          </p>
-        </div>
         <div class="flex">
           <p class="text-base leading-relaxed font-semibold">
               Tanggal Dibuat :

@@ -48,13 +48,16 @@
           <!-- Awal Content -->
           <a href="{{ $service->link }}" class="bg-white h-64 max-w-[200px] min-w-[200px] px-5 py-5 rounded-lg drop-shadow-xl">
             <div class="w-20 h-20 mb-3 bg-cover mx-auto">
-              <img src="images/avatar.svg">
+              {{-- <img src="images/avatar.svg"> --}}
+              <div class="max-h-full max-w-full">
+                <img class="h-20 mx-auto" src="{{ Storage::exists($service->icon ?? "null")? asset('/storage/'.$service->icon) : 'images/avatar.svg'   }}">
+              </div>
             </div>
             <h2 class="text-center text-xl font-bold text-md">
               {{ Str::limit($service->name, 50, "...") }}
             </h2>
             <div class="border-b-2 border-gray-200 my-3"></div>
-            <p class="text-sm leading-tight text-center mb-5">
+            <p class="text-sm leading-tight text-center mb-5"> 
               {{ Str::limit($service->description, 50, "...") }}
             </p>
           </a>
