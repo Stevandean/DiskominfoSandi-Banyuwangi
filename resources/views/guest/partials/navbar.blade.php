@@ -76,7 +76,7 @@
         </a>
         <ul
           class="dropdown-menu max-w-none absolute hidden bg-white text-base z-50 float-center   py-2 list-none text-left rounded-lg shadow-lg m-0 bg-clip-padding border-none" aria-labelledby="dropdownMenuButton2">
-          <li>
+          {{-- <li>
             <a
               class="dropdown-item text-sm py-2 px-4 font-normal block w-25px whitespace-nowrap bg-transparent text-gray-700 hover:text-blue-600 hover:bg-gray-100" href="/berita"
               >Bidang Informasi dan Komunikasi Publik
@@ -99,7 +99,17 @@
               class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:text-blue-600 hover:bg-gray-100" href="/document"
               >Sekretariat
             </a>
-          </li>
+          </li> --}}
+          @php
+            $kategori = session('categoryList');   
+          @endphp
+          @foreach ($kategori as $cat)
+          <a
+            class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:text-blue-600 hover:bg-gray-100" 
+            href="/layanan/{{ $cat->id }}"
+            >{{ $cat->name }}
+          </a>
+          @endforeach
         </ul>
       </div>
       <li class="px-4 py-3 md:my-0">

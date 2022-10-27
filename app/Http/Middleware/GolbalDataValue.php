@@ -19,7 +19,7 @@ class GolbalDataValue
     {
         //midleware untuk mendapatkan data global
         //data global disini adalah data yang di gunkna untuk sebagian besar views
-        $categoryList = Category::all(['name']);
+        $categoryList = Category::all(['name','id']);
         // $request['categoryList'] = $categoryList;
         session(['categoryList' => $categoryList]);
 
