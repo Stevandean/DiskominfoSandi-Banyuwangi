@@ -20,11 +20,6 @@
     <div class="mb-6">
       <x-admin.input input-name="Deskripsi" form-name="description" />
     </div>
-    <div id="wrp" class="mb-6">
-      <x-admin.input-upload type="image" input-name="File Icon *optional" form-name="icon" :is-filled=false :is-read-only=false :is-error=false >
-        hanya file icon
-      </x-admin.input-upload>
-    </div>
     <div class="mb-6">
       <x-admin.form-button btn-name="send" :isAjax=true>
         Tambah
@@ -66,9 +61,6 @@
     data.set('_token', '{{csrf_token()}}');
     data.set('name', form_name_text.input.value);
     data.set('description', form_description_text.input.value)
-    if(typeof form_icon_file.fileVal != "undefined") {
-        data.set('icon', form_icon_file.fileVal)
-    }
   }
 
   //untukmelakukan upload
