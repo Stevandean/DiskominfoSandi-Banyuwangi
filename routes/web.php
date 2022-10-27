@@ -8,6 +8,7 @@ use App\Http\Controllers\guest\NewsController;
 use App\Http\Controllers\guest\PPIDController;
 use App\Http\Controllers\guest\ProfilController;
 use App\Http\Controllers\guest\DocumentandOtherController;
+use App\Http\Controllers\guest\CategoryServiceController;
 
 
 use App\Http\Controllers\admin\LoginController;
@@ -21,10 +22,10 @@ use App\Http\Controllers\admin\DashboardDocumentController;
 
 //------------------ ## GUEST ## ----------------------
 // -- home --
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->middleware('global-data-value');
 
 // -- profil --
-Route::prefix('profil')->group(function(){
+Route::middleware('global-data-value')->prefix('profil')->group(function(){
     Route::get('galeri', [ProfilController::class, 'galeri']);
     Route::get('show-galeri/{galeri}', [ProfilController::class, 'galeriShow']);
     Route::get('tupoksi', [ProfilController::class, 'tupoksi']);
@@ -33,8 +34,8 @@ Route::prefix('profil')->group(function(){
 });
 
 // -- ppid --
-Route::get ('/ppid',[PPIDController::class, 'index']);
-Route::prefix('ppid')->group(function(){
+Route::get ('/ppid',[PPIDController::class, 'index'])->middleware('global-data-value');
+Route::middleware('global-data-value')->prefix('ppid')->group(function(){
     Route::get ('latar-belakang-ppid',[PPIDController::class, 'latarBelakang']);
     Route::get ('pedoman-ppid-revisi',[PPIDController::class, 'pedomanPPID']);
     Route::get ('dasar-hukum-ppid',[PPIDController::class, 'dasarHukum']);
@@ -44,12 +45,13 @@ Route::prefix('ppid')->group(function(){
 });
 
 // -- yang lain --
-Route::get('/berita', [NewsController::class, 'index']);
-Route::get('/berita/{news:slug}', [NewsController::class, 'show']);
-Route::get('/document', [DocumentandOtherController::class, 'index']);
-Route::get('/document/download/document-src/{fileName}', [DocumentandOtherController::class, 'downloadDocument']); //download dokument
-Route::get('/kontak', [DocumentandOtherController::class, 'kontak']);
-Route::get('/layanan', [DocumentandOtherController::class, 'layanan']);
+Route::get('/berita', [NewsController::class, 'index'])->middleware('global-data-value');
+Route::get('/berita/{news:slug}', [NewsController::class, 'show'])->middleware('global-data-value');
+Route::get('/document', [DocumentandOtherController::class, 'index'])->middleware('global-data-value');
+Route::get('/document/download/document-src/{fileName}', [DocumentandOtherController::class, 'downloadDocument'])->middleware('global-data-value'); //download dokument
+Route::get('/kontak', [DocumentandOtherController::class, 'kontak'])->middleware('global-data-value');
+Route::get('/layanan/{categoriesId}', [CategoryServiceController::class, 'layanan'])->middleware('global-data-value');
+// Route::get('/layanan/{categories}', [CategoryServiceController::class, 'layanan'])->middleware('global-data-value');
 
 
 
