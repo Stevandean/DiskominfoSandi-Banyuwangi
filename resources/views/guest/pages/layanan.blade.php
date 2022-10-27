@@ -6,8 +6,11 @@
 @endpush
 
 @section('container')
+		<div class="text-center underline underline-offset-8 decoration-2 decoration-[#f6ca29] text-3xl font-bold pt-10" id="tupoksi">
+			{{ $title }}
+		</div>
 		<div class="flex flex-wrap relative justify-center gap-7 p-10 ">
-			@foreach ($services as $service)
+			@foreach ($category->services as $service)
 			<div class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md basis-full  md:basis-1/3">
 				<svg class="mb-2 w-10 h-10 text-gray-500" viewBox="0 0 1024 1024" class="icon" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M864 409.6a192 192 0 01-37.888 349.44A256.064 256.064 0 01576 960h-96a32 32 0 110-64h96a192.064 192.064 0 00181.12-128H736a32 32 0 01-32-32V416a32 32 0 0132-32h32c10.368 0 20.544.832 30.528 2.432a288 288 0 00-573.056 0A193.235 193.235 0 01256 384h32a32 32 0 0132 32v320a32 32 0 01-32 32h-32a192 192 0 01-96-358.4 352 352 0 01704 0zM256 448a128 128 0 100 256V448zm640 128a128 128 0 00-128-128v256a128 128 0 00128-128z"/></svg>
 				<div>
