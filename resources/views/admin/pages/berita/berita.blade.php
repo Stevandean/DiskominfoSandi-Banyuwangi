@@ -169,7 +169,7 @@
     </div>
   </div>
     
-  <x-admin.modal-detail modelPath="berita" >
+  <x-admin.modal-detail model-path="berita" >
     <div class="flex justify-between items-start p-4 rounded-t border-b border-gray-200 mx-5">
         <h3 class="text-xl font-semibold text-gray-900">
           <span class="fill-detail" data-key="title"></span>

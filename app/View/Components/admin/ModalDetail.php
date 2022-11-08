@@ -1,19 +1,20 @@
 <?php
 
-namespace App\View\Components\admin;
+namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
-class modalDelete extends Component
+class modalDetail extends Component
 {
+    public $modelPath;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($modelPath)
     {
-        //
+        $this->modelPath = $modelPath;
     }
 
     /**
@@ -23,6 +24,6 @@ class modalDelete extends Component
      */
     public function render()
     {
-        return view('components.admin.modal-delete');
+        return view('components.admin.modal-detail');
     }
 }
