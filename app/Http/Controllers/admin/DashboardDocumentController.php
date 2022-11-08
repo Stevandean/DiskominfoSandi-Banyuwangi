@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Document;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\File;
 
 class DashboardDocumentController extends Controller
 {
@@ -51,7 +52,11 @@ class DashboardDocumentController extends Controller
         //melakukan validasi
         $validated = $request->validate([
             'name' => 'required|max:225',
-            'source' => 'file|mimes:pdf'
+            'source' => [
+                'nullable', 
+                File::types(['pdf'])
+                    ->max(50*1024) //50 mb
+            ]
         ]);
 
         //jika ada dokumen yang diupload

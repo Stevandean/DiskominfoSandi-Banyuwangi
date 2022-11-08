@@ -30,7 +30,7 @@
     </div>
     <div id="wrp" class="mb-6"><!--upload file-->
       <x-admin.input-upload info-file-read-only="{{ $service->icon }}" type="image" input-name="File icon" form-name="icon" :is-filled=true :is-read-only=false :is-error=false >
-        hanya file gambar
+        hanya file gambar (.jpg, .jpeg, .png, etc ) max 10mb
       </x-admin.input-upload>
       <input type="hidden" name="old-icon" value="{{ $service->icon }}">
     </div>

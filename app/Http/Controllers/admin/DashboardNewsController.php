@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Validation\Rules\File;
 
 class DashboardNewsController extends Controller
 {
@@ -52,9 +53,13 @@ class DashboardNewsController extends Controller
             'title' => 'required|max:100',
             'slug' => 'required',
             'body' => 'nullable',
-            'image' => 'nullable|file',
             'publish_at' => 'nullable',
             'category' => 'required',
+            'image' => [
+                'nullable', 
+                File::image()
+                    ->max(10*1024)
+            ],
         ]);
 
         if($request->hasFile('image')){
@@ -109,8 +114,12 @@ class DashboardNewsController extends Controller
         $validated = $request->validate([
             'title' => 'required',
             'slug' => 'required|unique:news,slug,'.$beritum->id, //untuk melakukan ignore dengan data yang akan diubah
-            'image' => 'nullable|file',
-            'body' => 'nullable'
+            'body' => 'nullable',
+            'image' => [
+                'nullable', 
+                File::image()
+                    ->max(10*1024)
+            ],
         ]);
         
         if($request->hasFile('image')){ //bila file gammbar ada ada maka hapus, jika tidak maka gunakan gambar lama (tidak ditimpa)
