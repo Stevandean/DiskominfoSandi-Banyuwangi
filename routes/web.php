@@ -13,7 +13,6 @@ use App\Http\Controllers\guest\CategoryServiceController;
 
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\DashboardLinkController;
 use App\Http\Controllers\admin\DashboardNewsController;
 use App\Http\Controllers\admin\DashboardGalleryController;
 use App\Http\Controllers\admin\DashboardServiceController;
@@ -31,6 +30,18 @@ Route::middleware('global-data-value')->prefix('profil')->group(function(){
     Route::get('tupoksi', [ProfilController::class, 'tupoksi']);
     Route::get('struktur-organisasi', [ProfilController::class,'strukturOrganisasi']);
     Route::get('visi-misi', [ProfilController::class, 'visiMisi']);
+    Route::get('sejarah', function () {
+        return view ('guest.pages.profil.sejarah');
+    });
+    Route::get('profil-pejabat', function () {
+        return view ('guest.pages.profil.profil-pejabat');
+    });
+    Route::get('tujuan-sasaran', function () {
+        return view ('guest.pages.profil.tujuan-sasaran');
+    });
+    Route::get('organisasi-tata-kerja', function () {
+        return view ('guest.pages.profil.organisasi-tata-kerja');
+    });
 });
 
 // -- ppid --

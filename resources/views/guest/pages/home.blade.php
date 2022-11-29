@@ -9,7 +9,7 @@
     {{-- tesnya berhasil, fungsi diatas digunakna supaya element parent tidak ikut terbawa saat melakukan margin oleh child --}}
     <div class="con relative">
       <div class="h-40">
-        <span class="text1 "> DiskominfoSandi</span>
+        <span class="text1 "> Dinas Kominfo</span>
         <span class="text2">
           Banyuwangi
         </span>

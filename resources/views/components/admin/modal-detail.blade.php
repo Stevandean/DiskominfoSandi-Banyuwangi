@@ -46,7 +46,7 @@
             this.modelPath = modelPath
 
             this.defineField();
-            if(modelPath == "berita") this.defineUserTable();
+            // if(modelPath == "berita") this.defineUserTable();
             this.visibilityEvent()
             this.defineEventShow()
 
