@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\admin;
+namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
-class alert extends Component
+class Alert extends Component
 {
     public $type;
     public $msg;

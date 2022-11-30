@@ -26,7 +26,7 @@
       </div>
       <div id="wrp" class="mb-6">
         <x-admin.input-upload infoFileReadOnly="{{ $gallery->source }}" type="image" input-name="File Gambar" form-name="source" :is-filled=true :is-error=false >
-          hanya file gambar, untuk video bisa dimasukan kedalam input text
+          hanya file gambar (.jpg, .jpeg, .png, etc ) max 10mb, untuk video bisa dimasukan kedalam input text
         </x-admin.input-upload>
       </div>
       <div class="mb-6">

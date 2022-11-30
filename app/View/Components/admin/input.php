@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\admin;
+namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
-class input extends Component
+class Input extends Component
 {
     public $inputValue;
     public  $isError;

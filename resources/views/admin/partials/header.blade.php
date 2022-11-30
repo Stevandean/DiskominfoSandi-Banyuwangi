@@ -3,7 +3,7 @@
     <div class="inline-flex items-center">
       <!-- &#x1F5D9; -->
       <button class="text-slate-600 text-2xl w-10 h-10 hidden lg:block" onclick="toogleSidebar()">&#9776;</button>
-      <button class="text-slate-600 text-2xl w-10 h-10 lg:hidden" onclick="toggleSidebar2()">&#9776;</button>
+      <button class="text-slate-600 text-2xl w-10 h-10 lg:hidden" data-open="true" onclick="toggleSidebar2()">&#9776;</button>
       <h1 class=" sm:text-lg md:text-2xl font-semibold">{{ $title }}</h1>
     </div>
 
@@ -30,3 +30,43 @@
     </div>
   </div>
 </div>
+
+@push('view-layout')
+<script>
+
+  // --------- untuk tombol sidebar 1 [ketika lebar layar > 1024] -----------
+  let asideDiv = document.querySelector('aside div')
+  let sideList = document.querySelectorAll('.side-list')
+  function toogleSidebar(){
+    asideDiv.classList.toggle('w-64');
+    asideDiv.classList.toggle('w-20');
+    sideList.forEach(el => {
+      el.classList.toggle('hidden')
+    })
+    document.querySelectorAll('.admin-title').forEach(el => {
+      el.classList.toggle('hidden')
+    })
+  }
+
+  // -------- untuk tombol sidebar 2 [ketika lebar layar < 1024] ---------------
+  let overlap = document.querySelector('#overLap');
+  let aside =  document.querySelector('aside');
+  function toggleSidebar2(){
+   aside.classList.toggle('-translate-x-full');
+   overlap.classList.toggle('hidden')
+  }
+
+  // --------------- Dfropdown 3 -------------------
+  let dropdownItem = document.querySelector('#dropdown-header');
+  let btnDropdown = document.querySelector('#btn-dropdown');
+  ['click'].forEach(evt => {
+    btnDropdown.addEventListener(evt, e => {
+      if(evt == 'blur') {
+        dropdownItem.classList.add('hidden');
+        return;
+      }
+      dropdownItem.classList.toggle("hidden")
+    })
+  })
+</script>    
+@endpush

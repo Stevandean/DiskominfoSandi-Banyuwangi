@@ -6,6 +6,7 @@ use App\Models\Gallery;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\File;
 
 class DashboardGalleryController extends Controller
 {
@@ -52,8 +53,12 @@ class DashboardGalleryController extends Controller
             $validated = $request->validate([
                 'title' => 'required | max:225',
                 'type' => 'required',
-                'source' => 'required | file',
                 'body' => 'nullable',
+                'source' => [
+                    'required', 
+                    File::image()
+                        ->max(10*1024)
+                ],
             ]);
         }else if($request->type == 'video'){
             $validated = $request->validate([
@@ -123,7 +128,11 @@ class DashboardGalleryController extends Controller
             $validated = $request->validate([
                 'title' => 'min:2|required',
                 'type' => 'required',
-                'source' => 'nullable|file'
+                'source' => [
+                    'nullable', 
+                    File::image()
+                        ->max(10*1024)
+                ],
             ]);
 
             //mneghapus data lama dan mengubahnya dengan data baru, jika diberi data baru

@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\File;
 
 class DashboardServiceController extends Controller
 {
@@ -52,7 +53,11 @@ class DashboardServiceController extends Controller
             'name' => 'required|max:400|unique:services',
             'description' => 'nullable',
             'link' => 'nullable',
-            'icon' => 'nullable|file'
+            'icon' => [
+                'nullable', 
+                File::image()
+                    ->max(10*1024)
+            ],
         ]);
 
         if($request->hasFile('icon')){
@@ -112,7 +117,11 @@ class DashboardServiceController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'nullable',
             'link' => 'nullable',
-            'icon' => 'nullable|file'
+            'icon' => [
+                'nullable', 
+                File::image()
+                    ->max(10*1024)
+            ],
         ]);
 
         if($request->hasFile('icon')){

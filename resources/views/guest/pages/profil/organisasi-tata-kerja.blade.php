@@ -9,7 +9,7 @@
 
         <div class="w-full h-[70vh]">
             <div class="w-[80%] h-[100%] mx-auto ">
-                <iframe class="w-full h-full" src="/pdf/SK123.pdf" frameBorder="0" scrolling="auto" ></iframe>
+                <iframe class="w-full h-full" src="{{ Storage::exists($pdfOrganisasiTataKerja)? asset('/storage/'.$pdfOrganisasiTataKerja) : '/images/null-image.png' }}" frameBorder="0" scrolling="auto" ></iframe>
             </div>
         </div>
 

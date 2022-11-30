@@ -29,7 +29,7 @@
       </div>
       <div id="wrp" class="mb-6"><!--upload file-->
         <x-admin.input-upload info-file-read-only="{{ $news->image }}" type="image" input-name="File Gambar" form-name="image" :is-filled=true :is-read-only=false :is-error=false >
-          hanya file gambar
+          hanya file gambar (.jpg, .jpeg, .png, etc ) max 10 mb
         </x-admin.input-upload>
         <input type="hidden" name="old-image" value="{{ $news->image }}">
       </div>

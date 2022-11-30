@@ -49,7 +49,7 @@
             <!-- ukuran gambar  --> 
             <img class="max-w-full max-h-[420px] mx-auto mb-4 rounded-lg" src="{{ Storage::exists($news->image ?? "null")? asset('/storage/'.$news->image) : '/images/null-image.png'  }}" alt="" srcset="">
             {{-- <div class="w-full h-72 bg-center" style="background-image: url(/images/img1.jpg)"></div> --}}
-            <div class="max-w-3xl mx-auto mb-5"> <!--wrapper untuk text body -->
+            <div class="text-content max-w-3xl mx-auto mb-5"> <!--wrapper untuk text body -->
                  {!! $news->body !!}
             </div>
 
