@@ -9,8 +9,7 @@
         <div class="pt-10">
             <div class="m-auto max-w-5xl rounded-lg overflow-hidden shadow-lg">
                 <div class="px-8 py-4">
-                    <img src="/images/struktur-organisasi.png">
-                    <!-- <div class="bg-cover w-100% z-10" style="background-image:url(images/struktur-organisasi.png)"></div> -->
+                    <img src="{{ Storage::exists($imgStrukturOrganisasi)? asset('/storage/'.$imgStrukturOrganisasi) : '/images/null-image.png' }}">
                 </div>
             </div>
         </div>

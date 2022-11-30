@@ -12,7 +12,8 @@
                     Visi
                 </div>
                 <p class="text-gray-700 text-base py-2">
-                    Terwujudnya masyarakat Banyuwangi yang semakin sejahtera, mandiri, dan berakhlak mulia melalui peningkatan perokonomian dan kualitas sumber daya manusia
+                    {{ $visi }}
+                    {{-- Terwujudnya masyarakat Banyuwangi yang semakin sejahtera, mandiri, dan berakhlak mulia melalui peningkatan perokonomian dan kualitas sumber daya manusia --}}
                 </p>
             </div>
         </div>
@@ -24,7 +25,8 @@
                     Misi
                 </div>
                 <p class="text-gray-700 text-base py-2">
-                    Mewujudkan tata pemerintahan yang baik dan bersih (Good and clean governance) serta layanan publik yang berkualitas berbasis teknologi informasi.
+                    {{ $misi }}
+                    {{-- Mewujudkan tata pemerintahan yang baik dan bersih (Good and clean governance) serta layanan publik yang berkualitas berbasis teknologi informasi. --}}
                 </p>
             </div>
         </div>

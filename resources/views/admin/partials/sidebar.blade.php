@@ -97,12 +97,13 @@
           </div>
           {{-- <div class="flex flex-col bg-[rgba(253,223,71,0.39)] rounded-md text-white gap-1 p-2 pt-1 "> --}}
           <div data-dropdown-id="1" class="side-list flex flex-col transition-all rounded-md text-gray-500 gap-1 p-2 pr-0 pt-1 ">
-            <ul class="ml-3 pl-3 max-h-52 max-h-0 border-l flex flex-col transition-all border-l-gray-500">
+            <ul class="ml-3 pl-3 max-h-96 max-h-0 border-l flex flex-col transition-all border-l-gray-500">
               <li class="{{ Request::is('admin/profil/visi-misi*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"> <a class="w-full block" href="/admin/profil/visi-misi">Visi Misi</a></li>
               <li class="{{ Request::is('admin/profil/tujuan-sasaran*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"> <a class="w-full block" href="/admin/profil/tujuan-sasaran">Tujuan Sasaran</a></li>
               <li class="{{ Request::is('admin/profil/sejarah*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"><a class="w-full block" href="/admin/profil/sejarah">Sejarah</a></li>
               <li class="{{ Request::is('admin/profil/struktur-organisasi*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"><a class="w-full block" href="/admin/profil/struktur-organisasi">Struktur Organisasi</a></li>
               <li class="{{ Request::is('admin/profil/profil-pejabat*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"><a class="w-full block" href="/admin/profil/profil-pejabat">Profil Pejabat</a></li>
+              <li class="{{ Request::is('admin/profil/organisasi-tata-kerja*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"><a class="w-full block" href="/admin/profil/organisasi-tata-kerja">Organisasi Tatakerja</a></li>
             </ul>
           </div>
        </li>

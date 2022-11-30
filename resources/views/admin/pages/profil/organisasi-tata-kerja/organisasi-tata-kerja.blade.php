@@ -16,8 +16,8 @@
   <!--data-->
   <div class="shadow-md bg-white rounded-lg p-3 pt-4">
     <div class="flex flex-wrap md:flex-nowrap gap-3 justify-between items-center p-4 pt-1">
-        <span class="font-bold text-xl text-blue-kominfo">Struktur Organisasi</span>
-      <a href="/admin/profil/struktur-organisasi/edit" class="text-sm bg-blue-700 hover:bg-blue-800 text-white focus:ring-4 focus:ring-blue-300 py-2 px-8 rounded-md w-full sm:w-auto">
+        <span class="font-bold text-xl text-blue-kominfo">Organisasi dan Tata Kerja</span>
+      <a href="/admin/profil/organisasi-tata-kerja/edit" class="text-sm bg-blue-700 hover:bg-blue-800 text-white focus:ring-4 focus:ring-blue-300 py-2 px-8 rounded-md w-full sm:w-auto">
         <div class="flex items-center justify-center h-full table-fixed">
             <svg
             class="fill-white mr-2"
@@ -35,9 +35,11 @@
     <div class="overflow-x-auto relative">
         <div class="pair p-3 mb-3">
             <h3 class="font-bold mb-2">Preview </h3>
-            <div class="">
-                <img class="max-w-2xl mx-auto rounded" src="{{ Storage::exists($imgStrukturOrganisasi)? asset('/storage/'.$imgStrukturOrganisasi) : '/images/null-image.png' }}" alt="">
-            </div>
+            <div class="w-full h-[70vh]">
+              <div class="w-[80%] h-[100%] mx-auto ">
+                  <iframe class="w-full h-full" src="{{ Storage::exists($pdfOrganisasiTataKerja)? asset('/storage/'.$pdfOrganisasiTataKerja) : '/images/null-image.png' }}" frameBorder="0" scrolling="auto" ></iframe>
+              </div>
+          </div>
         </div>
     </div>
   </div>

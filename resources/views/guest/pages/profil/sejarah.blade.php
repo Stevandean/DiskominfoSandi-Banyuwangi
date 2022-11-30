@@ -18,11 +18,25 @@
                     <div id="default-carousel" class="relative" data-carousel="static">
                         <!-- Carousel wrapper -->
                         <div class="overflow-hidden relative h-44 md:h-60 2xl:h-72 rounded-lg w-full md:w-2/3 2xl:w-full mx-auto">
-                            <div>
+                            <div  class="hidden duration-700 ease-in-out" data-carousel-item>
                                 <span class="z-20 absolute bottom-10 left-10 text-xl lg:text-2xl font-semibold text-white">Ini Title</span>
                                 <div class="z-10 h-28  bg-gradient-to-t from-black opacity-50 absolute inset-x-0 bottom-0"></div>
                                 <div class="bg-white block absolute top-1/2 left-1/2 w-full min-h-full -translate-x-1/2 -translate-y-1/2">
-                                    <img class="w-full h-full" src="/images/3554-IMG-20170303-WA0004.jpg" alt="">
+                                    <img class="w-full h-full" src="{{ Storage::exists($imgSejarah1)? asset('/storage/'.$imgSejarah1) : '/images/null-image.png' }}" alt="">
+                                </div>
+                            </div>
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <span class="z-20 absolute bottom-10 left-10 text-xl lg:text-2xl font-semibold text-white">Ini Title</span>
+                                <div class="z-10 h-28  bg-gradient-to-t from-black opacity-50 absolute inset-x-0 bottom-0"></div>
+                                <div class="bg-white block absolute top-1/2 left-1/2 w-full min-h-full -translate-x-1/2 -translate-y-1/2">
+                                    <img class="w-full h-full" src="{{ Storage::exists($imgSejarah2)? asset('/storage/'.$imgSejarah2) : '/images/null-image.png' }}" alt="">
+                                </div>
+                            </div>
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <span class="z-20 absolute bottom-10 left-10 text-xl lg:text-2xl font-semibold text-white">Ini Title</span>
+                                <div class="z-10 h-28  bg-gradient-to-t from-black opacity-50 absolute inset-x-0 bottom-0"></div>
+                                <div class="bg-white block absolute top-1/2 left-1/2 w-full min-h-full -translate-x-1/2 -translate-y-1/2">
+                                    <img class="w-full h-full" src="{{ Storage::exists($imgSejarah3)? asset('/storage/'.$imgSejarah3) : '/images/null-image.png' }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -67,20 +81,8 @@
                 
             </div>
             <div class="">
-                <p class="pb-5">
-                    Peraturan Bupati tersebut mulai berlaku efektif sejak tanggal 1 Januari 2017. Pada saat itu, struktur di bawah Kepala Dinas terdapat Sekretariat dan tiga bidang diantaranya; Bidang Komunikasi, Bidang Teknologi Informatika, Bidang Statistik dan Persandian.
-                </p>
-                <p class="pb-5">
-                    Tahun 2020, Perda nomor 8 Tahun 2016 diubah dengan Peraturan Daerah Kabupaten Banyuwangi nomor 10 Tahun 2019 sehingga berdampak diterbitkannya Peraturan Bupati Banyuwangi nomor 6 Tahun 2020 tentang Perubahan atas Peraturan Bupati Banyuwangi nomor 49 Tahun 2016 Tentang Kedudukan, Susunan Organisasi, Tugas dan Fungsi serta Tata Kerja Dinas Komunikasi Informatika dan Persandian Kabupaten Banyuwangi.
-                </p>
-                <p class="pb-5">
-                    Perbup nomor 6 Tahun 2020 pada prinsipnya mengubah Bidang Komunikasi menjadi Bidang Informasi dan Komunikasi Publik yang membawahi tiga seksi di antaranya Seksi Informasi Publik, Seksi Komunikasi Publik, Seksi Dokumentasi dan Pemberitaan. Sedangkan struktur bidang yang lain tidak mengalami perubahan.
-                </p>
-                <p class="pb-5">
-                    Kemudian, pada tahun 2021 terdapat perubahan yang dipicu terbitnya Peraturan Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi nomor 25 Tahun 2021 tentang Penyederhanaan Struktur Organisasi pada Instansi Pemerintah. Perubahan itu mencakup disetarakannya jabatan eselon IV ke dalam jabatan fungsional.
-                </p>
-                <p class="pb-5">
-                    Struktur baru tersebut diatur dalam Peraturan Bupati Banyuwangi nomor 68 Tahun 2021 tentang Kedudukan, Susunan Organisasi Tugas dan Fungsi serta Tata Kerja Dinas Komunikasi, Informatika dan Persandian Kabupaten Banyuwangi yang ditandatangani oleh Bupati Banyuwangi, Ipuk Fiestiandani Azwar Anas pada tanggal 31 Desember 2021. 
+                <p>
+                    {!! $sejarahBody  !!}
                 </p>
             </div>
 

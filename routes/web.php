@@ -19,7 +19,7 @@ use App\Http\Controllers\admin\DashboardServiceController;
 use App\Http\Controllers\admin\DashboardDocumentController;
 use App\Http\Controllers\admin\DashboardProfileController;
 use App\Http\Controllers\admin\DashboardProfilePejabatController;
-
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 //------------------ ## GUEST ## ----------------------
 // -- home --
@@ -32,18 +32,10 @@ Route::middleware('global-data-value')->prefix('profil')->group(function(){
     Route::get('tupoksi', [ProfilController::class, 'tupoksi']);
     Route::get('struktur-organisasi', [ProfilController::class,'strukturOrganisasi']);
     Route::get('visi-misi', [ProfilController::class, 'visiMisi']);
-    Route::get('sejarah', function () {
-        return view ('guest.pages.profil.sejarah');
-    });
-    Route::get('profil-pejabat', function () {
-        return view ('guest.pages.profil.profil-pejabat');
-    });
-    Route::get('tujuan-sasaran', function () {
-        return view ('guest.pages.profil.tujuan-sasaran');
-    });
-    Route::get('organisasi-tata-kerja', function () {
-        return view ('guest.pages.profil.organisasi-tata-kerja');
-    });
+    Route::get('sejarah', [ProfilController::class, 'sejarah']);
+    Route::get('profil-pejabat', [ProfilController::class, 'profilPejabat']);
+    Route::get('tujuan-sasaran', [ProfilController::class, 'tujuanSasaran']);
+    Route::get('organisasi-tata-kerja',[ProfilController::class, 'organisasiTataKerja']);
 });
 
 // -- ppid --
@@ -66,7 +58,7 @@ Route::get('/kontak', [DocumentandOtherController::class, 'kontak'])->middleware
 Route::get('/layanan/{categoriesId}', [CategoryServiceController::class, 'layanan'])->middleware('global-data-value');
 // Route::get('/layanan/{categories}', [CategoryServiceController::class, 'layanan'])->middleware('global-data-value');
 
-
+Route::get('profil-pejabat/downloadLKHPN/{profil_pejabat}',[DashboardProfilePejabatController::class, 'downloadLKHPN']);
 
 
 //------------------ ## ADMIN ## ----------------------
@@ -89,7 +81,6 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::prefix('profil')->group(function(){
         // -- profil pejabat --
         Route::resource('profil-pejabat',DashboardProfilePejabatController::class);
-        Route::get('profil-pejabat/downloadLKHPN/{profil_pejabat}',[DashboardProfilePejabatController::class, 'downloadLKHPN']);
 
         // -- visi misi --
         Route::get('visi-misi', [DashboardProfileController::class, "indexVisiMisi"]);
@@ -110,6 +101,11 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::get('struktur-organisasi',[DashboardProfileController::class, "indexStrukturOrganisasi"]);
         Route::get('struktur-organisasi/edit',[DashboardProfileController::class, "editStrukturOrganisasi"]);
         Route::put('struktur-organisasi/edit',[DashboardProfileController::class, "updateStrukturOrganisasi"]);
+
+        // -- organisasi tata kerja --
+        Route::get('organisasi-tata-kerja',[DashboardProfileController::class, "indexOrganisasiTataKerja"]);
+        Route::get('organisasi-tata-kerja/edit',[DashboardProfileController::class, "editOrganisasiTataKerja"]);
+        Route::put('organisasi-tata-kerja/edit',[DashboardProfileController::class, "updateOrganisasiTataKerja"]);
     });
 });
 

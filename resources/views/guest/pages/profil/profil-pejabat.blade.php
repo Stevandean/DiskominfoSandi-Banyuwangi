@@ -16,6 +16,10 @@
                 2xl:h-[530px]
                 
             "> 
+
+            @foreach ($profilPejabats as $profilPejabat)
+                
+            @endforeach
                 <!-- CONTAINER PROFILE PEJABAT -->
                 <div class="basis-1/3 p-5 mx-auto self-center">
                     <div class="rounded-full w-20 h-20 md:w-28 md:h-28  lg:w-40 lg:h-40
@@ -26,16 +30,16 @@
                         </svg>
                     </div>
                     <div class="rounded-lg px-5 py-2 w-full lg:px-0 lg:w-3/4 m-auto text-center text-md md:text-lg drop-shadow-md bg-yellow-300">
-                        Ini Nama Pejabat
+                        {{ $profilPejabat->name }}
                     </div>
                 </div>
 
                 <!-- CONTAINER PDF -->
                 <div class="basis-2/3 flex flex-col-reverse md:flex-col">
                     <div class="mb-5 w-[95%] h-[100%] mx-auto md:mx-0">
-                        <iframe class="w-full h-full" src="/pdf/SK123.pdf" frameBorder="0" scrolling="auto" ></iframe>
+                        <iframe class="w-full h-full" src="{{ Storage::exists($profilPejabat->profile_pdf)? asset('/storage/'.$profilPejabat->profile_pdf) : '/images/null-image.png' }}" frameBorder="0" scrolling="auto" ></iframe>
                     </div>
-                    <a href="#" class="bg-yellow-300 rounded-lg w-2/6 h-10 drop-shadow-md block m-auto md:m-0 mb-2 md:mb-0">
+                    <a href="/profil-pejabat/downloadLKHPN/{{ $profilPejabat->id }}" download class="bg-yellow-300 rounded-lg w-2/6 h-10 drop-shadow-md block m-auto md:m-0 mb-2 md:mb-0">
                         <div class="w-full h-full flex justify-center items-center">
                             <p class="mr-2">LKHPN</p>
                             <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 495.003 495.003" style="enable-background:new 0 0 495.003 495.003;" xml:space="preserve">

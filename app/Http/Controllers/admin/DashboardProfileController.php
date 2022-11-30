@@ -16,8 +16,8 @@ class DashboardProfileController extends Controller
         $misi = General_Profile::where('key', 'misi')->first()->value ?? "";
         return view('admin.pages.profil.visi-misi.visi-misi',[
             'title' => "ini visi misi",
-            'visi' => $visi->value,
-            'misi' => $misi->value
+            'visi' => $visi,
+            'misi' => $misi
         ]);
     }
 
@@ -125,7 +125,7 @@ class DashboardProfileController extends Controller
         if($request->hasFile('imgStrukturOrganisasi')){
             $fileName = $request->file('imgStrukturOrganisasi')->store('profile-src/img');
             if($fileName == null){return response()->json(['msg' => 'data bermasalah', 'success' => false]);};
-            Storage::delete(General_Profile::where('key', 'img_struktur_organisasi')->first() ?? "empty-source");
+            Storage::delete(General_Profile::where('key', 'img_struktur_organisasi')->first()->value ?? "empty-source");
             General_Profile::updateOrCreate(['key' => 'img_struktur_organisasi'],['value' => $fileName]);
         }
 
@@ -164,4 +164,36 @@ class DashboardProfileController extends Controller
         $request->session()->flash('success', 'data berhasil diedit');
         return response()->json([$request, 'success' => true]);
     }
+
+
+    // ---------------- Organisasi Tata Kerja --------------
+    public function indexOrganisasiTataKerja(){
+        $pdfOrganisasiTataKerja = General_Profile::where('key', 'pdf_organisasi_tata_kerja')->first()->value ?? "empty-source";
+        return view('admin.pages.profil.organisasi-tata-kerja.organisasi-tata-kerja',[
+            'title' => "Organisasi Tata kerja",
+            'pdfOrganisasiTataKerja' => $pdfOrganisasiTataKerja
+        ]);
+    }
+
+    public function editOrganisasiTataKerja(){
+        $pdfOrganisasiTataKerja = General_Profile::where('key', 'pdf_organisasi_tata_kerja')->first()->value ?? "empty-source";
+        return view('admin.pages.profil.organisasi-tata-kerja.edit-organisasi-tata-kerja',[
+            'title' => "Organisasi Tata kerja",
+            'pdfOrganisasiTataKerja' => $pdfOrganisasiTataKerja
+        ]);
+    }
+
+    public function updateOrganisasiTatakerja(Request $request){
+        $fileName = null;
+        if($request->hasFile('pdfOrganisasiTataKerja')){
+            $fileName = $request->file('pdfOrganisasiTataKerja')->store('profile-src/pdf');
+            if($fileName == null){return response()->json(['msg' => 'data bermasalah', 'success' => false]);};
+            Storage::delete(General_Profile::where('key', 'pdf_organisasi_tata_kerja')->first()->value ?? "empty-source");
+            General_Profile::updateOrCreate(['key' => 'pdf_organisasi_tata_kerja'],['value' => $fileName]);
+        }
+
+        if($fileName != null) { return response()->json(['request' => $fileName, 'success' => true]);}
+        else { return response()->json(['msg' => "ada error", 'success' => false]);}
+    }
+
 }

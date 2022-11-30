@@ -13,7 +13,7 @@
                 Tujuan
             </div>
             <p class="text-gray-700 text-base py-2">
-                Meningkatkan Kepuasan Masyarakat Terhadap Pelayanan Publik
+                {{ $tujuan }}
             </p>
         </div>
     </div>
@@ -25,7 +25,7 @@
                 Sasaran
             </div>
             <p class="text-gray-700 text-base py-2">
-                Meningkatkan Kepuasan Masyarakat Terhadap Pelayanan Publik
+               {{ $sasaran }}
             </p>
         </div>
     </div>
