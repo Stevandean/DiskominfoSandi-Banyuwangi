@@ -99,7 +99,7 @@
             </div>
             @endif
 
-            <div class=" grid-cols-1 mb-6 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-8 items-start">
+            <div class="mb-6 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-8 items-start">
 
                 {{-- <!-- CARD 1 -->
                 <div class=" max-w-sm rounded-lg overflow-hidden shadow-lg mx-auto">

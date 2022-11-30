@@ -236,49 +236,6 @@
         </div>
         <span class="fill-detail" data-key="author"></span>
     </div>
-    <!-- table user -->
-    <div class="p-6">
-      <span class="fill_detail" data-key="author"></span>
-        <p class="text-base leading-relaxed mx-2 break-all">
-          <div class="overflow-x-auto relative border border-gray-400 rounded-lg">
-            <table class="w-full text-sm text-left text-gray-500 ">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
-                    <tr>
-                        <th colspan="2" scope="col" class="py-3 px-6">
-                            <p class="text-center">User</p> 
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="table-user">
-                    <tr class="bg-white border-b ">
-                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                            Nama
-                        </th>
-                        <td id="name-show" class="py-4 px-6">
-                            Sliver
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b ">
-                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                            Username
-                        </th>
-                        <td id="username-show" class="py-4 px-6">
-                            Sliver
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b ">
-                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap ">
-                            Email
-                        </th>
-                        <td id="email-show" class="py-4 px-6">
-                            Sliver
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-          </div>
-        </p>
-    </div>
   </x-admin.modal-detail>
 @endsection
 
