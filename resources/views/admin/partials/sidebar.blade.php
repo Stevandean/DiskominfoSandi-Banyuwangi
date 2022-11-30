@@ -73,6 +73,89 @@
             <span class="side-list flex-1 ml-3 whitespace-nowrap">Kategori</span>
           </a>
        </li>
+       <li class="{{ Request::is('admin/profil*')? "is-active" : '' }} dropdown">
+          <div class="flex items-center p-2 text-base font-normal text-gray-500 rounded-lg  hover:bg-side-bright  justify-center">
+            
+            <svg 
+            class="flex-shrink-0 w-6 h-6 text-gray-500 transition-all duration-75 group-hover:text-gray-900"
+            width="134" height="170" viewBox="0 0 144 200" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="5" width="124" height="160" rx="8" stroke="currentColor" stroke-width="9"/>
+              <rect x="19" y="44" width="19" height="19" rx="3" fill="currentColor"/>
+              <rect x="57" y="44" width="19" height="19" rx="3" fill="currentColor"/>
+              <rect x="95" y="44" width="19" height="19" rx="3" fill="currentColor"/>
+              <path d="M18 92H94.88" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+              <path d="M18 113L111.248 113" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+              <path d="M18 135L95.376 135" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+            </svg>
+  
+            <span class="side-list flex-1 ml-3 whitespace-nowrap">Profil</span>
+            <button data-open="{{ Request::is('admin/profil*')? "true" : 'false' }}" data-target-dropdown="1" class="side-list show-dropdown transition-all group">
+              <svg class=" transition-all group-hover:stroke-[rgb(253,224,71)]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+          </div>
+          {{-- <div class="flex flex-col bg-[rgba(253,223,71,0.39)] rounded-md text-white gap-1 p-2 pt-1 "> --}}
+          <div data-dropdown-id="1" class="side-list flex flex-col transition-all rounded-md text-gray-500 gap-1 p-2 pr-0 pt-1 ">
+            <ul class="ml-3 pl-3 max-h-52 max-h-0 border-l flex flex-col transition-all border-l-gray-500">
+              <li class="{{ Request::is('admin/profil/visi-misi*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"> <a class="w-full block" href="/admin/profil/visi-misi">Visi Misi</a></li>
+              <li class="{{ Request::is('admin/profil/tujuan-sasaran*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"> <a class="w-full block" href="/admin/profil/tujuan-sasaran">Tujuan Sasaran</a></li>
+              <li class="{{ Request::is('admin/profil/sejarah*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"><a class="w-full block" href="/admin/profil/sejarah">Sejarah</a></li>
+              <li class="{{ Request::is('admin/profil/struktur-organisasi*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"><a class="w-full block" href="/admin/profil/struktur-organisasi">Struktur Organisasi</a></li>
+              <li class="{{ Request::is('admin/profil/profil-pejabat*')? "drop-active" : '' }} p-2 hidden opacity-0 hover:bg-side-bright rounded-md"><a class="w-full block" href="/admin/profil/profil-pejabat">Profil Pejabat</a></li>
+            </ul>
+          </div>
+       </li>
       </ul>
     </div>
   </aside>
+
+@push('view-layout')
+    <script>
+      //------------- toglle button for side dropdown --------------
+      let showDropBtn = document.querySelectorAll('.show-dropdown');
+      showDropBtn.forEach(btn => {
+        let svg = btn.querySelector('svg');
+        let target = document.querySelector(`[data-dropdown-id="${btn.dataset.targetDropdown}"]`);
+        let ul = target.querySelector('ul')
+        let lis = ul.querySelectorAll('li');
+        
+        //check if dropdown is open
+        checkOpen(btn, {svg,target,ul,lis});
+
+        btn.addEventListener('click',(e) => {
+          e.preventDefault();
+          btn.dataset.open === "true" ? btn.dataset.open = "false" : btn.dataset.open = "true"
+          checkOpen(btn, {svg,target,ul,lis});
+        })
+      })
+
+      //adjusting view from dataset
+      function checkOpen(btn,{svg,target,ul,lis}){
+        if(btn.dataset.open === "false"){
+          svg.classList.remove('-rotate-90');
+          lis.forEach(li => {
+            li.classList.add("opacity-0")
+          })
+          ul.classList.add('max-h-0')
+          setTimeout(() => {
+            lis.forEach(li => {
+              li.classList.add("hidden");
+            })
+          }, 150);
+        }else{
+          lis.forEach(li => {
+              li.classList.remove("hidden");
+          })
+          svg.classList.add('-rotate-90');
+          setTimeout(() => {
+            ul.classList.remove('max-h-0')
+            lis.forEach(li => {
+              li.classList.remove("opacity-0")
+            })
+          }, 0);
+        }
+      }
+
+    </script>
+@endpush

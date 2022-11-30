@@ -39,6 +39,10 @@
       border-radius: 0PX;
     }
 
+    .text-content p{
+      margin-top: 0.5rem;
+    }
+
   </style>
   @stack('additional-css')
 </head>

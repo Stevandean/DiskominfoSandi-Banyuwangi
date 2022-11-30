@@ -13,11 +13,12 @@ use App\Http\Controllers\guest\CategoryServiceController;
 
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\DashboardLinkController;
 use App\Http\Controllers\admin\DashboardNewsController;
 use App\Http\Controllers\admin\DashboardGalleryController;
 use App\Http\Controllers\admin\DashboardServiceController;
 use App\Http\Controllers\admin\DashboardDocumentController;
+use App\Http\Controllers\admin\DashboardProfileController;
+use App\Http\Controllers\admin\DashboardProfilePejabatController;
 
 
 //------------------ ## GUEST ## ----------------------
@@ -65,13 +66,39 @@ Route::post('/admin/logout',[LoginController::class, 'logout']);
 
 Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('dashboard',[DashboardController::class,'index'] ) -> name('home');
-    Route::get('dokumen/download/document-src/{fileName}', [DashboardDocumentController::class, 'download']);
+    Route::get('dokumen/download/document-src/{profil_pejabat}', [DashboardDocumentController::class, 'downloadLKHPN']);
     Route::get('slug', [DashboardNewsController::class, 'checkSlug']);
     Route::resource('dokumen', DashboardDocumentController::class);
     Route::resource('galeri', DashboardGalleryController::class);
     Route::resource('berita', DashboardNewsController::class);
     Route::resource('layanan', DashboardServiceController::class);
     Route::resource('kategori', DashboardCategoryController::class);
+    
+    Route::prefix('profil')->group(function(){
+        // -- profil pejabat --
+        Route::resource('profil-pejabat',DashboardProfilePejabatController::class);
+        Route::get('profil-pejabat/downloadLKHPN/{profil_pejabat}',[DashboardProfilePejabatController::class, 'downloadLKHPN']);
+
+        // -- visi misi --
+        Route::get('visi-misi', [DashboardProfileController::class, "indexVisiMisi"]);
+        Route::get('visi-misi/edit', [DashboardProfileController::class, "editVisiMisi"]);
+        Route::put('visi-misi/edit', [DashboardProfileController::class, "updateVisiMisi"]);
+
+        // -- sejarah --
+        Route::get('sejarah', [DashboardProfileController::class, "indexSejarah"]);
+        Route::get('sejarah/edit', [DashboardProfileController::class, "editSejarah"]);
+        Route::put('sejarah/edit', [DashboardProfileController::class, "updateSejarah"]);
+
+        // -- tujuan dan sasaran --
+        Route::get('tujuan-sasaran', [DashboardProfileController::class, "indexTujuanSasaran"]);
+        Route::get('tujuan-sasaran/edit', [DashboardProfileController::class, "editTujuanSasaran"]);
+        Route::put('tujuan-sasaran/edit', [DashboardProfileController::class, "updateTujuanSasaran"]);
+
+        // -- struktur organisasi --
+        Route::get('struktur-organisasi',[DashboardProfileController::class, "indexStrukturOrganisasi"]);
+        Route::get('struktur-organisasi/edit',[DashboardProfileController::class, "editStrukturOrganisasi"]);
+        Route::put('struktur-organisasi/edit',[DashboardProfileController::class, "updateStrukturOrganisasi"]);
+    });
 });
 
 

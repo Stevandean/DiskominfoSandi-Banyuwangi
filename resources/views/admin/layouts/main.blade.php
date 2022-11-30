@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/trix.css">
     <script src="/js/trix.js"></script>
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    <script src="https://cdn.tailwindcss.com"></script> <!--this is tailwind, use this only for development-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         *::-webkit-scrollbar-track{
@@ -43,16 +43,38 @@
         left: 0; /* <--- supaya bisa menempel dilayar yg sebelah kiri */
         
       }
-      .is-active > a > span{
+      .is-active > a > span, .is-active > div > span{
         color: rgb(209, 213, 219);
         /* color: rgb(156 163 175); */
       }
-      .is-active > a > svg{
-        color: rgb(253, 224, 71);
+      .is-active > a > svg, .is-active div > svg{
+        color: rgb(253, 224, 71); //saya tidak tahu cara lainya
         font: rgb(253, 224, 71);
       }
-      .is-active > a{
+
+      /* .is-active > a{
         background: linear-gradient(90deg, rgba(253,223,71,0.39) 0%, rgba(0,0,0,0) 100%);
+      } */
+
+      .is-active.dropdown::before{
+        content: none;
+      }
+
+      .drop-active{
+        background: linear-gradient(90deg, rgba(253,223,71,0.39) 0%, rgba(0,0,0,0) 100%);
+        color: rgb(209, 213, 219);
+        /* border-top-left-radius: 0%;
+        border-bottom-left-radius: 0%; */
+        border-left: 3px solid rgb(253, 224, 71);
+      }
+
+      /*-------- fron text content -----*/
+      .text-content p{
+        margin-top: 0.5rem;
+      }
+
+      .text-content ol{
+        list-style-type: decimal;
       }
 
       /*-------- for table ------  */
@@ -106,45 +128,9 @@
     </div>
 
     @stack('add-script'){{-- for additional script and defining classs --}}
-    @stack('var-script'){{-- for declare variable ins an instance of a class from above --}}
+    @stack('var-script'){{-- for declare variable an instance of a class from above --}}
     @stack('upload-script'){{-- the logic how the form will be uploaded --}}
-    <script>
-
-      // --------- untuk tombol sidebar 1 [ketika lebar layar > 1024] -----------
-      let asideDiv = document.querySelector('aside div')
-      let sideList = document.querySelectorAll('.side-list')
-      function toogleSidebar(){
-        asideDiv.classList.toggle('w-64');
-        asideDiv.classList.toggle('w-20');
-        sideList.forEach(el => {
-          el.classList.toggle('hidden')
-        })
-        document.querySelectorAll('.admin-title').forEach(el => {
-          el.classList.toggle('hidden')
-        })
-      }
-
-      // -------- untuk tombol sidebar 2 [ketika lebar layar < 1024] ---------------
-      let overlap = document.querySelector('#overLap');
-      let aside =  document.querySelector('aside');
-      function toggleSidebar2(){
-       aside.classList.toggle('-translate-x-full');
-       overlap.classList.toggle('hidden')
-      }
-
-      // --------------- Dfropdown 3 -------------------
-      let dropdownItem = document.querySelector('#dropdown-header');
-      let btnDropdown = document.querySelector('#btn-dropdown');
-      ['click'].forEach(evt => {
-        btnDropdown.addEventListener(evt, e => {
-          if(evt == 'blur') {
-            dropdownItem.classList.add('hidden');
-            return;
-          }
-          dropdownItem.classList.toggle("hidden")
-        })
-      })
-    </script>
+    @stack('view-layout'){{-- view based logic --}}
   </body>
 </html>
 
